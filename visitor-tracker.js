@@ -1,0 +1,1 @@
+// Simple visitor logging stub

@@ -1,0 +1,1 @@
+// JS code to simulate paywall handling
