@@ -1,121 +1,91 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CrapsEdge™</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-..."
-    crossorigin="anonymous"
-  />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 { color: #00ff00; }
+    h2 { color: #00ffff; }
+    h3 { color: gold; }
+    a { color: #00ffff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .button {
+      display: inline-block;
+      background-color: #00cc66;
+      color: white;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 150px;
+    }
+    .menu {
+      margin-top: 40px;
+      border-top: 1px solid #444;
+      padding-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <!-- Side Drawer -->
-  <nav class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title">
-        <img src="assets/logo.png" alt="CrapsEdge™" height="40" />
-      </h5>
-      <button
-        type="button"
-        class="btn-close text-reset"
-        data-bs-dismiss="offcanvas"
-      ></button>
-    </div>
-    <div class="offcanvas-body">
-      <ul class="list-unstyled">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li>
-          <a href="explore-systems.html" class="nav-link">Explore Systems</a>
-        </li>
-        <li>
-          <a href="stop-gambling.html" class="nav-link">Stop Gambling Help</a>
-        </li>
-        <li><a href="blog.html" class="nav-link">Blog</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <!-- Header -->
-  <header class="navbar navbar-expand-lg navbar-light bg-light px-3">
-    <button
-      class="btn"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasMenu"
-    >
-      ☰
-    </button>
-    <a class="navbar-brand ms-3" href="index.html">
-      <img src="assets/logo.png" alt="CrapsEdge™" height="40" />
-    </a>
-  </header>
+  <div class="logo">
+    <img src="dice-logo.png" alt="CrapsEdge Logo" />
+  </div>
 
-  <!-- Hero Section -->
-  <section class="hero d-flex align-items-center text-white">
-    <div class="container text-center">
-      <h1 class="display-4 fw-bold">Master Your Craps Strategy</h1>
-      <p class="lead">Responsible. Analytical. Profitable.</p>
-      <a href="explore-systems.html" class="btn btn-primary btn-lg me-2"
-        >Explore Systems</a
-      >
-      <a href="stop-gambling.html" class="btn btn-outline-light btn-lg"
-        >Stop Gambling Help</a
-      >
-    </div>
-  </section>
+  <h1>CrapsEdge™</h1>
+  <p><em>Smarter Strategy. Safer Play. Real Control.</em></p>
 
-  <!-- Features Cards -->
-  <section class="py-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Explore Systems</h5>
-              <p class="card-text">
-                Dive into proven betting systems, statistical analyses, and
-                expert strategies to tilt the odds in your favor.
-              </p>
-              <a href="explore-systems.html" class="btn btn-primary"
-                >Learn More</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Stop Gambling Help</h5>
-              <p class="card-text">
-                Get our comprehensive guide to take control, set limits, and
-                gamble responsibly. Only $19.99 behind our secure paywall.
-              </p>
-              <a href="stop-gambling.html" class="btn btn-primary"
-                >Get the Guide</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <h2>🎲 What is CrapsEdge™?</h2>
+  <p>CrapsEdge™ is your go-to platform for mastering craps, tracking your bankroll, and accessing real recovery tools for gambling addiction. Whether you're trying to win more — or quit entirely — we give you the edge.</p>
 
-  <!-- Footer -->
-  <footer class="bg-light py-3 text-center">
-    <div class="container">
-      <small>&copy; 2025 CrapsEdge™. All rights reserved.</small>
-    </div>
-  </footer>
+  <h2>🔥 What You'll Find Inside</h2>
+  <ul>
+    <li>✅ Real craps strategies that actually work</li>
+    <li>📘 “Stop Gambling Help” guide <strong>($19.99)</strong></li>
+    <li>📊 Bankroll tracking tools</li>
+    <li>🧠 Private 1-on-1 support sessions (by request)</li>
+    <li>🛡️ Trusted help, no judgment</li>
+  </ul>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-..."
-    crossorigin="anonymous"
-  ></script>
+  <a href="https://crapsedge-store.netlify.app/Stop-Gambling-5-Page-Emotional-Guide.pdf" class="button">Get the Guide</a>
+  <a href="mailto:crapsedge@gmail.com" class="button">1-on-1 Help</a>
+
+  <h3>💬 Success Stories</h3>
+  <blockquote>
+    “This guide helped me finally stop chasing my losses. I feel free again.”<br>— Anonymous
+  </blockquote>
+  <blockquote>
+    “I used the bankroll tracker and it showed me how much I was really losing. Eye-opening.”<br>— A Former High Roller
+  </blockquote>
+  <blockquote>
+    “The private session changed my life. Someone finally understood what I was going through.”<br>— A Real User
+  </blockquote>
+
+  <div class="menu">
+    <h2>🔗 More Tools</h2>
+    <ul>
+      <li>📘 <a href="blog.html">Read Our Blog</a></li>
+      <li>📥 <a href="bankroll.html">Download Bankroll Tracker</a></li>
+      <li>🎯 <a href="systems.html">Explore Winning Systems</a></li>
+    </ul>
+  </div>
+
+  <p style="text-align:center; margin-top: 40px;">crapsedge.store</p>
 </body>
 </html>
