@@ -1,90 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>CrapsEdge™ – Smarter Strategy. Safer Play.</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body style="background-color: #000; color: #fff; font-family: Arial, sans-serif; text-align: center; padding: 20px;">
-
-  <!-- Side Menu (Hamburger) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrapsEdge™</title>
   <style>
-    .menu-toggle {
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Modern blue gradient */
+      color: #ffffff;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #00000088;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      background-image: url('https://crapsedge.store/logo.png'); /* Replace with your dice logo URL */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .menu-icon {
       font-size: 30px;
       cursor: pointer;
-      color: #00ff99;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
+      padding: 0 20px;
     }
+
     .side-menu {
-      display: none;
       position: fixed;
       top: 0;
-      left: 0;
+      left: -250px;
+      width: 250px;
       height: 100%;
-      width: 220px;
-      background-color: #000;
-      border-right: 2px solid #00ff99;
+      background-color: #111;
       padding-top: 60px;
-      z-index: 999;
+      transition: 0.3s;
     }
+
     .side-menu a {
-      display: block;
-      padding: 12px 20px;
-      color: #00ffff;
+      padding: 15px 25px;
       text-decoration: none;
-      font-size: 16px;
+      color: #0f0;
+      display: block;
       text-align: left;
     }
+
     .side-menu a:hover {
-      background-color: #111;
+      background-color: #333;
+    }
+
+    h1 {
+      color: #00ff00;
+      font-size: 32px;
+    }
+
+    .subheading {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      background-color: #00cc66;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      background-color: #009944;
     }
   </style>
+</head>
+<body>
 
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <div class="side-menu" id="menu">
-    <a href="index.html">🏠 Home</a>
-    <a href="stop-gambling-help.html">📘 Stop Gambling Help</a>
-    <a href="bankroll-tracker.html">📊 Bankroll Tracker</a>
-    <a href="success-stories.html">🌟 Success Stories</a>
-    <a href="blog.html">📚 Blog & Tips</a>
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="logo" alt="CrapsEdge Logo"></div>
+  </header>
+
+  <div id="sideMenu" class="side-menu">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Read Our Blog</a>
+    <a href="tracker.html">Download Tracker</a>
+    <a href="systems.html">Explore Systems</a>
+    <a href="help.html">Stop Gambling Help</a>
+    <a href="disclaimer.html">Disclaimer</a>
   </div>
+
+  <main>
+    <h1>CrapsEdge™</h1>
+    <p class="subheading">Smarter Strategy. Safer Play. Real Control.</p>
+
+    <h2>🎲 Welcome to CrapsEdge™</h2>
+    <p>A safe place to master craps strategies or break free from gambling. We focus on results, education, and responsible play — not hype.</p>
+
+    <a href="https://crapsedge.store/premium-guide" class="cta-button">Get the Stop Gambling Guide</a>
+    <a href="mailto:crapsedge@gmail.com" class="cta-button">Book 1-on-1 Help</a>
+  </main>
 
   <script>
     function toggleMenu() {
-      var menu = document.getElementById("menu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
+      const menu = document.getElementById('sideMenu');
+      menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
     }
   </script>
-
-  <!-- Dice Logo -->
-  <img src="images/dice-logo.png" alt="CrapsEdge Logo" style="width: 220px; margin-top: 60px; margin-bottom: 25px;">
-
-  <!-- Main Heading -->
-  <h1 style="color: limegreen;">CrapsEdge™</h1>
-  <p>Smarter Strategy. Safer Play. Real Control.</p>
-
-  <!-- Intro Only -->
-  <section style="margin-top: 30px;">
-    <h2 style="color: #00ff99;">🎲 Welcome to CrapsEdge™</h2>
-    <p style="max-width: 600px; margin: auto;">
-      A safe place for players to master smart craps strategies or break free from gambling altogether. We focus on results, education, and responsible play — not hype.
-    </p>
-  </section>
-
-  <!-- CTAs -->
-  <section style="margin-top: 40px;">
-    <a href="stop-gambling-help.html" class="button">Get the Stop Gambling Guide</a>
-    <a href="private-session.html" class="button">Book 1-on-1 Help</a>
-  </section>
-
-  <!-- Footer Disclaimer -->
-  <footer style="margin-top: 60px; font-size: 14px; color: #888;">
-    <p><strong>Disclaimer:</strong> CrapsEdge™ does not guarantee any financial outcomes. This site is for entertainment and educational purposes only. If you or someone you know has a gambling problem, visit <a href="https://www.ncpgambling.org" target="_blank" style="color:#00ffff;">ncpgambling.org</a>.</p>
-    <p style="color: #444; margin-top: 10px;">© 2025 CrapsEdge™. All rights reserved.</p>
-  </footer>
 
 </body>
 </html>
