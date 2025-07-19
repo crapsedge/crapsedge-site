@@ -1,88 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CrapsEdge™</title>
   <style>
     body {
-      background-color: #000;
-      color: #fff;
+      margin: 0;
       font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
       text-align: center;
-      padding: 20px;
+    }
+    .hero-img {
+      width: 90%;
+      max-width: 600px;
+      margin: 40px auto 10px;
+      display: block;
     }
     h1 {
-      color: #00ff00;
+      color: limegreen;
+      margin-bottom: 5px;
     }
-    a {
-      color: #00bfff;
-      text-decoration: none;
-      display: block;
-      margin: 5px 0;
+    .tagline {
+      font-size: 1.1em;
+      margin-bottom: 25px;
     }
-    a:hover {
-      text-decoration: underline;
+    .main-content {
+      max-width: 600px;
+      margin: auto;
     }
-    img {
-      width: 150px;
-      margin-bottom: 15px;
-    }
-    .section-title {
-      font-size: 18px;
-      margin-top: 30px;
+    .highlight {
+      color: red;
       font-weight: bold;
-      color: #ff4747;
     }
     .button {
+      display: block;
       background-color: #00cc66;
+      color: black;
+      text-decoration: none;
+      padding: 14px;
+      margin: 12px auto;
+      border-radius: 8px;
+      width: 80%;
+      font-weight: bold;
+    }
+    /* Side Menu */
+    .side-menu {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.8);
+      transition: left 0.3s ease;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    .side-menu.open {
+      left: 0;
+    }
+    .side-menu a {
+      display: block;
+      padding: 10px 0;
+      color: #00ccff;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      background: none;
       color: white;
       border: none;
-      padding: 10px 20px;
-      margin: 10px 5px;
-      font-size: 16px;
       cursor: pointer;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .button:hover {
-      background-color: #00994d;
+      z-index: 1100;
     }
   </style>
 </head>
 <body>
 
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Craps_dice.png/600px-Craps_dice.png" alt="CrapsEdge Dice Logo">
-  
-  <h1>CrapsEdge™</h1>
-  <p>Smarter Strategy. Safer Play. Real Control.</p>
-
-  <div class="section-title">🔥 What You'll Find:</div>
-  <p>✅ How to win more and lose less using real math<br>
-     🧠 Premium “Stop Gambling Help” Guide ($19.99)<br>
-     📊 Bankroll Tracker to stay in control<br>
-     💸 Monetization-ready tools<br>
-     🎯 Play smart — or don’t play at all</p>
-
-  <div class="section-title">🛡️ Responsible Gambling Tools:</div>
-  <a href="#">Track Your Wins/Losses →</a>
-  <a href="#">Get Help: Stop Gambling →</a>
-
-  <div style="margin-top:20px;">
-    <p>🔗 <strong>Explore More:</strong></p>
-    <a href="#">Read Our Blog</a>
-    <a href="#">Bankroll Tracker (Excel)</a>
-    <a href="#">Stop Gambling Help</a>
-    <a href="#">High Roller Tips</a>
+  <!-- Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <h2>Menu</h2>
+    <a href="track-wins.html">✅ Track Your Wins/Losses</a>
+    <a href="stop-gambling.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">📖 Read Our Blog</a>
+    <a href="bankroll-tracker.html">📊 Bankroll Tracker (Excel)</a>
+    <a href="high-roller-tips.html">🎲 High Roller Tips</a>
+    <hr>
+    <h3>🎯 1-on-1 Gambling Counseling</h3>
+    <p style="font-size: 0.9em;">
+      Need help staying in control? Book a private session with a trained gambling strategist.<br><br>
+      Confidential • Supportive • Action-focused<br><br>
+      Pay via Cash App: <b>$CrapsEdgeHelp</b><br>
+      Then email receipt & time to: <b>crapsedge@gmail.com</b>
+    </p>
+    <a href="https://crapsedge.store/Stop-Gambling-Guide.pdf" class="button">Get the Guide</a>
+    <a href="mailto:crapsedge@gmail.com" class="button">1-on-1 Help</a>
   </div>
 
-  <div class="section-title">🎯 1-on-1 Gambling Counseling</div>
-  <p>Need real help staying in control? Book a private session with a trained gambling strategist.</p>
-  <p>Confidential • Supportive • Action-focused</p>
-  <p>Pay using <strong>Cash App: $CrapsEdgeHelp</strong></p>
-  <p>📧 After payment, email your receipt and preferred time to <strong>crapsedge@gmail.com</strong></p>
+  <!-- Menu Button -->
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-  <a class="button" href="#">Get the Guide</a>
-  <a class="button" href="#">1-on-1 Help</a>
+  <!-- Hero Dice Image -->
+  <img src="dice-hero.jpg" alt="CrapsEdge Hero Dice" class="hero-img" />
 
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>CrapsEdge™</h1>
+    <p class="tagline">Smarter Strategy. Safer Play. Real Control.</p>
+
+    <div class="highlight">🔥 What You'll Find:</div>
+    <p>✅ How to win more and lose less using real math</p>
+    <p>🧠 Premium “Stop Gambling Help” Guide ($19.99)</p>
+    <p>📊 Bankroll Tracker to stay in control</p>
+    <p>🐝 Monetization-ready tools</p>
+    <p>🎯 Play smart — or don’t play at all</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("open");
+    }
+  </script>
 </body>
 </html>
