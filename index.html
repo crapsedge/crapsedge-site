@@ -1,125 +1,121 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CrapsEdge™</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Modern blue gradient */
-      color: #ffffff;
-      text-align: center;
-    }
-
-    header {
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #00000088;
-    }
-
-    .logo {
-      width: 60px;
-      height: 60px;
-      background-image: url('https://crapsedge.store/logo.png'); /* Replace with your dice logo URL */
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .menu-icon {
-      font-size: 30px;
-      cursor: pointer;
-      padding: 0 20px;
-    }
-
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #111;
-      padding-top: 60px;
-      transition: 0.3s;
-    }
-
-    .side-menu a {
-      padding: 15px 25px;
-      text-decoration: none;
-      color: #0f0;
-      display: block;
-      text-align: left;
-    }
-
-    .side-menu a:hover {
-      background-color: #333;
-    }
-
-    h1 {
-      color: #00ff00;
-      font-size: 32px;
-    }
-
-    .subheading {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .cta-button {
-      background-color: #00cc66;
-      color: white;
-      padding: 15px 25px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      margin: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .cta-button:hover {
-      background-color: #009944;
-    }
-  </style>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-..."
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Side Drawer -->
+  <nav class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">
+        <img src="assets/logo.png" alt="CrapsEdge™" height="40" />
+      </h5>
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li>
+          <a href="explore-systems.html" class="nav-link">Explore Systems</a>
+        </li>
+        <li>
+          <a href="stop-gambling.html" class="nav-link">Stop Gambling Help</a>
+        </li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <header>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <div class="logo" alt="CrapsEdge Logo"></div>
+  <!-- Header -->
+  <header class="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <button
+      class="btn"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasMenu"
+    >
+      ☰
+    </button>
+    <a class="navbar-brand ms-3" href="index.html">
+      <img src="assets/logo.png" alt="CrapsEdge™" height="40" />
+    </a>
   </header>
 
-  <div id="sideMenu" class="side-menu">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Read Our Blog</a>
-    <a href="tracker.html">Download Tracker</a>
-    <a href="systems.html">Explore Systems</a>
-    <a href="help.html">Stop Gambling Help</a>
-    <a href="disclaimer.html">Disclaimer</a>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero d-flex align-items-center text-white">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Master Your Craps Strategy</h1>
+      <p class="lead">Responsible. Analytical. Profitable.</p>
+      <a href="explore-systems.html" class="btn btn-primary btn-lg me-2"
+        >Explore Systems</a
+      >
+      <a href="stop-gambling.html" class="btn btn-outline-light btn-lg"
+        >Stop Gambling Help</a
+      >
+    </div>
+  </section>
 
-  <main>
-    <h1>CrapsEdge™</h1>
-    <p class="subheading">Smarter Strategy. Safer Play. Real Control.</p>
+  <!-- Features Cards -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Explore Systems</h5>
+              <p class="card-text">
+                Dive into proven betting systems, statistical analyses, and
+                expert strategies to tilt the odds in your favor.
+              </p>
+              <a href="explore-systems.html" class="btn btn-primary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Stop Gambling Help</h5>
+              <p class="card-text">
+                Get our comprehensive guide to take control, set limits, and
+                gamble responsibly. Only $19.99 behind our secure paywall.
+              </p>
+              <a href="stop-gambling.html" class="btn btn-primary"
+                >Get the Guide</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>🎲 Welcome to CrapsEdge™</h2>
-    <p>A safe place to master craps strategies or break free from gambling. We focus on results, education, and responsible play — not hype.</p>
+  <!-- Footer -->
+  <footer class="bg-light py-3 text-center">
+    <div class="container">
+      <small>&copy; 2025 CrapsEdge™. All rights reserved.</small>
+    </div>
+  </footer>
 
-    <a href="https://crapsedge.store/premium-guide" class="cta-button">Get the Stop Gambling Guide</a>
-    <a href="mailto:crapsedge@gmail.com" class="cta-button">Book 1-on-1 Help</a>
-  </main>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
-    }
-  </script>
-
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-..."
+    crossorigin="anonymous"
+  ></script>
 </body>
 </html>
