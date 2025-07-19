@@ -1,190 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>CrapsEdge™ – Smarter Strategy, Safer Play</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>CrapsEdge™</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
       background-color: #000;
-      color: white;
-    }
-
-    header {
-      background-color: #111;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      position: relative;
-      z-index: 1001;
-    }
-
-    header img {
-      height: 40px;
-    }
-
-    .menu-toggle {
-      font-size: 28px;
-      color: #0ff;
-      cursor: pointer;
-      z-index: 1002;
-    }
-
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -270px;
-      width: 250px;
-      height: 100%;
-      background-color: #111;
-      border-right: 2px solid #0ff;
-      padding: 20px;
-      transition: left 0.3s ease;
-      z-index: 1000;
-    }
-
-    .side-menu.active {
-      left: 0;
-    }
-
-    .side-menu a {
-      display: block;
-      color: #0ff;
-      text-decoration: none;
-      margin: 15px 0;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h1 {
-      color: #00ff88;
-      font-size: 28px;
-    }
-
-    h2 {
-      color: #0ff;
-      margin-top: 30px;
-    }
-
-    h3 {
-      color: gold;
-      margin-top: 30px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      margin: 10px 0;
-    }
-
-    .button {
-      display: inline-block;
-      background-color: #00cc66;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 5px;
-      margin: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    blockquote {
-      font-style: italic;
-      margin: 20px 0;
-      border-left: 3px solid #00ff88;
-      padding-left: 15px;
-      color: #ccc;
-    }
-
-    footer {
+      color: #fff;
+      font-family: Arial, sans-serif;
       text-align: center;
-      padding: 30px 10px;
-      color: #888;
-      font-size: 14px;
+      padding: 20px;
     }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 24px; }
+    h1 {
+      color: #00ff00;
+    }
+    a {
+      color: #00bfff;
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+    .section-title {
+      font-size: 18px;
+      margin-top: 30px;
+      font-weight: bold;
+      color: #ff4747;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="dice-logo.png" alt="CrapsEdge Logo">
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  </header>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Craps_dice.png/600px-Craps_dice.png" alt="CrapsEdge Dice Logo">
+  
+  <h1>CrapsEdge™</h1>
+  <p>Smarter Strategy. Safer Play. Real Control.</p>
 
-  <nav class="side-menu" id="sideMenu">
-    <a href="index.html">🏠 Home</a>
-    <a href="blog.html">📘 Read Our Blog</a>
-    <a href="bankroll.html">📥 Download Bankroll Tracker</a>
-    <a href="systems.html">🎯 Explore Winning Systems</a>
-    <a href="visitors.html">👁️ Site Visitors</a>
-    <a href="mailto:crapsedge@gmail.com">📞 1-on-1 Help</a>
-  </nav>
+  <div class="section-title">🔥 What You'll Find:</div>
+  <p>✅ How to win more and lose less using real math<br>
+     🧠 Premium “Stop Gambling Help” Guide ($6)<br>
+     📊 Bankroll Tracker to stay in control<br>
+     💸 Monetization-ready tools<br>
+     🎯 Play smart — or don’t play at all</p>
 
-  <div class="container">
-    <h1>CrapsEdge™</h1>
-    <p><em>Smarter Strategy. Safer Play. Real Control.</em></p>
+  <div class="section-title">🎯 Responsible Gambling Tools:</div>
+  <a href="#">Track Your Wins/Losses →</a>
+  <a href="#">Get Help: Stop Gambling →</a>
 
-    <h2>🎲 What is CrapsEdge™?</h2>
-    <p>CrapsEdge™ is your go-to platform for mastering craps, tracking your bankroll, and accessing real recovery tools for gambling addiction. Whether you're trying to win more — or quit entirely — we give you the edge.</p>
-
-    <h2>🔥 What You'll Find Inside</h2>
-    <ul>
-      <li>✅ Real craps strategies that actually work</li>
-      <li>📘 “Stop Gambling Help” guide <strong>$19.99</strong></li>
-      <li>📊 Bankroll tracking tools</li>
-      <li>🧠 Private 1-on-1 support sessions (by request)</li>
-      <li>🛡️ Trusted help, no judgment</li>
-    </ul>
-
-    <a href="https://crapsedge-store.netlify.app/Stop-Gambling-5-Page-Emotional-Guide.pdf" class="button">Get the Guide</a>
-    <a href="mailto:crapsedge@gmail.com" class="button">1-on-1 Help</a>
-
-    <h3>💬 Success Stories</h3>
-    <blockquote>
-      “This guide helped me finally stop chasing my losses. I feel free again.” — Anonymous
-    </blockquote>
-    <blockquote>
-      “I used the bankroll tracker and it showed me how much I was really losing. Eye-opening.” — A Former High Roller
-    </blockquote>
-    <blockquote>
-      “The private session changed my life. Someone finally understood what I was going through.” — A Real User
-    </blockquote>
+  <div style="margin-top:20px;">
+    <p>🔗 <strong>Explore More:</strong></p>
+    <a href="#">Read Our Blog</a>
+    <a href="#">Bankroll Tracker (Excel)</a>
+    <a href="#">Stop Gambling Help</a>
+    <a href="#">High Roller Tips</a>
   </div>
 
-  <footer>
-    crapsedge.store
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('active');
-    }
-
-    document.addEventListener("click", function (event) {
-      const menu = document.getElementById("sideMenu");
-      const toggle = document.querySelector(".menu-toggle");
-      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        menu.classList.remove("active");
-      }
-    });
-  </script>
+  <div class="section-title">📌 1-on-1 Gambling Counseling</div>
+  <p>Need real help staying in control? Book a private session with a trained gambling strategist.</p>
+  <p>Confidential • Supportive • Action-focused</p>
+  <p>Pay using <strong>Cash App: $CrapsEdgeHelp</strong></p>
+  <p>📧 After payment, email your receipt and preferred time to <strong>crapsedge@gmail.com</strong></p>
 
 </body>
 </html>
