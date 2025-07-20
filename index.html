@@ -5,35 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CrapsEdge™</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background-color: black; color: white; text-align: center; }
-    .hero-img { width: 90%; max-width: 600px; margin: 40px auto 10px; display: block; }
-    h1 { color: limegreen; margin-bottom: 5px; }
-    .tagline { font-size: 1.1em; margin-bottom: 25px; }
-    .main-content { max-width: 600px; margin: auto; padding: 20px; }
-    .footer { margin-top: 40px; font-size: 0.9em; color: gray; padding: 15px; border-top: 1px solid #444; }
-    .sidemenu { height: 100%; width: 0; position: fixed; z-index: 2; top: 0; left: 0; background-color: #111;
-                overflow-x: hidden; transition: 0.3s; padding-top: 60px; }
-    .sidemenu a { padding: 10px 30px; text-decoration: none; font-size: 1.2em; color: white; display: block; transition: 0.3s; }
-    .sidemenu a:hover { background-color: #333; }
-    .sidemenu .closebtn { position: absolute; top: 10px; right: 25px; font-size: 36px; }
-    .menu-icon { font-size: 30px; cursor: pointer; position: absolute; top: 10px; left: 15px; z-index: 3; color: white; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-img {
+      width: 90%;
+      max-width: 600px;
+      margin: 40px auto 10px;
+      display: block;
+    }
+
+    h1 {
+      color: limegreen;
+      margin-bottom: 5px;
+    }
+
+    .tagline {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+    }
+
+    .main-content {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: gray;
+      padding: 15px;
+      border-top: 1px solid #444;
+    }
+
+    /* ✅ SIDE MENU STYLES */
+    .sidemenu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidemenu a {
+      padding: 14px 30px;
+      text-decoration: none;
+      font-size: 1.3em;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidemenu a:hover {
+      background-color: #333;
+    }
+
+    .sidemenu .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+    }
+
+    .menu-icon {
+      font-size: 32px;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 20;
+      background-color: #222;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
 
   <div class="menu-icon" onclick="openMenu()">&#9776;</div>
 
-<div id="mySidemenu" class="sidemenu">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
-  <a href="explore.html">🎲 Explore Systems</a>
-  <a href="stop-gambling.html">🧠 Stop Gambling Help</a>
-  <a href="blog.html">📰 Read Our Blog</a>
-  <a href="counseling.html">💬 Private Counseling Sessions</a>
-  <a href="bankroll-tracker.xlsx" download>📥 Download Tracker</a>
-  <a href="disclaimer.html">📄 Terms & Disclaimer</a>
-</div>
+  <div id="mySidemenu" class="sidemenu">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+    <a href="explore.html">🎲 Explore Systems</a>
+    <a href="stop-gambling.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">📰 Read Our Blog</a>
+    <a href="counseling.html">💬 Private Counseling Sessions</a>
+    <a href="bankroll-tracker.xlsx" download>📥 Download Tracker</a>
+    <a href="disclaimer.html">📄 Terms & Disclaimer</a>
+  </div>
 
- <img src="dice-hero.jpg.png" alt="CrapsEdge Hero Dice" class="hero-img">
+  <img src="dice-hero.jpg.png" alt="CrapsEdge Hero Dice" class="hero-img" />
 
   <div class="main-content">
     <h1>CrapsEdge™</h1>
@@ -54,6 +126,7 @@
     function openMenu() {
       document.getElementById("mySidemenu").style.width = "270px";
     }
+
     function closeMenu() {
       document.getElementById("mySidemenu").style.width = "0";
     }
