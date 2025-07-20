@@ -1,97 +1,83 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
-.hero-img {
-  width: 90%;
-  max-width: 600px;
-  margin: 40px auto 10px;
-  display: block;
-}
-h1 {
-  color: limegreen;
-  margin-bottom: 5px;
-}
-.tagline {
-  font-size: 1.1em;
-  margin-bottom: 25px;
-}
-.main-content {
-  max-width: 600px;
-  margin: auto;
-}
-.highlight {
-  color: red;
-  font-weight: bold;
-}
-.button {
-  display: block;
-  background-color: #00cc66;
-  color: black;
-  text-decoration: none;
-  padding: 14px;
-  margin: 12px auto;
-  border-radius: 8px;
-  width: 80%;
-  font-weight: bold;
-}
-/* Side Menu */
-.side-menu {
-  position: fixed;
-  left: -250px;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background-color: #111;
-  padding: 20px;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.8);
-  transition: left 0.3s ease;
-  overflow-y: auto;
-  z-index: 1000;
-}
-.side-menu.open {
-  left: 0;
-}
-.side-menu a {
-  display: block;
-  padding: 10px 0;
-  color: #00ccff;
-  text-decoration: none;
-  border-bottom: 1px solid #333;
-}
-.menu-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 24px;
-  background: none;
-  color: white;
-  border: none;
-  cursor: pointer;
-  z-index: 1100;
-}
-
-/* ——— Responsive Mobile Tweaks ——— */
-@media screen and (max-width: 600px) {
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
   .hero-img {
-    width: 100%;
-    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto 10px;
+    display: block;
   }
-  .main-content, .tagline {
-    padding: 0 20px;
+  h1 {
+    color: limegreen;
+    margin-bottom: 5px;
   }
-  .side-menu {
-    width: 100%;
-    left: -100%;
+  .tagline {
+    font-size: 1.1em;
+    margin-bottom: 25px;
   }
-  .side-menu.open {
+  .main-content {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  .footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: gray;
+    padding: 15px;
+    border-top: 1px solid #444;
+  }
+  .sidemenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
     left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
   }
-  .menu-btn {
+  .sidemenu a {
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  .sidemenu a:hover {
+    background-color: #333;
+  }
+  .sidemenu .closebtn {
+    position: absolute;
     top: 10px;
-    left: 10px;
+    right: 25px;
+    font-size: 36px;
   }
-}
+  .menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    z-index: 3;
+    color: white;
+  }
+  a.button {
+    display: inline-block;
+    background-color: limegreen;
+    color: black;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
