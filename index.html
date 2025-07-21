@@ -84,19 +84,6 @@
       display: none;
     }
   </style>
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('show-menu');
-    }
-
-    // Reveal admin link if URL contains ?admin=access
-    window.onload = function() {
-      if (window.location.search.includes("admin=access")) {
-        document.querySelector('.admin-link').style.display = 'block';
-      }
-    }
-  </script>
 </head>
 <body>
   <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
@@ -116,5 +103,19 @@
   <div class="admin-link">
     <p><a href="admin.html" style="color: red;">Admin Access</a></p>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (window.location.search.includes("admin=access")) {
+        const admin = document.querySelector('.admin-link');
+        if (admin) admin.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
