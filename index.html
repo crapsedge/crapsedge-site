@@ -23,82 +23,35 @@
       text-align: center;
     }
 
-    .logo {
-      width: 120px;
+    h1 {
+      color: limegreen;
       margin-top: 20px;
     }
 
-    h1 {
-      color: limegreen;
-      margin: 10px 0;
-    }
-
     .tagline {
+      color: white;
       font-size: 1.1em;
       margin-bottom: 25px;
     }
 
-    .menu-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: #00cc66;
-      border: none;
-      color: black;
-      padding: 10px 15px;
-      cursor: pointer;
-      z-index: 1000;
+    .section-title {
+      color: red;
+      font-weight: bold;
+      font-size: 1.3em;
+      margin-top: 30px;
     }
 
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #111;
-      overflow-y: auto;
-      transition: left 0.3s;
-      padding-top: 60px;
-      z-index: 999;
+    .highlight {
+      color: #00ff00;
+      font-weight: bold;
     }
 
-    .side-menu a {
-      display: block;
-      color: white;
-      padding: 12px 20px;
-      text-decoration: none;
-      border-bottom: 1px solid #333;
-    }
-
-    .side-menu a:hover {
-      background-color: #00cc66;
-      color: black;
-    }
-
-    .show-menu {
-      left: 0;
-    }
-
-    .admin-link {
-      display: none;
-    }
-
-    .product-section {
-      margin-top: 40px;
-      padding: 0 20px;
-    }
-
-    .product-section h2 {
-      color: #00cc66;
-    }
-
-    .pay-button {
+    .pay-button, .download-button {
       background-color: #00cc66;
       color: black;
       font-size: 18px;
-      padding: 10px 20px;
-      margin: 10px auto;
+      padding: 12px 20px;
+      margin: 20px auto;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -106,65 +59,60 @@
       display: inline-block;
     }
 
+    .download-button {
+      background-color: #00e676;
+    }
+
     .disclaimer {
-      font-size: 0.8em;
+      font-size: 0.75em;
       color: gray;
-      margin: 40px 20px 60px;
+      margin: 50px 20px 30px;
+      padding-bottom: 20px;
+      border-top: 1px solid #333;
+    }
+
+    ul {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #00ccff;
     }
   </style>
 </head>
 <body>
-  <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
-  <div id="sideMenu" class="side-menu">
-    <a href="stop-gambling-help.html">Stop Gambling Help</a>
-    <a href="blog.html">Blog</a>
-    <a href="explore.html">Explore Systems</a>
-    <a href="high-roller-tips-updated.html">High Roller Tips</a>
-    <a href="tracker.html">Track Your Bankroll</a>
-    <a href="Counseling.html">Get Counseling</a>
-  </div>
 
-  <img src="dice-hero.jpg.png" alt="Dice Logo" class="logo"/>
-  <h1>Welcome to CrapsEdge™</h1>
-  <p class="tagline">Play smart — or don’t play at all.</p>
+  <h1>CrapsEdge™</h1>
+  <p class="tagline">Smarter Strategy. Safer Play. Real Control.</p>
 
-  <div class="product-section">
-    <h2>🧠 Stop Gambling Now: 50-Page Master Guide</h2>
-    <p>Take back control. Learn exactly why gambling keeps pulling you in — and how to beat it with real strategies.</p>
+  <p class="section-title">🔥 What You'll Find:</p>
+  <ul>
+    <li>✅ How to win more and lose less using real math</li>
+  </ul>
 
-    <p><strong>What’s Inside:</strong></p>
-    <ul style="text-align: left; max-width: 500px; margin: 0 auto;">
-      <li>✔️ How casinos psychologically trap you</li>
-      <li>✔️ Emotional triggers that cause relapse</li>
-      <li>✔️ 7-step self-control reset system</li>
-      <li>✔️ Money, family, and stress impact explained</li>
-      <li>✔️ How to rebuild discipline and self-worth</li>
-    </ul>
+  <p style="font-size: 1.2em;">🧠 <strong>Stop Gambling Help Guide</strong></p>
+  <p>Our 50-page premium guide helps you break gambling addiction with real strategies, emotional tools, and expert tips.</p>
+  <p><strong>Price:</strong> $19.99</p>
 
-    <p><strong>💵 Only $19.99 via Cash App</strong></p>
-    <a href="https://cash.app/$shawnineedthatjr/19.99" class="pay-button" target="_blank">Get the Guide</a>
-  </div>
+  <a href="https://cash.app/$shawnineedthatjr/19.99" class="pay-button" target="_blank">💵 Pay $19.99 via Cash App</a>
 
-  <div class="admin-link">
-    <p><a href="admin.html" style="color: red;">Admin Access</a></p>
-  </div>
+  <p>🔒 After paying, <a href="Stop-Gambling-Guide.pdf">tap here to access your guide</a></p>
+
+  <p>📊 Download our upgraded bankroll tracker to stay in control:</p>
+  <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
+
+  <p style="margin-top: 30px;">🐝 Monetization-ready tools</p>
 
   <div class="disclaimer">
-    <p>CrapsEdge™ offers tools based on personal experience only. This is not medical, legal, or financial advice. Results vary. Use responsibly.</p>
+    <p>*CrapsEdge™ provides strategy insights based on personal experience only. We do not offer licensed gambling counseling, therapy, legal, or financial advice. Always gamble responsibly. All gambling involves risk.*</p>
   </div>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('show-menu');
-    }
-
-    window.addEventListener("DOMContentLoaded", function () {
-      if (window.location.search.includes("admin=access")) {
-        const admin = document.querySelector('.admin-link');
-        if (admin) admin.style.display = 'block';
-      }
-    });
-  </script>
 </body>
 </html>
