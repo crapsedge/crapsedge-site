@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Receipt – CrapsEdge</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Your Purchase</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #111;
+      background-color: black;
       color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px;
     }
-    .receipt {
-      background: #222;
-      padding: 25px;
+    h1 {
+      color: #00cc66;
+    }
+    .section {
+      background-color: #111;
+      padding: 30px;
       border-radius: 10px;
       display: inline-block;
       max-width: 500px;
-      width: 100%;
+      margin: auto;
     }
-    h1 {
+    .highlight {
       color: limegreen;
+      font-weight: bold;
     }
-    .btn {
-      background: #00cc66;
+    .download-button {
+      background-color: #00e676;
       color: black;
-      padding: 12px 24px;
+      font-size: 18px;
+      padding: 12px 20px;
+      margin: 20px 0;
       border: none;
       border-radius: 5px;
-      font-size: 1em;
       text-decoration: none;
-      margin-top: 20px;
       display: inline-block;
     }
   </style>
 </head>
 <body>
-  <div class="receipt">
-    <h1>🧾 CrapsEdge™ Receipt</h1>
-    <p><strong>Product:</strong> Stop Gambling Emotional Recovery Guide</p>
-    <p><strong>Price:</strong> $19.99</p>
-    <p><strong>Payment Method:</strong> Cash App ($shawnineedthatjr)</p>
-    <p><strong>Transaction ID:</strong> #CRP-<span id="id"></span></p>
-    <p><strong>Date:</strong> <span id="date"></span></p>
-    <a href="/assets/Stop-Gambling-Guide.pdf" class="btn" download>Download Your Guide</a>
-    <p style="margin-top: 15px;">Need help? Contact us at <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a></p>
+  <div class="section">
+    <h1>🎉 Thank You!</h1>
+    <p>Your payment to <span class="highlight">$Crapsedge</span> was received.</p>
+    <p>You now have access to:</p>
+    <ul style="text-align: left; display: inline-block;">
+      <li>✔️ 50-Page Stop Gambling Help Guide</li>
+      <li>✔️ Downloadable Bankroll Tracker</li>
+    </ul>
+
+    <a href="Stop-Gambling-Guide.pdf" class="download-button" download>📥 Download Your Guide</a>
+    <br/>
+    <a href="bankroll-tracker.xlsx" class="download-button" download>📊 Download Tracker</a>
+
+    <p style="margin-top: 30px; font-size: 0.85em; color: gray;">
+      If you have any issues, email us at <a href="mailto:crapsedge@gmail.com" style="color: #00ccff;">crapsedge@gmail.com</a>.
+    </p>
   </div>
-  <script>
-    document.getElementById("date").innerText = new Date().toLocaleDateString();
-    document.getElementById("id").innerText = Math.floor(100000 + Math.random() * 900000);
-  </script>
 </body>
 </html>
