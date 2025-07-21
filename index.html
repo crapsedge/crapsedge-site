@@ -100,6 +100,13 @@
       padding: 8px 12px;
       cursor: pointer;
       z-index: 1000;
+      border-radius: 4px;
+      transition: opacity 0.3s ease;
+    }
+
+    .menu-button.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .side-menu {
@@ -176,6 +183,16 @@
       const menu = document.getElementById('sideMenu');
       menu.classList.toggle('show-menu');
     }
+
+    // Hide menu button when scrolling down
+    window.addEventListener('scroll', function () {
+      const button = document.querySelector('.menu-button');
+      if (window.scrollY > 100) {
+        button.classList.add('hidden');
+      } else {
+        button.classList.remove('hidden');
+      }
+    });
   </script>
 
 </body>
