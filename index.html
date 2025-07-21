@@ -23,9 +23,15 @@
       text-align: center;
     }
 
+    .logo {
+      width: 130px;
+      margin: 20px auto 10px;
+      display: block;
+    }
+
     h1 {
       color: limegreen;
-      margin-top: 20px;
+      margin: 10px 0;
     }
 
     .tagline {
@@ -39,11 +45,6 @@
       font-weight: bold;
       font-size: 1.3em;
       margin-top: 30px;
-    }
-
-    .highlight {
-      color: #00ff00;
-      font-weight: bold;
     }
 
     .pay-button, .download-button {
@@ -85,10 +86,64 @@
     a {
       color: #00ccff;
     }
+
+    /* Side Menu Styles */
+    .menu-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #00cc66;
+      border: none;
+      color: black;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 60px;
+      z-index: 999;
+    }
+
+    .side-menu a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+
+    .side-menu a:hover {
+      background-color: #00cc66;
+      color: black;
+    }
+
+    .show-menu {
+      left: 0;
+    }
   </style>
 </head>
 <body>
 
+  <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+  <div id="sideMenu" class="side-menu">
+    <a href="stop-gambling-help.html">Stop Gambling Help</a>
+    <a href="blog.html">Blog</a>
+    <a href="explore.html">Explore Systems</a>
+    <a href="high-roller-tips-updated.html">High Roller Tips</a>
+    <a href="tracker.html">Track Your Bankroll</a>
+    <a href="Counseling.html">Get Counseling</a>
+  </div>
+
+  <img src="dice-hero.jpg.png" alt="Dice Logo" class="logo"/>
   <h1>CrapsEdge™</h1>
   <p class="tagline">Smarter Strategy. Safer Play. Real Control.</p>
 
@@ -113,6 +168,13 @@
   <div class="disclaimer">
     <p>*CrapsEdge™ provides strategy insights based on personal experience only. We do not offer licensed gambling counseling, therapy, legal, or financial advice. Always gamble responsibly. All gambling involves risk.*</p>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+  </script>
 
 </body>
 </html>
