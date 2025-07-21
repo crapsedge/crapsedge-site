@@ -16,83 +16,98 @@
 
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
+      background-color: black;
       color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
     }
+
+    .menu-box {
+      background-color: #111;
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 12px limegreen;
+      padding: 12px 20px;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .menu-box a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: white;
+      font-size: 1em;
+    }
+
+    .menu-box a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      padding-top: 160px;
+    }
+
     .hero-img {
       width: 90%;
       max-width: 600px;
-      margin: 40px auto 10px;
+      margin: 0 auto 20px;
       display: block;
     }
+
     h1 {
       color: limegreen;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
+
     .tagline {
       font-size: 1.1em;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
-    .main-content {
-      max-width: 600px;
-      margin: auto;
-    }
+
     .highlight {
       color: red;
       font-weight: bold;
     }
+
     .button {
-      display: block;
       background-color: #00cc66;
       color: black;
       text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 6px;
       font-weight: bold;
-      margin: 30px auto;
-      width: 200px;
-    }
-    .side-menu {
-      position: fixed;
-      left: 10px;
-      top: 10px;
-      background: #111;
-      padding: 10px 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px limegreen;
-    }
-    .side-menu a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      margin: 10px 0;
-    }
-    .side-menu a:hover {
-      text-decoration: underline;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1em;
+      display: inline-block;
+      margin-top: 25px;
     }
   </style>
 </head>
 <body>
-  <div class="side-menu">
+
+  <div class="menu-box">
     <a href="explore.html">🎲 Explore Systems</a>
     <a href="stop-gambling.html">🛑 Stop Gambling Help</a>
     <a href="blog.html">📰 Read Our Blog</a>
     <a href="admin.html">🔐 Admin</a>
   </div>
 
-  <!-- Working Dice Image -->
-  <img class="hero-img" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Dice-512.png" alt="CrapsEdge Dice Logo" />
-  
-  <h1>Welcome to CrapsEdge™</h1>
-  <p class="tagline">Play smart — or don’t play at all.</p>
+  <div class="main">
+    <!-- FIXED: Dice logo placeholder -->
+    <img class="hero-img" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Dice-512.png" alt="CrapsEdge Dice Logo" />
 
-  <div class="main-content">
+    <h1>Welcome to CrapsEdge™</h1>
+    <p class="tagline">Play smart — or don’t play at all.</p>
+
     <p>🎯 Learn strategies. 📉 Avoid losses. 💰 Maximize wins.</p>
     <p class="highlight">Get our premium 50-page Stop Gambling Guide</p>
+
     <a class="button" href="https://cash.app/$shawnineedthatjr" target="_blank">Get the Guide – $19.99</a>
   </div>
+
 </body>
 </html>
