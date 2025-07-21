@@ -16,98 +16,98 @@
 
   <style>
     body {
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
       margin: 0;
-    }
-
-    .menu-box {
-      background-color: #111;
+      font-family: Arial, sans-serif;
+      background-color: #000;
       color: white;
-      border-radius: 12px;
-      box-shadow: 0 0 12px limegreen;
-      padding: 12px 20px;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 1000;
-      text-align: left;
+      text-align: center;
     }
-
-    .menu-box a {
-      display: block;
-      margin: 10px 0;
-      text-decoration: none;
-      color: white;
-      font-size: 1em;
-    }
-
-    .menu-box a:hover {
-      text-decoration: underline;
-    }
-
-    .main {
-      padding-top: 160px;
-    }
-
-    .hero-img {
-      width: 90%;
-      max-width: 600px;
-      margin: 0 auto 20px;
-      display: block;
-    }
-
     h1 {
       color: limegreen;
       margin-bottom: 10px;
     }
-
     .tagline {
       font-size: 1.1em;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
-
-    .highlight {
-      color: red;
-      font-weight: bold;
+    .main-content {
+      max-width: 600px;
+      margin: auto;
     }
-
     .button {
+      display: block;
       background-color: #00cc66;
       color: black;
       text-decoration: none;
-      font-weight: bold;
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: 6px;
-      font-size: 1em;
-      display: inline-block;
-      margin-top: 25px;
+      font-weight: bold;
+      margin: 20px auto;
+      width: 250px;
+    }
+    .disclaimer {
+      font-size: 0.8em;
+      margin-top: 50px;
+      color: gray;
+    }
+    .menu {
+      position: fixed;
+      left: 10px;
+      top: 10px;
+      background: #111;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px limegreen;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+    }
+    .menu a:hover {
+      text-decoration: underline;
+    }
+    img.hero-img {
+      width: 90%;
+      max-width: 600px;
+      margin-top: 30px;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
 
-  <div class="menu-box">
+  <div class="menu">
     <a href="explore.html">🎲 Explore Systems</a>
     <a href="stop-gambling.html">🛑 Stop Gambling Help</a>
     <a href="blog.html">📰 Read Our Blog</a>
-    <a href="admin.html">🔐 Admin</a>
+    <!-- Admin link hidden, use direct URL only -->
   </div>
 
-  <div class="main">
-    <!-- FIXED: Dice logo placeholder -->
-    <img class="hero-img" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Dice-512.png" alt="CrapsEdge Dice Logo" />
+  <img class="hero-img" src="dice-logo.png" alt="CrapsEdge Dice Logo" />
 
-    <h1>Welcome to CrapsEdge™</h1>
-    <p class="tagline">Play smart — or don’t play at all.</p>
+  <h1>CrapsEdge™</h1>
+  <p class="tagline">Smarter Strategy. Safer Play. Real Control.</p>
 
-    <p>🎯 Learn strategies. 📉 Avoid losses. 💰 Maximize wins.</p>
-    <p class="highlight">Get our premium 50-page Stop Gambling Guide</p>
+  <div class="main-content">
+    <p>🔥 <strong style="color:red">What You'll Find:</strong></p>
+    <p>✅ How to win more and lose less using real math</p>
+    <p>🧠 <strong>Stop Gambling Help Guide</strong></p>
+    <p>Our 50-page premium guide helps you break gambling addiction with real strategies, emotional tools, and expert tips.</p>
 
-    <a class="button" href="https://cash.app/$shawnineedthatjr" target="_blank">Get the Guide – $19.99</a>
+    <p><strong>Price:</strong> $19.99</p>
+    <a class="button" href="https://cash.app/$shawnineedthatjr" target="_blank">💸 Pay $19.99 via Cash App</a>
+    <p>🔒 After paying, <a href="paid.html" style="color:deepskyblue;">tap here to access your guide</a></p>
+
+    <p>📊 Download our upgraded bankroll tracker to stay in control:</p>
+    <a class="button" href="tracker.xlsx" download>📉 Download Tracker</a>
+
+    <p>🐝 Monetization-ready tools</p>
   </div>
 
+  <div class="disclaimer">
+    *CrapsEdge™ provides strategy insights based on personal experience only. We do not offer licensed gambling counseling, therapy, legal, or financial advice. Always gamble responsibly. All gambling involves risk.*
+  </div>
 </body>
 </html>
