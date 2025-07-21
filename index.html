@@ -23,123 +23,98 @@
       text-align: center;
     }
 
-    .hero-img {
-      width: 90%;
-      max-width: 600px;
-      margin: 40px auto 10px;
-      display: block;
+    .logo {
+      width: 120px;
+      margin-top: 20px;
     }
 
     h1 {
       color: limegreen;
-      margin-bottom: 10px;
+      margin: 10px 0;
     }
 
     .tagline {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      background-color: #00cc66;
-      color: black;
-      padding: 12px 18px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 20px;
+      font-size: 1.1em;
+      margin-bottom: 25px;
     }
 
     .menu-button {
       position: fixed;
-      top: 15px;
-      left: 15px;
-      font-size: 30px;
-      background: none;
+      top: 20px;
+      left: 20px;
+      background-color: #00cc66;
       border: none;
-      color: white;
-      z-index: 1001;
+      color: black;
+      padding: 10px 15px;
       cursor: pointer;
+      z-index: 1000;
     }
 
     .side-menu {
       position: fixed;
       top: 0;
       left: -250px;
-      width: 220px;
+      width: 250px;
       height: 100%;
-      background: #111;
-      padding: 20px 15px;
-      box-shadow: 0 0 10px limegreen;
-      transition: left 0.3s ease;
-      z-index: 1000;
-      text-align: left;
-    }
-
-    .side-menu.open {
-      left: 0;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 60px;
+      z-index: 999;
     }
 
     .side-menu a {
       display: block;
       color: white;
+      padding: 12px 20px;
       text-decoration: none;
-      margin: 15px 0;
-      font-size: 1em;
+      border-bottom: 1px solid #333;
     }
 
     .side-menu a:hover {
-      text-decoration: underline;
+      background-color: #00cc66;
+      color: black;
     }
 
-    .highlight {
-      color: red;
-      font-weight: bold;
+    .show-menu {
+      left: 0;
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.8em;
-      color: gray;
-      padding: 0 10px;
+    .admin-link {
+      display: none;
     }
   </style>
-
   <script>
     function toggleMenu() {
-      document.getElementById("sideMenu").classList.toggle("open");
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+
+    // Reveal admin link if URL contains ?admin=access
+    window.onload = function() {
+      if (window.location.search.includes("admin=access")) {
+        document.querySelector('.admin-link').style.display = 'block';
+      }
     }
   </script>
 </head>
 <body>
-
-  <!-- ☰ Menu Button -->
-  <button class="menu-button" onclick="toggleMenu()">☰</button>
-
-  <!-- Side Menu -->
+  <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
   <div id="sideMenu" class="side-menu">
-    <a href="explore.html">🎲 Explore Systems</a>
-    <a href="stop-gambling.html">🧠 Stop Gambling Help</a>
-    <a href="blog.html">📰 Read Our Blog</a>
-    <a href="counseling.html">💬 Private Counseling Sessions</a>
-    <a href="bankroll-tracker.xlsx">📬 Download Tracker</a>
-    <a href="disclaimer.html">📄 Terms & Disclaimer</a>
+    <a href="stop-gambling-help.html">Stop Gambling Help</a>
+    <a href="blog.html">Blog</a>
+    <a href="explore.html">Explore Systems</a>
+    <a href="high-roller-tips-updated.html">High Roller Tips</a>
+    <a href="tracker.html">Track Your Bankroll</a>
+    <a href="Counseling.html">Get Counseling</a>
   </div>
 
-  <!-- Dice Logo -->
-  <img class="hero-img" src="dice-logo.png" alt="CrapsEdge Dice Logo" />
-
-  <!-- Main Content -->
-  <h1>CrapsEdge™</h1>
+  <img src="dice-hero.jpg.png" alt="Dice Logo" class="logo"/>
+  <h1>Welcome to CrapsEdge™</h1>
   <p class="tagline">Play smart — or don’t play at all.</p>
-  <p>🎯 Learn strategies. 📉 Avoid losses. 💰 Maximize wins.</p>
-  <p class="highlight">Get our premium 50-page Stop Gambling Guide</p>
-  <a class="button" href="https://cash.app/$shawnineedthatjr" target="_blank">Get the Guide – $19.99</a>
 
-  <footer>
-    *CrapsEdge™ provides strategy insights based on personal experience only. This site does not offer licensed financial, legal, or gambling advice. All gambling involves risk.*
-  </footer>
-
+  <div class="admin-link">
+    <p><a href="admin.html" style="color: red;">Admin Access</a></p>
+  </div>
 </body>
 </html>
