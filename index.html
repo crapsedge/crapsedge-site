@@ -26,47 +26,36 @@
     .hero-img {
       width: 90%;
       max-width: 600px;
-      margin: 30px auto 10px;
+      margin: 40px auto 10px;
       display: block;
     }
 
     h1 {
       color: limegreen;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     .tagline {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-    }
-
-    .main-content {
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .highlight {
-      color: red;
-      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 30px;
     }
 
     .button {
-      display: block;
       background-color: #00cc66;
       color: black;
-      text-decoration: none;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: 6px;
+      text-decoration: none;
       font-weight: bold;
-      margin: 20px auto;
-      width: 240px;
+      display: inline-block;
+      margin-top: 20px;
     }
 
-    .menu-toggle {
+    .menu-button {
       position: fixed;
       top: 15px;
       left: 15px;
-      font-size: 28px;
+      font-size: 30px;
       background: none;
       border: none;
       color: white;
@@ -77,27 +66,22 @@
     .side-menu {
       position: fixed;
       top: 0;
-      left: -260px;
-      width: 240px;
+      left: -250px;
+      width: 220px;
       height: 100%;
       background: #111;
       padding: 20px 15px;
-      box-shadow: 0 0 12px limegreen;
+      box-shadow: 0 0 10px limegreen;
       transition: left 0.3s ease;
       z-index: 1000;
       text-align: left;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .side-menu.open {
-      left: 0;
     }
 
     .side-menu a {
       display: block;
       color: white;
       text-decoration: none;
-      margin: 16px 0;
+      margin: 15px 0;
       font-size: 1em;
     }
 
@@ -105,12 +89,13 @@
       text-decoration: underline;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 24px;
-      cursor: pointer;
+    .side-menu.open {
+      left: 0;
+    }
+
+    .highlight {
+      color: red;
+      font-weight: bold;
     }
 
     footer {
@@ -125,19 +110,15 @@
     function toggleMenu() {
       document.getElementById("sideMenu").classList.toggle("open");
     }
-    function closeMenu() {
-      document.getElementById("sideMenu").classList.remove("open");
-    }
   </script>
 </head>
 <body>
 
-  <!-- Side Menu Toggle -->
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <!-- Menu Toggle Button -->
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
 
   <!-- Side Menu -->
   <div id="sideMenu" class="side-menu">
-    <span class="close-btn" onclick="closeMenu()">✖</span>
     <a href="explore.html">🎲 Explore Systems</a>
     <a href="stop-gambling.html">🧠 Stop Gambling Help</a>
     <a href="blog.html">📰 Read Our Blog</a>
@@ -150,11 +131,9 @@
   <h1>CrapsEdge™</h1>
   <p class="tagline">Play smart — or don’t play at all.</p>
 
-  <div class="main-content">
-    <p>🎯 Learn strategies. 📉 Avoid losses. 💰 Maximize wins.</p>
-    <p class="highlight">Get our premium 50-page Stop Gambling Guide</p>
-    <a class="button" href="https://cash.app/$shawnineedthatjr" target="_blank">Get the Guide – $19.99</a>
-  </div>
+  <p>🎯 Learn strategies. 📉 Avoid losses. 💰 Maximize wins.</p>
+  <p class="highlight">Get our premium 50-page Stop Gambling Guide</p>
+  <a class="button" href="https://cash.app/$shawnineedthatjr" target="_blank">Get the Guide – $19.99</a>
 
   <footer>
     *CrapsEdge™ does not guarantee winnings. All gambling involves risk. Play responsibly. This site is for informational purposes only.*
