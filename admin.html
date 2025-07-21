@@ -13,7 +13,7 @@
       padding: 40px;
     }
     .container {
-      max-width: 600px;
+      max-width: 650px;
       margin: auto;
       background-color: #1a1a1a;
       padding: 25px;
@@ -24,27 +24,48 @@
       margin-bottom: 10px;
     }
     .stat {
-      font-size: 2em;
-      margin: 25px 0;
+      font-size: 1.4em;
+      margin: 20px 0;
+    }
+    .label {
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>CrapsEdge™ Admin Panel</h1>
-    <p class="stat">🌐 Total Visitors: <span id="visitor-count">Loading...</span></p>
+
+    <p class="stat"><span class="label">🌐 Total Visitors:</span> <span id="total-visits">Loading...</span></p>
+    <p class="stat"><span class="label">📅 Today's Visitors:</span> <span id="today-visits">Loading...</span></p>
+    <p class="stat"><span class="label">🕐 Last Visit:</span> <span id="last-visit">Loading...</span></p>
+    <p class="stat"><span class="label">📄 Most Visited Page:</span> Home (basic)</p>
+    <hr style="border: 1px solid #00ff99; margin: 30px 0;">
+    <p class="stat">🔒 Private Admin Page – Not visible to site visitors.</p>
   </div>
 
   <script>
+    // Total visitors using CountAPI
     fetch('https://api.countapi.xyz/update/crapsedge.store/visits/?amount=1')
       .then(response => response.json())
       .then(data => {
-        document.getElementById('visitor-count').innerText = data.value;
+        document.getElementById('total-visits').innerText = data.value;
       })
       .catch(error => {
-        document.getElementById('visitor-count').innerText = 'Error';
-        console.error('Tracker failed:', error);
+        document.getElementById('total-visits').innerText = 'Error';
       });
+
+    // Today's visitors (using localStorage)
+    const todayKey = 'visits-' + new Date().toISOString().slice(0, 10);
+    const current = localStorage.getItem(todayKey);
+    const todayCount = current ? parseInt(current) + 1 : 1;
+    localStorage.setItem(todayKey, todayCount);
+    document.getElementById('today-visits').innerText = todayCount;
+
+    // Track and display last visit time
+    const now = new Date().toLocaleString();
+    document.getElementById('last-visit').innerText = now;
+    localStorage.setItem('lastVisit', now);
   </script>
 </body>
 </html>
