@@ -4,47 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stop Gambling Help | CrapsEdge™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: black;
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
     }
     .container {
-      max-width: 700px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: auto;
       padding: 30px 20px;
+      line-height: 1.6;
     }
     h1 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
+      font-size: 2em;
+      text-align: center;
+      color: limegreen;
+      margin-bottom: 20px;
     }
     .intro {
+      text-align: center;
       color: #ccc;
-      font-size: 1em;
+      font-size: 1.1em;
       margin-bottom: 30px;
     }
     .section {
       background-color: #111;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 40px;
     }
     .section h2 {
       color: #00ff66;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
     .section ul {
-      text-align: left;
       list-style: none;
       padding-left: 0;
+      margin-top: 15px;
     }
     .section ul li {
-      margin-bottom: 10px;
-      font-size: 1em;
+      margin-bottom: 12px;
+      font-size: 1.05em;
     }
     .section ul li::before {
       content: "✅ ";
@@ -52,30 +56,46 @@
     }
     .highlight {
       color: gold;
+      font-size: 1.1em;
       margin: 20px 0;
+      font-weight: 600;
     }
     .buy-button {
       background-color: #00cc66;
       color: black;
-      padding: 12px 25px;
+      padding: 14px 30px;
       font-size: 1.1em;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       text-decoration: none;
-      margin-top: 20px;
       display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    .buy-button:hover {
+      background-color: #00e676;
     }
     .support {
+      text-align: center;
       color: orange;
       font-size: 1.1em;
       margin-top: 40px;
     }
-    .back-link {
-      margin-top: 30px;
-      display: block;
+    .support a {
       color: #00ccff;
       text-decoration: none;
+    }
+    .back-link {
+      display: block;
+      margin-top: 40px;
+      text-align: center;
+      color: #00ccff;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+    hr {
+      border: 1px solid #333;
+      margin: 40px 0;
     }
   </style>
 </head>
@@ -106,11 +126,13 @@
       <p style="margin-top: 10px; font-size: 0.9em; color: gray;">Instant download after secure checkout on Gumroad.</p>
     </div>
 
-    <hr style="margin: 40px 0; border-color: #333;">
+    <hr>
 
-    <p class="support"><strong>Need More Help?</strong></p>
-    <p>You can request a support conversation via email if you need extra help or personal guidance.</p>
-    <p>Email: <a href="mailto:crapsedge@gmail.com" style="color: #00ccff;">crapsedge@gmail.com</a></p>
+    <div class="support">
+      <p><strong>Need More Help?</strong></p>
+      <p>You can request a support conversation via email if you need extra help or personal guidance.</p>
+      <p>Email: <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a></p>
+    </div>
 
     <a class="back-link" href="index.html">← Back to Home</a>
   </div>
