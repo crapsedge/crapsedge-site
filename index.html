@@ -135,11 +135,16 @@
     .show-menu {
       left: 0;
     }
+
+    .hide-menu-button {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <button class="menu-button" onclick="toggleMenu()">☰</button>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
   <div id="sideMenu" class="side-menu">
     <a href="stop-gambling-help.html">Stop Gambling Help</a>
     <a href="blog.html">Blog</a>
@@ -164,13 +169,13 @@
   <p><strong>Price:</strong> $19.99</p>
 
   <p style="font-size: 0.9em; color: gray; text-align: center; margin-top: 10px;">
-  <strong>💡 Note:</strong> This is a digital product. Due to the instant delivery and downloadable format, <u>all sales are final and non-refundable</u>. Only purchase if you’re serious about taking control.
-</p>
+    <strong>💡 Note:</strong> This is a digital product. Due to the instant delivery and downloadable format, <u>all sales are final and non-refundable</u>. Only purchase if you’re serious about taking control.
+  </p>
   
   <a href="https://crapsedge.gumroad.com/l/Stopguide" class="pay-button" target="_blank">
-  💵 Get the Stop Gambling Guide – $19.99
-</a>
-<p>🔒 Secure checkout via Gumroad. You’ll receive the full guide instantly after purchase.</p>
+    💵 Get the Stop Gambling Guide – $19.99
+  </a>
+  <p>🔒 Secure checkout via Gumroad. You’ll receive the full guide instantly after purchase.</p>
 
   <p>📊 Download our upgraded bankroll tracker to stay in control:</p>
   <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
@@ -186,6 +191,21 @@
       const menu = document.getElementById('sideMenu');
       menu.classList.toggle('show-menu');
     }
+
+    // Hide menu button on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop){
+        // scrolling down
+        menuBtn.style.display = "none";
+      } else {
+        // scrolling up
+        menuBtn.style.display = "block";
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
   </script>
 
 </body>
