@@ -18,12 +18,24 @@
     gtag('config', 'G-1Q02WKMG75');
   </script>
 
+  <!-- Professional Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background-color: black;
       color: white;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2em;
       text-align: center;
     }
 
@@ -41,14 +53,14 @@
     }
 
     .tagline {
-      font-size: 1.1em;
+      font-size: 1.2em;
       margin-bottom: 25px;
     }
 
     .section-title {
       color: red;
       font-weight: bold;
-      font-size: 1.3em;
+      font-size: 1.4em;
       margin-top: 30px;
     }
 
@@ -63,9 +75,10 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
+      transition: background-color 0.3s ease;
     }
 
-    .download-button {
+    .pay-button:hover, .download-button:hover {
       background-color: #00e676;
     }
 
@@ -79,7 +92,7 @@
 
     ul {
       text-align: left;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
       padding-left: 20px;
     }
@@ -136,8 +149,13 @@
       left: 0;
     }
 
-    .hide-menu-button {
-      display: none;
+    .footer {
+      text-align: center;
+      color: gray;
+      font-size: 0.8em;
+      padding: 20px 0;
+      border-top: 1px solid #333;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -146,46 +164,51 @@
   <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
 
   <div id="sideMenu" class="side-menu">
-    <a href="stop-gambling-help.html">Stop Gambling Help</a>
-    <a href="blog.html">Blog</a>
-    <a href="explore.html">Explore Systems</a>
-    <a href="high-roller-tips-updated.html">High Roller Tips</a>
-    <a href="tracker.html">Track Your Bankroll</a>
-    <a href="Counseling.html">Get Counseling</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
-    <a href="faq.html">FAQs & Support</a>
-    <a href="terms.html">Terms & Legal</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="explore.html">🎲 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Track Your Bankroll</a>
+    <a href="Counseling.html">🧑‍⚕️ Get Counseling</a>
+    <a href="privacy-policy.html">🔐 Privacy Policy</a>
+    <a href="faq.html">❓ FAQs & Support</a>
+    <a href="terms.html">⚖️ Terms & Legal</a>
   </div>
 
-  <img src="dice-hero.jpg.png" alt="Dice Logo" class="logo" />
-  <h1>CrapsEdge™</h1>
-  <p class="tagline">Smarter Strategy. Safer Play. Real Control.</p>
+  <div class="main-container">
+    <img src="dice-hero.jpg.png" alt="Dice Logo" class="logo" />
+    <h1>CrapsEdge™</h1>
+    <p class="tagline">Smarter Strategy. Safer Play. Real Control.</p>
 
-  <p class="section-title">🔥 What You'll Find:</p>
-  <ul>
-    <li>✅ How to win more and lose less using real math</li>
-  </ul>
+    <h2 class="section-title">What You’ll Learn Inside CrapsEdge™</h2>
+    <ul>
+      <li>✅ How to win more and lose less using real math</li>
+    </ul>
 
-  <p style="font-size: 1.2em;">🧠 <strong>Stop Gambling Help Guide</strong></p>
-  <p>Our 50-page premium guide helps you break gambling addiction with real strategies, emotional tools, and expert tips.</p>
-  <p><strong>Price:</strong> $19.99</p>
+    <p style="font-size: 1.2em;">🧠 <strong>Stop Gambling Help Guide</strong></p>
+    <p>Our 50-page premium guide helps you break gambling addiction with real strategies, emotional tools, and expert tips.</p>
+    <p><strong>Price:</strong> $19.99</p>
 
-  <p style="font-size: 0.9em; color: gray; text-align: center; margin-top: 10px;">
-    <strong>💡 Note:</strong> This is a digital product. Due to the instant delivery and downloadable format, <u>all sales are final and non-refundable</u>. Only purchase if you’re serious about taking control.
-  </p>
-  
-  <a href="https://crapsedge.gumroad.com/l/Stopguide" class="pay-button" target="_blank">
-    💵 Get the Stop Gambling Guide – $19.99
-  </a>
-  <p>🔒 Secure checkout via Gumroad. You’ll receive the full guide instantly after purchase.</p>
+    <p style="font-size: 0.9em; color: gray;">
+      <strong>💡 Note:</strong> This is a digital product. Due to the instant delivery and downloadable format, <u>all sales are final and non-refundable</u>. Only purchase if you’re serious about taking control.
+    </p>
+    
+    <a href="https://crapsedge.gumroad.com/l/Stopguide" class="pay-button" target="_blank">
+      💳 Get the Stop Gambling Guide – $19.99
+    </a>
+    <p>🔒 Secure checkout via Gumroad. You’ll receive the full guide instantly after purchase.</p>
 
-  <p>📊 Download our upgraded bankroll tracker to stay in control:</p>
-  <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
+    <p>📊 Download our upgraded bankroll tracker to stay in control:</p>
+    <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
 
-  <p style="margin-top: 30px;">🐝 Monetization-ready tools</p>
+    <div class="footer">
+      <p>CrapsEdge™ © 2025. All rights reserved.</p>
+      <p><a href="terms.html">Terms</a> | <a href="privacy-policy.html">Privacy</a> | <a href="faq.html">Support</a></p>
+    </div>
 
-  <div class="disclaimer">
-    <p>*CrapsEdge™ provides strategy insights based on personal experience only. We do not offer licensed gambling counseling, therapy, legal, or financial advice. Always gamble responsibly. All gambling involves risk.*</p>
+    <div class="disclaimer">
+      <p>*CrapsEdge™ provides strategy insights based on personal experience only. We do not offer licensed gambling counseling, therapy, legal, or financial advice. Always gamble responsibly. All gambling involves risk.*</p>
+    </div>
   </div>
 
   <script>
@@ -200,10 +223,8 @@
       const menuBtn = document.getElementById('menuButton');
       let currentScroll = window.scrollY || document.documentElement.scrollTop;
       if (currentScroll > lastScrollTop){
-        // scrolling down
         menuBtn.style.display = "none";
       } else {
-        // scrolling up
         menuBtn.style.display = "block";
       }
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
