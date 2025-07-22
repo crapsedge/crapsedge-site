@@ -18,20 +18,21 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #000;
+      background-color: black;
       color: white;
       text-align: center;
     }
 
-    .menu-button {
-      position: absolute;
+    .menu-btn {
+      position: fixed;
       top: 20px;
       left: 20px;
-      font-size: 24px;
       background: none;
       border: none;
       color: white;
+      font-size: 24px;
       cursor: pointer;
+      z-index: 1001;
     }
 
     .side-menu {
@@ -49,7 +50,7 @@
     .side-menu a {
       display: block;
       color: white;
-      padding: 12px;
+      padding: 12px 20px;
       text-decoration: none;
     }
 
@@ -58,8 +59,8 @@
     }
 
     .hero-img {
-      width: 180px;
-      margin-top: 80px;
+      width: 160px;
+      margin-top: 60px;
     }
 
     h1 {
@@ -69,37 +70,37 @@
 
     .tagline {
       font-size: 1.2em;
-      margin-bottom: 25px;
       color: #ccc;
+      margin-bottom: 30px;
     }
 
     .button {
       background-color: #00cc66;
-      color: white;
-      padding: 16px 28px;
+      color: black;
+      padding: 14px 28px;
       font-size: 18px;
       font-weight: bold;
       text-decoration: none;
       border-radius: 8px;
       display: inline-block;
-      margin: 20px auto;
+      margin-top: 10px;
     }
 
     .footer {
-      font-size: 0.8em;
+      font-size: 0.85em;
       color: gray;
-      margin-top: 60px;
+      margin-top: 40px;
       padding: 20px;
     }
 
     @media (max-width: 600px) {
       .hero-img {
-        width: 140px;
+        width: 120px;
       }
 
       .button {
         font-size: 16px;
-        padding: 14px 24px;
+        padding: 12px 22px;
       }
     }
   </style>
@@ -113,7 +114,7 @@
 </head>
 <body>
 
-  <button class="menu-button" onclick="toggleMenu()">☰</button>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
   <div id="sideMenu" class="side-menu">
     <a href="explore-systems.html">🎲 Explore Systems</a>
@@ -122,21 +123,22 @@
     <a href="dice-control.html">🎯 Dice Control</a>
   </div>
 
-  <img src="dice-logo.png" alt="CrapsEdge Logo" class="hero-img" />
+  <img src="dice-logo.png" alt="CrapsEdge Dice Logo" class="hero-img" />
   <h1>CrapsEdge™</h1>
-  <p class="tagline">Play smart — or don’t play at all.</p>
+  <p class="tagline">Take back control before the casino takes everything.</p>
 
-  <!-- Gumroad Button -->
+  <!-- Updated Gumroad Button -->
   <a href="https://crapsedge.gumroad.com/l/Stopguide" target="_blank" class="button">
-    Get the Guide – $19.99
+    Get the Stop Gambling Guide – $19.99
   </a>
 
-  <!-- Visitor Tracker -->
-  <p style="margin-top: 30px; color: gray; font-size: 0.9em;">Site activity monitored by Google Analytics</p>
+  <p style="margin-top: 30px; color: gray; font-size: 0.9em;">
+    Site traffic tracked by Google Analytics.
+  </p>
 
-  <!-- Disclaimer -->
   <div class="footer">
-    CrapsEdge™ does not provide financial, legal, or medical advice. This site is for educational purposes only. All strategies discussed are for entertainment and informational use.
+    CrapsEdge™ does not offer financial, legal, or medical advice. All tools are educational only. Use at your own risk. Stay responsible.
   </div>
+
 </body>
 </html>
