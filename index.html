@@ -18,95 +18,20 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: black;
+      background-color: #000;
       color: white;
       text-align: center;
     }
 
-    .logo {
-      width: 100%;
-      max-width: 700px;
-      display: block;
-      margin: 30px auto 10px;
-      border-radius: 10px;
-    }
-
-    h1 {
-      color: limegreen;
-      margin: 10px 0;
-    }
-
-    .tagline {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-    }
-
-    .section-title {
-      color: red;
-      font-weight: bold;
-      font-size: 1.3em;
-      margin-top: 30px;
-    }
-
-    .pay-button, .download-button {
-      background-color: #00cc66;
-      color: black;
-      font-size: 18px;
-      padding: 12px 20px;
-      margin: 20px auto;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .download-button {
-      background-color: #00e676;
-    }
-
-    .disclaimer {
-      font-size: 0.75em;
-      color: gray;
-      margin: 50px 20px 30px;
-      padding-bottom: 20px;
-      border-top: 1px solid #333;
-    }
-
-    ul {
-      text-align: left;
-      max-width: 500px;
-      margin: 0 auto;
-      padding-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    a {
-      color: #00ccff;
-    }
-
-    /* Side Menu Styles */
     .menu-button {
-      position: fixed;
+      position: absolute;
       top: 20px;
       left: 20px;
-      background-color: #00cc66;
+      font-size: 24px;
+      background: none;
       border: none;
-      color: black;
-      font-size: 22px;
-      padding: 8px 12px;
+      color: white;
       cursor: pointer;
-      z-index: 1000;
-      border-radius: 4px;
-      transition: opacity 0.3s ease;
-    }
-
-    .menu-button.hidden {
-      opacity: 0;
-      pointer-events: none;
     }
 
     .side-menu {
@@ -116,85 +41,102 @@
       width: 250px;
       height: 100%;
       background-color: #111;
-      overflow-y: auto;
-      transition: left 0.3s;
       padding-top: 60px;
-      z-index: 999;
+      transition: left 0.3s;
+      z-index: 1000;
     }
 
     .side-menu a {
       display: block;
       color: white;
-      padding: 12px 20px;
+      padding: 12px;
       text-decoration: none;
-      border-bottom: 1px solid #333;
     }
 
     .side-menu a:hover {
-      background-color: #00cc66;
-      color: black;
+      background-color: #333;
     }
 
-    .show-menu {
-      left: 0;
+    .hero-img {
+      width: 180px;
+      margin-top: 80px;
+    }
+
+    h1 {
+      color: limegreen;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+      color: #ccc;
+    }
+
+    .button {
+      background-color: #00cc66;
+      color: white;
+      padding: 16px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+
+    .footer {
+      font-size: 0.8em;
+      color: gray;
+      margin-top: 60px;
+      padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-img {
+        width: 140px;
+      }
+
+      .button {
+        font-size: 16px;
+        padding: 14px 24px;
+      }
     }
   </style>
-</head>
-<body>
-
-  <button class="menu-button" onclick="toggleMenu()">☰</button>
-  <div id="sideMenu" class="side-menu">
-    <a href="stop-gambling-help.html">Stop Gambling Help</a>
-    <a href="blog.html">Blog</a>
-    <a href="explore.html">Explore Systems</a>
-    <a href="high-roller-tips-updated.html">High Roller Tips</a>
-    <a href="tracker.html">Track Your Bankroll</a>
-    <a href="Counseling.html">Get Counseling</a>
-    <a href="dice-control.html">Dice Control</a>
-  </div>
-
-  <img src="dice-hero.jpg.png" alt="Dice Logo" class="logo" />
-  <h1>CrapsEdge™</h1>
-  <p class="tagline">Smarter Strategy. Safer Play. Real Control.</p>
-
-  <p class="section-title">🔥 What You'll Find:</p>
-  <ul>
-    <li>✅ How to win more and lose less using real math</li>
-  </ul>
-
-  <p style="font-size: 1.2em;">🧠 <strong>Stop Gambling Help Guide</strong></p>
-  <p>Our 50-page premium guide helps you break gambling addiction with real strategies and emotional tools.</p>
-  <p><strong>Price:</strong> $19.99</p>
-
-  <a href="https://cash.app/$Crapsedge/19.99" class="pay-button" target="_blank">
-    💵 Pay with Cash App – $19.99
-  </a>
-
-  <p>🔒 After paying, <a href="Stop-Gambling-Guide.pdf">tap here to access your guide</a></p>
-
-  <p>📊 Download our upgraded bankroll tracker to stay in control:</p>
-  <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
-
-  <div class="disclaimer">
-    <p>*CrapsEdge™ provides strategy insights based on personal experience only. We do not offer licensed gambling counseling, therapy, legal, or financial advice. Always gamble responsibly. All gambling involves risk.*</p>
-  </div>
 
   <script>
     function toggleMenu() {
       const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('show-menu');
+      menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
     }
-
-    // Hide menu button when scrolling down
-    window.addEventListener('scroll', function () {
-      const button = document.querySelector('.menu-button');
-      if (window.scrollY > 100) {
-        button.classList.add('hidden');
-      } else {
-        button.classList.remove('hidden');
-      }
-    });
   </script>
+</head>
+<body>
 
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+  <div id="sideMenu" class="side-menu">
+    <a href="explore-systems.html">🎲 Explore Systems</a>
+    <a href="stop-gambling-help.html">🚫 Stop Gambling Help</a>
+    <a href="blog.html">📖 Dice Master Tactics</a>
+    <a href="dice-control.html">🎯 Dice Control</a>
+  </div>
+
+  <img src="dice-logo.png" alt="CrapsEdge Logo" class="hero-img" />
+  <h1>CrapsEdge™</h1>
+  <p class="tagline">Play smart — or don’t play at all.</p>
+
+  <!-- Gumroad Button -->
+  <a href="https://crapsedge.gumroad.com/l/Stopguide" target="_blank" class="button">
+    Get the Guide – $19.99
+  </a>
+
+  <!-- Visitor Tracker -->
+  <p style="margin-top: 30px; color: gray; font-size: 0.9em;">Site activity monitored by Google Analytics</p>
+
+  <!-- Disclaimer -->
+  <div class="footer">
+    CrapsEdge™ does not provide financial, legal, or medical advice. This site is for educational purposes only. All strategies discussed are for entertainment and informational use.
+  </div>
 </body>
 </html>
