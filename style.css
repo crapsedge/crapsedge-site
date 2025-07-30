@@ -13,9 +13,20 @@
   border-radius: 4px;
 }
 
-.main-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 6em 2em 2em;
-  text-align: center;
+/* Push menu items down by 1 inch (approx 120px) */
+.side-menu {
+  margin-top: 120px;
+}
+
+/* Optional hover effect for menu items */
+.side-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background 0.2s;
 }
