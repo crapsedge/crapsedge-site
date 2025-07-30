@@ -13,12 +13,12 @@
   border-radius: 4px;
 }
 
-/* Push menu items down by 1 inch (approx 120px) */
+/* This positions the menu container with spacing from the top */
 .side-menu {
-  margin-top: 120px;
+  padding-top: 100px; /* Push everything down from the top */
 }
 
-/* Optional hover effect for menu items */
+/* Menu link styling */
 .side-menu a {
   display: block;
   padding: 12px 20px;
@@ -26,6 +26,7 @@
   text-decoration: none;
 }
 
+/* Hover effect */
 .side-menu a:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transition: background 0.2s;
