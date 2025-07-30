@@ -8,17 +8,22 @@
   font-size: 22px;
   padding: 8px 12px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1001;
   box-shadow: 0 0 8px #00cc66;
   border-radius: 4px;
 }
 
-/* This positions the menu container with spacing from the top */
+/* FIXED: Push the entire side menu down safely below the green button */
 .side-menu {
-  padding-top: 100px; /* Push everything down from the top */
+  position: fixed;
+  top: 100px; /* Moves the menu down so nothing overlaps */
+  left: 0;
+  width: 260px;
+  background-color: #111;
+  z-index: 1000;
 }
 
-/* Menu link styling */
+/* Styling each menu link */
 .side-menu a {
   display: block;
   padding: 12px 20px;
