@@ -15,10 +15,6 @@
     gtag('config', 'G-1Q02WKMG75');
   </script>
 
-  <!-- Google AdSense (loader only; NO auto-ads meta) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883" crossorigin="anonymous"></script>
-  <!-- Removed: <meta name="google-adsense-account" content="ca-pub-7741509990569883"> -->
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,7 +35,6 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
-    /* Layout helpers so footer ad sits at the bottom without covering content */
     html, body { height: 100%; margin: 0; }
     body {
       display: flex;
@@ -53,9 +48,8 @@
       margin: auto;
       padding: 2em;
       text-align: center;
-      flex: 1; /* take remaining height so the ad footer stays at bottom */
+      flex: 1;
     }
-
     .logo {
       width: 100%;
       max-width: 700px;
@@ -104,7 +98,6 @@
     }
     ul li { margin-bottom: 10px; }
     a { color: #00ccff; }
-
     .menu-button {
       position: fixed;
       top: 40px;
@@ -141,7 +134,6 @@
       color: black;
     }
     .show-menu { left: 0; }
-
     .footer {
       text-align: center;
       color: gray;
@@ -150,22 +142,6 @@
       border-top: 1px solid #333;
       margin-top: 40px;
     }
-
-    /* Bottom-only Ad Footer */
-    footer.ads-footer {
-      background:#0f1412;
-      border-top:1px solid #1b211e;
-      padding: 8px 10px 0;
-    }
-    .ad-note {
-      font-size:12px;
-      color:#86a093;
-      text-align:center;
-      margin:0 0 6px;
-      opacity:.8;
-    }
-    .ad-wrap { max-width:1000px; margin:0 auto; }
-    .ad-wrap:empty { display:none; } /* if no fill, hide extra gap */
   </style>
 </head>
 <body>
@@ -227,7 +203,6 @@
       const menu = document.getElementById('sideMenu');
       menu.classList.toggle('show-menu');
     }
-
     let lastScrollTop = 0;
     window.addEventListener("scroll", function(){
       const menuBtn = document.getElementById('menuButton');
@@ -239,22 +214,6 @@
       }
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, false);
-  </script>
-
-  <!-- Bottom-only Ad (place at very end so it stays below everything) -->
-  <footer class="ads-footer">
-    <p class="ad-note">Sponsored — ad shown at bottom only</p>
-    <div class="ad-wrap">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7741509990569883"
-           data-ad-slot="REPLACE_WITH_YOUR_SLOT_ID"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </div>
-  </footer>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 
 </body>
