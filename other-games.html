@@ -1,109 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Casino Game Strategies – CrapsEdge™ Resource Hub</title>
-  <meta name="description" content="CrapsEdge™ resource hub for casino game strategies. Learn how to win at baccarat, blackjack, roulette, slots, and poker with math-based systems, odds, and tips." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Other Casino Games – Pro Playbooks & Smart Strategies | CrapsEdge™</title>
+  <meta name="description" content="Professional, step-by-step playbooks for baccarat, blackjack, roulette, slots, and poker. Table selection, bankroll rules, stop-win/stop-loss, and disciplined systems from CrapsEdge™."/>
+  <meta name="theme-color" content="#0a0a0a"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Other Casino Games – Pro Playbooks & Smart Strategies | CrapsEdge™"/>
+  <meta property="og:description" content="Baccarat, blackjack, roulette, slots, poker — exact moves, table selection, bankroll rules, and stop-win/stop-loss to play smarter."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://crapsedge.store/other-games.html"/>
+  <meta property="og:site_name" content="CrapsEdge™"/>
+
+  <!-- JSON-LD Schema (Breadcrumb + WebPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Other Casino Games – Pro Playbooks & Smart Strategies",
+    "url": "https://crapsedge.store/other-games.html",
+    "description": "Professional playbooks for casino games: baccarat, blackjack, roulette, slots, and poker.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type":"ListItem","position":1,"name":"Home","item":"https://crapsedge.store/"
+      },{
+        "@type":"ListItem","position":2,"name":"Other Casino Games","item":"https://crapsedge.store/other-games.html"
+      }]
+    }
+  }
+  </script>
+
   <style>
-    body { margin:0; font-family:Arial, sans-serif; background:#0a0a0a; color:#fff; }
-    .menu-button { position:fixed; top:20px; left:20px; background:#00cc66; border:none; color:#000; font-size:22px; padding:8px 12px; cursor:pointer; z-index:1000; }
-    .side-menu { position:fixed; top:0; left:-250px; width:250px; height:100%; background:#111; overflow-y:auto; transition:left .3s; padding-top:100px; z-index:999; }
-    .side-menu a { display:block; color:#fff; padding:12px 20px; text-decoration:none; border-bottom:1px solid #333; }
-    .side-menu a:hover { background:#00cc66; color:#000; }
-    .content { padding:80px 20px; max-width:950px; margin:auto; line-height:1.6; }
-    h1, h2, h3 { color:#00cc66; }
-    .toc { background:#111; padding:15px; margin:20px 0; border:1px solid #333; }
-    .toc a { display:block; color:#00cc66; text-decoration:none; margin:6px 0; }
-    .toc a:hover { text-decoration:underline; }
-    .facts { background:#111; padding:15px; margin:15px 0; border-left:4px solid #00cc66; }
-    .cta { margin-top:50px; text-align:center; }
-    .cta a { background:#00cc66; color:#000; padding:12px 20px; text-decoration:none; font-weight:bold; border-radius:6px; }
+    :root{
+      --bg:#0a0a0a; --panel:#111; --muted:#cfcfcf; --line:#242424; 
+      --brand:#00cc66; --brand-2:#06e17e; --text:#ffffff;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,system-ui,Segoe UI,Roboto,sans-serif;line-height:1.6}
+    a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+    /* Header / Hero */
+    .hero{padding:88px 20px 28px; max-width:1000px; margin:0 auto}
+    .eyebrow{color:var(--brand); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.85rem}
+    h1{margin:.25rem 0 0; font-size:clamp(1.75rem,2.8vw,2.4rem)}
+    .sub{color:var(--muted); margin:.5rem 0 0}
+    /* TOC */
+    .toc{margin:24px auto 0; background:var(--panel); border:1px solid var(--line); padding:14px; border-radius:var(--radius); max-width:1000px}
+    .toc h3{margin:0 0 8px; color:var(--brand)}
+    .toc a{display:inline-block; margin:6px 10px 0 0; padding:6px 10px; border:1px solid var(--line); border-radius:8px; color:var(--text)}
+    .toc a:hover{border-color:var(--brand)}
+    /* Content Layout */
+    .content{max-width:1000px; margin:18px auto 80px; padding:0 20px}
+    .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 6px; margin:18px 0}
+    h2{color:var(--brand); margin:18px 0 8px}
+    h3{color:var(--brand); margin:12px 0 8px; font-size:1.05rem}
+    .grid{display:grid; gap:16px}
+    @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
+    .pill{display:inline-block; background:var(--brand); color:#000; font-weight:700; padding:2px 10px; border-radius:999px; font-size:.85rem; margin-right:8px}
+    ul{margin:8px 0 14px 18px}
+    .muted{color:var(--muted)}
+    .note{border-left:4px solid var(--brand); padding-left:12px; color:var(--muted)}
+    /* CTA */
+    .cta{margin:28px 0; text-align:center}
+    .btn{display:inline-block; background:var(--brand); color:#000; font-weight:800; padding:12px 18px; border-radius:10px}
+    .btn:hover{filter:brightness(1.08)}
+    /* Side Menu (matches your style) */
+    .menu-button{position:fixed; top:20px; left:20px; background:var(--brand); border:none; color:#000; font-size:22px; padding:8px 12px; cursor:pointer; z-index:1000; border-radius:8px}
+    .side-menu{position:fixed; top:0; left:-270px; width:270px; height:100%; background:#151515; box-shadow:5px 0 24px rgba(0,0,0,.5); overflow-y:auto; transition:left .28s; padding:82px 0 18px; z-index:999}
+    .side-menu a{display:flex; align-items:center; gap:12px; color:#fff; padding:14px 20px; text-decoration:none; border-bottom:1px solid #222; font-weight:600}
+    .side-menu a:hover{background:#1d1d1d}
+    .side-emoji{width:22px; text-align:center}
+    .footer{max-width:1000px; margin:24px auto; padding:0 20px; color:var(--muted); font-size:.9rem}
   </style>
 </head>
 <body>
-  <button class="menu-button" onclick="toggleMenu()">☰</button>
-  <div class="side-menu" id="sideMenu">
-    <a href="index.html">Home</a>
-    <a href="explore.html">Explore Systems</a>
-    <a href="stop-gambling.html">Stop Gambling Help</a>
-    <a href="other-games.html">Other Casino Games</a>
-    <a href="terms.html">Terms & Legal</a>
-  </div>
 
-  <div class="content">
-    <h1>Casino Game Strategies Resource Hub</h1>
-    <p>Welcome to the CrapsEdge™ resource hub. While our focus is craps, many players ask about <strong>how to win at baccarat, blackjack, roulette, slots, and poker</strong>. 
-    Here you’ll find math-based insights, quick facts, strategies, and resources to help you play smarter.</p>
+  <!-- Slide Menu -->
+  <button class="menu-button" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+  <nav class="side-menu" id="sideMenu" aria-label="Side menu">
+    <a href="index.html"><span class="side-emoji">🏠</span>Home</a>
+    <a href="strategy.html"><span class="side-emoji">⚡</span>Strategy System</a>
+    <a href="stop-gambling.html"><span class="side-emoji">🧠</span>Stop Gambling Help</a>
+    <a href="blog.html"><span class="side-emoji">📰</span>Blog</a>
+    <a href="explore.html"><span class="side-emoji">🎲</span>Explore Systems</a>
+    <a href="high-roller.html"><span class="side-emoji">💼</span>High Roller Tips</a>
+    <a href="bankroll.html"><span class="side-emoji">📊</span>Track Your Bankroll</a>
+    <a href="counseling.html"><span class="side-emoji">🧑‍⚕️</span>Get Counseling</a>
 
-    <div class="toc">
-      <h3>Jump to a Game:</h3>
-      <a href="#baccarat">Baccarat</a>
-      <a href="#blackjack">Blackjack</a>
-      <a href="#roulette">Roulette</a>
-      <a href="#slots">Slots</a>
-      <a href="#poker">Poker</a>
-    </div>
+    <!-- NEW LINK: Other Casino Games -->
+    <a href="other-games.html"><span class="side-emoji">🎮</span>Other Casino Games</a>
 
-    <h2 id="baccarat">Baccarat Strategy</h2>
-    <div class="facts">
-      <strong>House Edge:</strong> Banker ~1.06%, Player ~1.24%, Tie ~14.36% <br>
-      <strong>Best Bet:</strong> Banker <br>
-      <strong>Avoid:</strong> Tie bets
-    </div>
-    <p>If you search <em>“best baccarat strategy”</em>, you’ll find lots of myths. The truth: always favor the banker bet, and stick to flat wagers. 
-    Baccarat is a game of streaks, but chasing losses is dangerous. Bankroll discipline matters more than lucky trends.</p>
+    <a href="privacy.html"><span class="side-emoji">🔒</span>Privacy Policy</a>
+    <a href="faqs.html"><span class="side-emoji">❓</span>FAQs & Support</a>
+    <a href="terms.html"><span class="side-emoji">⚖️</span>Terms & Legal</a>
+  </nav>
 
-    <h2 id="blackjack">Blackjack Strategy</h2>
-    <div class="facts">
-      <strong>House Edge:</strong> ~0.5% with basic strategy <br>
-      <strong>Best Bet:</strong> Play by the chart <br>
-      <strong>Avoid:</strong> Insurance bets
-    </div>
-    <p>The <strong>blackjack basic strategy chart</strong> is your weapon. Memorize or keep it handy. 
-    If you want to <em>“win at blackjack consistently”</em>, follow the chart exactly. Never take insurance, and avoid emotional tilts. 
-    Count cards only if you know how and the casino rules allow.</p>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="eyebrow">CrapsEdge™ Resource Hub</div>
+    <h1>Other Casino Games — Professional Playbooks</h1>
+    <p class="sub">Exact actions for baccarat, blackjack, roulette, slots, and poker: **table selection, bet sizing, bankroll control, and stop rules**. Built on discipline — not superstition.</p>
+  </header>
 
-    <h2 id="roulette">Roulette Strategy</h2>
-    <div class="facts">
-      <strong>House Edge:</strong> 5.26% (American), 2.7% (European) <br>
-      <strong>Best Bet:</strong> Outside bets (red/black, odd/even) <br>
-      <strong>Avoid:</strong> Martingale & risky progressions
-    </div>
-    <p>Looking for <em>“roulette strategies that work”</em>? Stick to outside bets for longevity. 
-    Avoid systems like Martingale which collapse at table limits. Smart roulette is about bankroll survival, not chasing a big hit.</p>
+  <!-- TOC -->
+  <section class="toc" aria-label="Table of contents">
+    <h3>Jump to a Game</h3>
+    <a href="#baccarat">Baccarat</a>
+    <a href="#blackjack">Blackjack</a>
+    <a href="#roulette">Roulette</a>
+    <a href="#slots">Slots</a>
+    <a href="#poker">Poker</a>
+  </section>
 
-    <h2 id="slots">Slot Machine Strategy</h2>
-    <div class="facts">
-      <strong>House Edge:</strong> Varies (typically 5–12%) <br>
-      <strong>Best Bet:</strong> High RTP slots (96%+) <br>
-      <strong>Avoid:</strong> Chasing progressive jackpots without a plan
-    </div>
-    <p>People search <em>“how to win at slots”</em> every day, but here’s the truth: the math is fixed. 
-    Your best chance is to pick slots with high RTP and set strict limits. 
-    Use small stakes to maximize playtime, and don’t rely on “hot streak” myths.</p>
+  <main class="content">
+    <!-- Baccarat -->
+    <article id="baccarat" class="card" aria-labelledby="baccarat-title">
+      <h2 id="baccarat-title">Baccarat — Pro Playbook</h2>
+      <p class="note">Objective: short, low-variance sessions that bank small wins without tilt.</p>
+      <div class="grid">
+        <div>
+          <h3><span class="pill">1</span>Table & Bankroll</h3>
+          <ul>
+            <li>Pick mini-baccarat, standard 5% banker commission, low limits.</li>
+            <li>Session bankroll: <strong>50 units</strong> (1 unit ≈ 1–2% of total roll).</li>
+          </ul>
+          <h3><span class="pill">2</span>Exact Bets</h3>
+          <ul>
+            <li>Flat bet <strong>Banker only</strong>, 1 unit per hand.</li>
+            <li>Optional press: after a win, go 2 units <em>once</em>, then back to 1.</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="pill">3</span>Session Controls</h3>
+          <ul>
+            <li><strong>Stop-loss:</strong> −5 units.</li>
+            <li><strong>Stop-win:</strong> +4 to +6 units, then leave the table.</li>
+            <li>Never chase “streaks.” Treat each hand as independent.</li>
+          </ul>
+          <p class="muted">Professional edge here is risk control + best bet selection, not pattern hunting.</p>
+        </div>
+      </div>
+    </article>
 
-    <h2 id="poker">Poker Strategy</h2>
-    <div class="facts">
-      <strong>Format:</strong> Player vs Player, not house <br>
-      <strong>Best Bet:</strong> Learn position & pot odds <br>
-      <strong>Avoid:</strong> Over-bluffing
-    </div>
-    <p>If you want <em>“poker strategies for beginners”</em>, focus on patience. 
-    Position is power: act last whenever possible. Use pot odds to guide your decisions. 
-    Remember: poker isn’t about winning every hand, it’s about making profitable decisions over time.</p>
+    <!-- Blackjack -->
+    <article id="blackjack" class="card" aria-labelledby="blackjack-title">
+      <h2 id="blackjack-title">Blackjack — Pro Playbook</h2>
+      <div class="grid">
+        <div>
+          <h3><span class="pill">1</span>Rules to Demand</h3>
+          <ul>
+            <li>3:2 payout on blackjack, S17 (dealer stands on soft 17), double after split.</li>
+            <li>Avoid 6:5 tables and side bets that raise house edge.</li>
+          </ul>
+          <h3><span class="pill">2</span>Core Technique</h3>
+          <ul>
+            <li>Follow <strong>basic strategy</strong> exactly (carry a card if allowed).</li>
+            <li>Never take <strong>insurance</strong>.</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="pill">3</span>Bet Ramping</h3>
+          <ul>
+            <li>Simple ramp: 1 unit base; after a win press to 2 units for one hand, then reset.</li>
+            <li>If using Hi-Lo: raise to 2–3 units only with a clear positive true count; otherwise flat.</li>
+          </ul>
+          <h3><span class="pill">4</span>Session Controls</h3>
+          <ul>
+            <li><strong>Stop-loss:</strong> −6 units.</li>
+            <li><strong>Stop-win:</strong> +5 to +8 units.</li>
+          </ul>
+          <p class="muted">Counting offers a real edge but attracts heat; know local rules and etiquette.</p>
+        </div>
+      </div>
+    </article>
 
+    <!-- Roulette -->
+    <article id="roulette" class="card" aria-labelledby="roulette-title">
+      <h2 id="roulette-title">Roulette — Pro Playbook</h2>
+      <div class="grid">
+        <div>
+          <h3><span class="pill">1</span>Wheel & Bankroll</h3>
+          <ul>
+            <li>Choose <strong>European (single-zero)</strong> when available.</li>
+            <li>Session bankroll: <strong>40 units</strong>.</li>
+          </ul>
+          <h3><span class="pill">2</span>Exact Bets (Flat)</h3>
+          <ul>
+            <li>1 unit on an even-money outside (e.g., Red) + 1 unit on a Dozen (e.g., 2nd 12).</li>
+            <li>No Martingale, no chase. Stay flat to avoid limit traps.</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="pill">3</span>Session Controls</h3>
+          <ul>
+            <li><strong>Stop-loss:</strong> −8 units.</li>
+            <li><strong>Stop-win:</strong> +5 units.</li>
+          </ul>
+          <p class="muted">Professional play = longevity + banking streaks, not “systems” that double forever.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Slots -->
+    <article id="slots" class="card" aria-labelledby="slots-title">
+      <h2 id="slots-title">Slots — Pro Playbook</h2>
+      <div class="grid">
+        <div>
+          <h3><span class="pill">1</span>Game Selection</h3>
+          <ul>
+            <li>Prefer titles with <strong>RTP ≥ 96%</strong>, medium volatility.</li>
+            <li>Spin cost ≤ <strong>0.5%</strong> of your session bankroll.</li>
+          </ul>
+          <h3><span class="pill">2</span>Spin Plan</h3>
+          <ul>
+            <li>Cap each set at 200–300 spins.</li>
+            <li>Hit +50% profit? Lock it by reducing bet size; at −40% leave the machine.</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="pill">3</span>Promos & Pace</h3>
+          <ul>
+            <li>Use only transparent bonuses you can realistically clear.</li>
+            <li>Take a 10-minute break between sets; no fast re-buys.</li>
+          </ul>
+          <p class="muted">Your edge is choosing better games and obeying hard exits.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Poker -->
+    <article id="poker" class="card" aria-labelledby="poker-title">
+      <h2 id="poker-title">Poker (Cash) — Pro Playbook</h2>
+      <div class="grid">
+        <div>
+          <h3><span class="pill">1</span>Bankroll & Table Select</h3>
+          <ul>
+            <li>Bankroll = <strong>30+ buy-ins</strong> for your stake.</li>
+            <li>Target tables with lots of limpers and short stacks.</li>
+          </ul>
+          <h3><span class="pill">2</span>Starting Hands</h3>
+          <ul>
+            <li><strong>Early:</strong> TT+, AQ+</li>
+            <li><strong>Middle:</strong> 99+, AJ+, KQ, suited broadways</li>
+            <li><strong>Late/Button:</strong> Pairs, A9+, suited aces/kings, most broadways</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="pill">3</span>Post-Flop Rules</h3>
+          <ul>
+            <li>Bet for value; avoid massive bluffs vs. calling stations.</li>
+            <li>Respect heavy turn/river aggression from tight players.</li>
+            <li>Position > cards — widen range in late position.</li>
+          </ul>
+          <h3><span class="pill">4</span>Session Controls</h3>
+          <ul>
+            <li><strong>Stop-loss:</strong> 2 buy-ins.</li>
+            <li>Quit when tilted; record every session.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- CTA -->
     <div class="cta">
-      <p><strong>Want deeper systems and real control?</strong></p>
-      <a href="stop-gambling.html">Get the Stop Gambling Guide</a>
+      <a class="btn" href="stop-gambling.html">Get the Discipline System – Stop Gambling Guide</a>
     </div>
-  </div>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Professional Note:</strong> No system guarantees profit. These playbooks prioritize risk control, optimal bet selection, and session management. Play legally and responsibly.</p>
+    <p class="muted">© <span id="y"></span> CrapsEdge™. All rights reserved.</p>
+  </footer>
 
   <script>
-    function toggleMenu() {
-      var menu = document.getElementById("sideMenu");
-      menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
+    function toggleMenu(){
+      const m=document.getElementById('sideMenu');
+      m.style.left = (m.style.left==='0px') ? '-270px' : '0px';
     }
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
