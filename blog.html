@@ -3,260 +3,167 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>CrapsEdge™ Newsroom — Stories & Press</title>
-  <meta name="description" content="Official CrapsEdge™ Newsroom: stories, strategy updates, community features, and press releases."/>
+  <title>CrapsEdge™ Blog — Articles & Updates</title>
+  <meta name="description" content="CrapsEdge™ articles: recovery-first guidance, math-based strategy, and site updates."/>
   <link rel="canonical" href="/blog.html"/>
 
-  <!-- Social / share -->
-  <meta property="og:title" content="CrapsEdge™ Newsroom — Stories & Press"/>
-  <meta property="og:description" content="Stories, strategy updates, community features, and press releases."/>
+  <meta property="og:title" content="CrapsEdge™ Blog — Articles & Updates"/>
+  <meta property="og:description" content="Recovery-first guidance, math-based strategy, and site updates."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://crapsedge.store/blog.html"/>
 
   <style>
     :root{
-      --brand:#00e676;       /* CrapsEdge green */
-      --ink:#0b0b0b; --muted:#6b7280; --bg:#0a0a0a; --paper:#101213;
-      --chip:#0b1a12; --border:#1e293b; --card:#0f1418;
+      --brand:#00e676; --ink:#e8f2ec; --muted:#9fb7ad;
+      --bg:#0a0a0a; --paper:#101213; --border:#1e293b; --card:#0f1418;
       --ring:#1f8a4e;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:#e8f2ec}
-    a{color:var(--brand)}
-    /* Header */
-    header{position:sticky;top:0;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--border);z-index:50}
-    .wrap{max-width:1100px;margin:auto;padding:16px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#1b4332)}
-    .brand h1{font-size:20px;margin:0}
-    nav{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
-    nav a{padding:8px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;color:#e8f2ec;background:var(--paper);font-weight:600}
-    nav a.active, nav a:hover{outline:2px solid transparent;box-shadow:0 0 0 2px var(--ring) inset}
-    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .tools input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#0c0f12;color:#e8f2ec}
-    .toggle{display:flex;gap:8px;align-items:center}
-    .toggle button{padding:8px 12px;border:1px solid var(--border);background:var(--paper);color:#e8f2ec;border-radius:10px;cursor:pointer}
-    .toggle button.active{box-shadow:0 0 0 2px var(--ring) inset;font-weight:700}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
-    .chip{padding:6px 10px;background:var(--chip);border:1px solid var(--border);border-radius:999px;font-size:13px;cursor:pointer;color:#cde9dd}
-    .chip.active{box-shadow:0 0 0 2px var(--ring) inset}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif}
+
+    /* Hero */
+    .hero{
+      background: radial-gradient(1200px 300px at 10% -20%, rgba(0,230,118,.18), transparent),
+                  radial-gradient(900px 340px at 90% -30%, rgba(0,230,118,.10), transparent),
+                  #0a0a0a;
+      border-bottom:1px solid var(--border);
+      padding:40px 16px 28px;
+    }
+    .wrap{max-width:1100px;margin:auto}
+    .brandline{display:flex;align-items:center;gap:14px}
+    .logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#1b4332)}
+    h1{margin:0;font-size:34px}
+    .sub{margin:8px 0 0;color:var(--muted)}
+
+    /* Tools */
+    .tools{display:flex;gap:10px;margin-top:16px}
+    .search{flex:1;min-width:240px;padding:12px;border:1px solid var(--border);border-radius:12px;background:#0c0f12;color:var(--ink)}
+
     /* Grid */
-    main .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0}
-    .card{grid-column:span 12;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-    @media(min-width:720px){.card{grid-column:span 6}}
-    @media(min-width:1020px){.card{grid-column:span 4}}
+    main{padding:22px 16px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
     .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#0e1a12,#0b0f0c)}
-    .card .pad{padding:14px 14px 18px}
-    .meta{font-size:12px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
-    .title{margin:6px 0 6px;font-size:18px;line-height:1.25}
-    .title a{color:#f2fff8;text-decoration:none}
+    .pad{padding:16px}
+    .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+    .title{margin:6px 0 8px;font-size:20px;line-height:1.25}
+    .title a{color:#f3fff8;text-decoration:none}
     .title a:hover{color:var(--brand);text-decoration:underline}
-    .excerpt{color:#cfe7db;font-size:14px}
-    .tagrow{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-    .tag{font-size:12px;padding:4px 8px;background:#09110c;border:1px solid var(--border);border-radius:999px;color:#98c9b0}
-    .load{display:block;width:100%;padding:12px;border:1px solid var(--border);background:var(--paper);color:#e8f2ec;border-radius:12px;cursor:pointer}
-    footer{border-top:1px solid var(--border);margin-top:30px}
+    .excerpt{color:#cfe7db;font-size:15px}
+    .read{display:inline-block;margin-top:10px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#0c0f12;color:#e8f2ec;text-decoration:none}
+    .read:hover{box-shadow:0 0 0 2px var(--ring) inset}
+
+    .load{display:block;width:100%;max-width:420px;margin:22px auto 0;padding:12px;border:1px solid var(--border);background:#0c0f12;color:#e8f2ec;border-radius:12px;cursor:pointer}
+
+    footer{border-top:1px solid var(--border);margin-top:28px;padding:18px 16px;color:#c7ded4}
     .sr-only{position:absolute;left:-9999px}
   </style>
+
+  <!-- Minimal Blog schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Blog",
+    "name":"CrapsEdge Blog",
+    "url":"https://crapsedge.store/blog.html",
+    "description":"Recovery-first, math-based articles from CrapsEdge."
+  }
+  </script>
 </head>
 <body>
-  <header>
+  <header class="hero">
     <div class="wrap">
-      <div class="brand">
+      <div class="brandline">
         <span class="logo" aria-hidden="true"></span>
-        <h1>CrapsEdge™ Newsroom</h1>
-      </div>
-
-      <!-- Category Tabs -->
-      <nav id="catNav">
-        <a href="#" data-cat="all" class="active">All</a>
-        <a href="#" data-cat="corporate">Corporate</a>
-        <a href="#" data-cat="technology">Technology</a>
-        <a href="#" data-cat="design">Design</a>
-        <a href="#" data-cat="press">Press Releases</a>
-      </nav>
-
-      <!-- Search + Type Toggle -->
-      <div class="tools">
-        <input id="search" type="search" placeholder="Search stories, systems, recovery…" aria-label="Search"/>
-        <div class="toggle" role="tablist" aria-label="Type">
-          <button class="active" data-type="all" aria-selected="true">All</button>
-          <button data-type="story" aria-selected="false">Stories</button>
-          <button data-type="press" aria-selected="false">Press Only</button>
+        <div>
+          <h1>CrapsEdge™ Blog</h1>
+          <p class="sub">Light, honest reads: recovery first, math always. No hype.</p>
         </div>
       </div>
 
-      <!-- Tag Chips -->
-      <div class="chips" id="chips">
-        <span class="chip" data-tag="strategy">Strategy</span>
-        <span class="chip" data-tag="recovery">Recovery</span>
-        <span class="chip" data-tag="math">Math</span>
-        <span class="chip" data-tag="bankroll">Bankroll</span>
-        <span class="chip" data-tag="community">Community</span>
+      <!-- Keep only search (optional). No categories/toggles. -->
+      <div class="tools">
+        <input id="search" class="search" type="search" placeholder="Search articles…" aria-label="Search"/>
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <h2 class="sr-only">Latest</h2>
-    <section class="grid" id="grid" aria-live="polite"></section>
-    <button id="loadMore" class="load">Load more</button>
+    <h2 class="sr-only">Articles</h2>
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <button id="load" class="load">Load more</button>
   </main>
 
-  <footer>
-    <div class="wrap" style="padding:18px">
-      <small>&copy; <span id="yr"></span> CrapsEdge™. All rights reserved. · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/faq.html">FAQ</a></small>
-    </div>
+  <footer class="wrap">
+    <small>&copy; <span id="yr"></span> CrapsEdge™ · Educational content only. If gambling is harming you, get help:
+      <a href="https://www.ncpgambling.org/help-treatment/" rel="nofollow">NCPG</a> ·
+      <a href="https://www.gamblersanonymous.org/ga/" rel="nofollow">GA</a>.
+    </small>
   </footer>
 
-  <!-- Minimal JSON-LD to help Google understand it's a blog/news hub -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Blog",
-    "name":"CrapsEdge Newsroom",
-    "url":"https://crapsedge.store/blog.html",
-    "description":"Stories and press releases from CrapsEdge.",
-    "publisher":{"@type":"Organization","name":"CrapsEdge"}
-  }
-  </script>
-
   <script>
-    // === DATA: add your posts here (each is a card in the feed) ===
-    // type: "story" for narrative/article; "press" for announcements
-    // cat:  "corporate" | "technology" | "design" | "press"
+    // ---- Add/maintain your posts here (simple array) ----
     const POSTS = [
       {
         title:"CrapsEdge Mission & Safety: Why We Teach Recovery First",
-        href:"/post1.html",               // you already have this
-        cat:"corporate", type:"story",
-        date:"2025-09-03", author:"CrapsEdge Editorial",
+        href:"/post1.html",
+        date:"2025-09-02",
+        author:"CrapsEdge Editorial",
         excerpt:"Our commitment to legal, math-based education and real tools that help players regain control.",
-        tags:["recovery","community"]
-      },
-      {
-        title:"Announcing the Responsible Gambling Log (Free Template)",
-        href:"/high-roller-tips-updated.html",
-        cat:"press", type:"press",
-        date:"2025-08-28", author:"PR Team",
-        excerpt:"Track wins/losses, sessions, and triggers — a simple habit that protects your bankroll.",
-        tags:["bankroll","recovery","math"]
+        img:""
       },
       {
         title:"Math, Not Myths: Understanding House Edge on Common Bets",
-        href:"/crapsedge-system.html",
-        cat:"technology", type:"story",
-        date:"2025-08-20", author:"CrapsEdge Studio",
-        excerpt:"A clear walk-through of odds, volatility, and how to choose bets that align with your goals.",
-        tags:["math","strategy"]
-      },
-      {
-        title:"Community Story: From Chasing Losses to Structured Play",
-        href:"/explore.html",
-        cat:"corporate", type:"story",
-        date:"2025-08-14", author:"Community",
-        excerpt:"How a reader used session caps and a recovery plan to break a spiral and rebuild confidence.",
-        tags:["community","recovery"]
-      },
-      {
-        title:"Press Kit & Brand Assets for Partners",
-        href:"/ads.html",
-        cat:"press", type:"press",
-        date:"2025-08-10", author:"PR Team",
-        excerpt:"Download logos, brand colors, and approved language for media mentions.",
-        tags:["press"]
-      },
-      {
-        title:"Dice Control vs. Discipline: What Actually Moves the Needle",
-        href:"/dice-control.html",
-        cat:"design", type:"story",
-        date:"2025-08-06", author:"CrapsEdge Coaches",
-        excerpt:"Why consistent rules for stops and limits beat ‘lucky hands’ over the long run.",
-        tags:["strategy","bankroll"]
+        href:"/post2.html",
+        date:"2025-09-05",
+        author:"CrapsEdge Studio",
+        excerpt:"A clear, no-hype walkthrough of house edge, variance, and why disciplined rules beat superstition.",
+        img:""
       }
+      // Add more posts by duplicating this object shape
     ];
 
-    // === RENDER LOGIC ===
     const grid = document.getElementById('grid');
-    const catNav = document.getElementById('catNav');
+    const load = document.getElementById('load');
     const search = document.getElementById('search');
-    const chips = document.getElementById('chips');
-    const loadMore = document.getElementById('loadMore');
     const yr = document.getElementById('yr'); yr.textContent = new Date().getFullYear();
 
-    let state = {cat:'all', type:'all', q:'', tags:new Set(), shown:0, page:6};
-
-    function matches(p){
-      const catOk = state.cat==='all' || p.cat===state.cat || (state.cat==='press' && p.type==='press');
-      const typeOk = state.type==='all' || p.type===state.type;
-      const q = state.q.trim().toLowerCase();
-      const qOk = !q || (p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q));
-      const tagsOk = state.tags.size===0 || [...state.tags].every(t=>p.tags.includes(t));
-      return catOk && typeOk && qOk && tagsOk;
-    }
+    let shown = 0, page = 6, q = "";
 
     function render(){
-      grid.innerHTML='';
-      const filtered = POSTS.filter(matches).sort((a,b)=>b.date.localeCompare(a.date));
-      const slice = filtered.slice(0, state.shown + state.page);
+      grid.innerHTML = "";
+      const filtered = POSTS
+        .filter(p => !q || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q))
+        .sort((a,b)=> b.date.localeCompare(a.date));
+      const slice = filtered.slice(0, shown + page);
+
       slice.forEach(p=>{
-        const card = document.createElement('article');
-        card.className='card';
-        card.setAttribute('data-cat',p.cat);
-        card.setAttribute('data-type',p.type);
-        card.innerHTML = `
+        const el = document.createElement('article');
+        el.className = "card";
+        el.innerHTML = `
           <a class="thumb" href="${p.href}" aria-label="${p.title}"></a>
           <div class="pad">
-            <div class="meta">
-              <span>${new Date(p.date).toLocaleDateString()}</span><span>•</span>
-              <span>${p.author}</span><span>•</span>
-              <span style="text-transform:capitalize">${p.type}</span>
-            </div>
+            <div class="meta"><span>${new Date(p.date).toLocaleDateString()}</span> · <span>${p.author}</span></div>
             <h3 class="title"><a href="${p.href}">${p.title}</a></h3>
             <p class="excerpt">${p.excerpt}</p>
-            <div class="tagrow">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+            <a class="read" href="${p.href}">Read more →</a>
           </div>`;
-        grid.appendChild(card);
+        grid.appendChild(el);
       });
-      state.shown = slice.length;
-      loadMore.style.display = (state.shown < filtered.length) ? 'block' : 'none';
+
+      shown = slice.length;
+      load.style.display = (shown < filtered.length) ? "block" : "none";
     }
 
-    // Category tabs
-    catNav.addEventListener('click', e=>{
-      const a = e.target.closest('a'); if(!a) return; e.preventDefault();
-      [...catNav.querySelectorAll('a')].forEach(x=>x.classList.remove('active'));
-      a.classList.add('active');
-      state.cat = a.dataset.cat; state.shown = 0; render();
-    });
-
-    // Type toggle
-    document.querySelectorAll('.toggle button').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        document.querySelectorAll('.toggle button').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        state.type = btn.dataset.type; state.shown = 0; render();
-      });
-    });
-
-    // Search
-    let t; search.addEventListener('input', ()=>{
+    // Search (debounced)
+    let t;
+    search.addEventListener('input', ()=>{
       clearTimeout(t);
-      t=setTimeout(()=>{ state.q = search.value; state.shown=0; render(); }, 120);
+      t = setTimeout(()=>{ q = search.value.trim().toLowerCase(); shown = 0; render(); }, 120);
     });
 
-    // Tag chips
-    chips.addEventListener('click', e=>{
-      const c = e.target.closest('.chip'); if(!c) return;
-      const tag = c.dataset.tag;
-      if(c.classList.toggle('active')) state.tags.add(tag); else state.tags.delete(tag);
-      state.shown=0; render();
-    });
-
-    // Load more
-    loadMore.addEventListener('click', ()=>{ state.page += 6; render(); });
-
-    // Init
+    load.addEventListener('click', ()=>{ page += 6; render(); });
     render();
   </script>
 </body>
