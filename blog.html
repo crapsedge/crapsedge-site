@@ -1,87 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CrapsEdge™ Blog – Real Talk & Recovery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>CrapsEdge™ Newsroom — Stories & Press</title>
+  <meta name="description" content="Official CrapsEdge™ Newsroom: stories, strategy updates, community features, and press releases."/>
+  <link rel="canonical" href="/blog.html"/>
+
+  <!-- Social / share -->
+  <meta property="og:title" content="CrapsEdge™ Newsroom — Stories & Press"/>
+  <meta property="og:description" content="Stories, strategy updates, community features, and press releases."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://crapsedge.store/blog.html"/>
+
   <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      padding: 2em;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.7;
+    :root{
+      --brand:#00e676;       /* CrapsEdge green */
+      --ink:#0b0b0b; --muted:#6b7280; --bg:#0a0a0a; --paper:#101213;
+      --chip:#0b1a12; --border:#1e293b; --card:#0f1418;
+      --ring:#1f8a4e;
     }
-    h1 {
-      text-align: center;
-      color: limegreen;
-      margin-bottom: 10px;
-    }
-    h2 {
-      color: #00ffff;
-      margin-top: 2em;
-    }
-    p {
-      font-size: 1.1em;
-    }
-    a {
-      color: #00ff99;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    hr {
-      margin: 3em 0;
-      border: 1px solid gray;
-    }
-    .cta {
-      text-align: center;
-      margin-top: 2em;
-      font-size: 1.05em;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:#e8f2ec}
+    a{color:var(--brand)}
+    /* Header */
+    header{position:sticky;top:0;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--border);z-index:50}
+    .wrap{max-width:1100px;margin:auto;padding:16px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#1b4332)}
+    .brand h1{font-size:20px;margin:0}
+    nav{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    nav a{padding:8px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;color:#e8f2ec;background:var(--paper);font-weight:600}
+    nav a.active, nav a:hover{outline:2px solid transparent;box-shadow:0 0 0 2px var(--ring) inset}
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .tools input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#0c0f12;color:#e8f2ec}
+    .toggle{display:flex;gap:8px;align-items:center}
+    .toggle button{padding:8px 12px;border:1px solid var(--border);background:var(--paper);color:#e8f2ec;border-radius:10px;cursor:pointer}
+    .toggle button.active{box-shadow:0 0 0 2px var(--ring) inset;font-weight:700}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+    .chip{padding:6px 10px;background:var(--chip);border:1px solid var(--border);border-radius:999px;font-size:13px;cursor:pointer;color:#cde9dd}
+    .chip.active{box-shadow:0 0 0 2px var(--ring) inset}
+    /* Grid */
+    main .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0}
+    .card{grid-column:span 12;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+    @media(min-width:720px){.card{grid-column:span 6}}
+    @media(min-width:1020px){.card{grid-column:span 4}}
+    .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#0e1a12,#0b0f0c)}
+    .card .pad{padding:14px 14px 18px}
+    .meta{font-size:12px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+    .title{margin:6px 0 6px;font-size:18px;line-height:1.25}
+    .title a{color:#f2fff8;text-decoration:none}
+    .title a:hover{color:var(--brand);text-decoration:underline}
+    .excerpt{color:#cfe7db;font-size:14px}
+    .tagrow{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:4px 8px;background:#09110c;border:1px solid var(--border);border-radius:999px;color:#98c9b0}
+    .load{display:block;width:100%;padding:12px;border:1px solid var(--border);background:var(--paper);color:#e8f2ec;border-radius:12px;cursor:pointer}
+    footer{border-top:1px solid var(--border);margin-top:30px}
+    .sr-only{position:absolute;left:-9999px}
   </style>
 </head>
 <body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <h1>CrapsEdge™ Newsroom</h1>
+      </div>
 
-  <h1>💬 Real Stories. Real Struggles. Real Edge.</h1>
-  <p style="text-align:center;">
-    This isn’t corporate fluff. These are real stories, real struggles, written the way people live them. CrapsEdge™ is about keeping it honest. If you’ve been caught in the loop of chasing dice, you’ll see yourself in here.
-  </p>
+      <!-- Category Tabs -->
+      <nav id="catNav">
+        <a href="#" data-cat="all" class="active">All</a>
+        <a href="#" data-cat="corporate">Corporate</a>
+        <a href="#" data-cat="technology">Technology</a>
+        <a href="#" data-cat="design">Design</a>
+        <a href="#" data-cat="press">Press Releases</a>
+      </nav>
 
-  <hr>
+      <!-- Search + Type Toggle -->
+      <div class="tools">
+        <input id="search" type="search" placeholder="Search stories, systems, recovery…" aria-label="Search"/>
+        <div class="toggle" role="tablist" aria-label="Type">
+          <button class="active" data-type="all" aria-selected="true">All</button>
+          <button data-type="story" aria-selected="false">Stories</button>
+          <button data-type="press" aria-selected="false">Press Only</button>
+        </div>
+      </div>
 
-  <!-- BLOG POST -->
-  <section>
-    <h2>📘 What the CrapsEdge™ Strategy Really Is</h2>
-    <p>I’m not here to sell you some “secret system.” The truth is, casinos don’t lose because you had a hot streak — they win because they control the math and your emotions. CrapsEdge™ is about flipping that. </p>
+      <!-- Tag Chips -->
+      <div class="chips" id="chips">
+        <span class="chip" data-tag="strategy">Strategy</span>
+        <span class="chip" data-tag="recovery">Recovery</span>
+        <span class="chip" data-tag="math">Math</span>
+        <span class="chip" data-tag="bankroll">Bankroll</span>
+        <span class="chip" data-tag="community">Community</span>
+      </div>
+    </div>
+  </header>
 
-    <p>Here’s how: you stick to the bets that actually give you a shot (Pass Line + Odds). You keep sessions short. You track every dollar. That’s it. It ain’t sexy, but it’s real. The Stop Gambling Guide and bankroll tracker I built are just tools to keep you honest with yourself.</p>
+  <main class="wrap">
+    <h2 class="sr-only">Latest</h2>
+    <section class="grid" id="grid" aria-live="polite"></section>
+    <button id="loadMore" class="load">Load more</button>
+  </main>
 
-    <p>If you’ve ever caught yourself saying “one more roll,” I know that voice. CrapsEdge™ is about killing that voice and taking back control — whether you want to play smarter or walk away for good.</p>
+  <footer>
+    <div class="wrap" style="padding:18px">
+      <small>&copy; <span id="yr"></span> CrapsEdge™. All rights reserved. · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/faq.html">FAQ</a></small>
+    </div>
+  </footer>
 
-    <p class="cta">
-      👉 <a href="https://crapsedge.gumroad.com/l/Stopguide" target="_blank">Grab the Stop Gambling Guide</a>
-    </p>
-  </section>
+  <!-- Minimal JSON-LD to help Google understand it's a blog/news hub -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Blog",
+    "name":"CrapsEdge Newsroom",
+    "url":"https://crapsedge.store/blog.html",
+    "description":"Stories and press releases from CrapsEdge.",
+    "publisher":{"@type":"Organization","name":"CrapsEdge"}
+  }
+  </script>
 
-  <!-- REAL PEOPLE EXAMPLES -->
-  <section>
-    <h2>🎲 Mike R. – “Didn’t Think I Had a Problem”</h2>
-    <p>I thought I was fine. $100 here and there, nothing crazy. But I started chasing. CrapsEdge™ didn’t preach at me, it just made me face the numbers. Once I saw how much I was really throwing away, I pulled back. I still play sometimes, but I walk out when I said I would. That’s the win.</p>
+  <script>
+    // === DATA: add your posts here (each is a card in the feed) ===
+    // type: "story" for narrative/article; "press" for announcements
+    // cat:  "corporate" | "technology" | "design" | "press"
+    const POSTS = [
+      {
+        title:"CrapsEdge Mission & Safety: Why We Teach Recovery First",
+        href:"/post1.html",               // you already have this
+        cat:"corporate", type:"story",
+        date:"2025-09-03", author:"CrapsEdge Editorial",
+        excerpt:"Our commitment to legal, math-based education and real tools that help players regain control.",
+        tags:["recovery","community"]
+      },
+      {
+        title:"Announcing the Responsible Gambling Log (Free Template)",
+        href:"/high-roller-tips-updated.html",
+        cat:"press", type:"press",
+        date:"2025-08-28", author:"PR Team",
+        excerpt:"Track wins/losses, sessions, and triggers — a simple habit that protects your bankroll.",
+        tags:["bankroll","recovery","math"]
+      },
+      {
+        title:"Math, Not Myths: Understanding House Edge on Common Bets",
+        href:"/crapsedge-system.html",
+        cat:"technology", type:"story",
+        date:"2025-08-20", author:"CrapsEdge Studio",
+        excerpt:"A clear walk-through of odds, volatility, and how to choose bets that align with your goals.",
+        tags:["math","strategy"]
+      },
+      {
+        title:"Community Story: From Chasing Losses to Structured Play",
+        href:"/explore.html",
+        cat:"corporate", type:"story",
+        date:"2025-08-14", author:"Community",
+        excerpt:"How a reader used session caps and a recovery plan to break a spiral and rebuild confidence.",
+        tags:["community","recovery"]
+      },
+      {
+        title:"Press Kit & Brand Assets for Partners",
+        href:"/ads.html",
+        cat:"press", type:"press",
+        date:"2025-08-10", author:"PR Team",
+        excerpt:"Download logos, brand colors, and approved language for media mentions.",
+        tags:["press"]
+      },
+      {
+        title:"Dice Control vs. Discipline: What Actually Moves the Needle",
+        href:"/dice-control.html",
+        cat:"design", type:"story",
+        date:"2025-08-06", author:"CrapsEdge Coaches",
+        excerpt:"Why consistent rules for stops and limits beat ‘lucky hands’ over the long run.",
+        tags:["strategy","bankroll"]
+      }
+    ];
 
-    <h2>👩🏽 Erica D. – “Quitting’s Hard, But I’m Fighting”</h2>
-    <p>I tried to quit before. Always slipped. The guide hit different — it helped me see stress was my trigger. Now I don’t touch dice unless my head’s right. I’m not perfect, but I’ve had more clean weeks than in years. I’m learning not to beat myself up when I slip. That shift came from CrapsEdge™.</p>
+    // === RENDER LOGIC ===
+    const grid = document.getElementById('grid');
+    const catNav = document.getElementById('catNav');
+    const search = document.getElementById('search');
+    const chips = document.getElementById('chips');
+    const loadMore = document.getElementById('loadMore');
+    const yr = document.getElementById('yr'); yr.textContent = new Date().getFullYear();
 
-    <h2>🧠 Chris L. – “I Just Needed a Plan”</h2>
-    <p>Winning $300 made me feel like a king, losing $500 the next day made me reckless. I never had a plan. CrapsEdge™ gave me one. Now I run a tracker, stick to two short sessions, and I don’t chase. I’ve saved more in 3 months than I did all last year.</p>
-  </section>
+    let state = {cat:'all', type:'all', q:'', tags:new Set(), shown:0, page:6};
 
-  <hr>
-  <p class="cta">Got a real story of your own? Use the CrapsEdge™ tools, get back control, and hit me up at <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a>. You might see yourself here next.</p>
+    function matches(p){
+      const catOk = state.cat==='all' || p.cat===state.cat || (state.cat==='press' && p.type==='press');
+      const typeOk = state.type==='all' || p.type===state.type;
+      const q = state.q.trim().toLowerCase();
+      const qOk = !q || (p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q));
+      const tagsOk = state.tags.size===0 || [...state.tags].every(t=>p.tags.includes(t));
+      return catOk && typeOk && qOk && tagsOk;
+    }
 
+    function render(){
+      grid.innerHTML='';
+      const filtered = POSTS.filter(matches).sort((a,b)=>b.date.localeCompare(a.date));
+      const slice = filtered.slice(0, state.shown + state.page);
+      slice.forEach(p=>{
+        const card = document.createElement('article');
+        card.className='card';
+        card.setAttribute('data-cat',p.cat);
+        card.setAttribute('data-type',p.type);
+        card.innerHTML = `
+          <a class="thumb" href="${p.href}" aria-label="${p.title}"></a>
+          <div class="pad">
+            <div class="meta">
+              <span>${new Date(p.date).toLocaleDateString()}</span><span>•</span>
+              <span>${p.author}</span><span>•</span>
+              <span style="text-transform:capitalize">${p.type}</span>
+            </div>
+            <h3 class="title"><a href="${p.href}">${p.title}</a></h3>
+            <p class="excerpt">${p.excerpt}</p>
+            <div class="tagrow">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          </div>`;
+        grid.appendChild(card);
+      });
+      state.shown = slice.length;
+      loadMore.style.display = (state.shown < filtered.length) ? 'block' : 'none';
+    }
+
+    // Category tabs
+    catNav.addEventListener('click', e=>{
+      const a = e.target.closest('a'); if(!a) return; e.preventDefault();
+      [...catNav.querySelectorAll('a')].forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');
+      state.cat = a.dataset.cat; state.shown = 0; render();
+    });
+
+    // Type toggle
+    document.querySelectorAll('.toggle button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.toggle button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        state.type = btn.dataset.type; state.shown = 0; render();
+      });
+    });
+
+    // Search
+    let t; search.addEventListener('input', ()=>{
+      clearTimeout(t);
+      t=setTimeout(()=>{ state.q = search.value; state.shown=0; render(); }, 120);
+    });
+
+    // Tag chips
+    chips.addEventListener('click', e=>{
+      const c = e.target.closest('.chip'); if(!c) return;
+      const tag = c.dataset.tag;
+      if(c.classList.toggle('active')) state.tags.add(tag); else state.tags.delete(tag);
+      state.shown=0; render();
+    });
+
+    // Load more
+    loadMore.addEventListener('click', ()=>{ state.page += 6; render(); });
+
+    // Init
+    render();
+  </script>
 </body>
 </html>
