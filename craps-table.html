@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CrapsEdge™ — Vegas Table (Educational)</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CrapsEdge™ — Copyright-Safe Vegas Table (Educational)</title>
 <style>
   :root{
-    --felt:#0a6a3f; --felt2:#095a37; --ink:#f6fff9; --mut:#cfe7db; --white:#fff;
-    --rail:#102318; --line:#0c4a2e; --shadow:rgba(0,0,0,.35); --accent:#39ff88;
-    --chipR:#e55353; --chipB:#4aa3ff; --chipG:#54d38e; --chipY:#f4c542;
+    --felt:#0a6a3f; --felt2:#0a5b3f; --rail:#442819; --ink:#f6fff9; --mut:#cfe7db; --white:#fff;
+    --shadow:rgba(0,0,0,.35); --accent:#39ff88;
+    --chipR:#ea5555; --chipB:#4aa3ff; --chipG:#54d38e; --chipY:#f4c542; --chipP:#b07cff;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:#061710;color:var(--ink);font-family:system-ui,-apple-system,Inter,Roboto,Segoe UI,Arial}
+  body{margin:0;background:#081a14;color:var(--ink);font-family:system-ui,-apple-system,Inter,Roboto,Segoe UI,Arial}
   .wrap{max-width:1200px;margin:16px auto;padding:12px}
   .hud{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
   .bank{background:#0e2d1f;border:1px solid #184d36;border-radius:12px;padding:8px 12px}
@@ -20,44 +20,47 @@
   .btn.ghost{background:transparent}
   .denoms{display:flex;gap:8px;margin-left:auto}
   .chipSel{width:38px;height:38px;border-radius:50%;border:3px solid var(--white);box-shadow:0 3px 10px var(--shadow);display:grid;place-items:center;font-weight:900}
-  .cR{background:var(--chipR)} .cB{background:var(--chipB)} .cG{background:var(--chipG)} .cY{background:var(--chipY)}
+  .cR{background:var(--chipR)} .cB{background:var(--chipB)} .cG{background:var(--chipG)} .cY{background:var(--chipY)} .cP{background:var(--chipP)}
   .chipSel.active{outline:3px solid var(--white)}
 
   /* TABLE */
-  .table{position:relative;aspect-ratio:2.2/1;overflow:hidden;border-radius:22px;border:10px solid var(--rail);
-    background:radial-gradient(160% 160% at 50% 35%, var(--felt) 0, var(--felt2) 70%);
-    box-shadow:0 18px 50px var(--shadow), inset 0 0 0 2px #0f3b2a}
-  .layout{position:absolute;inset:12px;border:2px solid #0c5a36;border-radius:16px;padding:10px}
-  .engrave{position:absolute;inset:10px;border-radius:14px;box-shadow:inset 0 0 0 2px #0e4f32, inset 0 0 30px rgba(0,0,0,.25)}
-  .zone{position:absolute;border:2px solid #0e5233;border-radius:12px;color:var(--mut);text-align:center;padding-top:8px;backdrop-filter:contrast(1.1)}
-  .zone .label{font-size:14px;font-weight:900;letter-spacing:.6px;text-shadow:0 2px 3px #0006}
-  .zone .amt{position:absolute;right:8px;bottom:6px;font-size:12px;color:#fff;text-shadow:0 2px 3px #0007}
-  .zone.active{outline:3px solid var(--white)}
-  /* coordinates (percent of table) */
-  .pass {left:2%; right:2%; bottom:2%; height:16%;}
-  .dont {left:2%; right:2%; bottom:19%; height:9%;}
-  .field{left:2%; right:2%; bottom:29%; height:18%;}
-  .bx4 {left:3%;  width:14%; top:8%; height:20%}
-  .bx5 {left:19%; width:14%; top:8%; height:20%}
-  .bx6 {left:35%; width:14%; top:8%; height:20%}
-  .bx8 {left:51%; width:14%; top:8%; height:20%}
-  .bx9 {left:67%; width:14%; top:8%; height:20%}
-  .bx10{left:83%; width:14%; top:8%; height:20%}
-  /* puck */
+  .table{position:relative;aspect-ratio:2.15/1;border-radius:22px;overflow:hidden;border:14px solid var(--rail);
+    background:radial-gradient(140% 140% at 50% 35%, var(--felt) 0, var(--felt2) 70%);
+    box-shadow:0 22px 60px var(--shadow), inset 0 0 0 3px #0f3b2a}
+  .layout{position:absolute;inset:14px}
+  .felt-svg{position:absolute;inset:0}
+
+  /* interactive zones (sit above SVG art) */
+  .zone{position:absolute;border-radius:10px}
+  .zone:focus-visible,.zone.active{outline:3px solid #fff}
+  .amt{position:absolute;right:6px;bottom:4px;color:#fff;font-size:12px;text-shadow:0 2px 3px #0008}
+
+  /* coordinates (percentage, aligned to our SVG) */
+  .pass   {left:2%; right:28%; bottom:2%;  height:12%}
+  .dont   {left:2%; right:28%; bottom:15%; height:7%}
+  .come   {left:2%; right:28%; bottom:24%; height:12%}
+  .field  {left:2%; right:28%; bottom:37%; height:13%}
+  .bx4    {left:2%;  width:12.5%; top:7%;  height:18%}
+  .bx5    {left:15%; width:12.5%; top:7%;  height:18%}
+  .bx6    {left:28%; width:12.5%; top:7%;  height:18%}
+  .bx8    {left:41%; width:12.5%; top:7%;  height:18%}
+  .bx9    {left:54%; width:12.5%; top:7%;  height:18%}
+  .bx10   {left:67%; width:12.5%; top:7%;  height:18%}
+  /* props (simple strip) */
+  .props  {right:2%; width:25%; top:7%; bottom:2%}
+
+  /* puck & dice/chips */
   .puck{position:absolute;top:6%;left:2%;width:84px;height:40px;border-radius:22px;border:4px solid #fff;display:grid;place-items:center;font-weight:1000;box-shadow:0 6px 14px var(--shadow)}
   .off{background:#121212;color:#fff} .on{background:#fff;color:#161616}
-  /* chips on felt */
   .chip{position:absolute;width:36px;height:36px;border-radius:50%;border:3px solid #fff;box-shadow:0 8px 18px var(--shadow);display:grid;place-items:center;font-weight:900;color:#111;transform:translate(-50%,-50%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
-  .chip.R{background:var(--chipR)} .chip.B{background:var(--chipB)} .chip.G{background:var(--chipG)} .chip.Y{background:var(--chipY)}
-  /* dice canvas (animated) */
-  #diceCanvas{position:absolute; inset:0; pointer-events:none;}
-  /* log */
+  .chip.R{background:var(--chipR)} .chip.B{background:var(--chipB)} .chip.G{background:var(--chipG)} .chip.Y{background:var(--chipY)} .chip.P{background:var(--chipP)}
+  #diceCanvas{position:absolute;inset:0;pointer-events:none}
+
+  /* log & paywall */
   .log{margin-top:10px;height:170px;overflow:auto;background:#0e2f22;border:1px solid #1a4c37;border-radius:12px;padding:8px;line-height:1.55}
   .ok{color:var(--accent)} .bad{color:#ff6b6b} .mut{color:var(--mut)}
-  /* paywall */
   .overlay{position:fixed;inset:0;background:rgba(4,10,14,.88);display:none;place-items:center;z-index:9999;padding:16px}
   .pay{max-width:520px;background:#0d2030;border:1px solid #294a66;border-radius:16px;padding:22px;color:#eaf4ff;text-align:center}
-  .pay h2{margin:0 0 8px}
 </style>
 </head>
 <body>
@@ -72,36 +75,91 @@
       <div class="chipSel cB"        data-val="10"  data-c="B">$10</div>
       <div class="chipSel cG"        data-val="25"  data-c="G">$25</div>
       <div class="chipSel cY"        data-val="100" data-c="Y">$100</div>
+      <div class="chipSel cP"        data-val="500" data-c="P">$500</div>
     </div>
   </div>
 
   <div class="table" id="table">
+    <!-- Canvas for animated dice -->
     <canvas id="diceCanvas"></canvas>
+
     <div class="layout">
-      <div class="engrave"></div>
+      <!-- COPYRIGHT-SAFE FELT ARTWORK (all vector we draw here) -->
+      <svg class="felt-svg" viewBox="0 0 1000 465" preserveAspectRatio="none" aria-hidden="true">
+        <!-- border lines -->
+        <rect x="10" y="10" width="980" height="445" rx="18" fill="none" stroke="#0f5a3a" stroke-width="6"/>
+        <!-- left half main boxes -->
+        <g fill="none" stroke="#0f5a3a" stroke-width="4" opacity=".95">
+          <rect x="20" y="320" width="700" height="55" rx="10"/>
+          <rect x="20" y="270" width="700" height="45" rx="10"/>
+          <rect x="20" y="220" width="700" height="45" rx="10"/>
+          <!-- top six number boxes -->
+          <rect x="20" y="50" width="120" height="85" rx="10"/>
+          <rect x="145" y="50" width="120" height="85" rx="10"/>
+          <rect x="270" y="50" width="120" height="85" rx="10"/>
+          <rect x="395" y="50" width="120" height="85" rx="10"/>
+          <rect x="520" y="50" width="120" height="85" rx="10"/>
+          <rect x="645" y="50" width="120" height="85" rx="10"/>
+        </g>
+        <!-- labels -->
+        <g fill="#e9fff3" font-family="system-ui,Segoe UI,Arial" text-anchor="middle">
+          <text x="370" y="250" font-weight="800" font-size="48">COME</text>
+          <text x="370" y="205" font-weight="700" font-size="22">FIELD</text>
+          <text x="370" y="305" font-weight="700" font-size="22">DON'T PASS BAR</text>
+          <text x="370" y="355" font-weight="800" font-size="24">PASS LINE</text>
+          <text x="80"  y="95"  font-weight="800" font-size="30">4</text>
+          <text x="205" y="95"  font-weight="800" font-size="30">5</text>
+          <text x="330" y="95"  font-weight="800" font-size="30">6</text>
+          <text x="455" y="95"  font-weight="800" font-size="30">8</text>
+          <text x="580" y="95"  font-weight="800" font-size="30">9</text>
+          <text x="705" y="95"  font-weight="800" font-size="30">10</text>
+          <text x="850" y="240" font-weight="700" font-size="18">PROPS</text>
+        </g>
+        <!-- right props grid -->
+        <g fill="none" stroke="#0f5a3a" stroke-width="3">
+          <rect x="750" y="40" width="230" height="385" rx="12"/>
+          <!-- simple grid -->
+          <g>
+            <line x1="750" y1="95" x2="980" y2="95"/>
+            <line x1="750" y1="150" x2="980" y2="150"/>
+            <line x1="750" y1="205" x2="980" y2="205"/>
+            <line x1="750" y1="260" x2="980" y2="260"/>
+            <line x1="750" y1="315" x2="980" y2="315"/>
+            <line x1="750" y1="370" x2="980" y2="370"/>
+            <line x1="843" y1="40" x2="843" y2="425"/>
+            <line x1="916" y1="40" x2="916" y2="425"/>
+          </g>
+        </g>
+      </svg>
+
+      <!-- point puck -->
       <div id="puck" class="puck off">OFF</div>
 
-      <div class="zone pass"  data-area="pass"><div class="label">PASS LINE</div><div class="amt" id="amt-pass">—</div></div>
-      <div class="zone dont"  data-area="dont"><div class="label">DON'T PASS</div><div class="amt" id="amt-dont">—</div></div>
-      <div class="zone field" data-area="field"><div class="label">FIELD <span style="font-size:12px">(2 & 12 pay 2:1)</span></div><div class="amt" id="amt-field">—</div></div>
+      <!-- interactive zones (no external images) -->
+      <div class="zone pass"  data-area="pass"><div class="amt" id="amt-pass">—</div></div>
+      <div class="zone dont"  data-area="dont"><div class="amt" id="amt-dont">—</div></div>
+      <div class="zone come"  data-area="come"><div class="amt" id="amt-come">—</div></div>
+      <div class="zone field" data-area="field"><div class="amt" id="amt-field">—</div></div>
 
-      <div class="zone bx4"  data-area="pl4"><div class="label">4</div><div class="amt" id="amt-pl4">—</div></div>
-      <div class="zone bx5"  data-area="pl5"><div class="label">5</div><div class="amt" id="amt-pl5">—</div></div>
-      <div class="zone bx6"  data-area="pl6"><div class="label">6</div><div class="amt" id="amt-pl6">—</div></div>
-      <div class="zone bx8"  data-area="pl8"><div class="label">8</div><div class="amt" id="amt-pl8">—</div></div>
-      <div class="zone bx9"  data-area="pl9"><div class="label">9</div><div class="amt" id="amt-pl9">—</div></div>
-      <div class="zone bx10" data-area="pl10"><div class="label">10</div><div class="amt" id="amt-pl10">—</div></div>
+      <div class="zone bx4"  data-area="pl4"><div class="amt" id="amt-pl4">—</div></div>
+      <div class="zone bx5"  data-area="pl5"><div class="amt" id="amt-pl5">—</div></div>
+      <div class="zone bx6"  data-area="pl6"><div class="amt" id="amt-pl6">—</div></div>
+      <div class="zone bx8"  data-area="pl8"><div class="amt" id="amt-pl8">—</div></div>
+      <div class="zone bx9"  data-area="pl9"><div class="amt" id="amt-pl9">—</div></div>
+      <div class="zone bx10" data-area="pl10"><div class="amt" id="amt-pl10">—</div></div>
+
+      <div class="zone props" data-area="props"></div>
     </div>
   </div>
 
   <div class="log" id="log"></div>
 </div>
 
-<!-- 5-minute demo overlay → points to YOUR Gumroad -->
+<!-- 5-minute demo → YOUR Gumroad -->
 <div id="overlay" class="overlay">
   <div class="pay">
     <h2>Session limit reached</h2>
-    <p>You’ve used your free 5-minute demo. Unlock unlimited practice & strategy drills.</p>
+    <p>Unlock unlimited practice & strategy drills.</p>
     <p><a href="https://crapsedge.gumroad.com/l/xvnyi" target="_blank"><button class="btn primary">Unlock Full Access</button></a>
        <button class="btn" onclick="location.reload()">Restart Demo</button></p>
     <p class="mut" style="font-size:12px">Educational tool — no real-money wagering or prizes.</p>
@@ -110,200 +168,119 @@
 
 <script>
 (() => {
-  /* ======= SETTINGS ======= */
-  const ENABLE_TIMER = true;                 // set false to disable paywall
-  const DEMO_MS = 5*60*1000;                 // 5 minutes
-  const FIELD_DOUBLE = [2,12];               // 2:1 on 2 & 12
+  /* ===== SETTINGS ===== */
+  const ENABLE_TIMER = true;           // set false to disable paywall
+  const DEMO_MS = 5*60*1000;           // 5 minutes
+  const FIELD_DOUBLE = [2,12];         // 2:1 on 2 and 12
   const CHIP_SIZE = 36;
 
-  /* ======= STATE ======= */
+  /* ===== STATE ===== */
   let bank=1000, point=null;
-  const bets = {pass:0, dont:0, field:0, pl4:0, pl5:0, pl6:0, pl8:0, pl9:0, pl10:0};
-  let denom=5, denomClass='R';
-  const placed = []; // {area, amt, el}
-  const $ = id => document.getElementById(id);
-  const money = n => '$'+ n.toLocaleString();
+  const bets = {pass:0, dont:0, come:0, field:0, pl4:0, pl5:0, pl6:0, pl8:0, pl9:0, pl10:0};
+  let denom=5, denomClass='R'; const placed=[];
+  const $=id=>document.getElementById(id), money=n=>'$'+n.toLocaleString();
 
-  /* ======= UI helpers ======= */
+  /* ===== HUD ===== */
   function updateHUD(){
     $('bank').textContent = money(bank);
-    $('point').textContent = point? point : '—';
-    ['pass','dont','field','pl4','pl5','pl6','pl8','pl9','pl10'].forEach(k=>{
-      const id = 'amt-'+k; const v = bets[k];
-      const el = $(id); if(el) el.textContent = v>0? money(v) : '—';
+    $('point').textContent = point? point:'—';
+    ['pass','dont','come','field','pl4','pl5','pl6','pl8','pl9','pl10'].forEach(k=>{
+      const el=$('amt-'+k); if(el) el.textContent = bets[k]>0? money(bets[k]) : '—';
     });
-    const puck = $('puck');
-    puck.className = 'puck ' + (point? 'on' : 'off');
-    puck.textContent = point? 'ON '+point : 'OFF';
+    const puck=$('puck'); puck.className='puck '+(point?'on':'off'); puck.textContent=point?('ON '+point):'OFF';
   }
   function log(msg, cls=''){ const d=document.createElement('div'); d.innerHTML=msg; if(cls)d.className=cls; $('log').prepend(d); }
 
-  /* ======= CHIPS ======= */
-  function zoneCenter(z){
-    const tb = $('table').getBoundingClientRect(), r = z.getBoundingClientRect();
-    return {x: r.left - tb.left + r.width*0.5, y: r.top - tb.top + r.height*0.55};
-  }
-  function addChip(areaEl, amt){
-    const chip = document.createElement('div');
-    chip.className = 'chip '+denomClass;
-    chip.textContent = '$'+amt;
-    const c = zoneCenter(areaEl);
-    chip.style.left = c.x+'px'; chip.style.top = c.y+'px';
-    $('table').appendChild(chip);
-    // small random offset so stacks look natural
-    const dx=(Math.random()*8-4), dy=(Math.random()*6-3);
-    requestAnimationFrame(()=> chip.style.transform = `translate(${dx}px,${dy}px)` );
-    return chip;
+  /* ===== Chips ===== */
+  function zoneCenter(z){ const tb=$('table').getBoundingClientRect(), r=z.getBoundingClientRect(); return {x:r.left-tb.left+r.width*.5,y:r.top-tb.top+r.height*.55}; }
+  function addChip(zoneEl, amt){
+    const chip=document.createElement('div'); chip.className='chip '+denomClass; chip.textContent='$'+amt;
+    const c=zoneCenter(zoneEl); chip.style.left=c.x+'px'; chip.style.top=c.y+'px';
+    $('table').appendChild(chip); const dx=(Math.random()*8-4), dy=(Math.random()*6-3);
+    requestAnimationFrame(()=> chip.style.transform=`translate(${dx}px,${dy}px)`); return chip;
   }
 
-  /* ======= BETTING ======= */
   document.querySelectorAll('.chipSel').forEach(s=>{
-    s.addEventListener('click',()=>{
-      document.querySelectorAll('.chipSel').forEach(x=>x.classList.remove('active'));
-      s.classList.add('active'); denom = +s.dataset.val; denomClass = s.dataset.c || 'R';
-    });
+    s.addEventListener('click',()=>{ document.querySelectorAll('.chipSel').forEach(x=>x.classList.remove('active')); s.classList.add('active'); denom=+s.dataset.val; denomClass=s.dataset.c||'R'; });
   });
-
   document.querySelectorAll('.zone').forEach(z=>{
     z.addEventListener('click',()=>{
-      const area = z.dataset.area;
-      if((area==='pass'||area==='dont') && point){ alert('Pass/Don’t only on come-out.'); return; }
-      if(bank < denom){ alert('Not enough bank.'); return; }
-      bank -= denom; bets[area]+=denom;
-      const chipEl = addChip(z, denom);
-      placed.push({area, amt:denom, el:chipEl});
-      updateHUD();
+      const area=z.dataset.area;
+      if((area==='pass'||area==='dont'||area==='come') && point && area!=='come'){ alert('Pass/Don’t only on come-out.'); return; }
+      if(bank<denom){ alert('Not enough bank.'); return; }
+      bank -= denom; bets[area]+=denom; const el=addChip(z,denom); placed.push({area,amt:denom,el}); updateHUD();
     });
   });
 
-  $('undo').onclick = ()=>{
-    const last = placed.pop(); if(!last) return;
-    bank += last.amt; bets[last.area] -= last.amt; last.el.remove(); updateHUD();
-  };
-  $('clear').onclick = ()=>{
-    bank += Object.values(bets).reduce((a,b)=>a+b,0);
-    for(const k in bets) bets[k]=0;
-    placed.forEach(p=>p.el.remove()); placed.length=0; updateHUD();
-  };
+  $('undo').onclick=()=>{ const last=placed.pop(); if(!last)return; bank+=last.amt; bets[last.area]-=last.amt; last.el.remove(); updateHUD(); };
+  $('clear').onclick=()=>{ bank+=Object.values(bets).reduce((a,b)=>a+b,0); for(const k in bets) bets[k]=0; placed.forEach(p=>p.el.remove()); placed.length=0; updateHUD(); };
 
-  /* ======= DICE ANIMATION (canvas 2D “tumble & bounce”) ======= */
-  const canvas = $('diceCanvas'), ctx = canvas.getContext('2d');
-  function resize(){ const r = $('table').getBoundingClientRect(); canvas.width=r.width; canvas.height=r.height; }
-  resize(); addEventListener('resize', resize);
-
+  /* ===== Dice animation (Canvas) ===== */
+  const canvas=$('diceCanvas'), ctx=canvas.getContext('2d');
+  function resize(){ const r=$('table').getBoundingClientRect(); canvas.width=r.width; canvas.height=r.height; } resize(); addEventListener('resize', resize);
   function rollDiceAnim(){
-    const die = () => ({
-      x: canvas.width*0.2 + Math.random()*canvas.width*0.6,
-      y: canvas.height*0.25, vx:(Math.random()*4+3)*(Math.random()<.5?-1:1),
-      vy: - (Math.random()*6+8), rot:0, vr:(Math.random()*10+10)*(Math.random()<.5?-1:1),
-      val: 1+Math.floor(Math.random()*6)
-    });
-    const d1 = die(), d2 = die();
-    const g = 0.7, bounce = 0.55, fric = 0.995; let t=0, done=false;
-
-    function drawDie(d){
-      ctx.save(); ctx.translate(d.x, d.y); ctx.rotate(d.rot);
-      const s = 34; ctx.fillStyle='#fff'; ctx.strokeStyle='#111'; ctx.lineWidth=2; ctx.fillRect(-s/2,-s/2,s,s); ctx.strokeRect(-s/2,-s/2,s,s);
-      ctx.fillStyle='#111'; ctx.font='bold 20px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(String(d.val),0,0);
-      ctx.restore();
-    }
-    function step(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      [d1,d2].forEach(d=>{
-        d.vy += g; d.x += d.vx; d.y += d.vy; d.rot += d.vr*0.03; d.vx *= fric; d.vr *= fric;
-        if(d.y>canvas.height-30){ d.y=canvas.height-30; d.vy*=-bounce; d.val = 1+Math.floor(Math.random()*6); }
-        if(d.x<30||d.x>canvas.width-30){ d.vx*=-bounce; d.val = 1+Math.floor(Math.random()*6); }
-        drawDie(d);
+    const die=()=>({x:canvas.width*0.2+Math.random()*canvas.width*0.6,y:canvas.height*0.25,vx:(Math.random()*4+3)*(Math.random()<.5?-1:1),vy:-(Math.random()*6+8),rot:0,vr:(Math.random()*10+10)*(Math.random()<.5?-1:1),val:1+Math.floor(Math.random()*6)});
+    const d1=die(), d2=die(); const g=.7,bounce=.55,fric=.995; let t=0;
+    function draw(d){ ctx.save(); ctx.translate(d.x,d.y); ctx.rotate(d.rot); const s=34; ctx.fillStyle='#fff'; ctx.strokeStyle='#111'; ctx.lineWidth=2; ctx.fillRect(-s/2,-s/2,s,s); ctx.strokeRect(-s/2,-s/2,s,s); ctx.fillStyle='#111'; ctx.font='bold 20px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(String(d.val),0,0); ctx.restore(); }
+    function step(){ ctx.clearRect(0,0,canvas.width,canvas.height);
+      [d1,d2].forEach(d=>{ d.vy+=g; d.x+=d.vx; d.y+=d.vy; d.rot+=d.vr*.03; d.vx*=fric; d.vr*=fric;
+        if(d.y>canvas.height-30){ d.y=canvas.height-30; d.vy*=-bounce; d.val=1+Math.floor(Math.random()*6); }
+        if(d.x<30||d.x>canvas.width-30){ d.vx*=-bounce; d.val=1+Math.floor(Math.random()*6); }
+        draw(d);
       });
-      t++;
-      if(t<55) requestAnimationFrame(step);
-      else { ctx.clearRect(0,0,canvas.width,canvas.height); drawDie(d1); drawDie(d2); done=true; }
+      if(++t<55) requestAnimationFrame(step);
+      else { ctx.clearRect(0,0,canvas.width,canvas.height); draw(d1); draw(d2); }
     }
     step();
     return new Promise(res=> setTimeout(()=> res([d1.val,d2.val,d1.val+d2.val]), 1000));
   }
 
-  /* ======= PAYOUTS ======= */
-  function payPlace(num, amt){
-    if(!amt) return 0;
-    if(num===4||num===10) return Math.floor(amt*9/5);
-    if(num===5||num===9)  return Math.floor(amt*7/5);
-    if(num===6||num===8)  return Math.floor(amt*7/6);
-    return 0;
-  }
+  /* ===== Payout helpers (place bet odds) ===== */
+  function payPlace(num, amt){ if(!amt) return 0; if(num===4||num===10) return Math.floor(amt*9/5); if(num===5||num===9) return Math.floor(amt*7/5); if(num===6||num===8) return Math.floor(amt*7/6); return 0; }
 
+  /* ===== Resolution ===== */
   function resolveComeOut(sum){
-    // Field
+    // Field resolves every roll
     if(bets.field){
-      if([2,3,4,9,10,11,12].includes(sum)){
-        const mult = FIELD_DOUBLE.includes(sum)? 2 : 1;
-        bank += bets.field*(1+mult);
-        log(`Field ${sum} pays ${mult}:1 (+${money(bets.field*mult)})`,'ok');
-      } else log(`Field loses`,'bad');
-      bets.field=0;
+      if([2,3,4,9,10,11,12].includes(sum)){ const mult = FIELD_DOUBLE.includes(sum)?2:1; bank += bets.field*(1+mult); log(`Field ${sum} pays ${mult}:1 (+${money(bets.field*mult)})`,'ok'); }
+      else log(`Field loses`,'bad'); bets.field=0;
     }
-
-    if(sum===7||sum===11){
-      if(bets.pass){ bank += bets.pass*2; log(`Natural ${sum}: Pass Line wins +${money(bets.pass)}`,'ok'); bets.pass=0; }
-      if(bets.dont){ log(`Natural: Don’t Pass loses ${money(bets.dont)}`,'bad'); bets.dont=0; }
-    } else if([2,3,12].includes(sum)){
-      if(bets.pass){ log(`Craps ${sum}: Pass Line loses ${money(bets.pass)}`,'bad'); bets.pass=0; }
-      if(bets.dont){
-        if(sum===12){ bank+=bets.dont; log(`Bar 12 on Don’t — push`,'mut'); }
-        else { bank+=bets.dont*2; log(`Don’t Pass wins on ${sum} +${money(bets.dont)}`,'ok'); }
-        bets.dont=0;
-      }
-    } else {
-      point = sum; log(`Point established: <b>${point}</b>`,'mut');
-    }
+    if(sum===7||sum===11){ if(bets.pass){ bank+=bets.pass*2; log(`Natural ${sum}: Pass wins +${money(bets.pass)}`,'ok'); bets.pass=0; } if(bets.dont){ log(`Natural: Don’t Pass loses ${money(bets.dont)}`,'bad'); bets.dont=0; } }
+    else if([2,3,12].includes(sum)){ if(bets.pass){ log(`Craps ${sum}: Pass loses ${money(bets.pass)}`,'bad'); bets.pass=0; }
+      if(bets.dont){ if(sum===12){ bank+=bets.dont; log(`Bar 12 — Don’t push`,'mut'); } else { bank+=bets.dont*2; log(`Don’t Pass wins on ${sum} +${money(bets.dont)}`,'ok'); } bets.dont=0; } }
+    else { point=sum; log(`Point established: <b>${point}</b>`,'mut'); if(bets.come){ /* come travels to number */ const k='pl'+sum; bets[k]+=bets.come; log(`Come travels to ${sum} (${money(bets.come)})`); bets.come=0; } }
   }
 
   function resolvePoint(sum){
-    // Field each roll
     if(bets.field){
-      if([2,3,4,9,10,11,12].includes(sum)){
-        const mult = FIELD_DOUBLE.includes(sum)? 2 : 1;
-        bank += bets.field*(1+mult);
-        log(`Field ${sum} pays ${mult}:1 (+${money(bets.field*mult)})`,'ok');
-      } else log(`Field loses`,'bad');
-      bets.field=0;
+      if([2,3,4,9,10,11,12].includes(sum)){ const mult = FIELD_DOUBLE.includes(sum)?2:1; bank += bets.field*(1+mult); log(`Field ${sum} pays ${mult}:1 (+${money(bets.field*mult)})`,'ok'); }
+      else log(`Field loses`,'bad'); bets.field=0;
     }
-
     if(sum===7){
       if(bets.pass){ log(`Seven-out: Pass loses ${money(bets.pass)}`,'bad'); }
       if(bets.dont){ bank+=bets.dont*2; log(`Seven-out: Don’t Pass wins +${money(bets.dont)}`,'ok'); }
       [4,5,6,8,9,10].forEach(n=>{ const k='pl'+n; if(bets[k]){ log(`Place ${n} loses ${money(bets[k])}`,'bad'); bets[k]=0; }});
       bets.pass=0; bets.dont=0; point=null; return;
     }
-
     if(sum===point){
-      if(bets.pass){ bank += bets.pass*2; log(`HIT THE POINT ${point}: Pass pays +${money(bets.pass)}`,'ok'); bets.pass=0; }
+      if(bets.pass){ bank+=bets.pass*2; log(`HIT THE POINT ${point}: Pass pays +${money(bets.pass)}`,'ok'); bets.pass=0; }
       if(bets.dont){ log(`Point hit: Don’t Pass loses ${money(bets.dont)}`,'bad'); bets.dont=0; }
       const k='pl'+point; if(bets[k]){ const w=payPlace(point,bets[k]); bank+=w; log(`Place ${point} hits +${money(w)}`,'ok'); }
       point=null; return;
     }
-
-    const map={4:'pl4',5:'pl5',6:'pl6',8:'pl8',9:'pl9',10:'pl10'};
-    const key = map[sum];
-    if(key && bets[key]){ const w=payPlace(sum,bets[key]); bank += w; log(`Place ${sum} hits +${money(w)}`,'ok'); }
+    // come travels on non-7 non-point when come bet exists
+    if(bets.come){ const k='pl'+sum; bets[k]+=bets.come; log(`Come travels to ${sum} (${money(bets.come)})`); bets.come=0; }
+    const map={4:'pl4',5:'pl5',6:'pl6',8:'pl8',9:'pl9',10:'pl10'}; const key=map[sum];
+    if(key && bets[key]){ const w=payPlace(sum,bets[key]); bank+=w; log(`Place ${sum} hits +${money(w)}`,'ok'); }
   }
 
-  /* ======= ROLL ======= */
-  $('roll').onclick = async ()=>{
-    const [a,b,sum] = await rollDiceAnim();
-    log(`Roll: <b>${a}+${b} = ${sum}</b>`);
-    if(!point) resolveComeOut(sum); else resolvePoint(sum);
-    updateHUD();
-  };
+  $('roll').onclick=async()=>{ const [a,b,sum]=await rollDiceAnim(); log(`Roll: <b>${a}+${b} = ${sum}</b>`); if(!point) resolveComeOut(sum); else resolvePoint(sum); updateHUD(); };
 
-  /* ======= INIT ======= */
-  updateHUD();
-  log('Welcome! Pick a chip, tap the felt to place, then press ROLL.','mut');
+  /* INIT */
+  updateHUD(); log('Pick a chip, tap felt to place, then press ROLL. All art is generated here (copyright-safe).','mut');
 
-  /* ======= TIMER ======= */
-  if(ENABLE_TIMER){
-    setTimeout(()=>{ $('overlay').style.display='grid'; }, DEMO_MS);
-  }
+  /* Demo timer → Gumroad */
+  if(ENABLE_TIMER){ setTimeout(()=>{ $('overlay').style.display='grid'; }, DEMO_MS); }
 })();
 </script>
 </body>
