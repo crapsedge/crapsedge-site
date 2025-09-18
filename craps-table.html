@@ -2,66 +2,73 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>CrapsEdge™ — Elite Vegas Table (Educational)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CrapsEdge™ — Full Vegas Table (Educational)</title>
+<meta name="theme-color" content="#0a5c40">
 <style>
   :root{
     --felt0:#0a5c40; --felt1:#0c6d4a; --felt2:#095b3e;
-    --rail:#5a2f16; --railEdge:#2d160b; --ink:#e8fff4;
-    --line:#0f744e; --line2:#0e5a3a; --glow:#ffd24b; --come:#ff3b3b;
+    --rail:#5a2f16; --railEdge:#2d160b; --ink:#e8fff4; --mut:#bfe8d4;
+    --line:#0f744e; --line2:#0e5a3a; --glow:#ffd24b; --danger:#ff6b6b; --ok:#39ff88;
     --shadow:rgba(0,0,0,.45);
     --chipR:#ea5555; --chipB:#4aa3ff; --chipG:#54d38e; --chipY:#f4c542; --chipP:#b07cff;
   }
   *{box-sizing:border-box}
+  html,body{height:100%}
   body{margin:0;background:#081a14;color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Inter,Roboto,Arial}
-  .wrap{max-width:1200px;margin:14px auto;padding:12px}
-  .hud{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .wrap{max-width:1440px;margin:10px auto;padding:12px}
+  .hud{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
   .bank{background:#0d2b1f;border:1px solid #17533c;border-radius:12px;padding:8px 12px}
-  .btn{cursor:pointer;border:1px solid #1b4635;background:#123d2a;color:#fff;border-radius:10px;padding:8px 12px;font-weight:700}
+  .btn{cursor:pointer;border:1px solid #1b4635;background:#123d2a;color:#fff;border-radius:10px;padding:10px 14px;font-weight:700}
   .btn.primary{background:#39ff88;color:#062515;border-color:#62ffab}
   .denoms{display:flex;gap:8px;margin-left:auto}
-  .chipSel{width:38px;height:38px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center;font-weight:900;box-shadow:0 4px 10px var(--shadow)}
+  .chipSel{width:44px;height:44px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center;font-weight:900;box-shadow:0 4px 10px var(--shadow);user-select:none}
   .cR{background:var(--chipR)} .cB{background:var(--chipB)} .cG{background:var(--chipG)} .cY{background:var(--chipY)} .cP{background:var(--chipP)}
   .chipSel.active{outline:3px solid #fff}
+  .note{color:var(--mut);font-size:12px}
 
-  /* TABLE (deep texture + rich rail) */
+  /* TABLE (huge, responsive) */
   .table{
-    position:relative;aspect-ratio:2.1/1;border-radius:28px;overflow:hidden;
-    border:16px solid var(--rail); box-shadow:inset 0 0 0 3px var(--railEdge), 0 28px 60px var(--shadow);
+    position:relative; width:100%; aspect-ratio: 2.3/1; border-radius:28px; overflow:hidden;
+    border:18px solid var(--rail); box-shadow:inset 0 0 0 3px var(--railEdge), 0 38px 80px var(--shadow);
     background:
       radial-gradient(120% 120% at 50% 40%, rgba(0,0,0,.28) 0, rgba(0,0,0,.45) 60%, rgba(0,0,0,.55) 100%),
       repeating-linear-gradient(25deg, var(--felt1) 0 7px, var(--felt0) 7px 14px),
       radial-gradient(150% 120% at 50% 35%, var(--felt1) 0, var(--felt2) 70%);
   }
-  .layout{position:absolute;inset:14px}
+  .layout{position:absolute;inset:16px}
   .felt{position:absolute;inset:0}
 
-  /* zones (clickable) */
-  .zone{position:absolute;border-radius:10px}
+  /* zones */
+  .zone{position:absolute;border-radius:10px;outline-offset:2px; touch-action:manipulation}
   .zone:focus-visible,.zone.active{outline:3px solid #fff}
   .amt{position:absolute;right:6px;bottom:4px;color:#fff;font-size:12px;text-shadow:0 2px 3px #0009}
 
-  /* coordinates aligned to SVG art */
-  .pass{left:2%; right:28%; bottom:2%; height:12%}
-  .dont{left:2%; right:28%; bottom:15%; height:7%}
-  .come{left:2%; right:28%; bottom:24%; height:12%}
-  .field{left:2%; right:28%; bottom:37%; height:13%}
-  .bx4{left:2%; width:12.5%; top:7%; height:18%}
-  .bx5{left:15%; width:12.5%; top:7%; height:18%}
-  .bx6{left:28%; width:12.5%; top:7%; height:18%}
-  .bx8{left:41%; width:12.5%; top:7%; height:18%}
-  .bx9{left:54%; width:12.5%; top:7%; height:18%}
-  .bx10{left:67%; width:12.5%; top:7%; height:18%}
-  .props{right:2%; width:26%; top:7%; bottom:2%}
+  /* main layout map */
+  .pass{left:1.5%; right:28%; bottom:2%; height:12%}
+  .dont{left:1.5%; right:28%; bottom:15%; height:7%}
+  .come{left:1.5%; right:28%; bottom:24%; height:12%}
+  .field{left:1.5%; right:28%; bottom:37%; height:13%}
+  .bx4{left:1.5%; width:12.5%; top:7%; height:18%}
+  .bx5{left:14.5%; width:12.5%; top:7%; height:18%}
+  .bx6{left:27.5%; width:12.5%; top:7%; height:18%}
+  .bx8{left:40.5%; width:12.5%; top:7%; height:18%}
+  .bx9{left:53.5%; width:12.5%; top:7%; height:18%}
+  .bx10{left:66.5%; width:12.5%; top:7%; height:18%}
+  .props{right:1.5%; width:26.5%; top:7%; bottom:20%}
+  .dc{right:1.5%; width:26.5%; bottom:2%; height:16%} /* don't come box */
+
+  /* Buy/Lay toggles (upper-left corner of each box) */
+  .tag{position:absolute;left:6px;top:6px;font-size:10px;background:#0c2630;border:1px solid #2b556b;border-radius:6px;padding:2px 6px}
 
   /* puck */
-  .puck{position:absolute;top:5.8%;left:2%;width:90px;height:44px;border-radius:24px;border:4px solid #fff;display:grid;place-items:center;font-weight:1000;box-shadow:0 8px 16px var(--shadow)}
+  .puck{position:absolute;top:5.6%;left:2%;width:108px;height:52px;border-radius:26px;border:4px solid #fff;display:grid;place-items:center;font-weight:1000;box-shadow:0 8px 16px var(--shadow)}
   .off{background:#111;color:#fff} .on{background:#fff;color:#161616}
 
-  /* chips on felt (stack neatly) */
+  /* chips on felt */
   .chip{
-    position:absolute;width:38px;height:38px;border-radius:50%;
-    border:3px solid #fff;color:#111;font-weight:900;
+    position:absolute;width:44px;height:44px;border-radius:50%;
+    border:3px solid #fff;color:#111;font-weight:900; user-select:none;
     transform:translate(-50%,-50%); transition:transform .18s cubic-bezier(.2,.8,.2,1);
     box-shadow:0 10px 18px rgba(0,0,0,.45), inset 0 0 0 2px rgba(255,255,255,.25);
     background-image:
@@ -75,18 +82,19 @@
   /* dice canvas */
   #diceCanvas{position:absolute;inset:0;pointer-events:none}
 
-  /* log + overlay */
-  .log{margin-top:10px;height:180px;overflow:auto;background:#0d2c22;border:1px solid #174e39;border-radius:12px;padding:10px;line-height:1.55}
-  .ok{color:#39ff88} .bad{color:#ff6b6b} .mut{color:#d0eadf}
+  /* log */
+  .log{margin-top:12px;height:210px;overflow:auto;background:#0d2c22;border:1px solid #174e39;border-radius:12px;padding:10px;line-height:1.55}
+  .ok{color:var(--ok)} .bad{color:var(--danger)} .mut{color:var(--mut)}
 
+  /* overlay (optional paywall) */
   .overlay{position:fixed;inset:0;background:rgba(4,10,14,.88);display:none;place-items:center;z-index:9999;padding:16px}
-  .pay{max-width:520px;background:#0d2030;border:1px solid #294a66;border-radius:16px;padding:22px;color:#eaf4ff;text-align:center}
+  .pay{max-width:560px;background:#0d2030;border:1px solid #294a66;border-radius:16px;padding:22px;color:#eaf4ff;text-align:center}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="hud">
-    <div class="bank">Bank: <b id="bank">$1,000</b> &nbsp; | &nbsp; Point: <b id="point">—</b></div>
+    <div class="bank">Bank: <b id="bank">$5,000</b> &nbsp; | &nbsp; Point: <b id="point">—</b></div>
     <button class="btn" id="undo">Undo</button>
     <button class="btn" id="clear">Clear Bets</button>
     <button class="btn primary" id="roll">Roll Dice</button>
@@ -97,288 +105,557 @@
       <div class="chipSel cY" data-val="100" data-c="Y">$100</div>
       <div class="chipSel cP" data-val="500" data-c="P">$500</div>
     </div>
+    <span class="note">Tap a box to bet. After point is ON: tap Pass/Come chips again to add **Odds**. In number boxes: click small tag to switch Place ⇄ Buy ⇄ Lay.</span>
   </div>
 
   <div class="table" id="table">
     <canvas id="diceCanvas"></canvas>
     <div class="layout">
-      <!-- Copyright-safe felt art -->
-      <svg class="felt" viewBox="0 0 1000 465" preserveAspectRatio="none" aria-hidden="true">
+      <!-- Felt SVG (copyright-safe) -->
+      <svg class="felt" viewBox="0 0 1200 520" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
         </defs>
-        <!-- outer frame line -->
-        <rect x="10" y="10" width="980" height="445" rx="18" fill="none" stroke="#0c4f34" stroke-width="6"/>
-
+        <rect x="12" y="12" width="1176" height="496" rx="20" fill="none" stroke="#0c4f34" stroke-width="8"/>
         <!-- left bands -->
-        <g fill="none" stroke="#0f5a3a" stroke-width="4">
-          <rect x="20" y="320" width="700" height="55" rx="10"/>
-          <rect x="20" y="270" width="700" height="45" rx="10"/>
-          <rect x="20" y="220" width="700" height="45" rx="10"/>
+        <g fill="none" stroke="#0f5a3a" stroke-width="5">
+          <rect x="24" y="360" width="800" height="65" rx="12"/>
+          <rect x="24" y="305" width="800" height="50" rx="12"/>
+          <rect x="24" y="252" width="800" height="50" rx="12"/>
           <!-- top number boxes -->
-          <rect x="20"  y="50" width="120" height="85" rx="10"/>
-          <rect x="145" y="50" width="120" height="85" rx="10"/>
-          <rect x="270" y="50" width="120" height="85" rx="10"/>
-          <rect x="395" y="50" width="120" height="85" rx="10"/>
-          <rect x="520" y="50" width="120" height="85" rx="10"/>
-          <rect x="645" y="50" width="120" height="85" rx="10"/>
+          <rect x="24"  y="60" width="140" height="105" rx="12"/>
+          <rect x="170" y="60" width="140" height="105" rx="12"/>
+          <rect x="316" y="60" width="140" height="105" rx="12"/>
+          <rect x="462" y="60" width="140" height="105" rx="12"/>
+          <rect x="608" y="60" width="140" height="105" rx="12"/>
+          <rect x="754" y="60" width="140" height="105" rx="12"/>
         </g>
-
-        <!-- labels -->
         <g font-family="ui-sans-serif,Segoe UI,Arial" text-anchor="middle">
-          <text x="370" y="250" font-weight="900" font-size="54" fill="var(--come)" filter="url(#glow)" stroke="#5a0b0b" stroke-width="3">COME</text>
-          <text x="370" y="205" font-weight="800" font-size="22" fill="var(--glow)" filter="url(#glow)">FIELD</text>
-          <text x="370" y="305" font-weight="700" font-size="22" fill="#e9fff3">DON'T PASS BAR</text>
-          <text x="370" y="355" font-weight="900" font-size="24" fill="#e9fff3">PASS LINE</text>
+          <text x="424" y="282" font-weight="900" font-size="64" fill="#ff3b3b" filter="url(#glow)" stroke="#5a0b0b" stroke-width="3">COME</text>
+          <text x="424" y="237" font-weight="800" font-size="26" fill="var(--glow)" filter="url(#glow)">FIELD</text>
+          <text x="424" y="330" font-weight="700" font-size="24" fill="#e9fff3">DON'T PASS BAR</text>
+          <text x="424" y="386" font-weight="900" font-size="28" fill="#e9fff3">PASS LINE</text>
 
-          <text x="80"  y="95"  font-weight="900" font-size="30" fill="#e9fff3">4</text>
-          <text x="205" y="95"  font-weight="900" font-size="30" fill="#e9fff3">5</text>
-          <text x="330" y="95"  font-weight="900" font-size="30" fill="#e9fff3">6</text>
-          <text x="455" y="95"  font-weight="900" font-size="30" fill="#e9fff3">8</text>
-          <text x="580" y="95"  font-weight="900" font-size="30" fill="#e9fff3">9</text>
-          <text x="705" y="95"  font-weight="900" font-size="30" fill="#e9fff3">10</text>
+          <text x="94"  y="112"  font-weight="900" font-size="36" fill="#e9fff3">4</text>
+          <text x="240" y="112"  font-weight="900" font-size="36" fill="#e9fff3">5</text>
+          <text x="386" y="112"  font-weight="900" font-size="36" fill="#e9fff3">6</text>
+          <text x="532" y="112"  font-weight="900" font-size="36" fill="#e9fff3">8</text>
+          <text x="678" y="112"  font-weight="900" font-size="36" fill="#e9fff3">9</text>
+          <text x="824" y="112"  font-weight="900" font-size="36" fill="#e9fff3">10</text>
         </g>
 
         <!-- right prop grid -->
-        <g fill="none" stroke="#0f5a3a" stroke-width="3">
-          <rect x="750" y="40" width="230" height="385" rx="12"/>
-          <line x1="750" y1="95"  x2="980" y2="95"/>
-          <line x1="750" y1="150" x2="980" y2="150"/>
-          <line x1="750" y1="205" x2="980" y2="205"/>
-          <line x1="750" y1="260" x2="980" y2="260"/>
-          <line x1="750" y1="315" x2="980" y2="315"/>
-          <line x1="750" y1="370" x2="980" y2="370"/>
-          <line x1="843" y1="40"  x2="843" y2="425"/>
-          <line x1="916" y1="40"  x2="916" y2="425"/>
+        <g fill="none" stroke="#0f5a3a" stroke-width="4">
+          <rect x="920" y="48" width="256" height="410" rx="14"/>
+          <line x1="920" y1="110"  x2="1176" y2="110"/>
+          <line x1="920" y1="170" x2="1176" y2="170"/>
+          <line x1="920" y1="230" x2="1176" y2="230"/>
+          <line x1="920" y1="290" x2="1176" y2="290"/>
+          <line x1="920" y1="350" x2="1176" y2="350"/>
+          <line x1="920" y1="408" x2="1176" y2="408"/>
+          <line x1="1005" y1="48"  x2="1005" y2="458"/>
+          <line x1="1092" y1="48"  x2="1092" y2="458"/>
         </g>
         <g fill="#e9fff3" font-weight="700" font-family="ui-sans-serif,Segoe UI,Arial" text-anchor="middle">
-          <text x="865" y="80">ANY 7</text>
-          <text x="938" y="80">ANY CRAPS</text>
-          <text x="785" y="135">HARD 4</text>
-          <text x="865" y="135">HARD 6</text>
-          <text x="938" y="135">HARD 8</text>
-          <text x="785" y="190">HARD 10</text>
-          <text x="865" y="190">HORN</text>
-          <text x="938" y="190">YO</text>
+          <text x="962" y="90">ANY 7</text>
+          <text x="1048" y="90">ANY CRAPS</text>
+          <text x="1135" y="90">YO 11</text>
+
+          <text x="962" y="150">CRAPS 2</text>
+          <text x="1048" y="150">CRAPS 3</text>
+          <text x="1135" y="150">CRAPS 12</text>
+
+          <text x="962" y="210">HARD 4</text>
+          <text x="1048" y="210">HARD 6</text>
+          <text x="1135" y="210">HARD 8</text>
+
+          <text x="962" y="270">HARD 10</text>
+          <text x="1048" y="270">HORN</text>
+          <text x="1135" y="270">DON'T COME</text>
         </g>
       </svg>
 
+      <!-- puck -->
       <div id="puck" class="puck off">OFF</div>
 
-      <!-- click zones -->
+      <!-- interactive zones -->
       <div class="zone pass"  data-area="pass"><div class="amt" id="amt-pass">—</div></div>
       <div class="zone dont"  data-area="dont"><div class="amt" id="amt-dont">—</div></div>
       <div class="zone come"  data-area="come"><div class="amt" id="amt-come">—</div></div>
       <div class="zone field" data-area="field"><div class="amt" id="amt-field">—</div></div>
-      <div class="zone bx4"  data-area="pl4"><div class="amt" id="amt-pl4">—</div></div>
-      <div class="zone bx5"  data-area="pl5"><div class="amt" id="amt-pl5">—</div></div>
-      <div class="zone bx6"  data-area="pl6"><div class="amt" id="amt-pl6">—</div></div>
-      <div class="zone bx8"  data-area="pl8"><div class="amt" id="amt-pl8">—</div></div>
-      <div class="zone bx9"  data-area="pl9"><div class="amt" id="amt-pl9">—</div></div>
-      <div class="zone bx10" data-area="pl10"><div class="amt" id="amt-pl10">—</div></div>
+
+      <div class="zone bx4"  data-area="n4"><div class="tag" data-toggle="n4">Place</div><div class="amt" id="amt-n4">—</div></div>
+      <div class="zone bx5"  data-area="n5"><div class="tag" data-toggle="n5">Place</div><div class="amt" id="amt-n5">—</div></div>
+      <div class="zone bx6"  data-area="n6"><div class="tag" data-toggle="n6">Place</div><div class="amt" id="amt-n6">—</div></div>
+      <div class="zone bx8"  data-area="n8"><div class="tag" data-toggle="n8">Place</div><div class="amt" id="amt-n8">—</div></div>
+      <div class="zone bx9"  data-area="n9"><div class="tag" data-toggle="n9">Place</div><div class="amt" id="amt-n9">—</div></div>
+      <div class="zone bx10" data-area="n10"><div class="tag" data-toggle="n10">Place</div><div class="amt" id="amt-n10">—</div></div>
+
       <div class="zone props" id="props"></div>
+      <div class="zone dc" data-area="dontcome"><div class="amt" id="amt-dontcome">—</div></div>
     </div>
   </div>
 
   <div class="log" id="log"></div>
 </div>
 
-<!-- 5-minute demo overlay → YOUR Gumroad -->
+<!-- optional session overlay -->
 <div id="overlay" class="overlay">
   <div class="pay">
     <h2>Session limit reached</h2>
     <p>Unlock unlimited practice & strategy drills.</p>
-    <p><a href="https://crapsedge.gumroad.com/l/xvnyi" target="_blank"><button class="btn primary">Unlock Full Access</button></a>
-       <button class="btn" onclick="location.reload()">Restart Demo</button></p>
+    <p><a href="https://crapsedge.gumroad.com/l/xvnyi" target="_blank">
+      <button class="btn primary">Unlock Full Access</button></a>
+      <button class="btn" onclick="location.reload()">Restart Demo</button></p>
     <p class="mut" style="font-size:12px">Educational tool — no real-money wagering or prizes.</p>
   </div>
 </div>
 
 <script>
 (()=>{
-  /* ===== SETTINGS ===== */
-  const ENABLE_TIMER = true;
-  const DEMO_MS = 5*60*1000;
-  const FIELD_DOUBLE = [2,12];
+/* ===== SETTINGS ===== */
+const ENABLE_TIMER=false, DEMO_MS=5*60*1000;
+const FIELD_DOUBLE = [2,12]; // 2x on 2 & 12
+const MAX_ODDS_MULT = 3;     // allow up to 3x odds behind line/come
 
-  /* ===== STATE ===== */
-  let bank=1000, point=null, passOdds=0;
-  const bets = {pass:0,dont:0,come:0,field:0,pl4:0,pl5:0,pl6:0,pl8:0,pl9:0,pl10:0,any7:0,anyCraps:0,h4:0,h6:0,h8:0,h10:0};
-  const placed=[];                 // chip elements
-  const stackCount={};            // per-zone chip count for neat stacks
-  const $=id=>document.getElementById(id), money=n=>'$'+n.toLocaleString();
+/* ===== STATE ===== */
+let bank=5000, point=null;
+let lastDice=[1,1];
+const $=id=>document.getElementById(id), money=n=>'$'+n.toLocaleString();
+const placed=[];                 // chip elements, for undo
+const stackCount={};            // neat stacks per zone
+let denom=5, denomClass='R';
 
-  function updateHUD(){
-    $('bank').textContent=money(bank);
-    $('point').textContent = point? point:'—';
-    ['pass','dont','come','field','pl4','pl5','pl6','pl8','pl9','pl10'].forEach(k=>{
-      const el=$('amt-'+k); if(el) el.textContent=bets[k]?money(bets[k]):'—';
-    });
-    const puck=$('puck'); puck.className='puck '+(point?'on':'off'); puck.textContent=point?('ON '+point):'OFF';
-  }
-  function log(msg,cls=''){ const d=document.createElement('div'); d.innerHTML=msg; if(cls)d.className=cls; $('log').prepend(d); }
+const lineBets = {pass:0, dont:0, passOdds:0, dontOdds:0};
+const comeBets = {come:0, dontcome:0};
+const comePoints = { // per-number flat + odds for Come / Don't Come
+  4:{flat:0, odds:0, dflat:0, dodds:0},
+  5:{flat:0, odds:0, dflat:0, dodds:0},
+  6:{flat:0, odds:0, dflat:0, dodds:0},
+  8:{flat:0, odds:0, dflat:0, dodds:0},
+  9:{flat:0, odds:0, dflat:0, dodds:0},
+  10:{flat:0, odds:0, dflat:0, dodds:0},
+};
+const placeMap = {n4:4,n5:5,n6:6,n8:8,n9:9,n10:10};
+const placeBets = { // supports modes: place/buy/lay
+  n4:{amt:0,mode:'place', lay:0}, n5:{amt:0,mode:'place', lay:0},
+  n6:{amt:0,mode:'place', lay:0}, n8:{amt:0,mode:'place', lay:0},
+  n9:{amt:0,mode:'place', lay:0}, n10:{amt:0,mode:'place', lay:0},
+};
+const props = {any7:0, anyCraps:0, yo:0, c2:0, c3:0, c12:0, h4:0, h6:0, h8:0, h10:0, horn:0};
 
-  /* ===== chip helpers (stack neatly) ===== */
-  let denom=5, denomClass='R';
-  document.querySelectorAll('.chipSel').forEach(s=>{
-    s.addEventListener('click',()=>{ document.querySelectorAll('.chipSel').forEach(x=>x.classList.remove('active')); s.classList.add('active'); denom=+s.dataset.val; denomClass=s.dataset.c||'R'; });
+/* ===== UI helpers ===== */
+function updateHUD(){
+  $('bank').textContent=money(bank);
+  $('point').textContent = point? point:'—';
+  // amounts
+  for(const k of ['pass','dont']) $('amt-'+k).textContent = lineBets[k]?money(lineBets[k]):'—';
+  $('amt-come').textContent = comeBets.come?money(comeBets.come):'—';
+  $('amt-dontcome').textContent = comeBets.dontcome?money(comeBets.dontcome):'—';
+  for(const key in placeBets) $('amt-'+key).textContent = (placeBets[key].amt||placeBets[key].lay)?money(placeBets[key].amt||placeBets[key].lay):'—';
+  $('amt-field').textContent = fieldBet?money(fieldBet):'—';
+  const puck=$('puck'); puck.className='puck '+(point?'on':'off'); puck.textContent=point?('ON '+point):'OFF';
+  // tag labels (Place/Buy/Lay)
+  document.querySelectorAll('.tag').forEach(tag=>{
+    const id=tag.dataset.toggle; const b=placeBets[id];
+    tag.textContent = (b.mode==='place' ? 'Place' : (b.mode==='buy' ? 'Buy' : 'Lay'));
   });
+}
+function log(msg,cls=''){ const d=document.createElement('div'); d.innerHTML=msg; if(cls)d.className=cls; $('log').prepend(d); }
 
-  function zoneCenter(z){ const tb=$('table').getBoundingClientRect(), r=z.getBoundingClientRect(); return {x:r.left-tb.left+r.width*.5,y:r.top-tb.top+r.height*.6}; }
-  function addChip(zoneKey, zoneEl, amt, cls=denomClass){
-    const c=zoneCenter(zoneEl);
-    const n = (stackCount[zoneKey]||0)+1; stackCount[zoneKey]=n;
-    const chip=document.createElement('div'); chip.className='chip '+cls; chip.textContent='$'+amt;
-    chip.style.left=c.x+'px'; chip.style.top=(c.y - (n-1)*6)+'px'; // tidy stack
-    $('table').appendChild(chip);
-    placed.push({area:zoneKey, amt, el:chip});
-    return chip;
-  }
+/* chip selection */
+document.querySelectorAll('.chipSel').forEach(s=>{
+  s.addEventListener('click',()=>{ document.querySelectorAll('.chipSel').forEach(x=>x.classList.remove('active')); s.classList.add('active'); denom=+s.dataset.val; denomClass=s.dataset.c||'R'; });
+});
 
-  // click zones
-  document.querySelectorAll('.zone').forEach(z=>{
-    z.addEventListener('click',(e)=>{
-      const area=z.dataset.area || z.id;
-      if(!area) return;
+/* place/stack chips visually */
+function zoneCenter(z){ const tb=$('table').getBoundingClientRect(), r=z.getBoundingClientRect(); return {x:r.left-tb.left+r.width*.5,y:r.top-tb.top+r.height*.6}; }
+function addChip(zoneKey, zoneEl, amt, cls=denomClass){
+  const c=zoneCenter(zoneEl);
+  const n = (stackCount[zoneKey]||0)+1; stackCount[zoneKey]=n;
+  const chip=document.createElement('div'); chip.className='chip '+cls; chip.textContent='$'+amt;
+  chip.style.left=c.x+'px'; chip.style.top=(c.y - (n-1)*6)+'px';
+  $('table').appendChild(chip);
+  placed.push({area:zoneKey, amt, el:chip});
+  return chip;
+}
 
-      if(area==='pass' && point){ // add odds when point ON
-        if(!bets.pass) return alert('Place a Pass Line bet first.');
-        if(bank<denom) return alert('Not enough bank.');
-        bank-=denom; passOdds+=denom; addChip('passOdds',z,denom,'Y');
-        log(`Added PASS ODDS ${money(denom)} behind ${point}.`,'mut'); return updateHUD();
-      }
-
-      if((area==='pass'||area==='dont') && point) return alert('Pass/Don’t only on come-out.');
-
-      if(bank<denom) return alert('Not enough bank.');
-      bank-=denom;
-
-      if(area==='props'){
-        const r=z.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
-        let which='any7'; if(y<0.18 && x>0.66) which='anyCraps'; else if(y<0.34 && x<0.33) which='h4';
-        else if(y<0.34 && x<0.66) which='h6'; else if(y<0.34) which='h8'; else which='h10';
-        bets[which]+=denom; addChip(which,z,denom,'P'); log(`Prop bet placed: <b>${which}</b> ${money(denom)}.`); return updateHUD();
-      }
-
-      if(area==='come'){ bets.come+=denom; addChip('come',z,denom); log(`Come bet ${money(denom)} placed.`, 'mut'); return updateHUD(); }
-
-      bets[area]+=denom; addChip(area,z,denom); updateHUD();
-    });
+/* buy/lay toggle buttons */
+document.querySelectorAll('.tag').forEach(tag=>{
+  tag.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const id=tag.dataset.toggle; const b=placeBets[id];
+    b.mode = (b.mode==='place' ? 'buy' : b.mode==='buy' ? 'lay' : 'place');
+    updateHUD();
   });
+});
 
-  $('undo').onclick=()=>{
-    const last=placed.pop(); if(!last)return;
-    bank+=last.amt; last.el.remove();
-    if(last.area==='passOdds'){ passOdds-=last.amt; }
-    else { bets[last.area]-=last.amt; }
-    stackCount[last.area]=Math.max(0,(stackCount[last.area]||1)-1);
-    updateHUD();
-  };
+/* ===== wagers ===== */
+let fieldBet=0;
 
-  $('clear').onclick=()=>{
-    const total = Object.values(bets).reduce((a,b)=>a+b,0)+passOdds;
-    bank += total; for(const k in bets) bets[k]=0; passOdds=0;
-    placed.forEach(p=>p.el.remove()); placed.length=0;
-    for(const k in stackCount) stackCount[k]=0;
-    updateHUD();
-  };
-
-  /* ===== dice animation (pip dice, bounce) ===== */
-  const canvas=$('diceCanvas'), ctx=canvas.getContext('2d');
-  function resize(){ const r=$('table').getBoundingClientRect(); canvas.width=r.width; canvas.height=r.height; }
-  addEventListener('resize',resize); resize();
-
-  function drawPip(x,y,r){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
-  function drawDie(d){
-    ctx.save(); ctx.translate(d.x,d.y); ctx.rotate(d.rot);
-    const s=38, r=s/2; const pip=r*0.22;
-    const grd=ctx.createLinearGradient(-r,-r,r,r);
-    grd.addColorStop(0,'#fff'); grd.addColorStop(1,'#e8e8e8');
-    ctx.fillStyle=grd; ctx.strokeStyle='#111'; ctx.lineWidth=2;
-    ctx.fillRect(-r,-r,s,s); ctx.strokeRect(-r,-r,s,s);
-    ctx.fillStyle='#111';
-    const p=[[-.5,-.5],[.5,.5],[-.5,.5],[.5,-.5],[0,0],[-.5,0],[.5,0]];
-    const layout={1:[4],2:[0,1],3:[0,4,1],4:[0,1,2,3],5:[0,1,2,3,4],6:[0,1,2,3,5,6]};
-    layout[d.val].forEach(i=>{const [px,py]=p[i]; drawPip(px*r*.9,py*r*.9,pip);});
-    ctx.restore();
+function bet(area, el, clickEvent){
+  if(bank<denom) return alert('Not enough bank.');
+  // handle odds taps
+  if(area==='pass' && point){
+    if(!lineBets.pass) return alert('Place a Pass Line bet first.');
+    const cap = Math.max(lineBets.pass*MAX_ODDS_MULT - lineBets.passOdds, 0);
+    if(cap<=0) return alert('Max odds reached.');
+    const amt = Math.min(denom, cap);
+    bank-=amt; lineBets.passOdds+=amt; addChip('passOdds',el,amt,'Y'); log(`PASS ODDS +${money(amt)} (max ${MAX_ODDS_MULT}x)`, 'mut'); updateHUD(); return;
   }
-
-  function rollDiceAnim(){
-    const die=()=>({x:canvas.width*0.15+Math.random()*canvas.width*0.7,y:canvas.height*0.3,
-      vx:(Math.random()*5+4)*(Math.random()<.5?-1:1),vy:-(Math.random()*8+10),
-      rot:0,vr:(Math.random()*12+12)*(Math.random()<.5?-1:1),val:1+Math.floor(Math.random()*6)});
-    const d1=die(), d2=die(); const g=.85,bounce=.54,fric=.992; let t=0;
-    function step(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      [d1,d2].forEach(d=>{
-        d.vy+=g; d.x+=d.vx; d.y+=d.vy; d.rot+=d.vr*.03; d.vx*=fric; d.vr*=fric;
-        if(d.y>canvas.height-34){ d.y=canvas.height-34; d.vy*=-bounce; d.val=1+Math.floor(Math.random()*6);}
-        if(d.x<34||d.x>canvas.width-34){ d.vx*=-bounce; d.val=1+Math.floor(Math.random()*6);}
-        drawDie(d);
-      });
-      if(++t<70) requestAnimationFrame(step); else { ctx.clearRect(0,0,canvas.width,canvas.height); drawDie(d1); drawDie(d2); }
+  if(area==='dont' && point){
+    if(!lineBets.dont) return alert('Place a Don’t Pass bet first.');
+    const cap = Math.max(lineBets.dont*MAX_ODDS_MULT - lineBets.dontOdds, 0);
+    if(cap<=0) return alert('Max odds reached.');
+    const amt = Math.min(denom, cap);
+    bank-=amt; lineBets.dontOdds+=amt; addChip('dontOdds',el,amt,'Y'); log(`DON’T PASS LAY ODDS +${money(amt)} (max ${MAX_ODDS_MULT}x)`, 'mut'); updateHUD(); return;
+  }
+  // props grid click picking
+  if(area==='props'){
+    const r=el.getBoundingClientRect(), x=(clickEvent.clientX-r.left)/r.width, y=(clickEvent.clientY-r.top)/r.height;
+    let which='any7';
+    if(y<0.15){ if(x<0.33) which='any7'; else if(x<0.66) which='anyCraps'; else which='yo'; }
+    else if(y<0.31){ if(x<0.33) which='c2'; else if(x<0.66) which='c3'; else which='c12'; }
+    else if(y<0.47){ if(x<0.33) which='h4'; else if(x<0.66) which='h6'; else which='h8'; }
+    else if(y<0.63){ if(x<0.33) which='h10'; else if(x<0.66) which='horn'; else which='dontcome'; } // right cell label is DC, but DC has its own box
+    if(which==='dontcome'){ // ignore here; use DC box
+      return;
     }
-    step();
-    return new Promise(res=> setTimeout(()=>res([d1.val,d2.val,d1.val+d2.val]), 1100));
+    bank-=denom; props[which]+=denom; addChip(which, el, denom, 'P');
+    log(`Prop: <b>${which}</b> +${money(denom)}`,'mut'); updateHUD(); return;
   }
 
-  /* ===== payouts ===== */
-  function payPlace(n,a){ if(!a) return 0; if(n===4||n===10)return Math.floor(a*9/5); if(n===5||n===9)return Math.floor(a*7/5); if(n===6||n===8)return Math.floor(a*7/6); return 0; }
-  function payOdds(n,a){ if(!a) return 0; if(n===4||n===10) return a*2; if(n===5||n===9) return Math.floor(a*3/2); if(n===6||n===8) return Math.floor(a*6/5); return 0; }
+  // normal placements
+  bank-=denom;
+  if(area==='field'){ fieldBet+=denom; addChip('field', el, denom); updateHUD(); return; }
 
-  let lastDice=[1,1];
-  function resolveProps(sum){
-    if(bets.any7){ if(sum===7){ bank+=bets.any7*5; log(`Any 7 hits! +${money(bets.any7*4)}`,'ok'); } else log('Any 7 loses','bad'); bets.any7=0; }
-    if(bets.anyCraps){ if([2,3,12].includes(sum)){ bank+=bets.anyCraps*8; log(`Any Craps hits! +${money(bets.anyCraps*7)}`,'ok'); } else log('Any Craps loses','bad'); bets.anyCraps=0; }
-    function hardHit(n,die){const pairs={4:[2,2],6:[3,3],8:[4,4],10:[5,5]};return sum===n && ((die[0]===pairs[n][0]&&die[1]===pairs[n][1])||(die[1]===pairs[n][0]&&die[0]===pairs[n][1]));}
-    function payHard(n,key,rate){ if(!bets[key])return; if(sum===7 || (sum===n && !hardHit(n,lastDice))){ log(`Hard ${n} loses`,'bad'); bets[key]=0; return;}
-      if(hardHit(n,lastDice)){ bank+=bets[key]*(rate+1); log(`Hard ${n} hits! +${money(bets[key]*rate)}`,'ok'); bets[key]=0; }
+  if(area==='come'){
+    if(point){ comeBets.come+=denom; addChip('come', el, denom); log(`Come ${money(denom)} placed.`, 'mut'); updateHUD(); return; }
+    // come-out → acts like Pass
+    lineBets.pass+=denom; addChip('pass', $('table'), denom); log(`Pass Line ${money(denom)} placed.`, 'mut'); updateHUD(); return;
+  }
+  if(area==='dont'){
+    if(point){ lineBets.dont+=denom; addChip('dont', $('table'), denom); log(`Don’t Pass ${money(denom)} placed.`, 'mut'); updateHUD(); return; }
+    // come-out don't
+    lineBets.dont+=denom; addChip('dont', $('table'), denom); log(`Don’t Pass ${money(denom)} placed.`, 'mut'); updateHUD(); return;
+  }
+  if(area==='pass'){
+    if(point){ lineBets.pass+=denom; addChip('pass', $('table'), denom); log(`Pass Line ${money(denom)} placed.`, 'mut'); updateHUD(); return; }
+    lineBets.pass+=denom; addChip('pass', $('table'), denom); log(`Pass Line ${money(denom)} placed.`, 'mut'); updateHUD(); return;
+  }
+
+  if(area==='dontcome'){
+    if(!point){ // on come-out, DC is inactive until point on
+      comeBets.dontcome+=denom; addChip('dontcome', $('table'), denom,'B'); log(`Don’t Come ${money(denom)} placed.`, 'mut'); updateHUD(); return;
+    } else {
+      comeBets.dontcome+=denom; addChip('dontcome', $('table'), denom,'B'); log(`Don’t Come ${money(denom)} placed.`, 'mut'); updateHUD(); return;
     }
-    payHard(4,'h4',7); payHard(6,'h6',9); payHard(8,'h8',9); payHard(10,'h10',7);
-  }
-  function resolveField(sum){
-    if(!bets.field) return;
-    if([2,3,4,9,10,11,12].includes(sum)){ const m = FIELD_DOUBLE.includes(sum)?2:1; bank += bets.field*(1+m); log(`Field ${sum} pays ${m}:1 +${money(bets.field*m)}`,'ok'); }
-    else log('Field loses','bad'); bets.field=0;
-  }
-  function moveCome(sum){
-    if(bets.come){ const k='pl'+sum; bets[k]+=bets.come; log(`Come travels to ${sum} (${money(bets.come)})`,'mut'); bets.come=0; }
   }
 
-  function resolveComeOut(sum){
-    resolveProps(sum); resolveField(sum);
-    if(sum===7||sum===11){ if(bets.pass){ bank+=bets.pass*2; log(`Natural ${sum}: Pass wins +${money(bets.pass)}`,'ok'); bets.pass=0;} if(bets.dont){ log(`Natural: Don’t Pass loses ${money(bets.dont)}`,'bad'); bets.dont=0; } }
-    else if([2,3,12].includes(sum)){ if(bets.pass){ log(`Craps ${sum}: Pass loses ${money(bets.pass)}`,'bad'); bets.pass=0;}
-      if(bets.dont){ if(sum===12){ bank+=bets.dont; log('Don’t Pass push (bar 12)','mut'); } else { bank+=bets.dont*2; log(`Don’t Pass wins on ${sum} +${money(bets.dont)}`,'ok'); } bets.dont=0; } }
-    else { point=sum; log(`Point established: <b>${point}</b>`,'mut'); moveCome(sum); }
+  // number boxes: place/buy/lay
+  if(area in placeBets){
+    const b=placeBets[area];
+    if(b.mode==='lay'){ b.lay+=denom; addChip(area+'-lay', $('table'), denom, 'B'); log(`Lay ${placeMap[area]} +${money(denom)}`,'mut'); }
+    else { b.amt+=denom; addChip(area, $('table'), denom, b.mode==='buy'?'Y':undefined); log(`${b.mode==='buy'?'Buy':'Place'} ${placeMap[area]} +${money(denom)}`,'mut'); }
+    updateHUD(); return;
   }
-  function resolvePoint(sum){
-    resolveProps(sum); resolveField(sum);
-    if(sum===7){
-      if(bets.pass) log(`Seven-out: Pass loses ${money(bets.pass)}`,'bad');
-      if(bets.dont){ bank+=bets.dont*2; log(`Seven-out: Don’t Pass wins +${money(bets.dont)}`,'ok'); }
-      [4,5,6,8,9,10].forEach(n=>{ const k='pl'+n; if(bets[k]){ log(`Place ${n} loses ${money(bets[k])}`,'bad'); bets[k]=0; }});
-      passOdds=0; bets.pass=0; bets.dont=0; bets.come=0; point=null; return;
+}
+
+document.querySelectorAll('.zone').forEach(z=>{
+  z.addEventListener('click',(e)=>{
+    const area=z.dataset.area || z.id;
+    if(!area) return;
+    bet(area, z.id==='props'?z:$('table'), e);
+  });
+});
+
+/* Undo & Clear */
+$('undo').onclick=()=>{
+  const last=placed.pop(); if(!last)return;
+  bank+=last.amt; last.el.remove();
+  const a=last.area;
+  if(a==='passOdds'){ lineBets.passOdds-=last.amt; }
+  else if(a==='dontOdds'){ lineBets.dontOdds-=last.amt; }
+  else if(a==='field'){ fieldBet-=last.amt; }
+  else if(a in props){ props[a]-=last.amt; }
+  else if(a==='pass'){ lineBets.pass-=last.amt; }
+  else if(a==='dont'){ lineBets.dont-=last.amt; }
+  else if(a==='come'){ comeBets.come-=last.amt; if(comeBets.come<0) comeBets.come=0; }
+  else if(a==='dontcome'){ comeBets.dontcome-=last.amt; if(comeBets.dontcome<0) comeBets.dontcome=0; }
+  else if(a.endsWith('-lay')){ const key=a.replace('-lay',''); placeBets[key].lay-=last.amt; }
+  else if(a in placeBets){ placeBets[a].amt-=last.amt; }
+  updateHUD();
+};
+
+$('clear').onclick=()=>{
+  const total =
+    lineBets.pass + lineBets.dont + lineBets.passOdds + lineBets.dontOdds +
+    comeBets.come + comeBets.dontcome + fieldBet +
+    Object.values(props).reduce((a,b)=>a+b,0) +
+    Object.values(placeBets).reduce((a,b)=>a+(b.amt||0)+(b.lay||0),0) +
+    Object.values(comePoints).reduce((a,b)=>a+b.flat+b.odds+b.dflat+b.dodds,0);
+  bank += total;
+
+  lineBets.pass=lineBets.dont=lineBets.passOdds=lineBets.dontOdds=0;
+  comeBets.come=comeBets.dontcome=0; fieldBet=0; for(const k in props) props[k]=0;
+  for(const k in placeBets){ placeBets[k].amt=0; placeBets[k].lay=0; }
+  for(const n of [4,5,6,8,9,10]){ comePoints[n].flat=comePoints[n].odds=comePoints[n].dflat=comePoints[n].dodds=0; }
+  placed.forEach(p=>p.el.remove()); placed.length=0; for(const k in stackCount) stackCount[k]=0;
+  updateHUD();
+};
+
+/* ===== dice animation ===== */
+const canvas=$('diceCanvas'), ctx=canvas.getContext('2d');
+function resize(){ const r=$('table').getBoundingClientRect(); canvas.width=r.width; canvas.height=r.height; }
+addEventListener('resize',resize); resize();
+
+function drawPip(x,y,r){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
+function drawDie(d){
+  ctx.save(); ctx.translate(d.x,d.y); ctx.rotate(d.rot);
+  const s=48, r=s/2; const pip=r*0.22;
+  const grd=ctx.createLinearGradient(-r,-r,r,r);
+  grd.addColorStop(0,'#fff'); grd.addColorStop(1,'#e8e8e8');
+  ctx.fillStyle=grd; ctx.strokeStyle='#111'; ctx.lineWidth=2;
+  ctx.fillRect(-r,-r,s,s); ctx.strokeRect(-r,-r,s,s);
+  ctx.fillStyle='#111';
+  const p=[[-.5,-.5],[.5,.5],[-.5,.5],[.5,-.5],[0,0],[-.5,0],[.5,0]];
+  const layout={1:[4],2:[0,1],3:[0,4,1],4:[0,1,2,3],5:[0,1,2,3,4],6:[0,1,2,3,5,6]};
+  layout[d.val].forEach(i=>{const [px,py]=p[i]; drawPip(px*r*.9,py*r*.9,pip);});
+  ctx.restore();
+}
+function rollDiceAnim(){
+  const die=()=>({x:canvas.width*0.15+Math.random()*canvas.width*0.7,y:canvas.height*0.28,
+    vx:(Math.random()*5+4)*(Math.random()<.5?-1:1),vy:-(Math.random()*8+10),
+    rot:0,vr:(Math.random()*12+12)*(Math.random()<.5?-1:1),val:1+Math.floor(Math.random()*6)});
+  const d1=die(), d2=die(); const g=.85,bounce=.54,fric=.992; let t=0;
+  function step(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    [d1,d2].forEach(d=>{
+      d.vy+=g; d.x+=d.vx; d.y+=d.vy; d.rot+=d.vr*.03; d.vx*=fric; d.vr*=fric;
+      if(d.y>canvas.height-38){ d.y=canvas.height-38; d.vy*=-bounce; d.val=1+Math.floor(Math.random()*6);}
+      if(d.x<38||d.x>canvas.width-38){ d.vx*=-bounce; d.val=1+Math.floor(Math.random()*6);}
+      drawDie(d);
+    });
+    if(++t<70) requestAnimationFrame(step); else { ctx.clearRect(0,0,canvas.width,canvas.height); drawDie(d1); drawDie(d2); }
+  }
+  step();
+  return new Promise(res=> setTimeout(()=>res([d1.val,d2.val,d1.val+d2.val]), 1100));
+}
+
+/* ===== Payout helpers ===== */
+function payPlace(n,a){ if(!a) return 0; if(n===4||n===10)return Math.floor(a*9/5); if(n===5||n===9)return Math.floor(a*7/5); if(n===6||n===8)return Math.floor(a*7/6); return 0; }
+function buyWin(n,a){ if(!a) return 0; // 5% vig on win
+  if(n===4||n===10) return Math.floor(a*2 - Math.ceil(a*0.05));
+  if(n===5||n===9)  return Math.floor(a*1.5 - Math.ceil(a*0.05));
+  if(n===6||n===8)  return Math.floor(a*1.2 - Math.ceil(a*0.05));
+  return 0;
+}
+function layWin(n,a){ if(!a) return 0; // lay wins when 7 rolls; pays inverse, minus 5% vig on winnings
+  if(n===4||n===10) return Math.floor(a/2 - Math.ceil((a/2)*0.05));
+  if(n===5||n===9)  return Math.floor(a*2/3 - Math.ceil((a*2/3)*0.05));
+  if(n===6||n===8)  return Math.floor(a*5/6 - Math.ceil((a*5/6)*0.05));
+  return 0;
+}
+function payOdds(n,a){ if(!a) return 0; if(n===4||n===10) return a*2; if(n===5||n===9) return Math.floor(a*3/2); if(n===6||n===8) return Math.floor(a*6/5); return 0; }
+function layOddsWin(n,a){ if(!a) return 0; if(n===4||n===10) return Math.floor(a/2); if(n===5||n===9) return Math.floor(a*2/3); if(n===6||n===8) return Math.floor(a*5/6); return 0; }
+
+/* ===== Resolve helpers ===== */
+function resolveProps(sum){
+  if(props.any7){ if(sum===7){ bank+=props.any7*5; log(`Any 7 hits +${money(props.any7*4)}`,'ok'); } else log('Any 7 loses','bad'); props.any7=0; }
+  if(props.anyCraps){ if([2,3,12].includes(sum)){ bank+=props.anyCraps*8; log(`Any Craps hits +${money(props.anyCraps*7)}`,'ok'); } else log('Any Craps loses','bad'); props.anyCraps=0; }
+  if(props.yo){ if(sum===11){ bank+=props.yo*16; log(`Yo 11 hits +${money(props.yo*15)}`,'ok'); } else log('Yo 11 loses','bad'); props.yo=0; }
+  if(props.c2){ if(sum===2){ bank+=props.c2*31; log(`Craps 2 hits +${money(props.c2*30)}`,'ok'); } else log('Craps 2 loses','bad'); props.c2=0; }
+  if(props.c3){ if(sum===3){ bank+=props.c3*16; log(`Craps 3 hits +${money(props.c3*15)}`,'ok'); } else log('Craps 3 loses','bad'); props.c3=0; }
+  if(props.c12){ if(sum===12){ bank+=props.c12*31; log(`Craps 12 hits +${money(props.c12*30)}`,'ok'); } else log('Craps 12 loses','bad'); props.c12=0; }
+
+  // horn splits equally into 2/3/11/12
+  if(props.horn){
+    const q=props.horn/4; // simple equal split
+    let win=0;
+    if(sum===2) win += q*31;
+    if(sum===3) win += q*16;
+    if(sum===11) win += q*16;
+    if(sum===12) win += q*31;
+    if(win>0){ bank+=win; log(`Horn hits +${money(win - props.horn)}`,'ok'); }
+    else log('Horn loses','bad');
+    props.horn=0;
+  }
+
+  // hardways: off on come-out by default (common rule), we'll keep active always for simplicity
+  function hardHit(n){ const need={4:[2,2],6:[3,3],8:[4,4],10:[5,5]}[n]; return lastDice[0]===need[0] && lastDice[1]===need[1] || lastDice[1]===need[0] && lastDice[0]===need[1]; }
+  function payHard(n,key,rate){ if(!props[key])return;
+    if(sum===7 || (sum===n && !hardHit(n))){ log(`Hard ${n} loses`,'bad'); props[key]=0; return; }
+    if(hardHit(n)){ bank+=props[key]*(rate+1); log(`Hard ${n} hits +${money(props[key]*rate)}`,'ok'); props[key]=0; }
+  }
+  payHard(4,'h4',7); payHard(6,'h6',9); payHard(8,'h8',9); payHard(10,'h10',7);
+}
+function resolveField(sum){
+  if(!fieldBet) return;
+  if([2,3,4,9,10,11,12].includes(sum)){
+    const m = FIELD_DOUBLE.includes(sum)?2:1;
+    bank += fieldBet*(1+m); log(`Field ${sum} pays ${m}:1 +${money(fieldBet*m)}`,'ok');
+  } else { log('Field loses','bad'); }
+  fieldBet=0;
+}
+function moveCome(sum){
+  if(comeBets.come){
+    if([2,3,12].includes(sum)){ log(`Come loses on ${sum}: −${money(comeBets.come)}`,'bad'); comeBets.come=0; return; }
+    if(sum===7){ log(`Come loses on 7-out: −${money(comeBets.come)}`,'bad'); comeBets.come=0; return; }
+    comePoints[sum].flat += comeBets.come; log(`Come travels to ${sum} (${money(comeBets.come)})`,'mut'); comeBets.come=0;
+  }
+  if(comeBets.dontcome){
+    if(sum===7){ bank += comeBets.dontcome*2; log(`Don’t Come wins on 7 (bar on come-out only) +${money(comeBets.dontcome)}`,'ok'); comeBets.dontcome=0; return; }
+    if([2,3].includes(sum)){ bank += comeBets.dontcome*2; log(`Don’t Come wins on ${sum} +${money(comeBets.dontcome)}`,'ok'); comeBets.dontcome=0; return; }
+    if(sum===12){ bank += comeBets.dontcome; log(`Don’t Come bar 12 (push)`,'mut'); comeBets.dontcome=0; return; }
+    // travels behind number
+    comePoints[sum].dflat += comeBets.dontcome; log(`Don’t Come behind ${sum} (${money(comeBets.dontcome)})`,'mut'); comeBets.dontcome=0;
+  }
+}
+function addComeOdds(n, side){ // side 'pass' or 'dont'
+  const k = comePoints[n];
+  if(side==='pass' && k.flat){
+    const cap = Math.max(k.flat*MAX_ODDS_MULT - k.odds, 0);
+    const amt = Math.min(denom, cap); if(amt<=0) return alert('Max odds reached.');
+    if(bank<amt) return alert('Not enough bank.');
+    bank-=amt; k.odds+=amt; addChip('comeOdds'+n, $('table'), amt, 'Y'); log(`COME ${n} odds +${money(amt)}`, 'mut'); updateHUD();
+  } else if(side==='dont' && k.dflat){
+    const cap = Math.max(k.dflat*MAX_ODDS_MULT - k.dodds, 0);
+    const amt = Math.min(denom, cap); if(amt<=0) return alert('Max lay odds reached.');
+    if(bank<amt) return alert('Not enough bank.');
+    bank-=amt; k.dodds+=amt; addChip('dcomeOdds'+n, $('table'), amt, 'Y'); log(`DON’T COME ${n} lay odds +${money(amt)}`, 'mut'); updateHUD();
+  }
+}
+
+/* ===== Resolution paths ===== */
+function resolveComeOut(sum){
+  resolveProps(sum); resolveField(sum);
+
+  // natural
+  if(sum===7||sum===11){
+    if(lineBets.pass){ bank+=lineBets.pass*2; log(`Natural ${sum}: Pass wins +${money(lineBets.pass)}`,'ok'); lineBets.pass=0; }
+    if(lineBets.dont){ log(`Natural ${sum}: Don’t Pass loses −${money(lineBets.dont)}`,'bad'); lineBets.dont=0; }
+    return;
+  }
+  // craps
+  if([2,3,12].includes(sum)){
+    if(lineBets.pass){ log(`Craps ${sum}: Pass loses −${money(lineBets.pass)}`,'bad'); lineBets.pass=0; }
+    if(lineBets.dont){
+      if(sum===12){ bank+=lineBets.dont; log('Don’t Pass push (bar 12)','mut'); }
+      else { bank+=lineBets.dont*2; log(`Don’t Pass wins on ${sum} +${money(lineBets.dont)}`,'ok'); }
+      lineBets.dont=0;
     }
-    if(sum===point){
-      if(bets.pass){ bank+=bets.pass*2; log(`POINT ${point} MADE: Pass pays +${money(bets.pass)}`,'ok'); bets.pass=0; }
-      if(passOdds){ const w=payOdds(point,passOdds); bank+=passOdds+w; log(`Pass odds pay +${money(w)} (odds ${money(passOdds)} returned)`, 'ok'); passOdds=0; }
-      const k='pl'+point; if(bets[k]){ const w=payPlace(point,bets[k]); bank+=w; log(`Place ${point} hits +${money(w)}`,'ok'); }
-      point=null; return;
+    return;
+  }
+  // point set
+  point=sum; log(`Point ON: <b>${point}</b>`,'mut'); moveCome(sum);
+}
+function resolvePoint(sum){
+  resolveProps(sum); resolveField(sum);
+
+  if(sum===7){
+    // line
+    if(lineBets.pass){ log(`Seven-out: Pass loses −${money(lineBets.pass)}`,'bad'); }
+    if(lineBets.passOdds){ log(`Pass odds lost −${money(lineBets.passOdds)}`,'bad'); }
+    if(lineBets.dont){ bank+=lineBets.dont*2; log(`Seven-out: Don’t Pass wins +${money(lineBets.dont)}`,'ok'); }
+    if(lineBets.dontOdds){ bank+=lineBets.dontOdds + layOddsWin(point, lineBets.dontOdds); log(`Don’t Pass lay odds pay +${money(layOddsWin(point,lineBets.dontOdds))}`,'ok'); }
+    lineBets.pass=lineBets.passOdds=0; lineBets.dont=0; lineBets.dontOdds=0;
+
+    // place/buy lose, lay win
+    for(const key in placeBets){
+      const n=placeMap[key], b=placeBets[key];
+      if(b.amt){ log(`Place/Buy ${n} loses −${money(b.amt)}`,'bad'); b.amt=0; }
+      if(b.lay){ const w=layWin(n,b.lay); bank+=b.lay+w; log(`Lay ${n} wins +${money(w)}`,'ok'); b.lay=0; }
     }
-    if([2,3,12].includes(sum)){ if(bets.come){ log(`Come loses on ${sum}: −${money(bets.come)}`,'bad'); bets.come=0; } return; }
-    moveCome(sum);
-    const map={4:'pl4',5:'pl5',6:'pl6',8:'pl8',9:'pl9',10:'pl10'}, key=map[sum];
-    if(key && bets[key]){ const w=payPlace(sum,bets[key]); bank+=w; log(`Place ${sum} hits +${money(w)}`,'ok'); }
+
+    // come points: pass-side lose, dont-side win
+    for(const n of [4,5,6,8,9,10]){
+      const k=comePoints[n];
+      if(k.flat){ log(`Come ${n} loses −${money(k.flat)}`,'bad'); }
+      if(k.odds){ log(`Come ${n} odds lost −${money(k.odds)}`,'bad'); }
+      if(k.dflat){ bank+=k.dflat*2; log(`Don’t Come ${n} wins +${money(k.dflat)}`,'ok'); }
+      if(k.dodds){ const w=layOddsWin(n,k.dodds); bank+=k.dodds+w; log(`Don’t Come ${n} lay odds pay +${money(w)}`,'ok'); }
+      k.flat=k.odds=k.dflat=k.dodds=0;
+    }
+
+    point=null; return;
   }
 
-  $('roll').onclick=async()=>{ const [a,b,sum]=await rollDiceAnim(); lastDice=[a,b]; log(`Roll: <b>${a}+${b} = ${sum}</b>`); if(!point) resolveComeOut(sum); else resolvePoint(sum); updateHUD(); };
+  // point made
+  if(sum===point){
+    if(lineBets.pass){ bank+=lineBets.pass*2; log(`POINT ${point} MADE: Pass pays +${money(lineBets.pass)}`,'ok'); lineBets.pass=0; }
+    if(lineBets.passOdds){ const w=payOdds(point,lineBets.passOdds); bank+=lineBets.passOdds+w; log(`Pass odds pay +${money(w)}`,'ok'); lineBets.passOdds=0; }
+    if(lineBets.dont){ log(`Point made: Don’t Pass loses −${money(lineBets.dont)}`,'bad'); lineBets.dont=0; }
+    if(lineBets.dontOdds){ log(`Point made: Don’t lay odds lose −${money(lineBets.dontOdds)}`,'bad'); lineBets.dontOdds=0; }
 
-  /* init */
-  updateHUD(); log('Pick a chip, tap the felt to place chips, then press ROLL. For Pass Odds, tap PASS after the point is ON.','mut');
-  if(ENABLE_TIMER){ setTimeout(()=>{ $('overlay').style.display='grid'; }, DEMO_MS); }
+    // place/buy on point hit also pay
+    const key = Object.keys(placeBets).find(k=>placeMap[k]===point);
+    if(key){
+      const b=placeBets[key];
+      if(b.amt){
+        const w = (b.mode==='buy') ? buyWin(point,b.amt) : payPlace(point,b.amt);
+        bank += w; log(`${b.mode==='buy'?'Buy':'Place'} ${point} hits +${money(w)}`,'ok');
+      }
+      // lay loses when its number rolls
+      if(b.lay){ log(`Lay ${point} loses −${money(b.lay)}`,'bad'); b.lay=0; }
+    }
+
+    // come points sitting on point pay as place-like + odds
+    const k=comePoints[point];
+    if(k && k.flat){ bank+=k.flat*2; log(`Come ${point} made +${money(k.flat)}`,'ok'); if(k.odds){ const w=payOdds(point,k.odds); bank+=k.odds+w; log(`Come ${point} odds pay +${money(w)}`,'ok'); } k.flat=k.odds=0; }
+    if(k && k.dflat){ log(`Don’t Come ${point} loses −${money(k.dflat)}`,'bad'); if(k.dodds){ log(`Don’t Come ${point} lay odds lose −${money(k.dodds)}`,'bad'); } k.dflat=k.dodds=0; }
+
+    point=null; return;
+  }
+
+  // regular box number rolled during point
+  // move come/DC
+  moveCome(sum);
+
+  // place/buy pay on their number
+  for(const key in placeBets){
+    const n=placeMap[key], b=placeBets[key];
+    if(n===sum){
+      if(b.amt){
+        const w = (b.mode==='buy') ? buyWin(n,b.amt) : payPlace(n,b.amt);
+        bank += w; log(`${b.mode==='buy'?'Buy':'Place'} ${n} hits +${money(w)}`,'ok');
+      }
+      // don't change the bet (stays up)
+    }
+  }
+
+  // come points on this number pay (flat + odds)
+  const k=comePoints[sum];
+  if(k.flat){ const w=payPlace(sum,k.flat); bank+=w; log(`Come ${sum} wins (flat pays as place) +${money(w)}`,'ok'); } // many tables pay flat at 1:1; using place-scale for simplicity
+  if(k.odds){ const w=payOdds(sum,k.odds); bank+=w; log(`Come ${sum} odds pay +${money(w)}`,'ok'); }
+  // don't come on this number loses on hit
+  if(k.dflat){ log(`Don’t Come ${sum} loses −${money(k.dflat)}`,'bad'); k.dflat=0; }
+  if(k.dodds){ log(`Don’t Come ${sum} lay odds lose −${money(k.dodds)}`,'bad'); k.dodds=0; }
+}
+
+/* ===== ROLL ===== */
+$('roll').onclick=async()=>{
+  const [a,b,sum]=await rollDiceAnim(); lastDice=[a,b];
+  log(`Roll: <b>${a}+${b} = ${sum}</b>`);
+  if(!point) resolveComeOut(sum); else resolvePoint(sum);
+  updateHUD();
+};
+
+/* ===== enable adding odds on come points by tapping their box tags while point ON ===== */
+document.querySelectorAll('.bx4,.bx5,.bx6,.bx8,.bx9,.bx10').forEach(box=>{
+  box.addEventListener('dblclick',()=>{
+    if(!point) return;
+    const n = placeMap[box.dataset.area];
+    // single double-tap = add come odds for whichever side exists
+    if(comePoints[n].flat) return addComeOdds(n,'pass');
+    if(comePoints[n].dflat) return addComeOdds(n,'dont');
+  });
+});
+
+/* ===== init ===== */
+updateHUD(); log('Tap the felt to place chips. Press ROLL. On point: tap Pass/Don’t to add Odds; double-tap a number box to add Come/DC odds.','mut');
+if(ENABLE_TIMER){ setTimeout(()=>{ $('overlay').style.display='grid'; }, DEMO_MS); }
 })();
 </script>
 </body>
