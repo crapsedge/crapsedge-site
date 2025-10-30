@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrapsEdge™ Growth Fund</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        h1 {
+            color: #00ff88;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+        }
+        .cashapp { background-color: #00c244; }
+        .paypal { background-color: #003087; }
+        .venmo { background-color: #3d95ce; }
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CrapsEdge™ Growth Fund</h1>
+        <p>
+            Help keep CrapsEdge™ growing! Your donations go directly toward improving the site, adding new tools, strategies, and resources for the community.  
+            Even a small contribution helps us maintain and expand the best craps strategy platform online.
+        </p>
+        <p>
+            Choose your preferred method to contribute securely:
+        </p>
+
+        <!-- Cash App Button -->
+        <a href="https://cash.app/$Crapsedge" class="button cashapp" target="_blank">Donate via Cash App</a>
+
+        <!-- PayPal Donate Button -->
+        <form action="https://www.paypal.com/donate" method="post" target="_blank" style="display:inline-block;">
+            <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Donate with PayPal" />
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+
+        <!-- Venmo Button -->
+        <a href="https://venmo.com/YourVenmoUsername" class="button venmo" target="_blank">Donate via Venmo</a>
+
+        <p class="disclaimer">
+            Disclaimer: All donations are voluntary and are intended to support the growth of CrapsEdge™. No goods or services are provided in exchange for donations. CrapsEdge™ is not responsible for any tax implications of donations. This page is compliant with Nebraska state laws regarding voluntary contributions.
+        </p>
+    </div>
+</body>
+</html>
