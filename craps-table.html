@@ -1,540 +1,149 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>CrapsEdge™ Mobile Simulator</title>
+  <title>CrapsEdge™ Mobile Craps Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <style>
-    /* Mobile-focused design */
-    :root {
-      --bg: #0b3a1a;
-      --felt: #14553d;
-      --felt-highlight: #2b7b60;
-      --rail-wood: #3f2a1b;
-      --rail-edge: #24160f;
-      --chip-red: #f16363;
-      --chip-blue: #64aaff;
-      --chip-green: #54d38e;
-      --chip-yellow: #f4c542;
-      --chip-purple: #b07cff;
-      --text-light: #ecf5f1;
-      --shadow: 0 6px 20px rgba(0,0,0,0.5);
-      --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body, html {
-      margin: 0; padding: 0;
+    html, body {
       height: 100%;
-      font-family: var(--font-sans);
-      background: var(--bg);
-      color: var(--text-light);
-      display: flex;
-      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #143926;
+      color: #fff;
       overflow: hidden;
     }
-    #app {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      max-width: 480px;
-      margin: auto;
+    #felt-wrap {
       width: 100vw;
-      height: 100vh;
-      box-shadow: var(--shadow);
-      border-radius: 12px;
-      background:
-        linear-gradient(180deg, var(--felt-highlight), var(--felt));
-      border: 20px solid var(--rail-wood);
-      box-sizing: border-box;
+      height: 68vh;
+      max-width: 480px;
+      margin: 0 auto;
       position: relative;
-      user-select: none;
+      background: url('YOUR_FELT_IMAGE.png') center/cover no-repeat;
+      border-radius: 18px;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.44);
     }
-
-    header {
-      padding: 8px 16px;
-      font-weight: 700;
-      font-size: 1.4rem;
-      background-color: #10301fdd;
-      text-align: center;
-      letter-spacing: 0.05em;
-      border-bottom: 2px solid var(--rail-edge);
-    }
-
-    #table {
-      flex: 1;
-      position: relative;
-      touch-action: manipulation;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 1fr auto 60px;
-      gap: 4px;
-      padding: 8px;
-      box-sizing: border-box;
-    }
-
-    #felt-svg {
-      grid-column: 1 / 4;
-      grid-row: 1 / 3;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      pointer-events: none;
-    }
-
-    /* Interactive betting zones laid on top of SVG using buttons */
     .bet-zone {
       position: absolute;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0);
+      border: 2px solid transparent;
       border-radius: 10px;
-      border: 1.5px solid transparent;
-      transition: border-color 0.2s;
+      transition: border-color 0.18s;
       font-weight: 700;
-      font-size: 12px;
-      color: var(--text-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-shadow: 0 0 4px rgba(0,0,0,0.6);
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .bet-zone.active {
-      border-color: var(--chip-yellow);
-      background-color: rgba(244,197,66,0.18);
-    }
-
-    /* Positions for key zones to mimic table layout on mobile */
-    #pass-line { top: 85%; left: 4%; width: 50%; height: 12%; }
-    #dont-pass { top: 70%; left: 4%; width: 50%; height: 12%; }
-    #come-zone { top: 58%; left: 4%; width: 50%; height: 10%; }
-    #field-zone { top: 42%; left: 4%; width: 50%; height: 12%; }
-    #point-4 { top: 4%; left: 6%; width: 20%; height: 16%; }
-    #point-5 { top: 4%; left: 28%; width: 20%; height: 16%; }
-    #point-6 { top: 4%; left: 50%; width: 20%; height: 16%; }
-    #point-8 { top: 4%; left: 72%; width: 20%; height: 16%; }
-    #point-9 { top: 4%; left: 94%; width: 20%; height: 16%; transform: translateX(-100%); }
-    #point-10 { top: 4%; left: 116%; width: 20%; height: 16%; transform: translateX(-200%); }
-    #prop-zone {
-      top: 10%;
-      right: 6%;
-      width: 30%;
-      height: 75%;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.1);
-      border: 1.5px solid var(--felt-highlight);
-      display: flex;
-      flex-wrap: wrap;
-      padding: 8px;
-      box-sizing: border-box;
-      overflow-y: auto;
-      font-size: 12px;
-      color: var(--text-light);
-    }
-    #prop-zone > button {
-      flex: 1 1 48%;
-      margin: 4px 4px 8px;
-      padding: 8px 4px;
-      border-radius: 8px;
-      background: var(--felt-highlight);
-      border: none;
-      color: var(--text-light);
-      font-weight: 700;
-      user-select: none;
-    }
-    #prop-zone > button:active {
-      background: var(--chip-yellow);
-      color: #161616;
-    }
-
-    /* Controls panel */
-    #controls {
-      grid-column: 1 / 4;
-      grid-row: 3;
-      background: #10301fdd;
-      border-top: 2px solid var(--rail-edge);
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 8px 12px;
-      box-sizing: border-box;
-      gap: 8px;
-    }
-    .btn, .chip-select {
-      background: var(--felt-highlight);
-      color: var(--text-light);
-      border-radius: 10px;
-      border: none;
-      font-weight: 700;
-      font-size: 1.2rem;
-      padding: 8px 16px;
-      flex-shrink: 0;
+      font-size: 11px;
+      color: #ffd24b;
+      text-align: center;
       user-select: none;
       touch-action: manipulation;
-      box-shadow: var(--shadow);
-      transition: background-color 0.2s;
     }
-    .btn:hover, .chip-select:hover {
-      background-color: var(--chip-yellow);
-      color: #161616;
-    }
-    .chip-select.active {
-      background-color: var(--chip-yellow);
-      color: #161616;
-    }
-
-    /* Dice container */
-    #dice-container {
+    .bet-zone:active, .bet-zone.active { border-color: #22d08b; background: rgba(34,208,139,0.13);}
+    /* Example positions: You must calibrate these over your own felt! */
+    #pass { left: 6%; top: 80%; width: 44%; height: 13%; }
+    #dont { left: 52%; top: 80%; width: 42%; height: 13%; }
+    #come { left: 6%; top: 66%; width: 88%; height: 11%; }
+    #field { left: 6%; top: 52%; width: 88%; height: 11%; }
+    #place4 { left: 8%; top: 18%; width: 10%; height: 13%; }
+    #place5 { left: 20%; top: 18%; width: 10%; height: 13%; }
+    #place6 { left: 32%; top: 18%; width: 10%; height: 13%; }
+    #place8 { left: 44%; top: 18%; width: 10%; height: 13%; }
+    #place9 { left: 56%; top: 18%; width: 10%; height: 13%; }
+    #place10 { left: 68%; top: 18%; width: 10%; height: 13%; }
+    #props { right: 2%; top: 5%; width: 18%; height: 40%; }
+    #dice-box {
       position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 240px;
-      height: 240px;
+      left: 50%; top: 30%;
+      transform: translate(-50%,0);
+      width: 110px; height: 44px;
+      z-index: 30;
       pointer-events: none;
-      z-index: 10;
     }
-
-    /* Log area */
-    #log {
-      position: absolute;
-      bottom: 74px;
-      left: 6%;
-      width: 50%;
-      max-height: 100px;
-      overflow-y: auto;
-      font-size: 12px;
-      background-color: rgba(0,0,0,0.4);
-      border-radius: 10px;
-      padding: 6px 8px;
-      box-sizing: border-box;
-      color: #a6d9bf;
-      text-shadow: 1px 1px 2px #000;
+    #chipbar {
+      position: fixed;
+      bottom: 56px;
+      left: 0; right: 0;
+      width: 100vw;
+      background: #153d29dd;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 0;
+      z-index: 88;
     }
-
-    /* Responsive text scaling */
-    @media (max-width: 400px) {
-      header {
-        font-size: 1.1rem;
-      }
-      .btn, .chip-select {
-        font-size: 1rem;
-        padding: 6px 12px;
-      }
-      #prop-zone {
-        font-size: 10px;
-      }
+    .chip { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight:900; box-shadow:0 2px 8px #0007;}
+    .chip.red { background:#f16363; color:#fff; } .chip.blue { background:#64aaff;}
+    .chip.green { background:#54d38e; } .chip.yellow { background:#f4c542; color:#111;}
+    .chip.purple { background:#b07cff; }
+    .chip.active { border:2.5px solid #ffd700;}
+    #controls {
+      position: fixed;
+      left: 0; right: 0; bottom:0;
+      height: 54px;
+      background: #112d20ee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+      border-top: 2px solid #175241;
     }
+    .ctrl-btn { padding:10px 22px; background:#22d08b; border-radius:12px; font-weight: 700; font-size: 1.2em; border:none; color:#111;}
+    .ctrl-btn:active { background:#ffd24b; color:#222;}
+    /* Adjust for very small phones */
+    @media(max-width:340px){ #felt-wrap{max-width:320px;}}
   </style>
 </head>
 <body>
-  <div id="app" role="main" aria-label="Craps table simulator">
-
-    <header>CrapsEdge™ Mobile Craps Table</header>
-
-    <div id="table">
-      <!-- Simplified craps table SVG background -->
-      <svg id="felt-svg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <rect x="0" y="0" width="320" height="180" ry="20" fill="url(#feltPattern)" stroke="#3f2a1b" stroke-width="6"/>
-        <defs>
-          <pattern id="feltPattern" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="rotate(45)">
-            <rect width="40" height="40" fill="#14553d" />
-            <circle cx="20" cy="20" r="6" fill="#2b7b60" />
-          </pattern>
-        </defs>
-        <!-- Mark key zones -->
-        <text x="40" y="170" fill="#fff" font-size="18" font-weight="700">PASS LINE</text>
-        <rect id="pass-line" class="svg-zone" x="10" y="140" width="160" height="20" fill="none" stroke="#ffd24b" stroke-width="4" rx="5" ry="5"/>
-        <text x="40" y="120" fill="#fff" font-size="16" font-weight="600">DON'T PASS</text>
-        <rect id="dont-pass" class="svg-zone" x="10" y="110" width="160" height="20" fill="none" stroke="#ff4b5c" stroke-width="4" rx="5" ry="5"/>
-
-        <text x="40" y="90" fill="#ffd24b" font-size="14">COME</text>
-        <rect id="come-zone" class="svg-zone" x="10" y="80" width="160" height="20" fill="none" stroke="#00cc66" stroke-width="4" rx="5" ry="5"/>
-
-        <text x="40" y="60" fill="#fff" font-size="14">FIELD</text>
-        <rect id="field-zone" class="svg-zone" x="10" y="50" width="160" height="20" fill="none" stroke="#ffc93c" stroke-width="4" rx="5" ry="5"/>
-
-        <!-- Point numbers on top right -->
-        <g stroke="#ffd24b" stroke-width="2" fill="none" font-size="12" font-weight="600" text-anchor="middle" font-family="sans-serif" >
-          <rect id="point-4" x="210" y="10" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
-          <text x="225" y="32" fill="#ffd24b">4</text>
-
-          <rect id="point-5" x="250" y="10" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
-          <text x="265" y="32" fill="#ffd24b">5</text>
-
-          <rect id="point-6" x="290" y="10" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
-          <text x="305" y="32" fill="#ffd24b">6</text>
-
-          <rect id="point-8" x="210" y="60" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
-          <text x="225" y="82" fill="#ffd24b">8</text>
-
-          <rect id="point-9" x="250" y="60" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
-          <text x="265" y="82" fill="#ffd24b">9</text>
-
-          <rect id="point-10" x="290" y="60" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
-          <text x="305" y="82" fill="#ffd24b">10</text>
-        </g>
-      </svg>
-
-      <!-- Betting zones as buttons overlay -->
-      <button id="pass-line-btn" class="bet-zone" style="top:85%; left:4%; width:50%; height:12%;">Pass Line</button>
-      <button id="dont-pass-btn" class="bet-zone" style="top:70%; left:4%; width:50%; height:12%;">Don’t Pass</button>
-      <button id="come-zone-btn" class="bet-zone" style="top:58%; left:4%; width:50%; height:10%;">Come</button>
-      <button id="field-zone-btn" class="bet-zone" style="top:42%; left:4%; width:50%; height:12%;">Field</button>
-      <button id="point-4-btn" class="bet-zone" style="top:4%; left:6%; width:20%; height:16%;">4</button>
-      <button id="point-5-btn" class="bet-zone" style="top:4%; left:28%; width:20%; height:16%;">5</button>
-      <button id="point-6-btn" class="bet-zone" style="top:4%; left:50%; width:20%; height:16%;">6</button>
-      <button id="point-8-btn" class="bet-zone" style="top:4%; left:72%; width:20%; height:16%;">8</button>
-      <button id="point-9-btn" class="bet-zone" style="top:4%; left:94%; width:20%; height:16%; transform: translateX(-100%);">9</button>
-      <button id="point-10-btn" class="bet-zone" style="top:4%; left:116%; width:20%; height:16%; transform: translateX(-200%);">10</button>
-
-      <!-- Props betting simplified zone -->
-      <div id="prop-zone" aria-label="Proposition bets">
-        <button data-prop="any7">Any 7</button>
-        <button data-prop="anyCraps">Any Craps</button>
-        <button data-prop="yo">Yo 11</button>
-        <button data-prop="c2">Craps 2</button>
-        <button data-prop="c3">Craps 3</button>
-        <button data-prop="c12">Craps 12</button>
-        <button data-prop="h4">Hard 4</button>
-        <button data-prop="h6">Hard 6</button>
-        <button data-prop="h8">Hard 8</button>
-        <button data-prop="h10">Hard 10</button>
-        <button data-prop="horn">Horn</button>
-      </div>
-    </div>
-
-    <div id="dice-container"></div>
-
-    <div id="log" aria-live="polite" role="log" aria-atomic="true"></div>
-
-    <div id="controls" aria-label="Gameplay controls">
-      <button id="undo-btn" class="btn">Undo</button>
-      <button id="clear-btn" class="btn">Clear Bets</button>
-      <button id="roll-btn" class="btn primary">Roll Dice</button>
-      <div style="display:flex; gap:8px; overflow-x:auto; padding:0 4px;">
-        <button class="chip-select active" data-value="5" style="background:#f16363;">$5</button>
-        <button class="chip-select" data-value="10" style="background:#64aaff;">$10</button>
-        <button class="chip-select" data-value="25" style="background:#54d38e;">$25</button>
-        <button class="chip-select" data-value="100" style="background:#f4c542;color:#111;">$100</button>
-        <button class="chip-select" data-value="500" style="background:#b07cff;">$500</button>
-      </div>
-    </div>
+  <div style="text-align:center;font-size:1.3em;padding:8px 0;font-weight:700;">CrapsEdge™ Mobile Craps Table</div>
+  <div id="felt-wrap">
+    <!-- Betting hot-spots -->
+    <button id="pass" class="bet-zone">Pass Line</button>
+    <button id="dont" class="bet-zone">Don't Pass</button>
+    <button id="come" class="bet-zone">Come</button>
+    <button id="field" class="bet-zone">Field</button>
+    <button id="place4" class="bet-zone">4</button> <button id="place5" class="bet-zone">5</button>
+    <button id="place6" class="bet-zone">6</button> <button id="place8" class="bet-zone">8</button>
+    <button id="place9" class="bet-zone">9</button> <button id="place10" class="bet-zone">10</button>
+    <button id="props" class="bet-zone">Props</button>
+    <div id="dice-box"></div>
   </div>
-
-  <!-- Include Three.js for 3D dice -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-
-  <!-- Minimal three-dice library for dice physics & rendering -->
-  <script src="https://cdn.jsdelivr.net/npm/three-dice/dist/dice.min.js"></script>
-
+  <div id="chipbar">
+    <button class="chip red active" data-value="5">$5</button>
+    <button class="chip blue" data-value="10">$10</button>
+    <button class="chip green" data-value="25">$25</button>
+    <button class="chip yellow" data-value="100">$100</button>
+    <button class="chip purple" data-value="500">$500</button>
+  </div>
+  <div id="controls">
+    <button class="ctrl-btn" id="undo">Undo</button>
+    <button class="ctrl-btn" id="clear">Clear Bets</button>
+    <button class="ctrl-btn" id="roll">Roll Dice</button>
+  </div>
   <script>
-    (() => {
-      const bankEl = document.createElement('div');
-      let bank = 5000;
-      let point = null;
-      let denom = 5;
-      let chips = [];
-      const logEl = document.getElementById('log');
-
-      // Initialize Three.js dice roller
-      const diceContainer = document.getElementById('dice-container');
-      const diceRoller = new window.Dice(diceContainer, { 
-        sound: true, soundDelay: 350,
-        randomizeFirstRoll: true,
-        cameraFar: 1000,
-        dragRotation: true,
-      });
-
-      // UI elements
-      const chipButtons = document.querySelectorAll('.chip-select');
-      chipButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          chipButtons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          denom = parseInt(btn.dataset.value, 10);
-        });
-      });
-
-      // Betting zones
-      const bets = {
-        pass: 0,
-        dont: 0,
-        come: 0,
-        field: 0,
-        props: {},
-        places: {}, // keyed by number
+    // BASIC LOGIC: tap chip -> tap bet-zone to place a bet
+    let selectedChip = 5;
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.onclick = () => {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        selectedChip = parseInt(chip.getAttribute('data-value'));
       };
-
-      // Add log message
-      function log(message, type='info') {
-        const div = document.createElement('div');
-        div.textContent = message;
-        if(type === 'error') div.style.color = '#ff6f6f';
-        else if(type === 'win') div.style.color = '#a6d9bf';
-        else if(type === 'muted') div.style.color = '#cfcfcf';
-        logEl.prepend(div);
-      }
-
-      // Update HUD: bank and point summary
-      function updateHeader() {
-        document.querySelector('header').textContent = `CrapsEdge™ | Bank: $${bank.toLocaleString()} | Point: ${point ?? 'Off'}`;
-      }
-
-      updateHeader();
-
-      // Betting zone buttons
-      const zoneButtons = {
-        pass: document.getElementById('pass-line-btn'),
-        dont: document.getElementById('dont-pass-btn'),
-        come: document.getElementById('come-zone-btn'),
-        field: document.getElementById('field-zone-btn'),
-        "4": document.getElementById('point-4-btn'),
-        "5": document.getElementById('point-5-btn'),
-        "6": document.getElementById('point-6-btn'),
-        "8": document.getElementById('point-8-btn'),
-        "9": document.getElementById('point-9-btn'),
-        "10": document.getElementById('point-10-btn')
+    });
+    document.querySelectorAll('.bet-zone').forEach(zone => {
+      zone.onclick = () => {
+        zone.classList.add('active');
+        setTimeout(()=>zone.classList.remove('active'),320);
+        alert(`Bet $${selectedChip} on ${zone.textContent}`);
       };
-
-      // Track active bets visually
-      function updateBetVisuals() {
-        Object.entries(zoneButtons).forEach(([key, btn]) => {
-          if(key === "pass" && bets.pass > 0) btn.classList.add('active'); else if(key === "pass") btn.classList.remove('active');
-          if(key === "dont" && bets.dont > 0) btn.classList.add('active'); else if(key === "dont") btn.classList.remove('active');
-          if(key === "come" && bets.come > 0) btn.classList.add('active'); else if(key === "come") btn.classList.remove('active');
-          if(key === "field" && bets.field > 0) btn.classList.add('active'); else if(key === "field") btn.classList.remove('active');
-          if(["4","5","6","8","9","10"].includes(key)) {
-            if(bets.places[key] && bets.places[key] > 0) btn.classList.add('active');
-            else btn.classList.remove('active');
-          }
-        });
-      }
-
-      // Handle betting on zones
-      Object.entries(zoneButtons).forEach(([key, btn]) => {
-        btn.addEventListener('click', () => {
-          if(bank < denom){
-            log('Not enough bank.', 'error');
-            return;
-          }
-          bank -= denom;
-          if(key === "pass") bets.pass += denom;
-          else if(key === "dont") bets.dont += denom;
-          else if(key === "come") bets.come += denom;
-          else if(key === "field") bets.field += denom;
-          else bets.places[key] = (bets.places[key] || 0) + denom;
-          log(`Bet $${denom} on ${key}`, 'muted');
-          updateHeader();
-          updateBetVisuals();
-        });
-      });
-
-      // Proposition bets buttons
-      const propZone = document.getElementById('prop-zone');
-      propZone.querySelectorAll('button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          if(bank < denom){
-            log('Not enough bank.', 'error');
-            return;
-          }
-          const propName = btn.dataset.prop;
-          bank -= denom;
-          bets.props[propName] = (bets.props[propName] || 0) + denom;
-          log(`Bet $${denom} on ${propName}`, 'muted');
-          updateHeader();
-          btn.classList.add('active');
-          setTimeout(() => btn.classList.remove('active'), 300);
-        });
-      });
-
-      // Roll dice button
-      document.getElementById('roll-btn').addEventListener('click', async () => {
-        if (diceRoller.isRolling()) return;
-        log('Rolling dice...', 'muted');
-
-        // Roll two dice
-        const result = await diceRoller.roll({ diceCount: 2 });
-        const diceValues = result.dices.map(die => die.value);
-        const diceSum = diceValues.reduce((a,b) => a + b, 0);
-        log(`Roll: ${diceValues.join(' + ')} = ${diceSum}`, 'muted');
-
-        // Simple come-out and point logic demo (extend per craps rules)
-
-        if(!point){
-          if(diceSum === 7 || diceSum === 11){
-            if(bets.pass > 0) {
-              bank += bets.pass * 2;
-              log(`Natural! Pass Line wins $${bets.pass}`, 'win');
-            }
-            if(bets.dont > 0) {
-              log(`Natural! Don't Pass loses`, 'error');
-            }
-            bets.pass = 0; bets.dont = 0;
-          } else if ([2,3,12].includes(diceSum)) {
-            if (diceSum === 12) {
-              if(bets.dont > 0) {
-                bank += bets.dont;
-                log("Don't Pass pushes", 'muted');
-              }
-            } else {
-              if(bets.pass > 0) {
-                log(`Craps! Pass Line loses`, 'error');
-              }
-              if(bets.dont > 0) {
-                bank += bets.dont * 2;
-                log(`Don't Pass wins $${bets.dont * 2}`, 'win');
-              }
-            }
-            bets.pass = 0; bets.dont = 0;
-          } else {
-            point = diceSum;
-            log(`Point is ON: ${point}`, 'muted');
-          }
-        } else {
-          if(diceSum === 7){
-            if(bets.pass > 0) log('Seven out! Pass Line loses', 'error');
-            if(bets.dont > 0) {
-              bank += bets.dont * 2;
-              log('Seven out! Don\'t Pass wins', 'win');
-            }
-            bets.pass = 0; bets.dont = 0;
-            point = null;
-            log('New round! Point is OFF.', 'muted');
-          } else if (diceSum === point) {
-            if(bets.pass > 0) {
-              bank += bets.pass * 2;
-              log(`Point hit! Pass Line wins $${bets.pass}`, 'win');
-            }
-            if(bets.dont > 0) log('Point hit! Don\'t Pass loses', 'error');
-            bets.pass = 0; bets.dont = 0;
-            point = null;
-            log('New round! Point is OFF.', 'muted');
-          } else {
-            log(`No point change on ${diceSum}`, 'muted');
-          }
-        }
-        updateHeader();
-      });
-
-      // Undo button (simplified: reset last bet placed)
-      document.getElementById('undo-btn').addEventListener('click', () => {
-        // Could be enhanced to store a bet stack for undoing specific bets
-        log('Undo functionality coming soon!', 'muted');
-      });
-
-      // Clear bets button
-      document.getElementById('clear-btn').addEventListener('click', () => {
-        bank += bets.pass + bets.dont + bets.come + bets.field;
-        Object.values(bets.places).forEach(v => bank += v);
-        bets.pass = 0; bets.dont = 0; bets.come = 0; bets.field = 0; bets.places = {};
-        bets.props = {};
-        log('All bets cleared', 'muted');
-        updateHeader();
-        updateBetVisuals();
-      });
-
-      // Initialize visual bet states
-      updateBetVisuals();
-    })();
+    });
+    document.getElementById('roll').onclick = () => {
+      document.getElementById('dice-box').innerHTML = "🎲 " + (Math.floor(Math.random()*6)+1) + " + " + (Math.floor(Math.random()*6)+1);
+      setTimeout(()=>document.getElementById('dice-box').innerHTML="",1200);
+    };
+    document.getElementById('clear').onclick = () => {
+      document.querySelectorAll('.bet-zone').forEach(z=>z.classList.remove('active'));
+      alert('All bets cleared');
+    };
+    document.getElementById('undo').onclick = () => alert('Undo last bet');
   </script>
 </body>
 </html>
