@@ -1,418 +1,540 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CrapsEdge™ — Simulator (Clean)</title>
-<meta name="theme-color" content="#15b47a">
-<style>
-  /* ----- Modern palette / spacing ----- */
-  :root{
-    --bg:#0b0f0e; --panel:#0f1514; --felt:#0e3a2a; --felt-hi:#14553d;
-    --rail:#3f2a1b; --rail-edge:#24160f;
-    --ink:#ecf5f1; --mut:#b6c7c0; --accent:#19c37d;
-    --line:#1e5f49; --line2:#1a4b3a;
-    --chipR:#f16363; --chipB:#64aaff; --chipG:#54d38e; --chipY:#f4c542; --chipP:#b07cff;
-    --radius:16px; --shadow:0 20px 60px rgba(0,0,0,.35);
-    --space: clamp(14px,2.6vw,22px); --h: clamp(18px,2.4vw,20px);
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  html{line-height:1.55}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial}
-  a{color:inherit;text-decoration:none}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>CrapsEdge™ Mobile Simulator</title>
+  <style>
+    /* Mobile-focused design */
+    :root {
+      --bg: #0b3a1a;
+      --felt: #14553d;
+      --felt-highlight: #2b7b60;
+      --rail-wood: #3f2a1b;
+      --rail-edge: #24160f;
+      --chip-red: #f16363;
+      --chip-blue: #64aaff;
+      --chip-green: #54d38e;
+      --chip-yellow: #f4c542;
+      --chip-purple: #b07cff;
+      --text-light: #ecf5f1;
+      --shadow: 0 6px 20px rgba(0,0,0,0.5);
+      --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #app {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 480px;
+      margin: auto;
+      width: 100vw;
+      height: 100vh;
+      box-shadow: var(--shadow);
+      border-radius: 12px;
+      background:
+        linear-gradient(180deg, var(--felt-highlight), var(--felt));
+      border: 20px solid var(--rail-wood);
+      box-sizing: border-box;
+      position: relative;
+      user-select: none;
+    }
 
-  .wrap{max-width:1200px;margin:auto;padding:var(--space)}
-  .hud{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-bottom:12px}
-  .bank{background:var(--panel);border:1px solid #24312e;border-radius:12px;padding:10px 12px}
-  .btn{cursor:pointer;border:1px solid #2a3a36;background:#14201c;color:#fff;border-radius:12px;
-       padding:10px 14px;font-weight:800;transition:transform .1s ease,background .12s ease,border-color .12s ease}
-  .btn:hover{transform:translateY(-1px);background:#192823;border-color:#324943}
-  .btn.primary{background:linear-gradient(180deg,#22d08b,#17b371);color:#0a261c;border:none}
-  .denoms{display:flex;gap:10px;margin-left:auto}
-  .chipSel{width:46px;height:46px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center;
-           font-weight:900;box-shadow:var(--shadow);user-select:none;font-size:14px}
-  .cR{background:var(--chipR)} .cB{background:var(--chipB)} .cG{background:var(--chipG)}
-  .cY{background:var(--chipY)} .cP{background:var(--chipP)}
-  .chipSel.active{outline:3px solid #fff}
-  .note{color:var(--mut);font-size:14px;flex-basis:100%}
+    header {
+      padding: 8px 16px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      background-color: #10301fdd;
+      text-align: center;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--rail-edge);
+    }
 
-  /* ----- Table: simple felt, no busy stripes ----- */
-  .table{
-    position:relative;width:100%;
-    height:60vh;min-height:460px;max-height:900px;
-    border-radius:24px;overflow:hidden;
-    border:16px solid var(--rail);box-shadow:inset 0 0 0 3px var(--rail-edge), var(--shadow);
-    background:
-      radial-gradient(120% 100% at 50% 30%, rgba(0,0,0,.25), rgba(0,0,0,.55) 70%),
-      linear-gradient(180deg, var(--felt-hi), var(--felt));
-  }
-  @media (max-width:720px){ .table{height:64vh} }
-  .layout{position:absolute;inset:14px}
-  .felt{position:absolute;inset:0}
+    #table {
+      flex: 1;
+      position: relative;
+      touch-action: manipulation;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr auto 60px;
+      gap: 4px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
 
-  /* zones */
-  .zone{position:absolute;border-radius:12px;outline-offset:2px;touch-action:manipulation}
-  .zone:focus-visible,.zone.active{outline:3px solid #fff}
-  .amt{position:absolute;right:6px;bottom:6px;color:#fff;font-size:13px;text-shadow:0 2px 3px #0009}
+    #felt-svg {
+      grid-column: 1 / 4;
+      grid-row: 1 / 3;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      pointer-events: none;
+    }
 
-  /* layout map */
-  .pass{left:1.5%; right:28%; bottom:2%; height:12%}
-  .dont{left:1.5%; right:28%; bottom:15%; height:7%}
-  .come{left:1.5%; right:28%; bottom:24%; height:12%}
-  .field{left:1.5%; right:28%; bottom:37%; height:13%}
-  .bx4{left:1.5%; width:12.5%; top:7%; height:18%}
-  .bx5{left:14.5%; width:12.5%; top:7%; height:18%}
-  .bx6{left:27.5%; width:12.5%; top:7%; height:18%}
-  .bx8{left:40.5%; width:12.5%; top:7%; height:18%}
-  .bx9{left:53.5%; width:12.5%; top:7%; height:18%}
-  .bx10{left:66.5%; width:12.5%; top:7%; height:18%}
-  .props{right:1.5%; width:26.5%; top:7%; bottom:20%}
-  .dc{right:1.5%; width:26.5%; bottom:2%; height:16%}
+    /* Interactive betting zones laid on top of SVG using buttons */
+    .bet-zone {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      border: 1.5px solid transparent;
+      transition: border-color 0.2s;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 0 4px rgba(0,0,0,0.6);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .bet-zone.active {
+      border-color: var(--chip-yellow);
+      background-color: rgba(244,197,66,0.18);
+    }
 
-  /* Buy/Lay tag */
-  .tag{position:absolute;left:6px;top:6px;font-size:12px;background:#0d2420;border:1px solid #2a4a43;border-radius:8px;padding:2px 8px}
+    /* Positions for key zones to mimic table layout on mobile */
+    #pass-line { top: 85%; left: 4%; width: 50%; height: 12%; }
+    #dont-pass { top: 70%; left: 4%; width: 50%; height: 12%; }
+    #come-zone { top: 58%; left: 4%; width: 50%; height: 10%; }
+    #field-zone { top: 42%; left: 4%; width: 50%; height: 12%; }
+    #point-4 { top: 4%; left: 6%; width: 20%; height: 16%; }
+    #point-5 { top: 4%; left: 28%; width: 20%; height: 16%; }
+    #point-6 { top: 4%; left: 50%; width: 20%; height: 16%; }
+    #point-8 { top: 4%; left: 72%; width: 20%; height: 16%; }
+    #point-9 { top: 4%; left: 94%; width: 20%; height: 16%; transform: translateX(-100%); }
+    #point-10 { top: 4%; left: 116%; width: 20%; height: 16%; transform: translateX(-200%); }
+    #prop-zone {
+      top: 10%;
+      right: 6%;
+      width: 30%;
+      height: 75%;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid var(--felt-highlight);
+      display: flex;
+      flex-wrap: wrap;
+      padding: 8px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      font-size: 12px;
+      color: var(--text-light);
+    }
+    #prop-zone > button {
+      flex: 1 1 48%;
+      margin: 4px 4px 8px;
+      padding: 8px 4px;
+      border-radius: 8px;
+      background: var(--felt-highlight);
+      border: none;
+      color: var(--text-light);
+      font-weight: 700;
+      user-select: none;
+    }
+    #prop-zone > button:active {
+      background: var(--chip-yellow);
+      color: #161616;
+    }
 
-  /* puck */
-  .puck{position:absolute;top:5.6%;left:2%;width:112px;height:50px;border-radius:26px;border:4px solid #fff;display:grid;place-items:center;font-weight:1000;box-shadow:0 8px 16px rgba(0,0,0,.4)}
-  .off{background:#121212;color:#fff} .on{background:#fff;color:#161616}
+    /* Controls panel */
+    #controls {
+      grid-column: 1 / 4;
+      grid-row: 3;
+      background: #10301fdd;
+      border-top: 2px solid var(--rail-edge);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 8px 12px;
+      box-sizing: border-box;
+      gap: 8px;
+    }
+    .btn, .chip-select {
+      background: var(--felt-highlight);
+      color: var(--text-light);
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 8px 16px;
+      flex-shrink: 0;
+      user-select: none;
+      touch-action: manipulation;
+      box-shadow: var(--shadow);
+      transition: background-color 0.2s;
+    }
+    .btn:hover, .chip-select:hover {
+      background-color: var(--chip-yellow);
+      color: #161616;
+    }
+    .chip-select.active {
+      background-color: var(--chip-yellow);
+      color: #161616;
+    }
 
-  /* chips on felt */
-  .chip{position:absolute;width:44px;height:44px;border-radius:50%;border:3px solid #fff;color:#111;font-weight:900;
-        user-select:none;transform:translate(-50%,-50%);transition:transform .12s ease-out;
-        box-shadow:0 10px 18px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.25);
-        background-image:radial-gradient(circle at 50% 45%, rgba(255,255,255,.45), rgba(255,255,255,.06) 60%)}
-  .chip.R{background-color:var(--chipR)} .chip.B{background-color:var(--chipB)}
-  .chip.G{background-color:var(--chipG)} .chip.Y{background-color:var(--chipY)} .chip.P{background-color:var(--chipP)}
+    /* Dice container */
+    #dice-container {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      height: 240px;
+      pointer-events: none;
+      z-index: 10;
+    }
 
-  /* dice canvas (smoother, shorter) */
-  #diceCanvas{position:absolute;inset:0;pointer-events:none}
+    /* Log area */
+    #log {
+      position: absolute;
+      bottom: 74px;
+      left: 6%;
+      width: 50%;
+      max-height: 100px;
+      overflow-y: auto;
+      font-size: 12px;
+      background-color: rgba(0,0,0,0.4);
+      border-radius: 10px;
+      padding: 6px 8px;
+      box-sizing: border-box;
+      color: #a6d9bf;
+      text-shadow: 1px 1px 2px #000;
+    }
 
-  /* log */
-  .log{margin-top:12px;min-height:160px;max-height:220px;overflow:auto;background:#101917;border:1px solid #223832;border-radius:12px;padding:12px}
-  .ok{color:#9cf1cc} .bad{color:#ff8b8b} .mut{color:var(--mut)}
-</style>
+    /* Responsive text scaling */
+    @media (max-width: 400px) {
+      header {
+        font-size: 1.1rem;
+      }
+      .btn, .chip-select {
+        font-size: 1rem;
+        padding: 6px 12px;
+      }
+      #prop-zone {
+        font-size: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="hud">
-    <div class="bank">Bank: <b id="bank">$5,000</b> &nbsp; | &nbsp; Point: <b id="point">—</b></div>
-    <button class="btn" id="undo">Undo</button>
-    <button class="btn" id="clear">Clear Bets</button>
-    <button class="btn primary" id="roll">Roll Dice</button>
-    <div class="denoms">
-      <div class="chipSel cR active" data-val="5" data-c="R">$5</div>
-      <div class="chipSel cB" data-val="10" data-c="B">$10</div>
-      <div class="chipSel cG" data-val="25" data-c="G">$25</div>
-      <div class="chipSel cY" data-val="100" data-c="Y">$100</div>
-      <div class="chipSel cP" data-val="500" data-c="P">$500</div>
-    </div>
-    <span class="note">Tap a box to bet. When the point is ON: tap Pass/Don’t again to add odds. Double-tap a number box to add Come/DC odds.</span>
-  </div>
+  <div id="app" role="main" aria-label="Craps table simulator">
 
-  <div class="table" id="table">
-    <canvas id="diceCanvas"></canvas>
-    <div class="layout">
-      <!-- Simplified felt: crisp lines & labels -->
-      <svg class="felt" viewBox="0 0 1200 520" preserveAspectRatio="none" aria-hidden="true">
-        <rect x="12" y="12" width="1176" height="496" rx="20" fill="none" stroke="#1e5f49" stroke-width="8"/>
-        <g fill="none" stroke="#2b7b60" stroke-width="4">
-          <rect x="24" y="360" width="800" height="65" rx="12"/>
-          <rect x="24" y="305" width="800" height="50" rx="12"/>
-          <rect x="24" y="252" width="800" height="50" rx="12"/>
-          <rect x="24"  y="60" width="140" height="105" rx="12"/>
-          <rect x="170" y="60" width="140" height="105" rx="12"/>
-          <rect x="316" y="60" width="140" height="105" rx="12"/>
-          <rect x="462" y="60" width="140" height="105" rx="12"/>
-          <rect x="608" y="60" width="140" height="105" rx="12"/>
-          <rect x="754" y="60" width="140" height="105" rx="12"/>
-        </g>
-        <g font-family="ui-sans-serif,Segoe UI,Arial" text-anchor="middle">
-          <text x="424" y="282" font-weight="900" font-size="60" fill="#ffd24b">COME</text>
-          <text x="424" y="236" font-weight="800" font-size="24" fill="#d6efe6">FIELD</text>
-          <text x="424" y="330" font-weight="700" font-size="22" fill="#ecf5f1">DON'T PASS BAR</text>
-          <text x="424" y="386" font-weight="900" font-size="26" fill="#ecf5f1">PASS LINE</text>
-          <text x="94"  y="112" font-weight="900" font-size="32" fill="#ecf5f1">4</text>
-          <text x="240" y="112" font-weight="900" font-size="32" fill="#ecf5f1">5</text>
-          <text x="386" y="112" font-weight="900" font-size="32" fill="#ecf5f1">6</text>
-          <text x="532" y="112" font-weight="900" font-size="32" fill="#ecf5f1">8</text>
-          <text x="678" y="112" font-weight="900" font-size="32" fill="#ecf5f1">9</text>
-          <text x="824" y="112" font-weight="900" font-size="32" fill="#ecf5f1">10</text>
-        </g>
-        <g fill="none" stroke="#2b7b60" stroke-width="4">
-          <rect x="920" y="48" width="256" height="410" rx="14"/>
-          <line x1="920" y1="110"  x2="1176" y2="110"/>
-          <line x1="920" y1="170" x2="1176" y2="170"/>
-          <line x1="920" y1="230" x2="1176" y2="230"/>
-          <line x1="920" y1="290" x2="1176" y2="290"/>
-          <line x1="920" y1="350" x2="1176" y2="350"/>
-          <line x1="920" y1="408" x2="1176" y2="408"/>
-          <line x1="1005" y1="48"  x2="1005" y2="458"/>
-          <line x1="1092" y1="48"  x2="1092" y2="458"/>
-        </g>
-        <g fill="#ecf5f1" font-weight="700" font-family="ui-sans-serif,Segoe UI,Arial" text-anchor="middle" font-size="14">
-          <text x="962" y="90">ANY 7</text><text x="1048" y="90">ANY CRAPS</text><text x="1135" y="90">YO 11</text>
-          <text x="962" y="150">CRAPS 2</text><text x="1048" y="150">CRAPS 3</text><text x="1135" y="150">CRAPS 12</text>
-          <text x="962" y="210">HARD 4</text><text x="1048" y="210">HARD 6</text><text x="1135" y="210">HARD 8</text>
-          <text x="962" y="270">HARD 10</text><text x="1048" y="270">HORN</text><text x="1135" y="270">DON'T COME</text>
+    <header>CrapsEdge™ Mobile Craps Table</header>
+
+    <div id="table">
+      <!-- Simplified craps table SVG background -->
+      <svg id="felt-svg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <rect x="0" y="0" width="320" height="180" ry="20" fill="url(#feltPattern)" stroke="#3f2a1b" stroke-width="6"/>
+        <defs>
+          <pattern id="feltPattern" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="rotate(45)">
+            <rect width="40" height="40" fill="#14553d" />
+            <circle cx="20" cy="20" r="6" fill="#2b7b60" />
+          </pattern>
+        </defs>
+        <!-- Mark key zones -->
+        <text x="40" y="170" fill="#fff" font-size="18" font-weight="700">PASS LINE</text>
+        <rect id="pass-line" class="svg-zone" x="10" y="140" width="160" height="20" fill="none" stroke="#ffd24b" stroke-width="4" rx="5" ry="5"/>
+        <text x="40" y="120" fill="#fff" font-size="16" font-weight="600">DON'T PASS</text>
+        <rect id="dont-pass" class="svg-zone" x="10" y="110" width="160" height="20" fill="none" stroke="#ff4b5c" stroke-width="4" rx="5" ry="5"/>
+
+        <text x="40" y="90" fill="#ffd24b" font-size="14">COME</text>
+        <rect id="come-zone" class="svg-zone" x="10" y="80" width="160" height="20" fill="none" stroke="#00cc66" stroke-width="4" rx="5" ry="5"/>
+
+        <text x="40" y="60" fill="#fff" font-size="14">FIELD</text>
+        <rect id="field-zone" class="svg-zone" x="10" y="50" width="160" height="20" fill="none" stroke="#ffc93c" stroke-width="4" rx="5" ry="5"/>
+
+        <!-- Point numbers on top right -->
+        <g stroke="#ffd24b" stroke-width="2" fill="none" font-size="12" font-weight="600" text-anchor="middle" font-family="sans-serif" >
+          <rect id="point-4" x="210" y="10" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
+          <text x="225" y="32" fill="#ffd24b">4</text>
+
+          <rect id="point-5" x="250" y="10" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
+          <text x="265" y="32" fill="#ffd24b">5</text>
+
+          <rect id="point-6" x="290" y="10" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
+          <text x="305" y="32" fill="#ffd24b">6</text>
+
+          <rect id="point-8" x="210" y="60" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
+          <text x="225" y="82" fill="#ffd24b">8</text>
+
+          <rect id="point-9" x="250" y="60" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
+          <text x="265" y="82" fill="#ffd24b">9</text>
+
+          <rect id="point-10" x="290" y="60" width="30" height="40" rx="8" ry="8" fill="#0e3a2a"/>
+          <text x="305" y="82" fill="#ffd24b">10</text>
         </g>
       </svg>
 
-      <!-- puck -->
-      <div id="puck" class="puck off">OFF</div>
+      <!-- Betting zones as buttons overlay -->
+      <button id="pass-line-btn" class="bet-zone" style="top:85%; left:4%; width:50%; height:12%;">Pass Line</button>
+      <button id="dont-pass-btn" class="bet-zone" style="top:70%; left:4%; width:50%; height:12%;">Don’t Pass</button>
+      <button id="come-zone-btn" class="bet-zone" style="top:58%; left:4%; width:50%; height:10%;">Come</button>
+      <button id="field-zone-btn" class="bet-zone" style="top:42%; left:4%; width:50%; height:12%;">Field</button>
+      <button id="point-4-btn" class="bet-zone" style="top:4%; left:6%; width:20%; height:16%;">4</button>
+      <button id="point-5-btn" class="bet-zone" style="top:4%; left:28%; width:20%; height:16%;">5</button>
+      <button id="point-6-btn" class="bet-zone" style="top:4%; left:50%; width:20%; height:16%;">6</button>
+      <button id="point-8-btn" class="bet-zone" style="top:4%; left:72%; width:20%; height:16%;">8</button>
+      <button id="point-9-btn" class="bet-zone" style="top:4%; left:94%; width:20%; height:16%; transform: translateX(-100%);">9</button>
+      <button id="point-10-btn" class="bet-zone" style="top:4%; left:116%; width:20%; height:16%; transform: translateX(-200%);">10</button>
 
-      <!-- interactive zones -->
-      <div class="zone pass"  data-area="pass"><div class="amt" id="amt-pass">—</div></div>
-      <div class="zone dont"  data-area="dont"><div class="amt" id="amt-dont">—</div></div>
-      <div class="zone come"  data-area="come"><div class="amt" id="amt-come">—</div></div>
-      <div class="zone field" data-area="field"><div class="amt" id="amt-field">—</div></div>
+      <!-- Props betting simplified zone -->
+      <div id="prop-zone" aria-label="Proposition bets">
+        <button data-prop="any7">Any 7</button>
+        <button data-prop="anyCraps">Any Craps</button>
+        <button data-prop="yo">Yo 11</button>
+        <button data-prop="c2">Craps 2</button>
+        <button data-prop="c3">Craps 3</button>
+        <button data-prop="c12">Craps 12</button>
+        <button data-prop="h4">Hard 4</button>
+        <button data-prop="h6">Hard 6</button>
+        <button data-prop="h8">Hard 8</button>
+        <button data-prop="h10">Hard 10</button>
+        <button data-prop="horn">Horn</button>
+      </div>
+    </div>
 
-      <div class="zone bx4"  data-area="n4"><div class="tag" data-toggle="n4">Place</div><div class="amt" id="amt-n4">—</div></div>
-      <div class="zone bx5"  data-area="n5"><div class="tag" data-toggle="n5">Place</div><div class="amt" id="amt-n5">—</div></div>
-      <div class="zone bx6"  data-area="n6"><div class="tag" data-toggle="n6">Place</div><div class="amt" id="amt-n6">—</div></div>
-      <div class="zone bx8"  data-area="n8"><div class="tag" data-toggle="n8">Place</div><div class="amt" id="amt-n8">—</div></div>
-      <div class="zone bx9"  data-area="n9"><div class="tag" data-toggle="n9">Place</div><div class="amt" id="amt-n9">—</div></div>
-      <div class="zone bx10" data-area="n10"><div class="tag" data-toggle="n10">Place</div><div class="amt" id="amt-n10">—</div></div>
+    <div id="dice-container"></div>
 
-      <div class="zone props" id="props"></div>
-      <div class="zone dc" data-area="dontcome"><div class="amt" id="amt-dontcome">—</div></div>
+    <div id="log" aria-live="polite" role="log" aria-atomic="true"></div>
+
+    <div id="controls" aria-label="Gameplay controls">
+      <button id="undo-btn" class="btn">Undo</button>
+      <button id="clear-btn" class="btn">Clear Bets</button>
+      <button id="roll-btn" class="btn primary">Roll Dice</button>
+      <div style="display:flex; gap:8px; overflow-x:auto; padding:0 4px;">
+        <button class="chip-select active" data-value="5" style="background:#f16363;">$5</button>
+        <button class="chip-select" data-value="10" style="background:#64aaff;">$10</button>
+        <button class="chip-select" data-value="25" style="background:#54d38e;">$25</button>
+        <button class="chip-select" data-value="100" style="background:#f4c542;color:#111;">$100</button>
+        <button class="chip-select" data-value="500" style="background:#b07cff;">$500</button>
+      </div>
     </div>
   </div>
 
-  <div class="log" id="log"></div>
-</div>
+  <!-- Include Three.js for 3D dice -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 
-<script>
-(()=> {
-/* ===== basic state (unchanged logic) ===== */
-let bank=5000, point=null, lastDice=[1,1];
-const $=id=>document.getElementById(id), money=n=>'$'+n.toLocaleString();
-const placed=[], stackCount={}; let denom=5, denomClass='R';
-const MAX_ODDS_MULT=3, FIELD_DOUBLE=[2,12];
-const lineBets={pass:0,dont:0,passOdds:0,dontOdds:0};
-const comeBets={come:0,dontcome:0};
-const comePoints={4:{flat:0,odds:0,dflat:0,dodds:0},5:{flat:0,odds:0,dflat:0,dodds:0},6:{flat:0,odds:0,dflat:0,dodds:0},8:{flat:0,odds:0,dflat:0,dodds:0},9:{flat:0,odds:0,dflat:0,dodds:0},10:{flat:0,odds:0,dflat:0,dodds:0}};
-const placeMap={n4:4,n5:5,n6:6,n8:8,n9:9,n10:10};
-const placeBets={n4:{amt:0,mode:'place',lay:0},n5:{amt:0,mode:'place',lay:0},n6:{amt:0,mode:'place',lay:0},n8:{amt:0,mode:'place',lay:0},n9:{amt:0,mode:'place',lay:0},n10:{amt:0,mode:'place',lay:0}};
-const props={any7:0, anyCraps:0, yo:0, c2:0, c3:0, c12:0, h4:0, h6:0, h8:0, h10:0, horn:0};
-let fieldBet=0;
+  <!-- Minimal three-dice library for dice physics & rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/three-dice/dist/dice.min.js"></script>
 
-function updateHUD(){
-  $('bank').textContent = money(bank);
-  $('point').textContent = point? point:'—';
-  for(const k of ['pass','dont']) $('amt-'+k).textContent = lineBets[k]?money(lineBets[k]):'—';
-  $('amt-come').textContent = comeBets.come?money(comeBets.come):'—';
-  $('amt-dontcome').textContent = comeBets.dontcome?money(comeBets.dontcome):'—';
-  for(const key in placeBets){ $('amt-'+key).textContent = (placeBets[key].amt||placeBets[key].lay)?money(placeBets[key].amt||placeBets[key].lay):'—'; }
-  $('amt-field').textContent = fieldBet?money(fieldBet):'—';
-  const puck=$('puck'); puck.className='puck '+(point?'on':'off'); puck.textContent=point?('ON '+point):'OFF';
-  document.querySelectorAll('.tag').forEach(t=>{const b=placeBets[t.dataset.toggle]; t.textContent=(b.mode==='place'?'Place':(b.mode==='buy'?'Buy':'Lay'));});
-}
-function log(m,c=''){const d=document.createElement('div');d.innerHTML=m;if(c)d.className=c;$('log').prepend(d);}
+  <script>
+    (() => {
+      const bankEl = document.createElement('div');
+      let bank = 5000;
+      let point = null;
+      let denom = 5;
+      let chips = [];
+      const logEl = document.getElementById('log');
 
-/* chip picker */
-document.querySelectorAll('.chipSel').forEach(s=>s.addEventListener('click',()=>{
-  document.querySelectorAll('.chipSel').forEach(x=>x.classList.remove('active'));
-  s.classList.add('active'); denom=+s.dataset.val; denomClass=s.dataset.c||'R';
-}));
+      // Initialize Three.js dice roller
+      const diceContainer = document.getElementById('dice-container');
+      const diceRoller = new window.Dice(diceContainer, { 
+        sound: true, soundDelay: 350,
+        randomizeFirstRoll: true,
+        cameraFar: 1000,
+        dragRotation: true,
+      });
 
-/* chip visuals */
-function zoneCenter(z){ const tb=$('table').getBoundingClientRect(), r=z.getBoundingClientRect(); return {x:r.left-tb.left+r.width*.5,y:r.top-tb.top+r.height*.6}; }
-function addChip(zoneKey, zoneEl, amt, cls=denomClass){
-  const c=zoneCenter(zoneEl); const n=(stackCount[zoneKey]||0)+1; stackCount[zoneKey]=n;
-  const chip=document.createElement('div'); chip.className='chip '+cls; chip.textContent='$'+amt;
-  chip.style.left=c.x+'px'; chip.style.top=(c.y-(n-1)*6)+'px';
-  $('table').appendChild(chip); placed.push({area:zoneKey,amt,el:chip}); return chip;
-}
+      // UI elements
+      const chipButtons = document.querySelectorAll('.chip-select');
+      chipButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          chipButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          denom = parseInt(btn.dataset.value, 10);
+        });
+      });
 
-/* buy/lay toggle */
-document.querySelectorAll('.tag').forEach(tag=>{
-  tag.addEventListener('click',e=>{ e.stopPropagation(); const b=placeBets[tag.dataset.toggle]; b.mode=(b.mode==='place'?'buy':b.mode==='buy'?'lay':'place'); updateHUD(); });
-});
+      // Betting zones
+      const bets = {
+        pass: 0,
+        dont: 0,
+        come: 0,
+        field: 0,
+        props: {},
+        places: {}, // keyed by number
+      };
 
-/* betting */
-function bet(area, el, click){
-  if(bank<denom) return alert('Not enough bank.');
-  if(area==='pass' && point){ if(!lineBets.pass) return alert('Place a Pass bet first.'); const cap=Math.max(lineBets.pass*3-lineBets.passOdds,0); const amt=Math.min(denom,cap); if(amt<=0) return alert('Max odds.'); bank-=amt; lineBets.passOdds+=amt; addChip('passOdds',el,amt,'Y'); log(`PASS ODDS +${money(amt)}`,'mut'); return; }
-  if(area==='dont' && point){ if(!lineBets.dont) return alert('Place a Don’t Pass first.'); const cap=Math.max(lineBets.dont*3-lineBets.dontOdds,0); const amt=Math.min(denom,cap); if(amt<=0) return alert('Max odds.'); bank-=amt; lineBets.dontOdds+=amt; addChip('dontOdds',el,amt,'Y'); log(`DON’T LAY ODDS +${money(amt)}`,'mut'); return; }
+      // Add log message
+      function log(message, type='info') {
+        const div = document.createElement('div');
+        div.textContent = message;
+        if(type === 'error') div.style.color = '#ff6f6f';
+        else if(type === 'win') div.style.color = '#a6d9bf';
+        else if(type === 'muted') div.style.color = '#cfcfcf';
+        logEl.prepend(div);
+      }
 
-  if(area==='props'){ const r=el.getBoundingClientRect(), x=(click.clientX-r.left)/r.width, y=(click.clientY-r.top)/r.height;
-    let which='any7';
-    if(y<0.15){ which = x<0.33?'any7':x<0.66?'anyCraps':'yo'; }
-    else if(y<0.31){ which = x<0.33?'c2':x<0.66?'c3':'c12'; }
-    else if(y<0.47){ which = x<0.33?'h4':x<0.66?'h6':'h8'; }
-    else if(y<0.63){ which = x<0.33?'h10':x<0.66?'horn':'dontcome'; }
-    if(which==='dontcome') return; bank-=denom; props[which]+=denom; addChip(which, el, denom, 'P'); log(`Prop: <b>${which}</b> +${money(denom)}`,'mut'); updateHUD(); return;
-  }
+      // Update HUD: bank and point summary
+      function updateHeader() {
+        document.querySelector('header').textContent = `CrapsEdge™ | Bank: $${bank.toLocaleString()} | Point: ${point ?? 'Off'}`;
+      }
 
-  bank-=denom;
-  if(area==='field'){ fieldBet+=denom; addChip('field', el, denom); updateHUD(); return; }
-  if(area==='come'){ if(point){ comeBets.come+=denom; addChip('come', el, denom); log(`Come +${money(denom)}`,'mut'); } else { lineBets.pass+=denom; addChip('pass',$('table'),denom); log(`Pass Line +${money(denom)}`,'mut'); } updateHUD(); return; }
-  if(area==='dont'){ lineBets.dont+=denom; addChip('dont',$('table'),denom); log(`Don’t Pass +${money(denom)}`,'mut'); updateHUD(); return; }
-  if(area==='pass'){ lineBets.pass+=denom; addChip('pass',$('table'),denom); log(`Pass Line +${money(denom)}`,'mut'); updateHUD(); return; }
-  if(area==='dontcome'){ comeBets.dontcome+=denom; addChip('dontcome',$('table'),denom,'B'); log(`Don’t Come +${money(denom)}`,'mut'); updateHUD(); return; }
+      updateHeader();
 
-  if(area in placeBets){ const b=placeBets[area]; if(b.mode==='lay'){ b.lay+=denom; addChip(area+'-lay',$('table'),denom,'B'); log(`Lay ${placeMap[area]} +${money(denom)}`,'mut'); } else { b.amt+=denom; addChip(area,$('table'),denom,b.mode==='buy'?'Y':undefined); log(`${b.mode==='buy'?'Buy':'Place'} ${placeMap[area]} +${money(denom)}`,'mut'); } updateHUD(); return; }
-}
-document.querySelectorAll('.zone').forEach(z=>z.addEventListener('click',e=>bet(z.dataset.area||z.id, z.id==='props'?z:$('table'), e)));
+      // Betting zone buttons
+      const zoneButtons = {
+        pass: document.getElementById('pass-line-btn'),
+        dont: document.getElementById('dont-pass-btn'),
+        come: document.getElementById('come-zone-btn'),
+        field: document.getElementById('field-zone-btn'),
+        "4": document.getElementById('point-4-btn'),
+        "5": document.getElementById('point-5-btn'),
+        "6": document.getElementById('point-6-btn'),
+        "8": document.getElementById('point-8-btn'),
+        "9": document.getElementById('point-9-btn'),
+        "10": document.getElementById('point-10-btn')
+      };
 
-/* undo/clear */
-$('undo').onclick=()=>{ const last=placed.pop(); if(!last)return; bank+=last.amt; last.el.remove();
-  const a=last.area;
-  if(a==='passOdds') lineBets.passOdds-=last.amt;
-  else if(a==='dontOdds') lineBets.dontOdds-=last.amt;
-  else if(a==='field') fieldBet-=last.amt;
-  else if(a in props) props[a]-=last.amt;
-  else if(a==='pass') lineBets.pass-=last.amt;
-  else if(a==='dont') lineBets.dont-=last.amt;
-  else if(a==='come') comeBets.come=Math.max(0,comeBets.come-last.amt);
-  else if(a==='dontcome') comeBets.dontcome=Math.max(0,comeBets.dontcome-last.amt);
-  else if(a.endsWith('-lay')) placeBets[a.replace('-lay','')].lay-=last.amt;
-  else if(a in placeBets) placeBets[a].amt-=last.amt;
-  updateHUD();
-};
-$('clear').onclick=()=>{ location.reload(); };
+      // Track active bets visually
+      function updateBetVisuals() {
+        Object.entries(zoneButtons).forEach(([key, btn]) => {
+          if(key === "pass" && bets.pass > 0) btn.classList.add('active'); else if(key === "pass") btn.classList.remove('active');
+          if(key === "dont" && bets.dont > 0) btn.classList.add('active'); else if(key === "dont") btn.classList.remove('active');
+          if(key === "come" && bets.come > 0) btn.classList.add('active'); else if(key === "come") btn.classList.remove('active');
+          if(key === "field" && bets.field > 0) btn.classList.add('active'); else if(key === "field") btn.classList.remove('active');
+          if(["4","5","6","8","9","10"].includes(key)) {
+            if(bets.places[key] && bets.places[key] > 0) btn.classList.add('active');
+            else btn.classList.remove('active');
+          }
+        });
+      }
 
-/* ===== dice animation — smoother & shorter ===== */
-const canvas=$('diceCanvas'), ctx=canvas.getContext('2d');
-function resize(){ const r=$('table').getBoundingClientRect(); canvas.width=r.width; canvas.height=r.height; }
-addEventListener('resize',resize,{passive:true}); resize();
+      // Handle betting on zones
+      Object.entries(zoneButtons).forEach(([key, btn]) => {
+        btn.addEventListener('click', () => {
+          if(bank < denom){
+            log('Not enough bank.', 'error');
+            return;
+          }
+          bank -= denom;
+          if(key === "pass") bets.pass += denom;
+          else if(key === "dont") bets.dont += denom;
+          else if(key === "come") bets.come += denom;
+          else if(key === "field") bets.field += denom;
+          else bets.places[key] = (bets.places[key] || 0) + denom;
+          log(`Bet $${denom} on ${key}`, 'muted');
+          updateHeader();
+          updateBetVisuals();
+        });
+      });
 
-function pip(x,y,r){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
-function drawDie(d){
-  ctx.save(); ctx.translate(d.x,d.y); ctx.rotate(d.rot);
-  const s=46,r=s/2,p=r*0.22;
-  const g=ctx.createLinearGradient(-r,-r,r,r); g.addColorStop(0,'#fff'); g.addColorStop(1,'#e9e9e9');
-  ctx.fillStyle=g; ctx.strokeStyle='#111'; ctx.lineWidth=2; ctx.fillRect(-r,-r,s,s); ctx.strokeRect(-r,-r,s,s);
-  ctx.fillStyle='#111';
-  const P=[[-.5,-.5],[.5,.5],[-.5,.5],[.5,-.5],[0,0],[-.5,0],[.5,0]];
-  const L={1:[4],2:[0,1],3:[0,4,1],4:[0,1,2,3],5:[0,1,2,3,4],6:[0,1,2,3,5,6]};
-  L[d.val].forEach(i=>{const [px,py]=P[i]; pip(px*r*.9,py*r*.9,p);});
-  ctx.restore();
-}
-function rollDice(){
-  const mk=()=>({x:canvas.width*0.2+Math.random()*canvas.width*0.6,y:canvas.height*0.25,
-    vx:(Math.random()*4+3)*(Math.random()<.5?-1:1),vy:-(Math.random()*7+9),
-    rot:0,vr:(Math.random()*10+10)*(Math.random()<.5?-1:1),val:1+Math.floor(Math.random()*6)});
-  const a=mk(), b=mk(); const g=.9, bounce=.55, fr=.992; let frames=0;
-  function step(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    [a,b].forEach(d=>{
-      d.vy+=g; d.x+=d.vx; d.y+=d.vy; d.rot+=d.vr*.03; d.vx*=fr; d.vr*=fr;
-      if(d.y>canvas.height-36){ d.y=canvas.height-36; d.vy*=-bounce; d.val=1+Math.floor(Math.random()*6);}
-      if(d.x<36||d.x>canvas.width-36){ d.vx*=-bounce; d.val=1+Math.floor(Math.random()*6);}
-      drawDie(d);
-    });
-    if(++frames<56) requestAnimationFrame(step); else { ctx.clearRect(0,0,canvas.width,canvas.height); drawDie(a); drawDie(b); }
-  }
-  step();
-  return new Promise(res=>setTimeout(()=>res([a.val,b.val,a.val+b.val]), 950));
-}
+      // Proposition bets buttons
+      const propZone = document.getElementById('prop-zone');
+      propZone.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if(bank < denom){
+            log('Not enough bank.', 'error');
+            return;
+          }
+          const propName = btn.dataset.prop;
+          bank -= denom;
+          bets.props[propName] = (bets.props[propName] || 0) + denom;
+          log(`Bet $${denom} on ${propName}`, 'muted');
+          updateHeader();
+          btn.classList.add('active');
+          setTimeout(() => btn.classList.remove('active'), 300);
+        });
+      });
 
-/* ===== payouts (unchanged) ===== */
-function payPlace(n,a){ if(!a) return 0; if(n===4||n===10)return Math.floor(a*9/5); if(n===5||n===9)return Math.floor(a*7/5); if(n===6||n===8)return Math.floor(a*7/6); return 0; }
-function buyWin(n,a){ if(!a) return 0; if(n===4||n===10) return Math.floor(a*2 - Math.ceil(a*0.05)); if(n===5||n===9) return Math.floor(a*1.5 - Math.ceil(a*0.05)); if(n===6||n===8) return Math.floor(a*1.2 - Math.ceil(a*0.05)); return 0; }
-function layWin(n,a){ if(!a) return 0; if(n===4||n===10) return Math.floor(a/2 - Math.ceil((a/2)*0.05)); if(n===5||n===9)  return Math.floor(a*2/3 - Math.ceil((a*2/3)*0.05)); if(n===6||n===8)  return Math.floor(a*5/6 - Math.ceil((a*5/6)*0.05)); return 0; }
-function payOdds(n,a){ if(!a) return 0; if(n===4||n===10) return a*2; if(n===5||n===9) return Math.floor(a*3/2); if(n===6||n===8) return Math.floor(a*6/5); return 0; }
-function layOddsWin(n,a){ if(!a) return 0; if(n===4||n===10) return Math.floor(a/2); if(n===5||n===9) return Math.floor(a*2/3); if(n===6||n===8) return Math.floor(a*5/6); return 0; }
+      // Roll dice button
+      document.getElementById('roll-btn').addEventListener('click', async () => {
+        if (diceRoller.isRolling()) return;
+        log('Rolling dice...', 'muted');
 
-function resolveProps(sum){
-  if(props.any7){ if(sum===7){ bank+=props.any7*5; log(`Any 7 hits +${money(props.any7*4)}`,'ok'); } else log('Any 7 loses','bad'); props.any7=0; }
-  if(props.anyCraps){ if([2,3,12].includes(sum)){ bank+=props.anyCraps*8; log(`Any Craps hits +${money(props.anyCraps*7)}`,'ok'); } else log('Any Craps loses','bad'); props.anyCraps=0; }
-  if(props.yo){ if(sum===11){ bank+=props.yo*16; log(`Yo 11 hits +${money(props.yo*15)}`,'ok'); } else log('Yo 11 loses','bad'); props.yo=0; }
-  if(props.c2){ if(sum===2){ bank+=props.c2*31; log(`Craps 2 hits +${money(props.c2*30)}`,'ok'); } else log('Craps 2 loses','bad'); props.c2=0; }
-  if(props.c3){ if(sum===3){ bank+=props.c3*16; log(`Craps 3 hits +${money(props.c3*15)}`,'ok'); } else log('Craps 3 loses','bad'); props.c3=0; }
-  if(props.c12){ if(sum===12){ bank+=props.c12*31; log(`Craps 12 hits +${money(props.c12*30)}`,'ok'); } else log('Craps 12 loses','bad'); props.c12=0; }
-  if(props.horn){ const q=props.horn/4; let win=0; if(sum===2)win+=q*31; if(sum===3)win+=q*16; if(sum===11)win+=q*16; if(sum===12)win+=q*31;
-    if(win>0){ bank+=win; log(`Horn hits +${money(win-props.horn)}`,'ok'); } else log('Horn loses','bad'); props.horn=0; }
-  function hardHit(n){ const need={4:[2,2],6:[3,3],8:[4,4],10:[5,5]}[n]; return (lastDice[0]===need[0]&&lastDice[1]===need[1])||(lastDice[0]===need[1]&&lastDice[1]===need[0]); }
-  function payHard(n,key,rate){ if(!props[key])return; if(sum===7||(sum===n&&!hardHit(n))){ log(`Hard ${n} loses`,'bad'); props[key]=0; return; } if(hardHit(n)){ bank+=props[key]*(rate+1); log(`Hard ${n} hits +${money(props[key]*rate)}`,'ok'); props[key]=0; } }
-  payHard(4,'h4',7); payHard(6,'h6',9); payHard(8,'h8',9); payHard(10,'h10',7);
-}
-function resolveField(sum){
-  if(!fieldBet) return;
-  if([2,3,4,9,10,11,12].includes(sum)){ const m=FIELD_DOUBLE.includes(sum)?2:1; bank+=fieldBet*(1+m); log(`Field ${sum} pays ${m}:1 +${money(fieldBet*m)}`,'ok'); }
-  else log('Field loses','bad'); fieldBet=0;
-}
-function moveCome(sum){
-  if(comeBets.come){
-    if([2,3,12].includes(sum)||sum===7){ log(`Come loses on ${sum}`,'bad'); comeBets.come=0; }
-    else{ comePoints[sum].flat += comeBets.come; log(`Come travels to ${sum}`,'mut'); comeBets.come=0; }
-  }
-  if(comeBets.dontcome){
-    if(sum===7||[2,3].includes(sum)){ bank+=comeBets.dontcome*2; log(`Don’t Come wins on ${sum}`,'ok'); comeBets.dontcome=0; return; }
-    if(sum===12){ bank+=comeBets.dontcome; log(`Don’t Come pushes on 12`,'mut'); comeBets.dontcome=0; return; }
-    comePoints[sum].dflat += comeBets.dontcome; log(`Don’t Come behind ${sum}`,'mut'); comeBets.dontcome=0;
-  }
-}
-function payOdds(n,a){ if(!a) return 0; if(n===4||n===10) return a*2; if(n===5||n===9) return Math.floor(a*3/2); if(n===6||n===8) return Math.floor(a*6/5); return 0; }
-function layOddsWin(n,a){ if(!a) return 0; if(n===4||n===10) return Math.floor(a/2); if(n===5||n===9) return Math.floor(a*2/3); if(n===6||n===8) return Math.floor(a*5/6); return 0; }
+        // Roll two dice
+        const result = await diceRoller.roll({ diceCount: 2 });
+        const diceValues = result.dices.map(die => die.value);
+        const diceSum = diceValues.reduce((a,b) => a + b, 0);
+        log(`Roll: ${diceValues.join(' + ')} = ${diceSum}`, 'muted');
 
-function resolveComeOut(sum){
-  resolveProps(sum); resolveField(sum);
-  if(sum===7||sum===11){ if(lineBets.pass){ bank+=lineBets.pass*2; log(`Natural ${sum}: Pass wins`,'ok'); lineBets.pass=0; } if(lineBets.dont){ log(`Natural ${sum}: Don’t Pass loses`,'bad'); lineBets.dont=0; } return; }
-  if([2,3,12].includes(sum)){ if(lineBets.pass){ log(`Craps ${sum}: Pass loses`,'bad'); lineBets.pass=0; }
-    if(lineBets.dont){ if(sum===12){ bank+=lineBets.dont; log('Don’t Pass push','mut'); } else { bank+=lineBets.dont*2; log(`Don’t Pass wins on ${sum}`,'ok'); } lineBets.dont=0; } return; }
-  point=sum; log(`Point ON: <b>${point}</b>`,'mut'); moveCome(sum);
-}
-function resolvePoint(sum){
-  resolveProps(sum); resolveField(sum);
-  if(sum===7){
-    if(lineBets.pass) log(`Seven-out: Pass loses`,'bad');
-    if(lineBets.passOdds) log(`Pass odds lost`,'bad');
-    if(lineBets.dont){ bank+=lineBets.dont*2; log(`Seven-out: Don’t Pass wins`,'ok'); }
-    if(lineBets.dontOdds){ const w=layOddsWin(point,lineBets.dontOdds); bank+=lineBets.dontOdds+w; log(`Don’t lay odds pay +${money(w)}`,'ok'); }
-    lineBets.pass=lineBets.passOdds=lineBets.dont=lineBets.dontOdds=0;
+        // Simple come-out and point logic demo (extend per craps rules)
 
-    for(const key in placeBets){ const n=placeMap[key], b=placeBets[key];
-      if(b.amt){ log(`Place/Buy ${n} loses`,'bad'); b.amt=0; }
-      if(b.lay){ const w=layWin(n,b.lay); bank+=b.lay+w; log(`Lay ${n} wins +${money(w)}`,'ok'); b.lay=0; }
-    }
-    for(const n of [4,5,6,8,9,10]){ const k=comePoints[n];
-      if(k.flat) log(`Come ${n} loses`,'bad');
-      if(k.odds) log(`Come ${n} odds lost`,'bad');
-      if(k.dflat){ bank+=k.dflat*2; log(`Don’t Come ${n} wins`,'ok'); }
-      if(k.dodds){ const w=layOddsWin(n,k.dodds); bank+=k.dodds+w; log(`Don’t Come ${n} lay odds pay +${money(w)}`,'ok'); }
-      k.flat=k.odds=k.dflat=k.dodds=0;
-    }
-    point=null; return;
-  }
-  if(sum===point){
-    if(lineBets.pass){ bank+=lineBets.pass*2; log(`POINT ${point} MADE: Pass pays`,'ok'); lineBets.pass=0; }
-    if(lineBets.passOdds){ const w=payOdds(point,lineBets.passOdds); bank+=lineBets.passOdds+w; log(`Pass odds pay +${money(w)}`,'ok'); lineBets.passOdds=0; }
-    if(lineBets.dont) { log(`Point made: Don’t Pass loses`,'bad'); lineBets.dont=0; }
-    if(lineBets.dontOdds){ log(`Point made: Don’t lay odds lose`,'bad'); lineBets.dontOdds=0; }
-    const key=Object.keys(placeBets).find(k=>placeMap[k]===point);
-    if(key){ const b=placeBets[key]; if(b.amt){ const w=(b.mode==='buy')?buyWin(point,b.amt):payPlace(point,b.amt); bank+=w; log(`${b.mode==='buy'?'Buy':'Place'} ${point} hits +${money(w)}`,'ok'); } if(b.lay){ log(`Lay ${point} loses`,'bad'); b.lay=0; } }
-    const k=comePoints[point];
-    if(k && k.flat){ bank+=k.flat*2; log(`Come ${point} made`,'ok'); if(k.odds){ const w=payOdds(point,k.odds); bank+=k.odds+w; log(`Come ${point} odds pay +${money(w)}`,'ok'); } k.flat=k.odds=0; }
-    if(k && k.dflat){ log(`Don’t Come ${point} loses`,'bad'); if(k.dodds) log(`Don’t Come ${point} lay odds lose`,'bad'); k.dflat=k.dodds=0; }
-    point=null; return;
-  }
-  moveCome(sum);
-  for(const key in placeBets){ const n=placeMap[key], b=placeBets[key]; if(n===sum && b.amt){ const w=(b.mode==='buy')?buyWin(n,b.amt):payPlace(n,b.amt); bank+=w; log(`${b.mode==='buy'?'Buy':'Place'} ${n} hits +${money(w)}`,'ok'); } }
-  const k=comePoints[sum]; if(k.flat){ const w=payPlace(sum,k.flat); bank+=w; log(`Come ${sum} wins +${money(w)}`,'ok'); }
-  if(k.odds){ const w=payOdds(sum,k.odds); bank+=w; log(`Come ${sum} odds pay +${money(w)}`,'ok'); }
-  if(k.dflat){ log(`Don’t Come ${sum} loses`,'bad'); k.dflat=0; }
-  if(k.dodds){ log(`Don’t Come ${sum} lay odds lose`,'bad'); k.dodds=0; }
-}
+        if(!point){
+          if(diceSum === 7 || diceSum === 11){
+            if(bets.pass > 0) {
+              bank += bets.pass * 2;
+              log(`Natural! Pass Line wins $${bets.pass}`, 'win');
+            }
+            if(bets.dont > 0) {
+              log(`Natural! Don't Pass loses`, 'error');
+            }
+            bets.pass = 0; bets.dont = 0;
+          } else if ([2,3,12].includes(diceSum)) {
+            if (diceSum === 12) {
+              if(bets.dont > 0) {
+                bank += bets.dont;
+                log("Don't Pass pushes", 'muted');
+              }
+            } else {
+              if(bets.pass > 0) {
+                log(`Craps! Pass Line loses`, 'error');
+              }
+              if(bets.dont > 0) {
+                bank += bets.dont * 2;
+                log(`Don't Pass wins $${bets.dont * 2}`, 'win');
+              }
+            }
+            bets.pass = 0; bets.dont = 0;
+          } else {
+            point = diceSum;
+            log(`Point is ON: ${point}`, 'muted');
+          }
+        } else {
+          if(diceSum === 7){
+            if(bets.pass > 0) log('Seven out! Pass Line loses', 'error');
+            if(bets.dont > 0) {
+              bank += bets.dont * 2;
+              log('Seven out! Don\'t Pass wins', 'win');
+            }
+            bets.pass = 0; bets.dont = 0;
+            point = null;
+            log('New round! Point is OFF.', 'muted');
+          } else if (diceSum === point) {
+            if(bets.pass > 0) {
+              bank += bets.pass * 2;
+              log(`Point hit! Pass Line wins $${bets.pass}`, 'win');
+            }
+            if(bets.dont > 0) log('Point hit! Don\'t Pass loses', 'error');
+            bets.pass = 0; bets.dont = 0;
+            point = null;
+            log('New round! Point is OFF.', 'muted');
+          } else {
+            log(`No point change on ${diceSum}`, 'muted');
+          }
+        }
+        updateHeader();
+      });
 
-/* roll */
-const canvasEl=$('diceCanvas');
-$('roll').onclick=async()=>{ const [a,b,sum]=await rollDice(); lastDice=[a,b]; log(`Roll: <b>${a}+${b} = ${sum}</b>`); if(!point) resolveComeOut(sum); else resolvePoint(sum); updateHUD(); };
+      // Undo button (simplified: reset last bet placed)
+      document.getElementById('undo-btn').addEventListener('click', () => {
+        // Could be enhanced to store a bet stack for undoing specific bets
+        log('Undo functionality coming soon!', 'muted');
+      });
 
-/* quick binds */
-document.querySelectorAll('.bx4,.bx5,.bx6,.bx8,.bx9,.bx10').forEach(box=>{
-  box.addEventListener('dblclick',()=>{ if(!point) return; const n=placeMap[box.dataset.area]; const k=comePoints[n];
-    const capP=Math.max(k.flat*3 - k.odds,0), capD=Math.max(k.dflat*3 - k.dodds,0);
-    if(k.flat && capP>0 && bank>=Math.min(denom,capP)){ const amt=Math.min(denom,capP); bank-=amt; k.odds+=amt; addChip('comeOdds'+n,$('table'),amt,'Y'); log(`COME ${n} odds +${money(amt)}`,'mut'); }
-    else if(k.dflat && capD>0 && bank>=Math.min(denom,capD)){ const amt=Math.min(denom,capD); bank-=amt; k.dodds+=amt; addChip('dcomeOdds'+n,$('table'),amt,'Y'); log(`DON’T COME ${n} lay odds +${money(amt)}`,'mut'); }
-    updateHUD();
-  });
-});
+      // Clear bets button
+      document.getElementById('clear-btn').addEventListener('click', () => {
+        bank += bets.pass + bets.dont + bets.come + bets.field;
+        Object.values(bets.places).forEach(v => bank += v);
+        bets.pass = 0; bets.dont = 0; bets.come = 0; bets.field = 0; bets.places = {};
+        bets.props = {};
+        log('All bets cleared', 'muted');
+        updateHeader();
+        updateBetVisuals();
+      });
 
-/* init */
-updateHUD(); log('Tap the felt to place chips. Press ROLL.','mut');
-})();
-</script>
+      // Initialize visual bet states
+      updateBetVisuals();
+    })();
+  </script>
 </body>
 </html>
