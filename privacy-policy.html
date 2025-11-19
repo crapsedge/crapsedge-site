@@ -2,90 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy – CrapsEdge™</title>
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
-     crossorigin="anonymous"></script>
-     
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --color-primary: lime;
+      --color-secondary: cyan;
+      --color-link: #00ccff;
+      --color-background: black;
+      --color-text: white;
+      --max-width: 900px;
+    }
+    
     body {
-      background-color: black;
-      color: white;
+      background-color: var(--color-background);
+      color: var(--color-text);
       font-family: 'Montserrat', sans-serif;
       padding: 2em;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.7;
+      max-width: var(--max-width);
+      margin: 0 auto; /* Better centering */
+      line-height: 1.6; /* Slightly improved readability */
     }
+    
     h1 {
-      color: lime;
+      color: var(--color-primary);
       text-align: center;
       margin-bottom: 0.5em;
+      font-weight: 600; /* Ensure H1 uses the bold font weight */
     }
+    
     h2 {
-      color: cyan;
-      margin-top: 1.5em;
+      color: var(--color-secondary);
+      margin-top: 2em; /* Increased spacing before sections */
+      margin-bottom: 0.75em;
+      font-weight: 600;
     }
+    
     a {
-      color: #00ccff;
+      color: var(--color-link);
       text-decoration: none;
+      transition: color 0.3s; /* Smooth transition for hover */
     }
+    
     a:hover {
       text-decoration: underline;
+      color: var(--color-primary); /* New hover color */
     }
+    
     p {
-      font-size: 1.05em;
-      /* Added margin-bottom for better paragraph separation */
+      font-size: 1em; /* Removed 1.05em, standard font size is often better for flow */
       margin-bottom: 1em; 
     }
+    
+    .last-updated {
+      text-align: center;
+      margin-top: -0.5em; /* Pull it slightly closer to the H1 */
+      font-style: italic;
+    }
+    
+    /* Accessibility/Cleanup for AdSense container if script fails */
+    .adsbygoogle {
+        margin-bottom: 2em;
+    }
   </style>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
+     crossorigin="anonymous"></script>
 
 </head>
 <body>
   
   <header>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-client="ca-pub-7741509990569883"
-         data-ad-slot="1863047244"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <div style="text-align:center;">
+        <ins class="adsbygoogle"
+             style="display:block; max-width: 900px;" 
+             data-ad-client="ca-pub-7741509990569883"
+             data-ad-slot="1863047244"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
   
     <h1>Privacy Policy</h1>
-    <p style="text-align:center;">Last Updated: July 21, 2025</p>
+    <p class="last-updated">Last Updated: July 21, 2025</p>
   </header>
   
   <main>
-    <p>This Privacy Policy describes how CrapsEdge™ collects, uses, and protects your information when you visit <a href="https://crapsedge.store" target="_blank">https://crapsedge.store</a>.</p>
+    <p>This Privacy Policy describes how CrapsEdge™ collects, uses, and protects your information when you visit <a href="https://crapsedge.store" target="_blank" rel="noopener noreferrer">https://crapsedge.store</a>.</p>
   
-    <h2>1. Information We Collect</h2>
-    <p>We do not collect personally identifiable information unless you voluntarily submit it (such as by emailing us or purchasing a product).</p>
-    <p>We use tools like Google Analytics to collect anonymous traffic data (e.g., pages visited, time spent, general location).</p>
-  
-    <h2>2. Use of Information</h2>
-    <p>We use any collected data to improve content, analyze site traffic, and offer a better user experience. We never sell your information.</p>
-  
-    <h2>3. Cookies</h2>
-    <p>Cookies may be used to remember preferences and analyze site usage. You can manage or disable cookies in your browser settings.</p>
-  
-    <h2>4. Third-Party Links and Tools</h2>
-    <p>This site may link to or embed services like Google AdSense, Cash App, or affiliate tools. These platforms follow their own privacy rules and policies.</p>
-  
-    <h2>5. Data Security</h2>
-    <p>We take steps to protect your information but cannot guarantee 100% security across all systems or platforms.</p>
-  
-    <h2>6. Changes to This Policy</h2>
-    <p>We may update this policy as needed. The most recent version will always be posted here with the update date shown above.</p>
+    <section id="information-collected">
+        <h2>1. Information We Collect</h2>
+        <p>We do not collect personally identifiable information unless you voluntarily submit it (such as by emailing us or purchasing a product).</p>
+        <p>We use tools like Google Analytics to collect anonymous traffic data (e.g., pages visited, time spent, general location).</p>
+    </section>
+
+    <section id="use-of-information">
+        <h2>2. Use of Information</h2>
+        <p>We use any collected data to improve content, analyze site traffic, and offer a better user experience. We never sell your information.</p>
+    </section>
+
+    <section id="cookies">
+        <h2>3. Cookies</h2>
+        <p>Cookies may be used to remember preferences and analyze site usage. You can manage or disable cookies in your browser settings.</p>
+    </section>
+
+    <section id="third-party-tools">
+        <h2>4. Third-Party Links and Tools</h2>
+        <p>This site may link to or embed services like Google AdSense, Cash App, or affiliate tools. These platforms follow their own privacy rules and policies.</p>
+    </section>
+
+    <section id="data-security">
+        <h2>5. Data Security</h2>
+        <p>We take steps to protect your information but cannot guarantee 100% security across all systems or platforms.</p>
+    </section>
+
+    <section id="changes-to-policy">
+        <h2>6. Changes to This Policy</h2>
+        <p>We may update this policy as needed. The most recent version will always be posted here with the update date shown above.</p>
+    </section>
+
   </main>
 
   <footer>
-    <h2>7. Contact</h2>
-    <p>For privacy concerns or questions, contact us at <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a>.</p>
+    <section id="contact">
+        <h2>7. Contact</h2>
+        <p>For privacy concerns or questions, contact us at <a href="mailto:crapsedge@gmail.com" rel="noopener noreferrer">crapsedge@gmail.com</a>.</p>
+    </section>
   </footer>
 
 </body>
