@@ -12,26 +12,48 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://crapsedge.store/blog.html"/>
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Blog",
+    "name":"CrapsEdge Blog",
+    "url":"https://crapsedge.store/blog.html",
+    "description":"Recovery-first, math-based articles from CrapsEdge."
+  }
+  </script>
+
   <style>
     :root{
-      --brand:#00e676; --ink:#e8f2ec; --muted:#9fb7ad;
-      --bg:#0a0a0a; --paper:#101213; --border:#1e293b; --card:#0f1418;
+      --brand:#00cc66; /* Adjusted to match CTA button green */
+      --ink:#e8f2ec; 
+      --muted:#9fb7ad;
+      --bg:#000; /* Adjusted to pure black for site consistency */
+      --paper:#101213; 
+      --border:#1e293b; 
+      --card:#0f1418;
       --ring:#1f8a4e;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif}
+    /* Apply Inter for standard text, Poppins for titles */
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter', sans-serif;}
 
     /* Hero */
     .hero{
-      background: radial-gradient(1200px 300px at 10% -20%, rgba(0,230,118,.18), transparent),
-                  radial-gradient(900px 340px at 90% -30%, rgba(0,230,118,.10), transparent),
-                  #0a0a0a;
+      background: radial-gradient(1200px 300px at 10% -20%, rgba(0,204,102,.18), transparent), /* Use new brand green */
+                  radial-gradient(900px 340px at 90% -30%, rgba(0,204,102,.10), transparent), /* Use new brand green */
+                  #000; /* Use new background color */
       border-bottom:1px solid var(--border);
       padding:40px 16px 28px;
     }
     .wrap{max-width:1100px;margin:auto}
     .brandline{display:flex;align-items:center;gap:14px}
     .logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#1b4332)}
+    
+    /* Headings use Poppins */
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; }
     h1{margin:0;font-size:34px}
     .sub{margin:8px 0 0;color:var(--muted)}
 
@@ -50,28 +72,74 @@
     .title{margin:6px 0 8px;font-size:20px;line-height:1.25}
     .title a{color:#f3fff8;text-decoration:none}
     .title a:hover{color:var(--brand);text-decoration:underline}
-    .excerpt{color:#cfe7db;font-size:15px}
+    .excerpt{color:#cfe7db;font-size:15px; line-height: 1.5;} /* Increased line height for Inter */
     .read{display:inline-block;margin-top:10px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#0c0f12;color:#e8f2ec;text-decoration:none}
     .read:hover{box-shadow:0 0 0 2px var(--ring) inset}
 
     .load{display:block;width:100%;max-width:420px;margin:22px auto 0;padding:12px;border:1px solid var(--border);background:#0c0f12;color:#e8f2ec;border-radius:12px;cursor:pointer}
 
-    footer{border-top:1px solid var(--border);margin-top:28px;padding:18px 16px;color:#c7ded4}
+    footer{border-top:1px solid var(--border);margin-top:28px;padding:18px 16px;color:#c7ded4; font-size: 0.9em;}
+    footer a { color: var(--brand); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
     .sr-only{position:absolute;left:-9999px}
+    
+    /* Added Menu Button/Sidebar styles for navigation consistency */
+    .menu-button {
+      position: fixed;
+      top: 35px;
+      left: 20px;
+      background-color: var(--brand);
+      border: none;
+      color: #000;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 4px;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 999;
+    }
+    .side-menu a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+    }
+    .side-menu a:hover {
+      background-color: var(--brand);
+      color: #000;
+    }
+    .show-menu { left: 0; }
   </style>
-
-  <!-- Minimal Blog schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Blog",
-    "name":"CrapsEdge Blog",
-    "url":"https://crapsedge.store/blog.html",
-    "description":"Recovery-first, math-based articles from CrapsEdge."
-  }
-  </script>
 </head>
 <body>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
+
   <header class="hero">
     <div class="wrap">
       <div class="brandline">
@@ -82,7 +150,6 @@
         </div>
       </div>
 
-      <!-- Keep only search (optional). No categories/toggles. -->
       <div class="tools">
         <input id="search" class="search" type="search" placeholder="Search articles…" aria-label="Search"/>
       </div>
@@ -165,6 +232,20 @@
 
     load.addEventListener('click', ()=>{ page += 6; render(); });
     render();
+
+    // Toggle Menu Functionality
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    // Hides the menu button when scrolling down, shows it when scrolling up (for better viewing on mobile)
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
   </script>
 </body>
 </html>
