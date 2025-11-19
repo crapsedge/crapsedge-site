@@ -4,24 +4,39 @@
   <meta charset="UTF-8" />
   <title>CrapsEdge™ Casino Table</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
+    /* VARIABLES */
+    :root {
+      --rail-color: #3b3a3c;
+      --rail-border: #1a191b;
+      --felt-color-base: #280a13; /* Deep, rich red-black */
+      --line-color: #a0a0a0; /* Softer white line */
+      --chip-tray-color: #1f1f1f;
+      --brand-color: #22d08b;
+    }
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
-      font-family: 'Copperplate', 'Segoe UI', Arial, sans-serif;
-      background: #393232;
+      font-family: 'Inter', Arial, sans-serif;
+      background: #121212; /* Near black background */
       color: #fff;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .table-rail {
-      width: 99vw;
+      width: 95vw;
       max-width: 650px;
       margin: 22px auto 0;
       border-radius: 48px 48px 38px 38px;
-      background: #7b4c2e;
-      border: 8px solid #4a2216;
-      box-shadow: 0 10px 55px #17101077;
+      /* Using a subtle dark gradient for depth */
+      background: linear-gradient(180deg, var(--rail-color) 0%, #29282a 100%);
+      border: 4px solid var(--rail-border); /* Thinner, darker border */
+      box-shadow: 0 15px 40px #000000aa; /* Deeper shadow */
       position: relative;
       overflow: hidden;
     }
@@ -29,47 +44,50 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      gap: 6px;
+      gap: 4px; /* Reduced gap */
       position: absolute;
       right: 12px;
       top: 9px;
       z-index: 9;
     }
     .chip-stack {
-      width: 20px; height: 70px;
-      background: #292929;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px #0008 inset;
-      margin-left: 4px;
+      width: 18px; height: 65px; /* Slightly smaller */
+      background: var(--chip-tray-color);
+      border-radius: 8px; /* Softer radius */
+      box-shadow: 0 1px 3px #000a inset;
+      margin-left: 3px;
       display: grid;
       align-items: end;
-      padding: 0 2px;
+      padding: 0 1px;
       position: relative;
     }
     .chip { 
       border-radius: 50%;
-      width: 18px; height: 8px;
+      width: 16px; height: 6px; /* Thinner chips */
       margin-bottom: 2px;
-      margin-left: 1px;
-      box-shadow: 0 0.1px 1.2px #0008 inset;
-      border: 1px solid #222;
+      box-shadow: 0 0.5px 1.5px #000a inset;
+      border: 0.5px solid #444; /* Darker border */
+      transition: all 0.1s ease-out;
     }
-    .chip.red { background: #c94033;}
-    .chip.blue { background: #77a3c5;}
-    .chip.green { background: #6ace7e;}
-    .chip.orange { background: #ffb45d;}
-    .chip.purple { background: #a07fff;}
-    .chip.yellow { background: #ffe066;}
+    /* Updated Chip Colors for a modern palette */
+    .chip.red { background: #d32f2f;}
+    .chip.blue { background: #1976d2;}
+    .chip.green { background: #4caf50;}
+    .chip.orange { background: #ff9800;}
+    .chip.purple { background: #7b1fa2;}
+    .chip.yellow { background: #ffeb3b;}
     /* Table Felt */
     .felt {
-      background: #7d1931;
+      /* Rich felt color with subtle texture gradient */
+      background: linear-gradient(160deg, var(--felt-color-base) 0%, #3d101d 100%);
       border-radius: 38px;
-      margin: 22px auto 0;
-      padding: 32px 8px 50px 8px;
+      margin: 18px auto 0; /* Reduced margin */
+      padding: 30px 8px 40px 8px;
       max-width: 620px;
       min-height: 400px;
-      box-shadow: 0 0px 16px #473131aa inset, 0 5px 25px #0006;
+      box-shadow: 0 0px 20px #00000077 inset, 0 8px 30px #0009;
       position: relative;
+      padding-bottom: 8%;
     }
     /* Betting Zones & Markings */
     .markings {
@@ -81,51 +99,72 @@
     /* zone labels and numbers */
     .felt-label {
       position: absolute;
-      color: #ffecd0;
-      text-shadow: 0 1.5px 1.5px #aa1a1aaa;
-      font-weight: 900;
-      font-family: 'Copperplate', serif;
+      color: #ffe0b2; /* Off-white label color */
+      text-shadow: 0 1px 1px #000000; /* Subtle dark shadow */
+      font-weight: 700;
+      font-family: 'Inter', sans-serif; /* Modern font */
       text-align: center;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
+      font-size: 2.5vw; 
+      transition: all 0.1s;
     }
-    .felt-label.pass { left:8%; bottom:14%; width:36%; font-size:1.12em;}
-    .felt-label.dont { right:9%; bottom:14%; width:34%; font-size:1.12em;}
-    .felt-label.come { left:27%; top:46%; width:44%; font-size:1.2em;}
-    .felt-label.field { left:31%; top:57%; width:38%; font-size:1em;}
-    .felt-label.place4 { left:10%; top:17%; width:10%;}
-    .felt-label.place5 { left:25%; top:17%; width:10%;}
-    .felt-label.place6 { left:40%; top:17%; width:10%;}
-    .felt-label.place8 { left:55%; top:17%; width:10%;}
-    .felt-label.place9 { left:70%; top:17%; width:10%;}
-    .felt-label.place10 { left:84%; top:17%; width:10%;}
-    .felt-label.dpb { right: 12%; bottom: 6%; width: 20%; font-size: 0.96em;}
-    /* Button Zone */
+    /* Adjusted positions using percentages for responsiveness */
+    .felt-label.pass { left:8%; bottom:20%; width:36%; font-size:4.5vw;}
+    .felt-label.dont { right:9%; bottom:20%; width:34%; font-size:4.5vw;}
+    .felt-label.come { left:27%; top:46%; width:44%; font-size:4vw;}
+    .felt-label.field { left:31%; top:60%; width:38%; font-size:3.5vw;}
+    .felt-label.place4 { left:10%; top:15%; width:10%;}
+    .felt-label.place5 { left:25%; top:15%; width:10%;}
+    .felt-label.place6 { left:40%; top:15%; width:10%;}
+    .felt-label.place8 { left:55%; top:15%; width:10%;}
+    .felt-label.place9 { left:70%; top:15%; width:10%;}
+    .felt-label.place10 { left:84%; top:15%; width:10%;}
+    .felt-label.dpb { right: 12%; bottom: 8%; width: 20%; font-size: 3vw;}
+    /* Controls */
     .controls {
       text-align: center;
-      margin: 28px auto 0;
+      margin: 28px auto 28px;
       gap: 8px;
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      max-width: 650px;
+      flex-wrap: wrap;
     }
     .ctrl-btn {
-      margin: 0 8px;
+      margin: 8px;
       padding:12px 26px;
-      background:#22d08b;
-      border-radius:11px;
+      background:var(--brand-color);
+      border-radius:8px; /* Modern radius */
       border:none;
       font-family:inherit;
       font-size: 1.14em;
       font-weight: 800;
       color:#171010;
       transition: background .18s;
+      box-shadow: 0 4px 6px #00000055; /* Subtle button shadow */
+      flex-grow: 1;
+      max-width: 150px;
+      cursor: pointer;
+    }
+    .ctrl-btn:hover {
+      background: #39e09d;
     }
     .ctrl-btn:active {
-      background: #ffe066; color:#511;
+      background: #ffe066; 
+      color:#511;
+      box-shadow: 0 1px 3px #00000055;
+    }
+    /* SVG adjustments for modern look */
+    .markings svg path, .markings svg rect, .markings svg ellipse {
+      stroke: var(--line-color) !important;
+      stroke-width: 2.5 !important; /* Thinner lines */
     }
   </style>
 </head>
 <body>
   <div class="table-rail">
-    <!-- Chip trays for decor -->
     <div class="chip-trays">
       <div class="chip-stack">
         <div class="chip red"></div><div class="chip red"></div><div class="chip red"></div>
@@ -141,27 +180,18 @@
       </div>
     </div>
     <div class="felt" style="position:relative;">
-      <!-- SVG Markings for Borders, Arcs, Numbers -->
       <div class="markings">
         <svg viewBox="0 0 620 400">
-          <!-- Major arcs for pass line -->
-          <path d="M55 325 Q310 395 565 325" stroke="#fffbea" stroke-width="5" fill="none"/>
-          <!-- Inside border for felt -->
-          <rect x="28" y="28" width="563" height="343" rx="34" stroke="#fffbea" stroke-width="2" fill="none"/>
-          <!-- Pass line text arcs -->
-          <text x="105" y="355" font-size="34" fill="#fffbea" font-family="Copperplate, serif" font-weight="bold">PASS LINE</text>
-          <text x="440" y="355" font-size="34" fill="#fffbea" font-family="Copperplate, serif" font-weight="bold">DON'T PASS</text>
-          <!-- Zone outlines -->
-          <rect x="108" y="80" width="95" height="36" rx="18" stroke="#ffecd0" stroke-width="2" fill="none"/>
-          <rect x="235" y="80" width="95" height="36" rx="18" stroke="#ffecd0" stroke-width="2" fill="none"/>
-          <rect x="362" y="80" width="95" height="36" rx="18" stroke="#ffecd0" stroke-width="2" fill="none"/>
-          <rect x="489" y="80" width="95" height="36" rx="18" stroke="#ffecd0" stroke-width="2" fill="none"/>
-          <!-- Center ovals -->
-          <ellipse cx="310" cy="188" rx="128" ry="38" stroke="#ffe066" stroke-width="2" fill="none"/>
-          <ellipse cx="310" cy="238" rx="78" ry="28" stroke="#ffe066" stroke-width="1.5" fill="none"/>
+          <path d="M55 325 Q310 395 565 325" fill="none"/>
+          <rect x="28" y="28" width="563" height="343" rx="34" fill="none"/>
+          <rect x="108" y="80" width="95" height="36" rx="18" fill="none"/>
+          <rect x="235" y="80" width="95" height="36" rx="18" fill="none"/>
+          <rect x="362" y="80" width="95" height="36" rx="18" fill="none"/>
+          <rect x="489" y="80" width="95" height="36" rx="18" fill="none"/>
+          <ellipse cx="310" cy="188" rx="128" ry="38" fill="none"/>
+          <ellipse cx="310" cy="238" rx="78" ry="28" fill="none"/>
         </svg>
       </div>
-      <!-- Zone Labels (CSS positioned) -->
       <div class="felt-label pass">PASS LINE</div>
       <div class="felt-label dont">DON'T PASS</div>
       <div class="felt-label come">COME</div>
@@ -175,11 +205,10 @@
       <div class="felt-label dpb">DON'T PASS BAR</div>
     </div>
   </div>
-  <!-- Betting controls/buttons -->
-  <div class="controls">
+  <nav class="controls">
       <button class="ctrl-btn">ROLL</button>
       <button class="ctrl-btn">UNDO</button>
       <button class="ctrl-btn">CLEAR</button>
-  </div>
+  </nav>
 </body>
 </html>
