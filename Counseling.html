@@ -2,36 +2,185 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Private Counseling – CrapsEdge™</title>
+  <title>Private Support Sessions – CrapsEdge™</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
+  <style>
+    /* Global Styles consistent with front page */
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #fff;
+      padding-top: 20px;
+    }
+    .main-content {
+      max-width: 700px;
+      margin: auto;
+      padding: 2em;
+      text-align: center;
+      flex: 1;
+    }
+    /* Poppins for all main titles/headings */
+    h1, h2, h3 {
+        font-family: 'Poppins', sans-serif; 
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #00cc66; /* Using the brand green for trust/hope */
+      margin-bottom: 0.5em;
+    }
+    h3 {
+      font-size: 1.5em;
+      color: #ffcc00; /* Yellow/Gold for attention */
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+    }
+    p {
+      line-height: 1.7; /* Enhanced line height for better reading */
+      font-size: 1.1em;
+      margin-bottom: 1.5em;
+      color: #ccc;
+    }
+    hr {
+      margin: 30px auto;
+      width: 80%;
+      border: none;
+      border-top: 1px solid #333;
+    }
+    /* Call to Action Email Style */
+    .cta-email {
+        font-size: 1.3em;
+        font-weight: 600;
+        margin: 10px 0 20px;
+    }
+    .cta-email a {
+        color: #00cc66;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .cta-email a:hover {
+        color: #00e676;
+        text-decoration: underline;
+    }
+    /* Disclaimer style */
+    .disclaimer {
+      max-width: 600px;
+      margin: 50px auto 20px;
+      font-size: 0.85em;
+      color: #888;
+      padding: 15px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      line-height: 1.5;
+    }
+
+    /* Menu styles (copied from front page for consistency) */
+    .menu-button {
+      position: fixed;
+      top: 35px;
+      left: 20px;
+      background-color: #00cc66;
+      border: none;
+      color: #000;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 4px;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 999;
+    }
+    .side-menu a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+    }
+    .side-menu a:hover {
+      background-color: #00cc66;
+      color: #000;
+    }
+    .show-menu { left: 0; }
+  </style>
 </head>
-<body style="background:black; color:white; text-align:center; font-family:Arial; padding: 20px;">
 
-  <h1>💬 1-on-1 Gambling Support</h1>
+<body>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
 
-  <p style="max-width:600px; margin:auto; font-size: 1.1em;">
-    Struggling to stop? You don’t have to face it alone.
-    Our 1-on-1 support sessions are designed to help you take control,
-    talk through your situation, and build a real action plan based on personal experience.
-  </p>
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
 
-  <hr style="margin: 30px auto; width: 80%; border-color: gray;">
+  <div class="main-content">
+    <h1>💬 1-on-1 Gambling Support</h1>
 
-  <p style="max-width:600px; margin:auto;">
-    Every conversation is private and focused on your goals.
-    Whether you're battling daily urges, money stress, or just need solid guidance,
-    CrapsEdge™ is here to support you with a real, judgment-free approach.
-  </p>
+    <p>
+      Struggling to stop? You don’t have to face it alone.
+      Our 1-on-1 support sessions are designed to help you take control,
+      talk through your situation, and build a real action plan based on personal experience.
+    </p>
 
-  <h3 style="color:lime;">📬 How to Get Started</h3>
-  <p>Email us to request a private session:<br>
-  <strong><a href="mailto:crapsedge@gmail.com" style="color:#00cc66;">crapsedge@gmail.com</a></strong></p>
+    <hr>
 
-  <hr style="margin: 30px auto; width: 80%; border-color: gray;">
+    <p>
+      Every conversation is private and focused on your goals.
+      Whether you're battling daily urges, money stress, or just need solid guidance,
+      CrapsEdge™ is here to support you with a real, judgment-free approach.
+    </p>
+    
+    <hr>
 
-  <p style="max-width:600px; margin:auto; font-size: 0.95em; color:gray;">
-    <strong>Disclaimer:</strong> These private sessions are based on personal experience and strategy — not licensed counseling or medical advice. CrapsEdge™ does not provide therapy or professional mental health services. If you need medical or psychological help, please contact a licensed provider.
-  </p>
+    <h3>📬 How to Request a Private Session</h3>
+    <p>Email us directly to get started:</p>
+    <p class="cta-email">
+      <strong><a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a></strong>
+    </p>
 
+    <div class="disclaimer">
+      <strong>Important Disclaimer:</strong> These private sessions are based on personal experience and strategy — they are **not** licensed counseling, therapy, or medical advice. CrapsEdge™ does not provide professional mental health services. If you require medical or psychological assistance, please contact a licensed provider.
+    </div>
+
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
