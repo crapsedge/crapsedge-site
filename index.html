@@ -4,17 +4,13 @@
   <meta charset="UTF-8">
   <title>CrapsEdge™ | Smart Craps Strategy, Dice Control & Recovery Tools</title>
   
-  <!-- Canonical + Robots -->
   <link rel="canonical" href="https://crapsedge.store/">
   <meta name="robots" content="index, follow">
 
-  <!-- Meta Description (≤160 chars) -->
   <meta name="description" content="CrapsEdge™ teaches practical craps strategy, dice control, bankroll management, and gambling recovery methods. Get a 30-page system guide and pro bankroll tracker.">
 
-  <!-- Meta Keywords -->
   <meta name="keywords" content="craps strategy, win at craps, optimal craps betting, dice control, dice setting, bankroll management, bankroll tracker, reduce casino losses, responsible gambling, stop gambling help, casino edge reduction, craps advantage play">
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://crapsedge.store/">
   <meta property="og:title" content="CrapsEdge™ | Smart Craps Strategy & Dice Control">
@@ -25,7 +21,6 @@
   <meta name="twitter:description" content="Smarter craps systems, dice control mastery, bankroll management, and responsible play tools. Includes a 30-page system guide + tracker.">
   <meta name="twitter:image" content="https://crapsedge.store/dice-hero.jpg.png">
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Q02WKMG75"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -34,7 +29,6 @@
     gtag('config', 'G-1Q02WKMG75');
   </script>
 
-  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -48,7 +42,7 @@
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
@@ -56,7 +50,8 @@
     body {
       display: flex;
       flex-direction: column;
-      font-family: 'Montserrat', sans-serif;
+      /* Using Inter for primary body text due to superior legibility */
+      font-family: 'Inter', sans-serif;
       background-color: #000;
       color: #fff;
     }
@@ -74,26 +69,33 @@
       display: block;
       border-radius: 10px;
     }
+    /* Poppins for all main titles/headings */
+    h1, h2, h3, .section-title {
+        font-family: 'Poppins', sans-serif; 
+    }
     .tagline {
-      font-size: 1.3em;
+      font-size: 1.5em; /* Slightly larger for impact */
+      font-weight: 600; /* Semi-bold Poppins */
       margin-bottom: 12px;
+      color: #00cc66; /* Match the CTA button green for consistency */
     }
     .keyword-line {
       font-size: 1em;
-      color: #bbb;
-      margin-bottom: 20px;
+      color: #888; /* Darker gray for subtlety */
+      margin-bottom: 30px;
     }
     .section-title {
-      color: red;
-      font-weight: bold;
-      font-size: 1.6em;
+      color: red; 
+      font-weight: 700; /* Bold Poppins */
+      font-size: 1.8em; /* Slightly larger and more impactful */
       margin-top: 35px;
     }
     .cta-button, .download-button {
       background-color: #00cc66;
       color: #000;
       font-size: 18px;
-      padding: 12px 24px;
+      font-weight: 600; /* Use Poppins semi-bold */
+      padding: 14px 28px; /* Slightly larger padding */
       margin: 24px auto;
       border: none;
       border-radius: 6px;
@@ -101,6 +103,7 @@
       text-decoration: none;
       display: inline-block;
       transition: background-color 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4); /* Subtle shadow for depth */
     }
     .cta-button:hover, .download-button:hover {
       background-color: #00e676;
@@ -110,8 +113,9 @@
       max-width: 600px;
       margin: 0 auto 20px;
       padding-left: 20px;
+      line-height: 1.7; /* Increased line-height for better readability */
     }
-    ul li { margin-bottom: 10px; line-height: 1.5; }
+    ul li { margin-bottom: 10px; }
     a { color: #00ccff; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .menu-button {
@@ -199,7 +203,7 @@
 
     <p style="font-size: 1.2em; margin-top:25px;">Premium Craps System Guide</p>
     <p>Practical insights from real tables. Learn how disciplined betting and dice precision shape your odds.</p>
-    <p><strong>Price:</strong> $9.99</p>
+    <p style="font-family: 'Poppins', sans-serif; font-size: 1.4em; color: #ffcc00; margin: 10px 0; font-weight: 700;">Price: $9.99</p>
 
     <p style="font-size: 0.9em; color: gray;">
       💡 Digital product — all sales are final. Designed for committed players only.
@@ -222,7 +226,11 @@
       CrapsEdge™ provides educational material and personal experience-based insights. Not licensed gambling, therapy, or financial advice. Play responsibly.
     </div>
   </div>
-
+  
+  <div style="text-align: center; margin-top: 20px; padding: 20px 0;">
+    <p style="color: #444; font-size: 0.9em;">- Advertisement -</p>
+    
+    </div>
   <script>
     function toggleMenu() {
       const menu = document.getElementById('sideMenu');
@@ -232,6 +240,7 @@
     window.addEventListener("scroll", function(){
       const menuBtn = document.getElementById('menuButton');
       let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      // This script hides the menu button when scrolling down, shows it when scrolling up.
       menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
