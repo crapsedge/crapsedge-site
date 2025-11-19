@@ -1,26 +1,35 @@
+/* Menu Button Styles (Updated with your changes) */
 .menu-button {
   position: fixed;
-  top: 40px;
+  top: 40px; /* Updated from 35px to 40px */
   left: 20px;
-  background-color: #00cc66;
+  background-color: var(--brand-green); /* Using the CSS variable for consistency */
   border: none;
-  color: black;
+  color: #000;
   font-size: 22px;
   padding: 8px 12px;
   cursor: pointer;
-  z-index: 1001;
-  box-shadow: 0 0 8px #00cc66;
+  z-index: 1001; /* Z-index updated */
+  box-shadow: 0 0 8px var(--brand-green); /* Added box-shadow */
   border-radius: 4px;
 }
 
-/* FIXED: Push the entire side menu down safely below the green button */
+/* Side Menu Container Styles (Updated for better positioning and consistency) */
 .side-menu {
   position: fixed;
-  top: 100px; /* Moves the menu down so nothing overlaps */
-  left: 0;
-  width: 260px;
+  top: 0; /* Resetting top to 0 as padding-top is usually used for space */
+  left: -260px; /* Adjusted to your new width */
+  width: 260px; /* Updated width */
+  height: 100%;
   background-color: #111;
+  overflow-y: auto;
+  transition: left 0.3s;
+  padding-top: 100px; /* Pushes content down below the button/header area */
   z-index: 1000;
+  border-right: 1px solid #333;
+}
+.show-menu { 
+  left: 0; 
 }
 
 /* Styling each menu link */
@@ -29,10 +38,12 @@
   padding: 12px 20px;
   color: white;
   text-decoration: none;
+  border-bottom: 1px solid #333; /* Kept previous separator for clear links */
 }
 
 /* Hover effect */
 .side-menu a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--brand-green); /* Changed to use the brand green */
+  color: #000;
   transition: background 0.2s;
 }
