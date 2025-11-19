@@ -6,11 +6,8 @@
   
   <link rel="canonical" href="https://crapsedge.store/">
   <meta name="robots" content="index, follow">
-
   <meta name="description" content="CrapsEdge™ teaches practical craps strategy, dice control, bankroll management, and gambling recovery methods. Get a 30-page system guide and pro bankroll tracker.">
-
   <meta name="keywords" content="craps strategy, win at craps, optimal craps betting, dice control, dice setting, bankroll management, bankroll tracker, reduce casino losses, responsible gambling, stop gambling help, casino edge reduction, craps advantage play">
-
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://crapsedge.store/">
   <meta property="og:title" content="CrapsEdge™ | Smart Craps Strategy & Dice Control">
@@ -42,26 +39,119 @@
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
+    /* Global Variables and Base Styles */
+    :root{
+      --brand:#00e676; 
+      --ink:#e8f2ec;
+      --muted:#9fb7ad;
+      --bg:#0a0a0a;
+      --paper:#101213;
+      --border:#1e293b;
+      --cta-green: #00cc66;
+    }
+
     html, body { height: 100%; margin: 0; }
     body {
       display: flex;
       flex-direction: column;
-      /* Using Inter for primary body text due to superior legibility */
       font-family: 'Inter', sans-serif;
-      background-color: #000;
-      color: #fff;
+      background-color: var(--bg);
+      color: var(--ink);
     }
-    .main-container {
-      max-width: 920px;
-      margin: auto;
-      padding: 2em;
-      text-align: center;
-      flex: 1;
+    
+    /* NEW: Two-Column Layout Wrapper */
+    .content-wrapper {
+      max-width: 1100px; /* Increased max width for the two-column layout */
+      margin: 0 auto;
+      padding: 16px;
+      display: flex; /* Enable flexible layout */
+      gap: 30px; /* Space between main content and sidebar */
+      align-items: flex-start;
+      flex: 1; /* Allows the content to fill vertical space */
+      width: 100%;
     }
+    
+    /* Main Content Area (Left side) */
+    .main-content {
+        flex: 1; /* Takes up most of the space */
+        min-width: 0;
+        text-align: center;
+        background-color: var(--paper); /* Slightly lift the main content area */
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        padding: 2em;
+    }
+
+    /* Side Menu (Right side) - Static/Sticky positioning */
+    .side-menu {
+      width: 280px; /* Fixed width for the menu */
+      flex-shrink: 0; /* Prevents menu from shrinking */
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px;
+      position: sticky; /* Menu sticks to the top */
+      top: 20px;
+    }
+
+    /* Styling for the side menu list items */
+    .side-menu h3 {
+        color: var(--brand);
+        font-size: 18px;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+    }
+    .side-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left; /* Align links left */
+    }
+    .side-menu li { margin-bottom: 4px; }
+    .side-menu a {
+        display: block;
+        padding: 8px 10px;
+        text-decoration: none;
+        color: var(--ink);
+        border-radius: 6px;
+        transition: background-color 0.2s, color 0.2s;
+        font-weight: 600;
+    }
+    .side-menu a:hover {
+        background-color: #1a1e20;
+        color: var(--brand);
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 1100px) {
+        .content-wrapper {
+            max-width: 90%;
+            padding: 10px;
+        }
+        .side-menu {
+            width: 250px;
+        }
+    }
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column; /* Stacks columns vertically */
+            gap: 15px;
+        }
+        .side-menu {
+            width: 100%; /* Menu takes full width */
+            position: static; /* Remove sticky on mobile */
+            order: -1; /* Place the menu at the top of the content */
+        }
+    }
+
+
+    /* Existing Index Page Styles */
     .logo {
       width: 100%;
       max-width: 680px;
@@ -69,33 +159,32 @@
       display: block;
       border-radius: 10px;
     }
-    /* Poppins for all main titles/headings */
     h1, h2, h3, .section-title {
         font-family: 'Poppins', sans-serif; 
     }
     .tagline {
-      font-size: 1.5em; /* Slightly larger for impact */
-      font-weight: 600; /* Semi-bold Poppins */
+      font-size: 1.5em;
+      font-weight: 600;
       margin-bottom: 12px;
-      color: #00cc66; /* Match the CTA button green for consistency */
+      color: var(--cta-green);
     }
     .keyword-line {
       font-size: 1em;
-      color: #888; /* Darker gray for subtlety */
+      color: #888;
       margin-bottom: 30px;
     }
     .section-title {
-      color: red; 
-      font-weight: 700; /* Bold Poppins */
-      font-size: 1.8em; /* Slightly larger and more impactful */
+      color: red; /* Original color retained */
+      font-weight: 700;
+      font-size: 1.8em;
       margin-top: 35px;
     }
     .cta-button, .download-button {
-      background-color: #00cc66;
+      background-color: var(--cta-green);
       color: #000;
       font-size: 18px;
-      font-weight: 600; /* Use Poppins semi-bold */
-      padding: 14px 28px; /* Slightly larger padding */
+      font-weight: 600;
+      padding: 14px 28px;
       margin: 24px auto;
       border: none;
       border-radius: 6px;
@@ -103,57 +192,21 @@
       text-decoration: none;
       display: inline-block;
       transition: background-color 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4); /* Subtle shadow for depth */
+      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4);
     }
     .cta-button:hover, .download-button:hover {
-      background-color: #00e676;
+      background-color: var(--brand);
     }
-    ul {
+    .main-content ul { /* Target only lists inside main-content for styling */
       text-align: left;
       max-width: 600px;
       margin: 0 auto 20px;
       padding-left: 20px;
-      line-height: 1.7; /* Increased line-height for better readability */
+      line-height: 1.7;
     }
-    ul li { margin-bottom: 10px; }
+    .main-content ul li { margin-bottom: 10px; }
     a { color: #00ccff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .menu-button {
-      position: fixed;
-      top: 35px;
-      left: 20px;
-      background-color: #00cc66;
-      border: none;
-      color: #000;
-      font-size: 22px;
-      padding: 8px 12px;
-      cursor: pointer;
-      z-index: 1000;
-      border-radius: 4px;
-    }
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #111;
-      overflow-y: auto;
-      transition: left 0.3s;
-      padding-top: 100px;
-      z-index: 999;
-    }
-    .side-menu a {
-      display: block;
-      color: white;
-      padding: 12px 20px;
-      border-bottom: 1px solid #333;
-    }
-    .side-menu a:hover {
-      background-color: #00cc66;
-      color: #000;
-    }
-    .show-menu { left: 0; }
     .footer {
       text-align: center;
       color: gray;
@@ -161,6 +214,8 @@
       padding: 20px 0;
       border-top: 1px solid #333;
       margin-top: 40px;
+      background-color: var(--paper); /* Ensure footer background is consistent */
+      width: 100%;
     }
     .disclaimer {
       font-size: 0.75em;
@@ -169,81 +224,114 @@
       padding-top: 20px;
       border-top: 1px solid #333;
     }
+    /* Menu button and side-menu styles are REMOVED as they are no longer needed */
   </style>
 </head>
 
 <body>
-  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+  <div class="content-wrapper">
+    
+    <div class="main-content">
+      <img src="dice-hero.jpg.png" alt="Craps dice strategy and dice control by CrapsEdge" class="logo">
+      <p class="tagline">Your Game. Your Rules. Your Edge.</p>
+      <p class="keyword-line">Craps strategy, bankroll control, dice setting mastery, and responsible gambling resources.</p>
 
-  <nav id="sideMenu" class="side-menu">
-    <a href="crapsedge-system.html">⚡ Strategy System</a>
-    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
-    <a href="blog.html">🗞️ Blog</a>
-    <a href="craps-table.html">🎲 Play Craps</a>
-    <a href="explore.html">🔍 Explore Systems</a>
-    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
-    <a href="tracker.html">📊 Bankroll Tracker</a>
-    <a href="counseling.html">🧑‍⚕️ Counseling</a>
-    <a href="other-games.html">🎰 Other Casino Games</a>
-    <a href="privacy-policy.html">🔐 Privacy</a>
-    <a href="faq.html">❓ Support</a>
-    <a href="terms.html">⚖️ Terms</a>
-  </nav>
+      <h1 class="section-title">🎯 Play Smarter — Take Control of the Table</h1>
+      <ul>
+        <li>Gain a tactical edge with proven betting sequences and dice mechanics</li>
+        <li>Optimize bankroll flow, exit timing, and mindset for consistent control</li>
+      </ul>
 
-  <div class="main-container">
-    <img src="dice-hero.jpg.png" alt="Craps dice strategy and dice control by CrapsEdge" class="logo">
-    <p class="tagline">Your Game. Your Rules. Your Edge.</p>
-    <p class="keyword-line">Craps strategy, bankroll control, dice setting mastery, and responsible gambling resources.</p>
+      <p style="font-size: 1.2em; margin-top:25px;">Premium Craps System Guide</p>
+      <p>Practical insights from real tables. Learn how disciplined betting and dice precision shape your odds.</p>
+      <p style="font-family: 'Poppins', sans-serif; font-size: 1.4em; color: #ffcc00; margin: 10px 0; font-weight: 700;">Price: $9.99</p>
 
-    <h1 class="section-title">🎯 Play Smarter — Take Control of the Table</h1>
-    <ul>
-      <li>Gain a tactical edge with proven betting sequences and dice mechanics</li>
-      <li>Optimize bankroll flow, exit timing, and mindset for consistent control</li>
-    </ul>
+      <p style="font-size: 0.9em; color: gray;">
+        💡 Digital product — all sales are final. Designed for committed players only.
+      </p>
 
-    <p style="font-size: 1.2em; margin-top:25px;">Premium Craps System Guide</p>
-    <p>Practical insights from real tables. Learn how disciplined betting and dice precision shape your odds.</p>
-    <p style="font-family: 'Poppins', sans-serif; font-size: 1.4em; color: #ffcc00; margin: 10px 0; font-weight: 700;">Price: $9.99</p>
+      <a href="https://crapsedge.gumroad.com/l/xvnyi" class="cta-button" target="_blank" rel="nofollow noopener">
+        🔓 Get Instant Access – $9.99
+      </a>
 
-    <p style="font-size: 0.9em; color: gray;">
-      💡 Digital product — all sales are final. Designed for committed players only.
-    </p>
-
-    <a href="https://crapsedge.gumroad.com/l/xvnyi" class="cta-button" target="_blank" rel="nofollow noopener">
-      🔓 Get Instant Access – $9.99
-    </a>
-
-    <p>🔒 Secure checkout via Gumroad. Instant digital delivery.</p>
-    <p>📊 Download your free bankroll tracker:</p>
-    <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
-
-    <div class="footer">
-      <p>CrapsEdge™ © 2025. All Rights Reserved.</p>
-      <p><a href="terms.html">Terms</a> | <a href="privacy-policy.html">Privacy</a> | <a href="faq.html">Support</a></p>
+      <p>🔒 Secure checkout via Gumroad. Instant digital delivery.</p>
+      <p>📊 Download your free bankroll tracker:</p>
+      <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
+      
+      <div class="disclaimer">
+        CrapsEdge™ provides educational material and personal experience-based insights. Not licensed gambling, therapy, or financial advice. Play responsibly.
+      </div>
     </div>
+    
+    <aside class="side-menu">
+        <h3>🎓 CrapsEdge Guides</h3>
+        <ul>
+            <li>
+                <a href="/craps-house-edge-guide.html">
+                    House Edge Guide: Math, Not Myths
+                </a>
+            </li>
+            <li>
+                <a href="high-roller-tips-updated.html">
+                    High Roller Tips
+                </a>
+            </li>
+            <li>
+                <a href="crapsedge-system.html">
+                    Strategy System
+                </a>
+            </li>
+            <li>
+                <a href="tracker.html">
+                    Bankroll Tracker
+                </a>
+            </li>
+        </ul>
 
-    <div class="disclaimer">
-      CrapsEdge™ provides educational material and personal experience-based insights. Not licensed gambling, therapy, or financial advice. Play responsibly.
-    </div>
+        <h3>📰 News & Safety</h3>
+        <ul>
+            <li>
+                <a href="blog.html">
+                    Blog (Newsroom)
+                </a>
+            </li>
+            <li>
+                <a href="stop-gambling-help.html">
+                    Stop Gambling Help
+                </a>
+            </li>
+            <li>
+                <a href="counseling.html">
+                    Counseling
+                </a>
+            </li>
+        </ul>
+        
+        <h3>⚙️ Utilities</h3>
+        <ul>
+            <li>
+                <a href="craps-table.html">
+                    Play Craps (Simulator)
+                </a>
+            </li>
+            <li>
+                <a href="explore.html">
+                    Explore Systems
+                </a>
+            </li>
+            <li>
+                <a href="other-games.html">
+                    Other Casino Games
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+  </div>
+  <div class="footer">
+    <p>CrapsEdge™ © 2025. All Rights Reserved.</p>
+    <p><a href="terms.html">Terms</a> | <a href="privacy-policy.html">Privacy</a> | <a href="faq.html">Support</a></p>
   </div>
   
-  <div style="text-align: center; margin-top: 20px; padding: 20px 0;">
-    <p style="color: #444; font-size: 0.9em;">- Advertisement -</p>
-    
-    </div>
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('show-menu');
-    }
-    let lastScrollTop = 0;
-    window.addEventListener("scroll", function(){
-      const menuBtn = document.getElementById('menuButton');
-      let currentScroll = window.scrollY || document.documentElement.scrollTop;
-      // This script hides the menu button when scrolling down, shows it when scrolling up.
-      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-  </script>
-</body>
+  </body>
 </html>
