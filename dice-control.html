@@ -3,39 +3,134 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dice Control | CrapsEdge™</title>
+  <title>Dice Control & Precision Throwing | CrapsEdge™</title>
+  <meta name="description" content="Learn the mechanics of controlled dice throwing, popular grips, practice techniques, and the science behind dice influence in craps."/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
   <style>
+    /* CSS Variables for consistent coloring */
+    :root {
+      --brand-green: #00cc66; /* Your CTA green */
+      --brand-red: red;      /* Your Section title red */
+      --bg: #000;
+      --text: #fff;
+      --card-bg: #111;
+      --shadow-color: rgba(0, 204, 102, 0.4);
+    }
+
     body {
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      padding-top: 80px; /* Space for fixed menu button */
     }
+    
+    /* Poppins for all headings */
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+    
     h1 {
-      color: limegreen;
+      color: var(--brand-green);
       text-align: center;
       margin-top: 20px;
+      font-size: 2.2em;
     }
+    
     .post {
-      background-color: #111;
+      background-color: var(--card-bg);
       border-radius: 10px;
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 0 10px #00cc66;
+      box-shadow: 0 0 8px var(--shadow-color); /* Subtle glow */
     }
+    
     .post h2 {
-      color: #00e676;
+      color: var(--brand-green);
+      font-size: 1.4em;
+      font-weight: 600;
+      border-bottom: 1px solid #222;
+      padding-bottom: 5px;
     }
+    
     .post p {
       line-height: 1.6;
+      font-size: 1em;
+      color: #ccc;
     }
+    
     a {
       color: #00ccff;
+      text-decoration: none;
     }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Menu styles (copied from front page for consistency) */
+    .menu-button {
+      position: fixed;
+      top: 35px;
+      left: 20px;
+      background-color: var(--brand-green);
+      border: none;
+      color: #000;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 4px;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 999;
+    }
+    .side-menu a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+    }
+    .side-menu a:hover {
+      background-color: var(--brand-green);
+      color: #000;
+    }
+    .show-menu { left: 0; }
   </style>
 </head>
 <body>
+  
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
+
   <h1>🎯 Dice Control: Master the Throw</h1>
 
   <div class="post">
@@ -45,27 +140,27 @@
 
   <div class="post">
     <h2>Best Dice Grips for Controlled Shooting in Craps</h2>
-    <p>Top grips include the 3-finger front grip, the stacked grip, and the diagonal pinch. Each one affects spin, arc, and how the dice bounce — choose what works best for your style and hands.</p>
+    <p>Top grips include the **3-finger front grip**, the **stacked grip**, and the **diagonal pinch**. Each one affects spin, arc, and how the dice bounce — choose what works best for your style and hands.</p>
   </div>
 
   <div class="post">
     <h2>How to Practice Dice Control at Home (No Table Needed)</h2>
-    <p>Use a taped target on the wall, measure out 8–10 feet, and throw on carpet or a towel to mimic bounce. Focus on throwing at the same speed and angle every time.</p>
+    <p>Use a taped target on the wall, measure out **8–10 feet**, and throw on carpet or a towel to mimic bounce. Focus on throwing at the same speed and angle every time.</p>
   </div>
 
   <div class="post">
     <h2>Top 3 Mistakes New Dice Controllers Make</h2>
-    <p>New players often change grips too often, ignore landing zones, or rush their throws. Stick to one technique, record your sessions, and practice discipline.</p>
+    <p>New players often **change grips too often**, **ignore landing zones**, or **rush their throws**. Stick to one technique, record your sessions, and practice discipline.</p>
   </div>
 
   <div class="post">
     <h2>The Science Behind Dice Influence: Fact or Myth?</h2>
-    <p>Physics shows that spin, surface tension, and throw consistency can slightly influence dice outcomes — but casinos add obstacles like rubber pyramids to reduce this edge.</p>
+    <p>Physics shows that spin, surface tension, and throw consistency can slightly influence dice outcomes — but casinos add obstacles like **rubber pyramids** to reduce this edge.</p>
   </div>
 
   <div class="post">
     <h2>How to Throw Dice the Same Way Every Time</h2>
-    <p>Develop muscle memory by using the same stance, grip, backswing, and follow-through. Record videos to analyze your form and adjust for precision.</p>
+    <p>Develop **muscle memory** by using the same stance, grip, backswing, and follow-through. Record videos to analyze your form and adjust for precision.</p>
   </div>
 
   <div class="post">
@@ -75,18 +170,31 @@
 
   <div class="post">
     <h2>Best Landing Zones and Throw Angles for Craps Dice Control</h2>
-    <p>Aim for the area just before the wall, about 6 inches in, and throw at a 45-degree angle. Avoid backspin and reduce bounce with a soft, controlled release.</p>
+    <p>Aim for the area just before the wall, about **6 inches in**, and throw at a **45-degree angle**. Avoid backspin and reduce bounce with a soft, controlled release.</p>
   </div>
 
   <div class="post">
     <h2>Dice Setting vs Dice Control: What’s the Difference?</h2>
-    <p>Dice setting is how you position the dice before the throw. Dice control includes setting, but also adds grip, throw mechanics, and landing techniques.</p>
+    <p>**Dice setting** is how you position the dice before the throw. **Dice control** includes setting, but also adds grip, throw mechanics, and landing techniques.</p>
   </div>
 
   <div class="post">
     <h2>Why Dice Control Might Give You a Small Edge (But Not a Guarantee)</h2>
-    <p>Even perfect technique doesn’t guarantee wins. But reducing randomness by even 1–2% can lead to better odds long-term if paired with smart bankroll management.</p>
+    <p>Even perfect technique doesn’t guarantee wins. But reducing randomness by even **1–2%** can lead to better odds long-term if paired with smart bankroll management.</p>
   </div>
-
+  
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
