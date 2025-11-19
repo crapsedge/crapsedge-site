@@ -4,26 +4,176 @@
   <meta charset="UTF-8">
   <title>Legal Disclaimer – CrapsEdge™</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
+  <style>
+    /* CSS Variables for consistent coloring */
+    :root {
+      --brand-green: #00cc66; /* Your CTA green */
+      --bg: #000;
+      --text: #fff;
+      --muted: #888;
+      --border: #333;
+    }
+
+    /* Global Styles consistent with front page */
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding-top: 80px; /* Space for fixed menu button */
+      min-height: 100vh;
+    }
+    .main-content {
+      max-width: 800px;
+      margin: auto;
+      padding: 2em;
+      text-align: center;
+      flex: 1; /* Allows content area to grow */
+    }
+
+    /* Poppins for all main titles/headings */
+    h1 {
+        font-family: 'Poppins', sans-serif; 
+        color: var(--brand-green);
+        font-size: 2.2em;
+        margin-bottom: 1.5em;
+    }
+
+    p {
+      max-width: 700px;
+      margin: 1.5em auto;
+      font-size: 1.05em;
+      line-height: 1.7;
+      text-align: left; /* Legal text should generally be left-aligned for readability */
+    }
+    
+    /* Specific styling for the liability paragraph */
+    .liability {
+      font-size: 0.9em;
+      color: var(--muted);
+      margin-top: 3em;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5em;
+      text-align: center;
+    }
+
+    /* Footer for legal links */
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8em;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+    .footer a { 
+        color: #00ccff; 
+        text-decoration: none; 
+        margin: 0 5px;
+    }
+    .footer a:hover { 
+        text-decoration: underline; 
+    }
+
+    /* Menu styles (copied from front page for consistency) */
+    .menu-button {
+      position: fixed;
+      top: 35px;
+      left: 20px;
+      background-color: var(--brand-green);
+      border: none;
+      color: #000;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 4px;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 999;
+    }
+    .side-menu a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+    }
+    .side-menu a:hover {
+      background-color: var(--brand-green);
+      color: #000;
+    }
+    .show-menu { left: 0; }
+  </style>
 </head>
-<body style="background:black; color:white; text-align:center; font-family:Arial; padding: 30px;">
+<body>
 
-  <h1 style="color:limegreen;">📄 Legal Disclaimer</h1>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
 
-  <p style="max-width:700px; margin:auto; font-size: 1.05em;">
-    CrapsEdge™ is a website based on personal experience, self-education, and independent research. We do not provide licensed therapy, financial, legal, or gambling addiction treatment services. All information on this site is intended for educational and informational purposes only.
-  </p>
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
 
-  <br>
+  <div class="main-content">
+    <h1 style="text-align: center;">📄 Legal Disclaimer</h1>
 
-  <p style="max-width:700px; margin:auto; font-size: 1em;">
-    Users are responsible for their own decisions. Gambling involves risk. If you are experiencing addiction or serious mental health issues, please seek help from a certified professional or licensed treatment center.
-  </p>
+    <p>
+      CrapsEdge™ is a website based on **personal experience, self-education, and independent research.** We do not provide licensed therapy, financial, legal, or gambling addiction treatment services. All information on this site is intended for educational and informational purposes only.
+    </p>
 
-  <br>
+    <p>
+      Users are responsible for their own decisions. Gambling inherently involves risk, and CrapsEdge™ makes no guarantees regarding outcomes, profits, or losses. If you are experiencing addiction or serious mental health issues, please seek help from a certified professional or licensed treatment center.
+    </p>
 
-  <p style="max-width:700px; margin:auto; font-size: 0.9em; color:gray;">
-    By using this site, you agree that CrapsEdge™ and its owners are not liable for any outcomes resulting from the use of the content provided.
-  </p>
+    <p class="liability">
+      By using this site, you agree that CrapsEdge™ and its owners are not liable for any direct or indirect damages, losses, or negative outcomes resulting from the use of the content or systems provided.
+    </p>
+  </div>
 
+  <div class="footer">
+    <p>CrapsEdge™ © 2025. All Rights Reserved. | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms & Conditions</a>
+    </p>
+  </div>
+  
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
