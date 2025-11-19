@@ -7,14 +7,17 @@
   <meta name="description" content="Professional, step-by-step playbooks for baccarat, blackjack, roulette, slots, and poker. Table selection, bankroll rules, stop-win/stop-loss, and disciplined systems from CrapsEdge™."/>
   <meta name="theme-color" content="#0a0a0a"/>
 
-  <!-- Open Graph -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
+     crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <meta property="og:title" content="Other Casino Games – Pro Playbooks & Smart Strategies | CrapsEdge™"/>
   <meta property="og:description" content="Baccarat, blackjack, roulette, slots, poker — exact moves, table selection, bankroll rules, and stop-win/stop-loss to play smarter."/>
   <meta property="og:type" content="article"/>
   <meta property="og:url" content="https://crapsedge.store/other-games.html"/>
   <meta property="og:site_name" content="CrapsEdge™"/>
 
-  <!-- JSON-LD Schema (Breadcrumb + WebPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,6 +43,7 @@
       --radius:12px;
     }
     *{box-sizing:border-box}
+    /* Updated font-family to include the linked Inter font */
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,system-ui,Segoe UI,Roboto,sans-serif;line-height:1.6}
     a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
     /* Header / Hero */
@@ -78,8 +82,17 @@
 </head>
 <body>
 
-  <!-- Slide Menu -->
-  <button class="menu-button" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-client="ca-pub-7741509990569883"
+       data-ad-slot="1863047244"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <button class="menu-button" onclick="toggleMenu()" aria-label="Toggle menu" aria-controls="sideMenu" id="menuButton" aria-expanded="false">☰</button>
   <nav class="side-menu" id="sideMenu" aria-label="Side menu">
     <a href="index.html"><span class="side-emoji">🏠</span>Home</a>
     <a href="strategy.html"><span class="side-emoji">⚡</span>Strategy System</a>
@@ -90,7 +103,6 @@
     <a href="bankroll.html"><span class="side-emoji">📊</span>Track Your Bankroll</a>
     <a href="counseling.html"><span class="side-emoji">🧑‍⚕️</span>Get Counseling</a>
 
-    <!-- NEW LINK: Other Casino Games -->
     <a href="other-games.html"><span class="side-emoji">🎮</span>Other Casino Games</a>
 
     <a href="privacy.html"><span class="side-emoji">🔒</span>Privacy Policy</a>
@@ -98,14 +110,12 @@
     <a href="terms.html"><span class="side-emoji">⚖️</span>Terms & Legal</a>
   </nav>
 
-  <!-- Hero -->
   <header class="hero">
     <div class="eyebrow">CrapsEdge™ Resource Hub</div>
     <h1>Other Casino Games — Professional Playbooks</h1>
     <p class="sub">Exact actions for baccarat, blackjack, roulette, slots, and poker: **table selection, bet sizing, bankroll control, and stop rules**. Built on discipline — not superstition.</p>
   </header>
 
-  <!-- TOC -->
   <section class="toc" aria-label="Table of contents">
     <h3>Jump to a Game</h3>
     <a href="#baccarat">Baccarat</a>
@@ -116,7 +126,6 @@
   </section>
 
   <main class="content">
-    <!-- Baccarat -->
     <article id="baccarat" class="card" aria-labelledby="baccarat-title">
       <h2 id="baccarat-title">Baccarat — Pro Playbook</h2>
       <p class="note">Objective: short, low-variance sessions that bank small wins without tilt.</p>
@@ -145,7 +154,6 @@
       </div>
     </article>
 
-    <!-- Blackjack -->
     <article id="blackjack" class="card" aria-labelledby="blackjack-title">
       <h2 id="blackjack-title">Blackjack — Pro Playbook</h2>
       <div class="grid">
@@ -177,7 +185,6 @@
       </div>
     </article>
 
-    <!-- Roulette -->
     <article id="roulette" class="card" aria-labelledby="roulette-title">
       <h2 id="roulette-title">Roulette — Pro Playbook</h2>
       <div class="grid">
@@ -204,7 +211,6 @@
       </div>
     </article>
 
-    <!-- Slots -->
     <article id="slots" class="card" aria-labelledby="slots-title">
       <h2 id="slots-title">Slots — Pro Playbook</h2>
       <div class="grid">
@@ -231,7 +237,6 @@
       </div>
     </article>
 
-    <!-- Poker -->
     <article id="poker" class="card" aria-labelledby="poker-title">
       <h2 id="poker-title">Poker (Cash) — Pro Playbook</h2>
       <div class="grid">
@@ -254,6 +259,7 @@
             <li>Bet for value; avoid massive bluffs vs. calling stations.</li>
             <li>Respect heavy turn/river aggression from tight players.</li>
             <li>Position > cards — widen range in late position.</li>
+            <p class="muted">Your biggest edge is selecting the right game and opponent.</p>
           </ul>
           <h3><span class="pill">4</span>Session Controls</h3>
           <ul>
@@ -264,7 +270,6 @@
       </div>
     </article>
 
-    <!-- CTA -->
     <div class="cta">
       <a class="btn" href="stop-gambling.html">Get the Discipline System – Stop Gambling Guide</a>
     </div>
@@ -276,9 +281,14 @@
   </footer>
 
   <script>
+    // Updated function to correctly toggle the side menu and aria attributes
     function toggleMenu(){
-      const m=document.getElementById('sideMenu');
-      m.style.left = (m.style.left==='0px') ? '-270px' : '0px';
+      const menu = document.getElementById('sideMenu');
+      const button = document.getElementById('menuButton');
+      const isExpanded = menu.style.left === '0px';
+
+      menu.style.left = isExpanded ? '-270px' : '0px';
+      button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
     }
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
