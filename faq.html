@@ -4,79 +4,177 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FAQs & Support – CrapsEdge™</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
   <style>
+    /* CSS Variables for consistent coloring */
+    :root {
+      --brand-green: #00cc66; /* Your CTA green */
+      --brand-blue: #00ccff; /* Link color */
+      --bg: #000;
+      --text: #fff;
+      --muted: #888;
+      --border: #333;
+    }
+
+    /* Global Styles consistent with front page */
     body {
-      background-color: black;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
       padding: 2em;
       max-width: 900px;
       margin: auto;
       line-height: 1.7;
+      padding-top: 80px; /* Space for fixed menu button */
     }
+    
+    /* Poppins for all headings */
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+
     h1 {
-      color: limegreen;
+      color: var(--brand-green);
       text-align: center;
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
+      font-size: 2.2em;
     }
+    
     h2 {
-      color: cyan;
+      color: var(--brand-blue);
       margin-top: 30px;
+      font-size: 1.5em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
     }
+    
     p {
       font-size: 1.1em;
+      margin-bottom: 1.5em;
     }
+    
     a {
-      color: #00ccff;
+      color: var(--brand-blue);
       text-decoration: none;
     }
+    
     a:hover {
       text-decoration: underline;
     }
+    
     .footer-note {
       margin-top: 50px;
-      color: gray;
+      color: var(--muted);
       font-size: 0.9em;
       text-align: center;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    /* Menu Button Styles (Your improved code) */
+    .menu-button {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      background-color: var(--brand-green);
+      border: none;
+      color: black;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
+      border-radius: 4px;
+    }
+
+    /* Side Menu Container Styles (Your improved code) */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 1000;
+      border-right: 1px solid #333;
+    }
+    .show-menu { 
+      left: 0; 
+    }
+
+    /* Styling each menu link */
+    .side-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+
+    /* Hover effect */
+    .side-menu a:hover {
+      background-color: var(--brand-green);
+      color: #000;
+      transition: background 0.2s;
     }
   </style>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- Ad Unit -->
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-client="ca-pub-7741509990569883"
-       data-ad-slot="1863047244"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
 
-  <h1>FAQs & Support</h1>
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
+
+  <h1>❓ FAQs & Support</h1>
   <p style="text-align:center;">Got questions? We’ve got answers.</p>
 
   <h2>📥 Where is my guide after payment?</h2>
-  <p>You will get an instant download link after completing your payment through Gumroad. Check your email too — including spam or promotions folders.</p>
+  <p>You will get an instant download link after completing your payment through Gumroad. Please check your email too — including spam or promotions folders.</p>
 
   <h2>💸 Can I get a refund?</h2>
   <p>Since our guide is a digital product, all sales are final and non-refundable. Please purchase only if you're ready to commit to change.</p>
 
   <h2>📊 How do I use the Bankroll Tracker?</h2>
-  <p>Download the spreadsheet, open it in Excel or Google Sheets, and enter your session data. It auto-calculates your total progress. No math skills required.</p>
+  <p>Download the spreadsheet, open it in Excel or Google Sheets, and enter your session data. It auto-calculates your total progress. No advanced math skills required.</p>
 
   <h2>📧 How can I contact CrapsEdge™?</h2>
   <p>Email us directly at <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a>. We respond within 48 hours.</p>
 
   <p class="footer-note">
-    Need serious help? Visit our <a href="stop-gambling-help.html">Stop Gambling Help</a> page.
+    Need serious help? Visit our dedicated <a href="stop-gambling-help.html">Stop Gambling Help</a> page.
   </p>
 
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
