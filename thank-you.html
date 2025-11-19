@@ -2,23 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Thank You – CrapsEdge™</title>
+  <title>Order Confirmed – CrapsEdge™</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Prevent indexing of this private page -->
   <meta name="robots" content="noindex,nofollow" />
   <link rel="canonical" href="https://crapsedge.store/thank-you" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
   <style>
     :root{
-      --bg:#0a0a0a; --panel:#111; --muted:#bbb; --text:#fff;
-      --accent:#00e676; --accent2:#ff3b3b; --brand:#00cc66;
+      --bg:#000; /* Consistent with other pages */
+      --panel:#111; 
+      --muted:#bbb; 
+      --text:#fff;
+      --accent:#00e676; /* Lighter green accent */
+      --accent2:#ff3b3b; 
+      --brand:#00cc66; /* Primary brand green */
       --border:#222;
     }
     *{box-sizing:border-box}
     body{
       margin:0; background:var(--bg); color:var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.55;
+      /* Changed to Inter for maximum readability */
+      font-family: 'Inter', sans-serif;
+      line-height:1.6;
     }
     .wrap{
       max-width:960px; margin:32px auto; padding:20px;
@@ -28,19 +36,30 @@
     }
     .logo{
       width:44px; height:44px; border-radius:10px;
+      /* Custom logo background maintained */
       background: radial-gradient(circle at 35% 35%, #ff3232 0 40%, transparent 42%),
                   radial-gradient(circle at 65% 65%, #00ff88 0 40%, transparent 42%),
                   #000;
       box-shadow: 0 0 18px rgba(0, 204, 102, .45);
     }
-    .brand{font-weight:800; letter-spacing:.5px; font-size:20px}
+    .brand{
+      /* Poppins for bold brand name */
+      font-family: 'Poppins', sans-serif;
+      font-weight:800; 
+      letter-spacing:.5px; 
+      font-size:20px
+    }
     .panel{
       background:var(--panel); border:1px solid var(--border);
       border-radius:14px; padding:22px; margin:14px 0 22px;
     }
     .success{
       display:flex; align-items:center; gap:12px; margin-bottom:6px;
-      font-weight:700; font-size:20px; color:var(--accent);
+      /* Poppins for authority/impact */
+      font-family: 'Poppins', sans-serif;
+      font-weight:700; 
+      font-size:22px; 
+      color:var(--accent);
     }
     .check{
       width:26px; height:26px; display:inline-grid; place-items:center;
@@ -51,7 +70,11 @@
     .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     .btn{
       background:var(--brand); color:#000; padding:12px 16px; border:none;
-      border-radius:10px; font-weight:700; text-decoration:none; cursor:pointer;
+      border-radius:10px; 
+      /* Poppins for button CTA */
+      font-family: 'Poppins', sans-serif;
+      font-weight:700; 
+      text-decoration:none; cursor:pointer;
       transition: transform .05s ease-in-out; display:inline-block;
     }
     .btn:active{transform:translateY(1px)}
@@ -62,8 +85,14 @@
     .small{font-size:.9rem}
     hr{border:none; height:1px; background:var(--border); margin:22px 0}
     footer{margin-top:26px}
-    .legal h4{margin:.2rem 0 .6rem; font-size:1rem}
-    .legal p{margin:.35rem 0}
+    .legal h3, .legal h4{
+        /* Poppins for legal headings */
+        font-family: 'Poppins', sans-serif;
+        margin:.2rem 0 .6rem; 
+        font-size:1.1rem
+    }
+    .legal h4{font-size:1rem}
+    .legal p{margin:.35rem 0; line-height: 1.5;}
     .badge{
       display:inline-block; padding:6px 10px; border:1px solid var(--border);
       border-radius:999px; font-size:.85rem; color:var(--muted);
@@ -73,6 +102,9 @@
       background:#0f1310; border:1px dashed #214; border-color:#1f3d2f;
       border-radius:12px; padding:14px; color:#cfeedd;
     }
+    /* Link styling */
+    a { color: #00ccff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -101,9 +133,8 @@
             <li>Join our list for update notices and improvements.</li>
           </ol>
           <div class="cta-row">
-            <!-- TODO: replace href with your real download / member URL -->
             <a class="btn" href="/downloads/stop-gambling-guide.pdf">Download Your Guide</a>
-            <a class="btn outline" href="/">Return to Homepage</a>
+            <a class="btn outline" href="index.html">Return to Homepage</a>
           </div>
           <p class="muted small" style="margin-top:10px">
             If a download doesn’t start, email <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a> and we’ll send your files manually.
@@ -171,6 +202,15 @@
     </footer>
   </div>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+    document.getElementById('y').textContent=new Date().getFullYear();
+    // Assuming you have a standard toggleMenu function for the fixed sidebar menu if you ever add it back here
+    /*
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    */
+  </script>
 </body>
 </html>
