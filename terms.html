@@ -4,65 +4,148 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Terms & Legal – CrapsEdge™</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
   <style>
+    /* CSS Variables for consistent coloring */
+    :root {
+      --brand-green: #00cc66; 
+      --brand-accent: orange; /* Retaining orange for section headings, as it provides good contrast */
+      --brand-blue: #00ccff; /* Link color */
+      --bg: #000;
+      --text: #fff;
+      --muted: #888;
+      --border: #333;
+    }
+
+    /* Global Styles consistent with front page */
     body {
-      background-color: black;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
       padding: 2em;
       max-width: 900px;
       margin: auto;
       line-height: 1.7;
+      padding-top: 80px; /* Space for fixed menu button */
     }
+    
+    /* Poppins for all headings */
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+
     h1 {
-      color: limegreen;
+      color: var(--brand-green);
       text-align: center;
       margin-bottom: 0.5em;
+      font-size: 2.2em;
     }
+    
     h2 {
-      color: orange;
+      color: var(--brand-accent);
       margin-top: 2em;
+      font-size: 1.5em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
     }
+    
+    p {
+      font-size: 1.05em;
+      margin-bottom: 1.5em;
+    }
+    
     a {
-      color: #00ccff;
+      color: var(--brand-blue);
       text-decoration: none;
     }
+    
     a:hover {
       text-decoration: underline;
     }
-    p {
-      font-size: 1.05em;
+
+    /* Menu Button Styles (Your improved code) */
+    .menu-button {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      background-color: var(--brand-green);
+      border: none;
+      color: black;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
+      border-radius: 4px;
+    }
+
+    /* Side Menu Container Styles (Your improved code) */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 1000;
+      border-right: 1px solid #333;
+    }
+    .show-menu { 
+      left: 0; 
+    }
+
+    /* Styling each menu link */
+    .side-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+
+    /* Hover effect */
+    .side-menu a:hover {
+      background-color: var(--brand-green);
+      color: #000;
+      transition: background 0.2s;
     }
   </style>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- Ad Unit -->
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-client="ca-pub-7741509990569883"
-       data-ad-slot="1863047244"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
 
-  <h1>Terms & Legal</h1>
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
+
+  <h1>⚖️ Terms & Legal</h1>
 
   <h2>Disclaimer</h2>
-  <p>CrapsEdge™ provides general information, personal insights, and educational material related to craps and gambling recovery. We are not licensed financial, legal, or addiction recovery professionals. You agree to use this content at your own discretion and risk.</p>
+  <p>CrapsEdge™ provides general information, personal insights, and educational material related to craps and gambling recovery. **We are not licensed financial, legal, or addiction recovery professionals.** You agree to use this content at your own discretion and risk.</p>
 
   <h2>Refund Policy</h2>
-  <p>All purchases on CrapsEdge™, including guides and downloads, are considered final. Because digital products are instantly accessible, we do not issue refunds. Please review your order before confirming payment.</p>
+  <p>All purchases on CrapsEdge™, including guides and downloads, are considered **final**. Because digital products are instantly accessible, we do not issue refunds. Please review your order before confirming payment.</p>
 
   <h2>Privacy</h2>
-  <p>We do not collect personal data unless you choose to provide it voluntarily (e.g., email, purchase). CrapsEdge™ does not sell or distribute your information to third parties.</p>
+  <p>We do not collect personal data unless you choose to provide it voluntarily (e.g., email, purchase). CrapsEdge™ does not sell or distribute your information to third parties. For full details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
 
   <h2>Ownership</h2>
   <p>All written content, products, branding, and visual assets on this website are the exclusive property of CrapsEdge™. Reuse, reproduction, or redistribution without written permission is prohibited.</p>
@@ -72,6 +155,19 @@
 
   <h2>Contact</h2>
   <p>Have questions? Contact us directly at <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a>.</p>
-
+  
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
