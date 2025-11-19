@@ -3,79 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>High Roller Tips – CrapsEdge™</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <title>High Roller Craps Tips – CrapsEdge™</title>
+  <meta name="description" content="Strategic tips for high rollers in craps focusing on bankroll management, low-edge bets, and mindset control to maximize winnings."/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
   <style>
+    /* CSS Variables for consistent coloring */
+    :root {
+      --brand-green: #00cc66; 
+      --brand-blue: #00ccff; /* Link color */
+      --bg: #000;
+      --text: #fff;
+      --border: #333;
+    }
+
+    /* Global Styles consistent with front page */
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: black;
-      color: white;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       padding: 30px 20px;
       max-width: 900px;
       margin: auto;
       line-height: 1.7;
+      padding-top: 80px; /* Space for fixed menu button */
     }
+    
+    /* Poppins for all headings */
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+
     h1 {
-      color: limegreen;
+      color: var(--brand-green);
       text-align: center;
-      font-size: 2em;
+      font-size: 2.2em;
       margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
     }
+    
     h2 {
-      color: #00cc66;
+      color: var(--brand-green);
       margin-top: 30px;
-      font-size: 1.4em;
+      font-size: 1.6em;
+      font-weight: 600;
+      margin-bottom: 15px;
     }
+    
     p {
       margin-bottom: 20px;
       font-size: 1.1em;
     }
+    
     a {
-      color: #00ccff;
+      color: var(--brand-blue);
       text-decoration: none;
     }
+    
     a:hover {
       text-decoration: underline;
     }
+    
     hr {
-      border: 1px solid #333;
+      border: 1px solid var(--border);
       margin: 40px 0;
     }
+
+    /* Menu Button Styles (Your improved code) */
+    .menu-button {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      background-color: var(--brand-green);
+      border: none;
+      color: black;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
+      border-radius: 4px;
+    }
+
+    /* Side Menu Container Styles (Your improved code) */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 1000;
+      border-right: 1px solid #333;
+    }
+    .show-menu { 
+      left: 0; 
+    }
+
+    /* Styling each menu link */
+    .side-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+
+    /* Hover effect */
+    .side-menu a:hover {
+      background-color: var(--brand-green);
+      color: #000;
+      transition: background 0.2s;
+    }
   </style>
-  <!-- Google AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- CrapsEdge™ Ad Unit -->
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-client="ca-pub-7741509990569883"
-       data-ad-slot="1863047244"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
 
   <h1>High Roller Craps Tips 💸</h1>
 
   <h2>1. Bet Big — But Smart</h2>
-  <p>Stick to bets with the lowest house edge. For high rollers, max out your odds behind the pass line — it's one of the best plays in all of craps.</p>
+  <p>Stick to bets with the **lowest house edge**. For high rollers, max out your **odds behind the pass line** — it's mathematically one of the best plays in all of craps, sometimes reducing the overall house edge to near zero.</p>
 
   <h2>2. Track Every Session</h2>
-  <p>Use the <a href="bankroll-tracker.xlsx" download>Bankroll Tracker</a> to log every buy-in and cash-out. You can't win long term if you don’t know your numbers.</p>
+  <p>Use the <a href="bankroll-tracker.xlsx" download>Bankroll Tracker</a> to log every buy-in and cash-out. You can't win long term if you don’t know your numbers. High-limit players need meticulous **profit/loss tracking** to manage variance effectively.</p>
 
   <h2>3. Control the Pace</h2>
-  <p>Don’t let the dice fly nonstop. Slow down the game. Take breaks. Think clearly. High-limit tables reward discipline, not just confidence.</p>
+  <p>Don’t let the dice fly nonstop. Slow down the game. Take breaks. Think clearly. High-limit tables reward **discipline**, not just confidence. A high roller controls the table's flow.</p>
 
   <h2>4. Take the Money and Walk</h2>
-  <p>Set win/loss targets. Example: if you're up $2,000, walk away. High rollers lose when they ignore their stop-loss discipline.</p>
+  <p>Set **win/loss targets** before you sit down. Example: if you're up $2,000, walk away. High rollers lose when they ignore their **stop-loss discipline** and let big wins revert back to the house.</p>
 
   <h2>5. Mindset Matters</h2>
-  <p>Being a high roller is about control, not flexing. If you stay sharp and strategic, the game will respect you back. If not — the casino will take everything.</p>
+  <p>Being a high roller is about control, not flexing. Maintain a **sharp and strategic mindset**. If you stay detached from the money and focused on the strategy, the game will respect you back. If not — the casino will take everything.</p>
 
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
