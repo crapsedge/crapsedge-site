@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CrapsEdge™ | Smart Craps Strategy, Dice Control & Recovery Tools</title>
+  <title>CrapsEdge™ | Smart Craps Strategy & Dice Control</title>
   
   <link rel="canonical" href="https://crapsedge.store/">
   <meta name="robots" content="index, follow">
-
-  <meta name="description" content="CrapsEdge™ teaches practical craps strategy, dice control, bankroll management, and gambling recovery methods.">
-
+  <meta name="description" content="CrapsEdge™ teaches practical craps strategy, dice control, and bankroll management. Get the 30-page system guide and pro bankroll tracker.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Q02WKMG75"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1Q02WKMG75');
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
     html, body { height: 100%; margin: 0; }
@@ -27,25 +35,26 @@
       padding: 2em;
       text-align: center;
       flex: 1;
+      padding-top: 80px; /* Space for the menu button */
     }
     .logo {
       width: 100%;
       max-width: 680px;
-      margin: 30px auto 15px;
+      margin: 10px auto 15px;
       display: block;
       border-radius: 10px;
     }
     h1, h2, h3, .section-title { font-family: 'Poppins', sans-serif; }
     .tagline { font-size: 1.5em; font-weight: 600; margin-bottom: 12px; color: #00cc66; }
     .keyword-line { font-size: 1em; color: #888; margin-bottom: 30px; }
-    .section-title { color: red; font-weight: 700; font-size: 1.8em; margin-top: 35px; }
+    .section-title { color: #ff4444; font-weight: 700; font-size: 1.8em; margin-top: 35px; }
     
-    .cta-button, .download-button {
+    .cta-button {
       background-color: #00cc66;
       color: #000;
       font-size: 18px;
       font-weight: 600;
-      padding: 14px 28px;
+      padding: 16px 32px;
       margin: 24px auto;
       border: none;
       border-radius: 6px;
@@ -53,9 +62,11 @@
       text-decoration: none;
       display: inline-block;
       transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4);
     }
+    .cta-button:hover { background-color: #00e676; transform: translateY(-2px); }
 
-    /* MENU BUTTON */
+    /* --- SIDE MENU --- */
     .menu-button {
       position: fixed;
       top: 25px;
@@ -69,8 +80,6 @@
       z-index: 1000;
       border-radius: 4px;
     }
-
-    /* SIDE MENU */
     .side-menu {
       position: fixed;
       top: 0;
@@ -84,24 +93,21 @@
       box-shadow: 5px 0 15px rgba(0,0,0,0.5);
     }
     .side-menu.show-menu { left: 0; }
-
-    /* CLOSE BUTTON INSIDE MENU */
     .close-btn {
       text-align: right;
       padding: 20px;
-      font-size: 30px;
+      font-size: 35px;
       cursor: pointer;
       color: #00cc66;
+      line-height: 1;
     }
-
     .menu-section-label {
       padding: 15px 20px 5px;
       font-size: 0.75em;
       color: #666;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
-
     .side-menu a {
       display: block;
       color: white;
@@ -110,29 +116,40 @@
       text-decoration: none;
     }
     .side-menu a:hover { background-color: #00cc66; color: #000; }
-
-    /* OVERLAY (Closes menu when clicked) */
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.8);
       display: none;
       z-index: 1000;
     }
     .overlay.active { display: block; }
 
-    .footer { text-align: center; color: gray; font-size: 0.8em; padding: 20px 0; border-top: 1px solid #333; margin-top: 40px; }
-    .disclaimer { font-size: 0.75em; color: gray; margin: 40px 20px 30px; padding-top: 20px; border-top: 1px solid #333; }
+    /* --- MASTER CONTENT SECTION --- */
+    .master-content {
+      text-align: left;
+      background: #111;
+      padding: 30px;
+      border-radius: 12px;
+      margin-top: 50px;
+      border: 1px solid #222;
+    }
+    .master-content h2 { color: #00cc66; margin-top: 0; }
+    .master-content h3 { color: #ffcc00; font-size: 1.1em; margin-top: 20px; }
+    .master-content p { color: #ccc; line-height: 1.6; }
+
+    .footer { text-align: center; color: gray; font-size: 0.8em; padding: 40px 0; border-top: 1px solid #222; margin-top: 50px; }
+    .disclaimer { font-size: 0.75em; color: #555; margin-top: 20px; line-height: 1.5; padding: 0 10px; }
   </style>
 </head>
 
 <body>
   <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
-  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
 
   <nav id="sideMenu" class="side-menu">
     <div class="close-btn" onclick="toggleMenu()">×</div>
@@ -148,35 +165,45 @@
     <a href="explore.html">🔍 Explore Systems</a>
     <a href="other-games.html">🎰 Other Casino Games</a>
 
-    <div class="menu-section-label">Support</div>
+    <div class="menu-section-label">Support & Legal</div>
     <a href="stop-gambling-help.html">🛡️ Stop Gambling Help</a>
-    <a href="counseling.html">🧑‍⚕️ Counseling</a>
-    <a href="faq.html">❓ Support</a>
-    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="privacy-policy.html">🔐 Privacy Policy</a>
+    <a href="terms.html">⚖️ Terms</a>
   </nav>
 
   <div class="main-container">
-    <img src="dice-hero.jpg.png" alt="CrapsEdge dice strategy" class="logo">
+    <img src="dice-hero.jpg.png" alt="CrapsEdge Strategy" class="logo">
     <p class="tagline">Your Game. Your Rules. Your Edge.</p>
-    
-    <h1 class="section-title">🎯 Play Smarter — Take Control</h1>
-    
-    <p style="font-family: 'Poppins', sans-serif; font-size: 1.4em; color: #ffcc00; margin: 10px 0; font-weight: 700;">System Guide: $9.99</p>
+    <p class="keyword-line">Proven craps strategy, dice control mechanics, and bankroll discipline.</p>
 
-    <a href="https://crapsedge.gumroad.com/l/xvnyi" class="cta-button" target="_blank">🔓 Get Access – $9.99</a>
+    <h1 class="section-title">🎯 Take Control of the Table</h1>
+    <p style="font-family: 'Poppins', sans-serif; font-size: 1.5em; color: #ffcc00; margin-top: 20px; font-weight: 700;">System Guide: $9.99</p>
 
-    <div id="ultimate-guide" style="text-align: left; margin-top: 50px; background: #111; padding: 20px; border-radius: 8px;">
-        <h2 style="color: #00cc66;">🎲 The Ultimate Guide to Craps</h2>
-        <p>This is where your Master Content goes. It makes the site look massive and authoritative.</p>
+    <a href="https://crapsedge.gumroad.com/l/xvnyi" class="cta-button" target="_blank">🔓 Get Instant Access – $9.99</a>
+
+    <div class="master-content" id="ultimate-guide">
+      <h2>🎲 The Ultimate Guide to Craps Mastery</h2>
+      <p>Most players walk up to a craps table and throw their money away on "hope." At <strong>CrapsEdge™</strong>, we don't hope. We calculate. To truly master the game, you must understand that the casino wins because of <strong>math</strong>. To beat them, you need a superior strategy.</p>
+
+      <h3>1. Mathematical Betting</h3>
+      <p>The House Edge is the casino's tax. While most players bet on high-risk "Sucker Bets," smart players focus on <strong>Pass Line and Place bets</strong> on the 6 and 8, where the edge is lowest. Our system teaches you how to keep your bankroll alive to hit the hot streaks.</p>
+
+      <h3>2. Dice Setting Consistency</h3>
+      <p>Dice Control isn't magic; it's physics. By using a specific grip and a controlled release, you aim to reduce the frequency of the "7-out." Even a slight shift in probability changes the game in your favor.</p>
+
+      <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px dashed #00cc66; margin-top: 20px;">
+        <p style="margin:0; color:#00cc66; font-weight:600;">Ready for the Full Blueprint?</p>
+        <p style="margin:5px 0 0; font-size:0.95em; color:#fff;">My 30-page system guide dives deep into betting sequences and specific dice sets. <a href="https://crapsedge.gumroad.com/l/xvnyi" style="color:#00ccff; text-decoration:underline;">Click here to upgrade to Premium.</a></p>
+      </div>
     </div>
 
     <div class="footer">
       <p>CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire™</strong>.</p>
       <p>Murray’s Empire™ © 2026. All Rights Reserved.</p>
-    </div>
-
-    <div class="disclaimer">
-      <strong>LEGAL DISCLAIMER:</strong> CrapsEdge™ and Murray’s Empire™ provide educational content. No financial advice. Must be 21+. Gambling problem? Call 1-800-GAMBLER.
+      
+      <div class="disclaimer">
+        <strong>LEGAL DISCLAIMER:</strong> CrapsEdge™ and Murray’s Empire™ provide educational and experiential content regarding casino mechanics. We do not offer financial advice or guarantee winnings. Gambling involves risk. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+      </div>
     </div>
   </div>
 
