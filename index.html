@@ -21,13 +21,23 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
+    :root {
+      --brand-green: #00cc66; 
+      --brand-accent: #ffcc00; 
+      --brand-blue: #00ccff;
+      --bg: #000;
+      --text: #fff;
+      --card-bg: #111;
+      --border: #333;
+    }
+
     html, body { height: 100%; margin: 0; }
     body {
       display: flex;
       flex-direction: column;
       font-family: 'Inter', sans-serif;
-      background-color: #000;
-      color: #fff;
+      background-color: var(--bg);
+      color: var(--text);
     }
     .main-container {
       max-width: 920px;
@@ -35,7 +45,7 @@
       padding: 2em;
       text-align: center;
       flex: 1;
-      padding-top: 80px; /* Space for the menu button */
+      padding-top: 80px; 
     }
     .logo {
       width: 100%;
@@ -45,12 +55,12 @@
       border-radius: 10px;
     }
     h1, h2, h3, .section-title { font-family: 'Poppins', sans-serif; }
-    .tagline { font-size: 1.5em; font-weight: 600; margin-bottom: 12px; color: #00cc66; }
+    .tagline { font-size: 1.5em; font-weight: 600; margin-bottom: 12px; color: var(--brand-green); }
     .keyword-line { font-size: 1em; color: #888; margin-bottom: 30px; }
     .section-title { color: #ff4444; font-weight: 700; font-size: 1.8em; margin-top: 35px; }
     
     .cta-button {
-      background-color: #00cc66;
+      background-color: var(--brand-green);
       color: #000;
       font-size: 18px;
       font-weight: 600;
@@ -69,9 +79,9 @@
     /* --- SIDE MENU --- */
     .menu-button {
       position: fixed;
-      top: 25px;
+      top: 40px;
       left: 20px;
-      background-color: #00cc66;
+      background-color: var(--brand-green);
       border: none;
       color: #000;
       font-size: 24px;
@@ -79,6 +89,7 @@
       cursor: pointer;
       z-index: 1000;
       border-radius: 4px;
+      box-shadow: 0 0 8px var(--brand-green);
     }
     .side-menu {
       position: fixed;
@@ -90,7 +101,7 @@
       overflow-y: auto;
       transition: left 0.3s ease;
       z-index: 1001;
-      box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+      border-right: 1px solid var(--border);
     }
     .side-menu.show-menu { left: 0; }
     .close-btn {
@@ -98,7 +109,7 @@
       padding: 20px;
       font-size: 35px;
       cursor: pointer;
-      color: #00cc66;
+      color: var(--brand-green);
       line-height: 1;
     }
     .menu-section-label {
@@ -115,7 +126,7 @@
       border-bottom: 1px solid #222;
       text-decoration: none;
     }
-    .side-menu a:hover { background-color: #00cc66; color: #000; }
+    .side-menu a:hover { background-color: var(--brand-green); color: #000; }
     .overlay {
       position: fixed;
       top: 0;
@@ -137,8 +148,8 @@
       margin-top: 50px;
       border: 1px solid #222;
     }
-    .master-content h2 { color: #00cc66; margin-top: 0; }
-    .master-content h3 { color: #ffcc00; font-size: 1.1em; margin-top: 20px; }
+    .master-content h2 { color: var(--brand-green); margin-top: 0; }
+    .master-content h3 { color: var(--brand-accent); font-size: 1.1em; margin-top: 20px; }
     .master-content p { color: #ccc; line-height: 1.6; }
 
     .footer { text-align: center; color: gray; font-size: 0.8em; padding: 40px 0; border-top: 1px solid #222; margin-top: 50px; }
@@ -156,7 +167,6 @@
     
     <div class="menu-section-label">Master Systems</div>
     <a href="crapsedge-system.html">⚡ Strategy System</a>
-    <a href="craps-house-edge-guide.html">📈 House Edge Guide</a>
     <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
     <a href="tracker.html">📊 Bankroll Tracker</a>
 
@@ -177,7 +187,7 @@
     <p class="keyword-line">Proven craps strategy, dice control mechanics, and bankroll discipline.</p>
 
     <h1 class="section-title">🎯 Take Control of the Table</h1>
-    <p style="font-family: 'Poppins', sans-serif; font-size: 1.5em; color: #ffcc00; margin-top: 20px; font-weight: 700;">System Guide: $9.99</p>
+    <p style="font-family: 'Poppins', sans-serif; font-size: 1.5em; color: var(--brand-accent); margin-top: 20px; font-weight: 700;">System Guide: $9.99</p>
 
     <a href="https://crapsedge.gumroad.com/l/xvnyi" class="cta-button" target="_blank">🔓 Get Instant Access – $9.99</a>
 
@@ -191,18 +201,19 @@
       <h3>2. Dice Setting Consistency</h3>
       <p>Dice Control isn't magic; it's physics. By using a specific grip and a controlled release, you aim to reduce the frequency of the "7-out." Even a slight shift in probability changes the game in your favor.</p>
 
-      <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px dashed #00cc66; margin-top: 20px;">
-        <p style="margin:0; color:#00cc66; font-weight:600;">Ready for the Full Blueprint?</p>
-        <p style="margin:5px 0 0; font-size:0.95em; color:#fff;">My 30-page system guide dives deep into betting sequences and specific dice sets. <a href="https://crapsedge.gumroad.com/l/xvnyi" style="color:#00ccff; text-decoration:underline;">Click here to upgrade to Premium.</a></p>
+      <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px dashed var(--brand-green); margin-top: 20px;">
+        <p style="margin:0; color:var(--brand-green); font-weight:600;">Ready for the Full Blueprint?</p>
+        <p style="margin:5px 0 0; font-size:0.95em; color:#fff;">My 30-page system guide dives deep into betting sequences and specific dice sets. <a href="https://crapsedge.gumroad.com/l/xvnyi" style="color:var(--brand-blue); text-decoration:underline;">Click here to upgrade to Premium.</a></p>
       </div>
     </div>
 
     <div class="footer">
-      <p>CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire™</strong>.</p>
-      <p>Murray’s Empire™ © 2026. All Rights Reserved.</p>
+      <p>CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire LLC</strong>.</p>
+      <p>Murray’s Empire LLC © 2026. All Rights Reserved.</p>
+      <p>Contact: <a href="mailto:murraysempirellc@gmail.com" style="color:var(--brand-blue);">murraysempirellc@gmail.com</a></p>
       
       <div class="disclaimer">
-        <strong>LEGAL DISCLAIMER:</strong> CrapsEdge™ and Murray’s Empire™ provide educational and experiential content regarding casino mechanics. We do not offer financial advice or guarantee winnings. Gambling involves risk. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+        <strong>LEGAL DISCLAIMER:</strong> CrapsEdge™ and Murray’s Empire LLC provide educational and informational content regarding casino mechanics. We do not offer financial advice or guarantee winnings. Gambling involves risk. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
       </div>
     </div>
   </div>
