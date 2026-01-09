@@ -5,104 +5,220 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Explore Craps Systems | CrapsEdge™</title>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
-     crossorigin="anonymous"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
+    /* Global Styles */
     body {
-      background-color: black;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      padding: 2em;
-      max-width: 900px;
-      margin: auto;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
     }
+
+    .main-content {
+      max-width: 900px;
+      margin: auto;
+      padding: 2em;
+      padding-top: 80px; /* Space for the menu button */
+    }
+
+    h1, h3, .menu-label {
+      font-family: 'Poppins', sans-serif;
+    }
+
     h1 {
       text-align: center;
-      color: limegreen;
+      color: #00cc66; /* Matching your CTA green */
       margin-bottom: 1em;
+      font-size: 2.2em;
     }
+
     h3 {
-      color: #00e676;
-      margin-top: 30px;
+      color: #00cc66;
+      margin-top: 40px;
+      font-size: 1.4em;
+      border-left: 4px solid #00cc66;
+      padding-left: 15px;
     }
+
     p {
       font-size: 1.1em;
-      margin-bottom: 1em; /* Added margin for better paragraph spacing */
+      color: #ccc;
+      margin-bottom: 1.2em;
     }
-    a {
+
+    hr {
+      margin: 40px auto;
+      width: 100%;
+      border: 0;
+      border-top: 1px solid #222;
+    }
+
+    /* --- SIDE MENU SYSTEM --- */
+    .menu-button {
+      position: fixed;
+      top: 25px;
+      left: 20px;
+      background-color: #00cc66;
+      border: none;
+      color: #000;
+      font-size: 24px;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      z-index: 1001;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    .side-menu.show-menu { left: 0; }
+
+    .close-btn {
+      text-align: right;
+      padding: 20px;
+      font-size: 35px;
+      cursor: pointer;
+      color: #00cc66;
+      line-height: 1;
+    }
+
+    .menu-label {
+      padding: 20px 20px 5px;
+      font-size: 0.75em;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .side-menu a {
+      display: block;
+      color: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #1a1a1a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover {
+      background-color: #00cc66;
+      color: #000;
+    }
+
+    /* Overlay: Click outside to close */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      z-index: 1000;
+    }
+    .overlay.active { display: block; }
+
+    .back-link {
+      margin-top: 50px;
+      display: inline-block;
+      text-align: center;
       color: #00ccff;
       text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .back-link {
-      margin-top: 40px;
-      display: block;
-      text-align: center;
-      font-size: 1.1em;
-    }
-    hr {
-      margin: 30px auto;
-      width: 80%;
-      border-color: gray;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-client="ca-pub-7741509990569883"
-         data-ad-slot="1863047244"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
-    <h1>🎲 Explore Craps Systems</h1>
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
 
-    <p>
-      These systems use real math, reduce risk, and give you more control at the table. Explore each one — then test them with your own discipline.
-    </p>
-  </header>
+  <nav id="sideMenu" class="side-menu">
+    <div class="close-btn" onclick="toggleMenu()">×</div>
+    
+    <div class="menu-label">Main Navigation</div>
+    <a href="index.html">🏠 Home</a>
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
 
-  <hr>
+    <div class="menu-label">Explore Systems</div>
+    <a href="#iron-cross">🎯 Iron Cross</a>
+    <a href="#3-point-molly">🔄 3-Point Molly</a>
+    <a href="#hybrid">💼 Hybrid Approach</a>
 
-  <main>
-    <h3>🎯 1. The Iron Cross</h3>
-    <p>Bet on the Field and Place the 5, 6, and 8. You win on almost every number except 7. Fast-paced, but dangerous if you stay too long.</p>
+    <div class="menu-label">Resources</div>
+    <a href="stop-gambling-help.html">🛡️ Stop Gambling</a>
+    <a href="faq.html">❓ Support</a>
+  </nav>
 
-    <h3>🔄 2. 3-Point Molly</h3>
-    <p>A smart combo of Pass Line + Odds + 2 Come Bets with odds. Keeps 3 numbers working. Great for disciplined players using odds properly.</p>
+  <div class="main-content">
+    <header>
+      <h1>🎲 Explore Craps Systems</h1>
+      <p style="text-align: center;">
+        These systems use real math, reduce risk, and give you more control at the table. Explore each one — then test them with your own discipline.
+      </p>
+    </header>
 
-    <h3>💰 3. Pass Line with Odds Only</h3>
-    <p>Low house edge, slow and steady. Always take full odds behind your line bets. It’s boring — but it keeps you in the game.</p>
+    <hr>
 
-    <h3>🧱 4. Don't Pass Hedge System</h3>
-    <p>Bet Don’t Pass, but use small bets on the Field or Place numbers to reduce boredom and cover losing streaks. Great for grinding.</p>
+    <main>
+      <h3 id="iron-cross">🎯 1. The Iron Cross</h3>
+      <p>Bet on the Field and Place the 5, 6, and 8. You win on almost every number except 7. Fast-paced, but dangerous if you stay too long.</p>
 
-    <h3>📊 5. 10% Bankroll Stop-Loss</h3>
-    <p>Always walk away if you lose more than 10% of your session bankroll. Forces discipline. Protects emotions. Keeps you in control.</p>
+      <h3 id="3-point-molly">🔄 2. 3-Point Molly</h3>
+      <p>A smart combo of Pass Line + Odds + 2 Come Bets with odds. Keeps 3 numbers working. Great for disciplined players using odds properly.</p>
 
-    <h3>🎯 6. Controlled Regression Strategy</h3>
-    <p>Start with 3 Place bets, and regress after 1 or 2 hits. Lock in profits and reduce risk. Especially effective with a hot shooter.</p>
+      <h3>💰 3. Pass Line with Odds Only</h3>
+      <p>Low house edge, slow and steady. Always take full odds behind your line bets. It’s boring — but it keeps you in the game.</p>
 
-    <h3>⚡ 7. Power Press</h3>
-    <p>Let your bets ride and press aggressively after every hit. High risk, high reward. Use this only when you’re up and feeling confident.</p>
+      <h3>🧱 4. Don't Pass Hedge System</h3>
+      <p>Bet Don’t Pass, but use small bets on the Field or Place numbers to reduce boredom and cover losing streaks. Great for grinding.</p>
 
-    <h3>💼 8. CrapsEdge Hybrid Approach</h3>
-    <p>Use a mix of Iron Cross, Odds-Only, and 10% Stop-Loss depending on table conditions. Adapt to survive. Smart players switch gears.</p>
-  </main>
+      <h3>📊 5. 10% Bankroll Stop-Loss</h3>
+      <p>Always walk away if you lose more than 10% of your session bankroll. Forces discipline. Protects emotions. Keeps you in control.</p>
 
-  <footer>
-    <a href="index.html" class="back-link">← Back to Home</a>
-  </footer>
+      <h3>🎯 6. Controlled Regression Strategy</h3>
+      <p>Start with 3 Place bets, and regress after 1 or 2 hits. Lock in profits and reduce risk. Especially effective with a hot shooter.</p>
+
+      <h3>⚡ 7. Power Press</h3>
+      <p>Let your bets ride and press aggressively after every hit. High risk, high reward. Use this only when you’re up and feeling confident.</p>
+
+      <h3 id="hybrid">💼 8. CrapsEdge Hybrid Approach</h3>
+      <p>Use a mix of Iron Cross, Odds-Only, and 10% Stop-Loss depending on table conditions. Adapt to survive. Smart players switch gears.</p>
+    </main>
+
+    <footer style="text-align: center; margin-bottom: 50px;">
+      <a href="index.html" class="back-link">← Back to CrapsEdge Home</a>
+      <p style="font-size: 0.8em; color: #444; margin-top: 30px;">
+        © 2026 Murray’s Empire™ | CrapsEdge™ Education
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('show-menu');
+      overlay.classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
