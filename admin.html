@@ -3,69 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CrapsEdge™ Admin Panel</title>
+  <title>Admin Dashboard | Murray’s Empire LLC</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+
   <style>
+    :root {
+      --brand-green: #00cc66; 
+      --brand-accent: #ffcc00; 
+      --bg: #000;
+      --text: #fff;
+      --card-bg: #111;
+      --border: #333;
+      --muted: #888;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #00ff99;
-      text-align: center;
-      padding: 40px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      padding-top: 80px; 
     }
+
     .container {
-      max-width: 650px;
-      margin: auto;
-      background-color: #1a1a1a;
-      padding: 25px;
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: var(--card-bg);
+      padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 0 15px #00ff99;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0, 204, 102, 0.2);
+      text-align: center;
     }
+
     h1 {
-      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+      color: var(--brand-green);
+      margin-bottom: 30px;
     }
-    .stat {
-      font-size: 1.4em;
-      margin: 20px 0;
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      text-align: left;
     }
+
+    .stat-card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #222;
+    }
+
     .label {
-      font-weight: bold;
+      display: block;
+      font-size: 0.8em;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .value {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: var(--brand-accent);
+    }
+
+    /* Side Menu Styles */
+    .menu-button {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      background-color: var(--brand-green);
+      border: none;
+      color: black;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
+      border-radius: 4px;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 1000;
+      border-right: 1px solid var(--border);
+    }
+
+    .side-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+
+    .side-menu a:hover {
+      background-color: var(--brand-green);
+      color: #000;
+    }
+
+    .show-menu { left: 0; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      font-size: 0.9em;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
 <body>
+
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
+  </nav>
+
   <div class="container">
     <h1>CrapsEdge™ Admin Panel</h1>
+    
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="label">🌐 Total Visitors</span>
+        <span class="value" id="total-visits">Loading...</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">📅 Today's Visitors</span>
+        <span class="value" id="today-visits">Loading...</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">🕐 Last Admin Visit</span>
+        <span class="value" id="last-visit">Loading...</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">📄 Top Page</span>
+        <span class="value">Home (Index)</span>
+      </div>
+    </div>
 
-    <p class="stat"><span class="label">🌐 Total Visitors:</span> <span id="total-visits">Loading...</span></p>
-    <p class="stat"><span class="label">📅 Today's Visitors:</span> <span id="today-visits">Loading...</span></p>
-    <p class="stat"><span class="label">🕐 Last Visit:</span> <span id="last-visit">Loading...</span></p>
-    <p class="stat"><span class="label">📄 Most Visited Page:</span> Home (basic)</p>
-    <hr style="border: 1px solid #00ff99; margin: 30px 0;">
-    <p class="stat">🔒 Private Admin Page – Not visible to site visitors.</p>
+    <p style="margin-top: 30px; color: var(--muted); font-size: 0.9em;">
+      🔒 <strong>Private Admin Access:</strong> Internal monitoring for Murray’s Empire LLC only.
+    </p>
   </div>
 
-  <script>
-    // Total visitors using CountAPI
-    fetch('https://api.countapi.xyz/update/crapsedge.store/visits/?amount=1')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('total-visits').innerText = data.value;
-      })
-      .catch(error => {
-        document.getElementById('total-visits').innerText = 'Error';
-      });
+  <footer>
+    Murray’s Empire LLC © 2026. Internal Systems.<br>
+    Contact: <a href="mailto:murraysempirellc@gmail.com" style="color:#00ccff; text-decoration:none;">murraysempirellc@gmail.com</a>
+  </footer>
 
-    // Today's visitors (using localStorage)
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('show-menu');
+    }
+
+    // visitor logic
     const todayKey = 'visits-' + new Date().toISOString().slice(0, 10);
     const current = localStorage.getItem(todayKey);
     const todayCount = current ? parseInt(current) + 1 : 1;
     localStorage.setItem(todayKey, todayCount);
     document.getElementById('today-visits').innerText = todayCount;
 
-    // Track and display last visit time
     const now = new Date().toLocaleString();
     document.getElementById('last-visit').innerText = now;
-    localStorage.setItem('lastVisit', now);
+    
+    // Placeholder for API count (since countapi.xyz is often unstable, 
+    // real businesses use Google Analytics via your G-tag already in index.html)
+    document.getElementById('total-visits').innerText = "Live in G-Analytics";
   </script>
 </body>
 </html>
