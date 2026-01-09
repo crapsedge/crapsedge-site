@@ -8,58 +8,162 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
        crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="dice-icon.png">
     
     <style>
+        :root {
+          --brand-green: #00cc66; 
+          --brand-accent: #ffcc00; 
+          --brand-blue: #00ccff;
+          --bg: #000;
+          --text: #fff;
+          --card-bg: #111;
+          --border: #333;
+          --muted: #888;
+        }
+
         body {
-            /* Updated font-family for consistency */
-            font-family: 'Montserrat', Arial, sans-serif;
-            background-color: #121212;
-            color: #f1f1f1;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
             padding: 0;
+            padding-top: 80px;
         }
+
         .container {
             max-width: 700px;
             margin: 50px auto;
-            padding: 30px;
-            background-color: #1e1e1e;
+            padding: 40px 30px;
+            background-color: var(--card-bg);
             border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 204, 102, 0.1);
             text-align: center;
         }
+
         h1 {
-            color: #00ff88;
+            font-family: 'Poppins', sans-serif;
+            color: var(--brand-green);
             font-size: 32px;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 25px;
+            color: #ccc;
         }
+
         .button {
             display: inline-block;
-            margin: 10px;
-            padding: 14px 28px;
-            font-size: 16px;
+            margin: 20px auto;
+            padding: 16px 32px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
             border-radius: 8px;
             text-decoration: none;
-            color: white;
-            font-weight: 600; 
+            color: #000;
+            font-weight: 700; 
             border: none; 
             cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
         }
-        .cashapp { background-color: #00c244; }
-        .disclaimer {
+
+        .cashapp { 
+            background-color: var(--brand-green); 
+            box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4);
+        }
+
+        .cashapp:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 25px rgba(0, 230, 118, 0.6);
+        }
+
+        /* Side Menu Styles */
+        .menu-button {
+          position: fixed;
+          top: 40px;
+          left: 20px;
+          background-color: var(--brand-green);
+          border: none;
+          color: black;
+          font-size: 22px;
+          padding: 8px 12px;
+          cursor: pointer;
+          z-index: 1001;
+          box-shadow: 0 0 8px var(--brand-green);
+          border-radius: 4px;
+        }
+
+        .side-menu {
+          position: fixed;
+          top: 0;
+          left: -260px;
+          width: 260px;
+          height: 100%;
+          background-color: #111;
+          overflow-y: auto;
+          transition: left 0.3s;
+          padding-top: 100px;
+          z-index: 1000;
+          border-right: 1px solid var(--border);
+        }
+
+        .side-menu a {
+          display: block;
+          padding: 12px 20px;
+          color: white;
+          text-decoration: none;
+          border-bottom: 1px solid #333;
+        }
+
+        .side-menu a:hover {
+          background-color: var(--brand-green);
+          color: #000;
+        }
+
+        .show-menu { left: 0; }
+
+        footer {
+          text-align: center;
+          margin-top: 50px;
+          padding: 40px 20px;
+          border-top: 1px solid var(--border);
+          font-size: 0.9em;
+          color: var(--muted);
+        }
+
+        .disclaimer-text {
             margin-top: 30px;
             font-size: 12px;
-            color: #888;
+            color: var(--muted);
+            line-height: 1.5;
+            padding: 0 20px;
         }
     </style>
 </head>
 <body>
     
+    <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
+    <nav id="sideMenu" class="side-menu">
+      <a href="crapsedge-system.html">⚡ Strategy System</a>
+      <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+      <a href="blog.html">🗞️ Blog</a>
+      <a href="craps-table.html">🎲 Play Craps</a>
+      <a href="explore.html">🔍 Explore Systems</a>
+      <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+      <a href="tracker.html">📊 Bankroll Tracker</a>
+      <a href="counseling.html">🧑‍⚕️ Counseling</a>
+      <a href="other-games.html">🎰 Other Casino Games</a>
+      <a href="privacy-policy.html">🔐 Privacy</a>
+      <a href="faq.html">❓ Support</a>
+      <a href="terms.html">⚖️ Terms</a>
+    </nav>
+
     <ins class="adsbygoogle"
          style="display:block; text-align:center;"
          data-ad-client="ca-pub-7741509990569883"
@@ -73,18 +177,37 @@
     <main class="container">
         <h1>CrapsEdge™ Growth Fund</h1>
         <p>
-            Help keep CrapsEdge™ growing! Your donations go directly toward improving the site, adding new tools, strategies, and resources for the community.  
-            Even a small contribution helps us maintain and expand the best craps strategy platform online.
+            Help keep CrapsEdge™ growing! Your contributions go directly toward improving the site, adding new tools, and expanding resources for the community.
         </p>
         <p>
-            You can contribute securely via **Cash App**:
+            Support our mission securely via <strong>Cash App</strong>:
         </p>
 
-        <a href="https://cash.app/$Crapsedge" class="button cashapp" target="_blank">Donate via Cash App</a>
+        <a href="https://cash.app/$Crapsedge" class="button cashapp" target="_blank">Contribute via Cash App</a>
 
-        <p class="disclaimer">
-            Disclaimer: All donations are voluntary and are intended to support the growth of CrapsEdge™. No goods or services are provided in exchange for donations. CrapsEdge™ is not responsible for any tax implications of donations. This page is compliant with Nebraska state laws regarding voluntary contributions.
-        </p>
+        <div class="disclaimer-text">
+            <strong>Legal Disclaimer:</strong> All contributions are voluntary and made to <strong>Murray’s Empire LLC</strong> to support the development of CrapsEdge™. No goods or services are provided in exchange for these contributions. Murray’s Empire LLC is not responsible for any tax implications. This page is compliant with Nebraska state laws regarding voluntary contributions.
+        </div>
     </main>
+
+    <footer>
+      CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire LLC</strong>.<br>
+      Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+      Contact: <a href="mailto:murraysempirellc@gmail.com" style="color:var(--brand-blue); text-decoration:none;">murraysempirellc@gmail.com</a>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('sideMenu');
+        menu.classList.toggle('show-menu');
+      }
+      let lastScrollTop = 0;
+      window.addEventListener("scroll", function(){
+        const menuBtn = document.getElementById('menuButton');
+        let currentScroll = window.scrollY || document.documentElement.scrollTop;
+        menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      });
+    </script>
 </body>
 </html>
