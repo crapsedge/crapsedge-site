@@ -4,211 +4,242 @@
   <meta charset="UTF-8" />
   <title>CrapsEdge™ Casino Table</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="dice-icon.png">
+  
   <style>
     /* VARIABLES */
     :root {
+      --brand-green: #00cc66; 
+      --brand-accent: #ffcc00; 
+      --brand-blue: #00ccff;
+      --bg: #000;
+      --text: #fff;
+      --border: #333;
       --rail-color: #3b3a3c;
       --rail-border: #1a191b;
-      --felt-color-base: #280a13; /* Deep, rich red-black */
-      --line-color: #a0a0a0; /* Softer white line */
+      --felt-color-base: #280a13; 
+      --line-color: #a0a0a0; 
       --chip-tray-color: #1f1f1f;
-      --brand-color: #22d08b;
     }
+
     html, body {
-      height: 100%;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: #121212; /* Near black background */
-      color: #fff;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding-top: 80px;
+    }
+
+    /* Menu Button Styles */
+    .menu-button {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      background-color: var(--brand-green);
+      border: none;
+      color: black;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
+      border-radius: 4px;
+    }
+
+    /* Side Menu Styles */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s;
+      padding-top: 100px;
+      z-index: 1000;
+      border-right: 1px solid var(--border);
+    }
+    .side-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+    .side-menu a:hover { background-color: var(--brand-green); color: #000; }
+    .show-menu { left: 0; }
+
+    .table-container {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
     }
+
     .table-rail {
       width: 95vw;
       max-width: 650px;
-      margin: 22px auto 0;
       border-radius: 48px 48px 38px 38px;
-      /* Using a subtle dark gradient for depth */
       background: linear-gradient(180deg, var(--rail-color) 0%, #29282a 100%);
-      border: 4px solid var(--rail-border); /* Thinner, darker border */
-      box-shadow: 0 15px 40px #000000aa; /* Deeper shadow */
+      border: 4px solid var(--rail-border);
+      box-shadow: 0 15px 40px #000000aa;
       position: relative;
       overflow: hidden;
     }
+
     .chip-trays {
       display: flex;
-      flex-direction: row;
       justify-content: flex-end;
-      gap: 4px; /* Reduced gap */
+      gap: 4px;
       position: absolute;
       right: 12px;
       top: 9px;
       z-index: 9;
     }
     .chip-stack {
-      width: 18px; height: 65px; /* Slightly smaller */
+      width: 18px; height: 65px;
       background: var(--chip-tray-color);
-      border-radius: 8px; /* Softer radius */
+      border-radius: 8px;
       box-shadow: 0 1px 3px #000a inset;
-      margin-left: 3px;
       display: grid;
       align-items: end;
       padding: 0 1px;
-      position: relative;
     }
     .chip { 
       border-radius: 50%;
-      width: 16px; height: 6px; /* Thinner chips */
+      width: 16px; height: 6px;
       margin-bottom: 2px;
-      box-shadow: 0 0.5px 1.5px #000a inset;
-      border: 0.5px solid #444; /* Darker border */
-      transition: all 0.1s ease-out;
+      border: 0.5px solid #444;
     }
-    /* Updated Chip Colors for a modern palette */
     .chip.red { background: #d32f2f;}
     .chip.blue { background: #1976d2;}
     .chip.green { background: #4caf50;}
     .chip.orange { background: #ff9800;}
-    .chip.purple { background: #7b1fa2;}
-    .chip.yellow { background: #ffeb3b;}
-    /* Table Felt */
+
     .felt {
-      /* Rich felt color with subtle texture gradient */
       background: linear-gradient(160deg, var(--felt-color-base) 0%, #3d101d 100%);
       border-radius: 38px;
-      margin: 18px auto 0; /* Reduced margin */
+      margin: 18px auto 0;
       padding: 30px 8px 40px 8px;
-      max-width: 620px;
       min-height: 400px;
-      box-shadow: 0 0px 20px #00000077 inset, 0 8px 30px #0009;
+      box-shadow: 0 0px 20px #00000077 inset;
       position: relative;
-      padding-bottom: 8%;
     }
-    /* Betting Zones & Markings */
-    .markings {
-      position: absolute; left: 0; right: 0; top: 0; bottom: 0; pointer-events: none;
-      width: 100%; height: 100%;
-      overflow: visible;
-    }
-    .markings svg { width: 100%; height: 100%; }
-    /* zone labels and numbers */
+
     .felt-label {
       position: absolute;
-      color: #ffe0b2; /* Off-white label color */
-      text-shadow: 0 1px 1px #000000; /* Subtle dark shadow */
+      color: #ffe0b2;
       font-weight: 700;
-      font-family: 'Inter', sans-serif; /* Modern font */
-      text-align: center;
-      letter-spacing: 0.05em;
       text-transform: uppercase;
-      font-size: 2.5vw; 
-      transition: all 0.1s;
+      font-size: 2.5vw;
+      text-align: center;
+      pointer-events: none;
     }
-    /* Adjusted positions using percentages for responsiveness */
     .felt-label.pass { left:8%; bottom:20%; width:36%; font-size:4.5vw;}
     .felt-label.dont { right:9%; bottom:20%; width:34%; font-size:4.5vw;}
     .felt-label.come { left:27%; top:46%; width:44%; font-size:4vw;}
     .felt-label.field { left:31%; top:60%; width:38%; font-size:3.5vw;}
-    .felt-label.place4 { left:10%; top:15%; width:10%;}
-    .felt-label.place5 { left:25%; top:15%; width:10%;}
-    .felt-label.place6 { left:40%; top:15%; width:10%;}
-    .felt-label.place8 { left:55%; top:15%; width:10%;}
-    .felt-label.place9 { left:70%; top:15%; width:10%;}
-    .felt-label.place10 { left:84%; top:15%; width:10%;}
-    .felt-label.dpb { right: 12%; bottom: 8%; width: 20%; font-size: 3vw;}
-    /* Controls */
+
     .controls {
-      text-align: center;
-      margin: 28px auto 28px;
-      gap: 8px;
       display: flex;
       justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
       width: 90%;
       max-width: 650px;
-      flex-wrap: wrap;
     }
     .ctrl-btn {
-      margin: 8px;
-      padding:12px 26px;
-      background:var(--brand-color);
-      border-radius:8px; /* Modern radius */
-      border:none;
-      font-family:inherit;
-      font-size: 1.14em;
-      font-weight: 800;
-      color:#171010;
-      transition: background .18s;
-      box-shadow: 0 4px 6px #00000055; /* Subtle button shadow */
-      flex-grow: 1;
-      max-width: 150px;
+      padding: 15px 30px;
+      background: var(--brand-green);
+      border: none;
+      border-radius: 8px;
+      font-weight: 900;
+      color: #000;
       cursor: pointer;
+      flex: 1;
+      font-family: 'Poppins', sans-serif;
     }
-    .ctrl-btn:hover {
-      background: #39e09d;
-    }
-    .ctrl-btn:active {
-      background: #ffe066; 
-      color:#511;
-      box-shadow: 0 1px 3px #00000055;
-    }
-    /* SVG adjustments for modern look */
-    .markings svg path, .markings svg rect, .markings svg ellipse {
-      stroke: var(--line-color) !important;
-      stroke-width: 2.5 !important; /* Thinner lines */
+    .ctrl-btn:hover { background: #00e676; }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: #888;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <div class="table-rail">
-    <div class="chip-trays">
-      <div class="chip-stack">
-        <div class="chip red"></div><div class="chip red"></div><div class="chip red"></div>
-        <div class="chip blue"></div><div class="chip blue"></div>
-      </div>
-      <div class="chip-stack">
-        <div class="chip yellow"></div><div class="chip yellow"></div>
-        <div class="chip green"></div><div class="chip green"></div>
-      </div>
-      <div class="chip-stack">
-        <div class="chip purple"></div><div class="chip orange"></div>
-        <div class="chip orange"></div>
-      </div>
-    </div>
-    <div class="felt" style="position:relative;">
-      <div class="markings">
-        <svg viewBox="0 0 620 400">
-          <path d="M55 325 Q310 395 565 325" fill="none"/>
-          <rect x="28" y="28" width="563" height="343" rx="34" fill="none"/>
-          <rect x="108" y="80" width="95" height="36" rx="18" fill="none"/>
-          <rect x="235" y="80" width="95" height="36" rx="18" fill="none"/>
-          <rect x="362" y="80" width="95" height="36" rx="18" fill="none"/>
-          <rect x="489" y="80" width="95" height="36" rx="18" fill="none"/>
-          <ellipse cx="310" cy="188" rx="128" ry="38" fill="none"/>
-          <ellipse cx="310" cy="238" rx="78" ry="28" fill="none"/>
-        </svg>
-      </div>
-      <div class="felt-label pass">PASS LINE</div>
-      <div class="felt-label dont">DON'T PASS</div>
-      <div class="felt-label come">COME</div>
-      <div class="felt-label field">FIELD</div>
-      <div class="felt-label place4">4</div>
-      <div class="felt-label place5">5</div>
-      <div class="felt-label place6">6</div>
-      <div class="felt-label place8">8</div>
-      <div class="felt-label place9">9</div>
-      <div class="felt-label place10">10</div>
-      <div class="felt-label dpb">DON'T PASS BAR</div>
-    </div>
-  </div>
-  <nav class="controls">
-      <button class="ctrl-btn">ROLL</button>
-      <button class="ctrl-btn">UNDO</button>
-      <button class="ctrl-btn">CLEAR</button>
+
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+    <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
+    <a href="blog.html">🗞️ Blog</a>
+    <a href="craps-table.html">🎲 Play Craps</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+    <a href="tracker.html">📊 Bankroll Tracker</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="other-games.html">🎰 Other Casino Games</a>
+    <a href="privacy-policy.html">🔐 Privacy</a>
+    <a href="faq.html">❓ Support</a>
+    <a href="terms.html">⚖️ Terms</a>
   </nav>
+
+  <div class="table-container">
+    <div class="table-rail">
+      <div class="chip-trays">
+        <div class="chip-stack"><div class="chip red"></div><div class="chip red"></div><div class="chip blue"></div></div>
+        <div class="chip-stack"><div class="chip green"></div><div class="chip orange"></div></div>
+      </div>
+      <div class="felt">
+        <div class="felt-label pass">PASS LINE</div>
+        <div class="felt-label dont">DON'T PASS</div>
+        <div class="felt-label come">COME</div>
+        <div class="felt-label field">FIELD</div>
+        <div class="felt-label" style="left:10%; top:15%; width:10%;">4</div>
+        <div class="felt-label" style="left:25%; top:15%; width:10%;">5</div>
+        <div class="felt-label" style="left:40%; top:15%; width:10%;">6</div>
+        <div class="felt-label" style="left:55%; top:15%; width:10%;">8</div>
+        <div class="felt-label" style="left:70%; top:15%; width:10%;">9</div>
+        <div class="felt-label" style="left:84%; top:15%; width:10%;">10</div>
+      </div>
+    </div>
+
+    <nav class="controls">
+        <button class="ctrl-btn">ROLL</button>
+        <button class="ctrl-btn">CLEAR</button>
+    </nav>
+  </div>
+
+  <footer>
+    CrapsEdge™ is a brand owned and operated by <strong>Murray’s Empire LLC</strong>.<br>
+    Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+    Contact: <a href="mailto:murraysempirellc@gmail.com" style="color:var(--brand-blue); text-decoration:none;">murraysempirellc@gmail.com</a><br>
+    LEGAL DISCLAIMER: Educational and informational content only. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('sideMenu').classList.toggle('show-menu');
+    }
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function(){
+      const menuBtn = document.getElementById('menuButton');
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
