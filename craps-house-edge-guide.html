@@ -10,31 +10,33 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
-    /* CSS Variables for consistent coloring */
     :root {
       --brand-green: #00cc66; 
-      --brand-red: red;      
+      --brand-red: #ff4444;      
       --brand-blue: #00ccff;
+      --brand-accent: #ffcc00;
       --bg: #000;
       --text: #fff;
       --muted: #888;
       --border: #333;
+      --card-bg: #111;
     }
 
-    /* Global Styles consistent with front page */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.7;
       padding-top: 80px;
     }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+      line-height: 1.7;
+    }
     
-    /* Poppins for all headings */
     h1, h2, h3 {
       font-family: 'Poppins', sans-serif;
     }
@@ -47,7 +49,7 @@
     }
     
     h2 {
-      color: var(--brand-red); /* Using the contrast color for section headers */
+      color: var(--brand-red); 
       margin-top: 2em;
       font-size: 1.8em;
       border-bottom: 1px solid var(--border);
@@ -59,12 +61,13 @@
       font-size: 1.05em;
     }
 
-    /* Table Styling for House Edge List */
     table {
         width: 100%;
         border-collapse: collapse;
         margin: 2em 0;
         font-size: 1em;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border);
     }
     th, td {
         padding: 12px 15px;
@@ -75,14 +78,12 @@
         background-color: #222;
         color: var(--brand-green);
         font-weight: 700;
-        font-family: 'Poppins', sans-serif;
     }
     .low-edge { color: var(--brand-green); font-weight: 600; }
     .high-edge { color: var(--brand-red); font-weight: 600; }
     
-    /* CTA Block Styling (Bridge to Profit) */
     .cta-box {
-        background-color: #1a0f0f; /* Slightly reddish background to catch the eye */
+        background-color: #1a0f0f; 
         border: 2px solid var(--brand-red);
         border-radius: 10px;
         padding: 25px;
@@ -98,31 +99,22 @@
     .cta-button {
       display: inline-block;
       background-color: var(--brand-green);
-      color: var(--bg);
+      color: #000;
       font-family: 'Poppins', sans-serif;
       font-size: 1.2em;
       font-weight: 700;
       padding: 15px 30px;
       text-decoration: none;
       border-radius: 8px;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 20px rgba(0, 204, 102, 0.5);
       margin-top: 15px;
     }
     .cta-button:hover {
-      background-color: #00e676;
+      transform: scale(1.05);
       box-shadow: 0 4px 25px rgba(0, 230, 118, 0.7);
     }
     
-    a {
-      color: var(--brand-blue);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    
-    /* --- Navigation Styles (Your improved code) --- */
     .menu-button {
       position: fixed;
       top: 40px;
@@ -137,6 +129,7 @@
       box-shadow: 0 0 8px var(--brand-green);
       border-radius: 4px;
     }
+
     .side-menu {
       position: fixed;
       top: 0;
@@ -148,7 +141,7 @@
       transition: left 0.3s;
       padding-top: 100px;
       z-index: 1000;
-      border-right: 1px solid #333;
+      border-right: 1px solid var(--border);
     }
     .show-menu { left: 0; }
     .side-menu a {
@@ -161,7 +154,15 @@
     .side-menu a:hover {
       background-color: var(--brand-green);
       color: #000;
-      transition: background 0.2s;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: var(--muted);
     }
   </style>
 </head>
@@ -184,90 +185,75 @@
     <a href="terms.html">⚖️ Terms</a>
   </nav>
 
-  <h1>📈 The Ultimate Guide to Craps Betting Strategy & The House Edge</h1>
+  <div class="container">
+    <h1>📈 Ultimate Guide to House Edge</h1>
 
-  <p>Craps is intimidating because of the sheer volume of bets available. However, once you understand the **math of the house edge**, the entire game simplifies down to a handful of smart decisions. This guide breaks down every common craps bet, ranks them by their true cost, and shows you the path to maximizing your real-world edge.</p>
+    <p>Craps can be intimidating, but once you understand the <strong>math of the house edge</strong>, the entire game simplifies into a handful of smart decisions. This guide ranks every common bet by its true cost to you.</p>
 
-  <h2>🎲 Craps Betting by the Numbers: The House Edge Ranking</h2>
-  <p>The House Edge is the casino's percentage advantage over the player. The lower the edge, the better the bet is for you over the long term. Choose your bets wisely.</p>
+    <h2>🎲 House Edge Ranking</h2>
+    <p>The House Edge is the casino's percentage advantage. The lower the edge, the better the bet is for you over the long term.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Bet Name</th>
-        <th>Description</th>
-        <th>House Edge (%)</th>
-        <th>Ranking</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Pass/Don't Pass</td>
-        <td>The primary line bets (Come Out Roll)</td>
-        <td class="low-edge">1.41% / 1.36%</td>
-        <td>Top Tier (Must Use)</td>
-      </tr>
-      <tr>
-        <td>**Free Odds**</td>
-        <td>Bet placed behind Pass/Don't Pass</td>
-        <td class="low-edge">**0.00%**</td>
-        <td>**The Best Bet in the Casino**</td>
-      </tr>
-      <tr>
-        <td>Place 6 or 8</td>
-        <td>Betting 6 or 8 will roll before 7</td>
-        <td class="low-edge">1.52%</td>
-        <td>Excellent Secondary Bet</td>
-      </tr>
-      <tr>
-        <td>Place 5 or 9</td>
-        <td>Betting 5 or 9 will roll before 7</td>
-        <td>4.00%</td>
-        <td>Avoided by Pros</td>
-      </tr>
-      <tr>
-        <td>C&E (Craps & Eleven)</td>
-        <td>One-roll bet on 2, 3, 11, or 12</td>
-        <td class="high-edge">11.11%</td>
-        <td>Sucker Bet</td>
-      </tr>
-      <tr>
-        <td>Any 7</td>
-        <td>One-roll bet that a 7 will appear</td>
-        <td class="high-edge">16.67%</td>
-        <td>Worst Bet on the Table</td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Bet Name</th>
+          <th>Description</th>
+          <th>House Edge (%)</th>
+          <th>Ranking</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pass/Don't Pass</td>
+          <td>Primary Line Bets</td>
+          <td class="low-edge">1.41% / 1.36%</td>
+          <td>Top Tier</td>
+        </tr>
+        <tr>
+          <td><strong>Free Odds</strong></td>
+          <td>Behind Line Bets</td>
+          <td class="low-edge"><strong>0.00%</strong></td>
+          <td><strong>The Best Bet</strong></td>
+        </tr>
+        <tr>
+          <td>Place 6 or 8</td>
+          <td>Rolling before a 7</td>
+          <td class="low-edge">1.52%</td>
+          <td>Excellent</td>
+        </tr>
+        <tr>
+          <td>Place 5 or 9</td>
+          <td>Rolling before a 7</td>
+          <td>4.00%</td>
+          <td>Avoid</td>
+        </tr>
+        <tr>
+          <td>Any 7</td>
+          <td>One-roll bet on 7</td>
+          <td class="high-edge">16.67%</td>
+          <td>Worst Bet</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <h2>✅ The Best Craps Bets for Smart Players</h2>
-  <p>The optimal strategy involves exclusively playing the three lowest-edge bets and maximizing your Free Odds. This is where you limit the casino's mathematical advantage:</p>
-  <ul>
-    <li>**The Pass Line (1.41%):** The entry point to almost all craps play.</li>
-    <li>**The Don't Pass Line (1.36%):** A slightly lower edge, but plays opposite the rest of the table.</li>
-    <li>**Free Odds (0.00%):** This bet has zero house edge, making it the mathematical holy grail of craps. You must maximize this bet to lower your **effective** house edge to well below 1%.</li>
-  </ul>
-  
-  <p>**Pro Tip:** Your ultimate goal in craps is to reduce your average house edge to **0.5% or less**. This requires consistently maximizing Free Odds bets (often 3x, 4x, or 5x your line bet).</p>
+    <h2>✅ The Path to Success</h2>
+    <p>Optimal strategy involves playing the lowest-edge bets and consistently maximizing your <strong>Free Odds</strong>. This allows you to reduce the house's mathematical advantage to the absolute minimum.</p>
 
-  <div class="cta-box">
-    <h3>The Math Isn't the Problem. Your Discipline Is.</h3>
-    <p>Even with the perfect mathematical strategy, players lose because of *chasing losses*, *emotional fatigue*, and *poor bankroll management*. The math only works if you stick to the plan.</p>
-    <p>The CrapsEdge™ System is not a betting cheat—it's the complete **30-page blueprint** for the **behavioral and bankroll control** required to execute this low-edge strategy for real-world profit.</p>
-    <a href="crapsedge-system.html" class="cta-button">
-        ⚡ Get the CrapsEdge™ System and Master Your Discipline
-    </a>
+    <div class="cta-box">
+      <h3>Master the Math. Master Your Mind.</h3>
+      <p>The math only works if you have the discipline to stick to the plan. Even the best strategy fails if you chase losses or lose control.</p>
+      <a href="https://crapsedge.gumroad.com/l/xvnyi" class="cta-button" target="_blank">
+          ⚡ Get the 30-Page Blueprint
+      </a>
+    </div>
+
+    <footer>
+      CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire LLC</strong>.<br>
+      Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+      Contact: <a href="mailto:murraysempirellc@gmail.com" style="color:var(--brand-blue); text-decoration:none;">murraysempirellc@gmail.com</a><br>
+      LEGAL DISCLAIMER: Educational and informational content only regarding casino mechanics. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+    </footer>
   </div>
-
-  <h2>🛑 The Worst Craps Bets (And Why You Must Avoid Them)</h2>
-  <p>The bets listed below have such high house edges that they should be considered "donations" to the casino. They often pay out high odds, which creates a deceptive rush. Never use these bets if your goal is profit:</p>
-  <ul>
-    <li>**Any Seven (16.67%):** Pays 4 to 1, but its high probability means the house wins more often than it should pay you.</li>
-    <li>**Hard Ways (9.09% - 11.11%):** While fun, these bets have terrible odds compared to Place bets.</li>
-    <li>**Field Bets (2.78% - 5.56%):** Only good when doubled on the 2 or 12, otherwise, they are wasteful for consistent play.</li>
-  </ul>
-  
-  <p>Mastering craps is mastering the math and then mastering your mind. Use the math to filter out the bad bets, and use the discipline from our system to walk away a winner.</p>
 
   <script>
     function toggleMenu() {
