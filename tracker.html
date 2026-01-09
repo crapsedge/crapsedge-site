@@ -5,116 +5,246 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Track Your Gambling Wins and Losses | CrapsEdge™</title>
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
-     crossorigin="anonymous"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
+    /* Global Brand Styles */
     body {
-      background-color: black;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
       line-height: 1.7;
     }
+
+    .main-container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2em;
+      padding-top: 80px; /* Space for the floating menu button */
+    }
+
+    h1, h2, .menu-label {
+      font-family: 'Poppins', sans-serif;
+    }
+
     h1 {
       text-align: center;
-      color: limegreen;
-      margin-bottom: 20px;
-      font-size: 2em;
+      color: #00cc66;
+      margin-bottom: 25px;
+      font-size: 2.2em;
     }
+
     h2 {
-      color: #00ffff;
+      color: #00cc66;
       margin-top: 2em;
-      font-size: 1.4em;
+      font-size: 1.5em;
+      border-left: 4px solid #00cc66;
+      padding-left: 15px;
     }
+
     p, li {
       font-size: 1.1em;
+      color: #ccc;
     }
-    a {
-      color: lime;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+
     ul {
       padding-left: 1.2em;
+      list-style-type: none;
     }
+
+    ul li {
+      margin-bottom: 12px;
+    }
+
     hr {
-      margin-top: 2em;
-      border: 1px solid gray;
+      margin-top: 3em;
+      border: 0;
+      border-top: 1px solid #222;
     }
+
     .center {
       text-align: center;
-      margin: 1.5em 0;
+      margin: 2em 0;
     }
-  </style>
 
+    /* --- DOWNLOAD BUTTON STYLE --- */
+    .download-link {
+      background-color: #00cc66;
+      color: #000;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.3);
+    }
+
+    .download-link:hover {
+      background-color: #00e676;
+      transform: translateY(-2px);
+    }
+
+    /* --- PROFESSIONAL UNIFIED MENU --- */
+    .menu-button {
+      position: fixed;
+      top: 25px;
+      left: 20px;
+      background-color: #00cc66;
+      border: none;
+      color: #000;
+      font-size: 24px;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      z-index: 1001;
+      box-shadow: 5px 0 25px rgba(0,0,0,0.7);
+    }
+
+    .side-menu.show-menu { left: 0; }
+
+    .close-btn {
+      text-align: right;
+      padding: 20px;
+      font-size: 35px;
+      cursor: pointer;
+      color: #00cc66;
+      line-height: 1;
+    }
+
+    .menu-label {
+      padding: 20px 20px 5px;
+      font-size: 0.75em;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .side-menu a {
+      display: block;
+      color: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #1a1a1a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover {
+      background-color: #00cc66;
+      color: #000;
+    }
+
+    /* Overlay: Click outside to close */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      z-index: 1000;
+    }
+    .overlay.active { display: block; }
+  </style>
 </head>
 <body>
-  
-  <header>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-client="ca-pub-7741509990569883"
-         data-ad-slot="1863047244"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    
-    <h1>📊 Track Your Gambling Wins and Losses</h1>
-  </header>
-  
-  <main>
-    <p>Keeping track of your gambling sessions is one of the smartest things you can do. Most players don't realize how much they're spending, how often they're playing, or how much they're really losing — until it's too late.</p>
-  
-    <h2>Why Tracking Matters</h2>
-    <p>Gambling can be fun and exciting, but without proper control, it can lead to serious financial and emotional consequences. That’s where tracking comes in. A simple log of your sessions — how much you brought, how much you left with, what you played, and how you felt — gives you power over your habits.</p>
-  
-    <p>Tracking your wins and losses helps you:</p>
-    <ul>
-      <li>✅ Spot patterns in your behavior</li>
-      <li>✅ See your real performance — not just your lucky nights</li>
-      <li>✅ Set limits based on facts, not feelings</li>
-      <li>✅ Recognize when gambling is hurting your budget or your life</li>
-    </ul>
-  
-    <h2>Free Bankroll Tracker</h2>
-    <p>We’ve built a <strong>free downloadable spreadsheet</strong> to help you take control. Use it after every session, whether you play online, in a casino, or even socially.</p>
-  
-    <p class="center">
-      👉 <a href="bankroll-tracker.xlsx" download>Download the Bankroll Tracker Spreadsheet</a>
-    </p>
-  
-    <h2>What to Track</h2>
-    <ul>
-      <li>🎲 Game played (craps, slots, blackjack, etc.)</li>
-      <li>💵 Starting bankroll and ending amount</li>
-      <li>📆 Date and time</li>
-      <li>📍 Location (casino name or online site)</li>
-      <li>🧠 Mental/emotional state (calm, stressed, excited, etc.)</li>
-      <li>📝 Notes about your play or strategy used</li>
-    </ul>
-  
-    <h2>Build Habits Like a Pro</h2>
-    <p>The best gamblers in the world treat gambling like a business. They review their performance, stay disciplined, and use data to make smarter decisions. You should too.</p>
-  
-    <p>Review your tracker weekly or monthly. Are you staying within your budget? Are certain games costing you more than you realized? Are your losses going up when you're emotional or chasing wins?</p>
-  
-    <h2 style="color:red;">Final Tip</h2>
-    <p>If you're afraid to track your sessions, that’s a red flag. Avoiding the truth only gives gambling more power over you. Take it back. Track your play and stay in control.</p>
-  </main>
 
-  <footer>
-    <hr>
-    <p class="center" style="font-size: 0.9em;">This tool is part of <strong>CrapsEdge™</strong>’s commitment to <em>Responsible Gambling</em>.</p>
-  </footer>
+  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+  <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <div class="close-btn" onclick="toggleMenu()">×</div>
+    
+    <div class="menu-label">Navigation</div>
+    <a href="index.html">🏠 Home</a>
+    <a href="explore.html">🔍 Explore Systems</a>
+    <a href="crapsedge-system.html">⚡ Strategy System</a>
+
+    <div class="menu-label">Active Tools</div>
+    <a href="bankroll-tracker.xlsx">📥 Download Tracker</a>
+    <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
+
+    <div class="menu-label">Responsible Play</div>
+    <a href="stop-gambling-help.html">🛡️ Stop Gambling</a>
+    <a href="counseling.html">🧑‍⚕️ Counseling</a>
+    <a href="faq.html">❓ Support</a>
+  </nav>
+
+  <div class="main-container">
+    <header>
+      <h1>📊 Track Your Gambling Wins and Losses</h1>
+    </header>
+  
+    <main>
+      <p>Keeping track of your gambling sessions is one of the smartest things you can do. Most players don't realize how much they're spending, how often they're playing, or how much they're really losing — until it's too late.</p>
+  
+      <h2>Why Tracking Matters</h2>
+      <p>Gambling can be fun and exciting, but without proper control, it can lead to serious financial and emotional consequences. A simple log of your sessions gives you power over your habits.</p>
+  
+      <ul>
+        <li>✅ Spot patterns in your behavior</li>
+        <li>✅ See real performance — not just lucky nights</li>
+        <li>✅ Set limits based on facts, not feelings</li>
+        <li>✅ Recognize when gambling is hurting your life</li>
+      </ul>
+  
+      <div class="center">
+        <a href="bankroll-tracker.xlsx" class="download-link" download>📥 Download Free Tracker Spreadsheet</a>
+      </div>
+  
+      <h2>What to Track</h2>
+      <ul>
+        <li>🎲 Game played (craps, slots, blackjack, etc.)</li>
+        <li>💵 Starting bankroll and ending amount</li>
+        <li>📆 Date and time</li>
+        <li>📍 Location (casino name or online site)</li>
+        <li>🧠 Mental/emotional state (calm, stressed, excited)</li>
+        <li>📝 Notes about your play or strategy used</li>
+      </ul>
+  
+      <h2>Build Habits Like a Pro</h2>
+      <p>The best gamblers in the world treat gambling like a business. They review their performance, stay disciplined, and use data to make smarter decisions. Review your tracker weekly. Are you staying within your budget?</p>
+  
+      <h2 style="color:#ff4444; border-color:#ff4444;">Final Tip</h2>
+      <p>If you're afraid to track your sessions, that’s a red flag. Avoiding the truth only gives gambling more power over you. Take it back. Track your play and stay in control.</p>
+    </main>
+
+    <footer>
+      <hr>
+      <p class="center" style="font-size: 0.9em; color:#666;">
+        This tool is part of the <strong>CrapsEdge™</strong> commitment to Responsible Gambling.<br>
+        Wholly owned by <strong>Murray’s Empire™</strong> © 2026.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('show-menu');
+      overlay.classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
