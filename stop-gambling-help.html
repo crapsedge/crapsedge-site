@@ -10,25 +10,25 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
-    /* CSS Variables for consistent coloring */
     :root {
-      --brand-green: #00cc66; /* Your CTA green */
-      --brand-accent: #ffcc00; /* Yellow/Gold for price */
+      --brand-green: #00cc66; 
+      --brand-accent: #ffcc00; 
+      --brand-blue: #00ccff;
       --bg: #000;
       --text: #fff;
       --card-bg: #111;
       --border: #333;
     }
 
-    /* Global Styles consistent with front page */
     body {
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      padding-top: 80px; /* Space for fixed menu button */
+      padding-top: 80px; 
     }
+
     .container {
       max-width: 900px;
       margin: auto;
@@ -36,29 +36,33 @@
       line-height: 1.7;
     }
 
-    /* Poppins for all headings */
     h1, h2 {
         font-family: 'Poppins', sans-serif;
     }
+
     h1 {
       font-size: 2.2em;
       text-align: center;
       color: var(--brand-green);
       margin-bottom: 20px;
     }
+
     .intro {
       text-align: center;
       color: #ccc;
       font-size: 1.1em;
       margin-bottom: 30px;
     }
+
     .section {
       background-color: var(--card-bg);
       padding: 30px;
       border-radius: 12px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.3);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.1);
     }
+
     .section h2 {
       color: var(--brand-green);
       font-weight: 700;
@@ -67,26 +71,26 @@
       border-bottom: 1px solid #222;
       padding-bottom: 5px;
     }
-    .section p {
-        font-size: 1.05em;
-    }
+
     .section ul {
       list-style: none;
       padding-left: 0;
       margin-top: 15px;
     }
+
     .section ul li {
       margin-bottom: 12px;
       font-size: 1.05em;
       padding-left: 1.5em;
       position: relative;
     }
+
     .section ul li::before {
       content: "✅ ";
-      color: var(--brand-green);
       position: absolute;
       left: 0;
     }
+
     .highlight {
       color: var(--brand-accent);
       font-size: 1.15em;
@@ -95,9 +99,10 @@
       text-align: center;
       display: block;
     }
+
     .buy-button {
       background-color: var(--brand-green);
-      color: var(--bg);
+      color: #000;
       padding: 16px 35px;
       font-family: 'Poppins', sans-serif;
       font-size: 1.2em;
@@ -106,80 +111,94 @@
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
-      display: block; /* Make it a block element to center easily */
+      display: block; 
       margin: 20px auto 10px;
       width: fit-content;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 204, 102, 0.5);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 204, 102, 0.4);
     }
+
     .buy-button:hover {
-      background-color: #00e676;
-      box-shadow: 0 4px 25px rgba(0, 230, 118, 0.7);
+      transform: scale(1.05);
+      box-shadow: 0 4px 25px rgba(0, 230, 118, 0.6);
     }
+
     .support {
       text-align: center;
       color: #ccc;
-      font-size: 1.1em;
       margin-top: 40px;
+      padding: 20px;
     }
-    .support strong {
-        color: var(--brand-accent);
-    }
+
     .support a {
-      color: #00ccff;
+      color: var(--brand-blue);
       text-decoration: none;
     }
+
     .back-link {
       display: block;
-      margin-top: 40px;
+      margin-top: 20px;
       text-align: center;
-      color: #00ccff;
+      color: var(--brand-blue);
       text-decoration: none;
-      font-size: 1.1em;
       font-family: 'Poppins', sans-serif;
     }
-    hr {
-      border: 1px solid #333;
-      margin: 40px 0;
-    }
-    
-    /* Menu styles (copied from front page for consistency) */
+
+    /* Menu Button Styles */
     .menu-button {
       position: fixed;
-      top: 35px;
+      top: 40px;
       left: 20px;
       background-color: var(--brand-green);
       border: none;
-      color: #000;
+      color: black;
       font-size: 22px;
       padding: 8px 12px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
       border-radius: 4px;
     }
+
+    /* Side Menu Styles */
     .side-menu {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -260px;
+      width: 260px;
       height: 100%;
       background-color: #111;
       overflow-y: auto;
       transition: left 0.3s;
       padding-top: 100px;
-      z-index: 999;
+      z-index: 1000;
+      border-right: 1px solid #333;
     }
+    .show-menu { 
+      left: 0; 
+    }
+
     .side-menu a {
       display: block;
-      color: white;
       padding: 12px 20px;
+      color: white;
+      text-decoration: none;
       border-bottom: 1px solid #333;
     }
+
     .side-menu a:hover {
       background-color: var(--brand-green);
       color: #000;
     }
-    .show-menu { left: 0; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -204,38 +223,38 @@
   <div class="container">
     <h1>🧠 Stop Gambling Help</h1>
     <p class="intro">
-      Gambling can feel fun at first — until it spirals out of control. If you're chasing losses, feeling stressed, or hiding your habits from others, this is your wake-up call. CrapsEdge™ is here to help you regain control, build healthier routines, and stay away from destructive gambling patterns.
+      Gambling can feel fun at first — until it spirals out of control. If you're chasing losses, feeling stressed, or hiding your habits from others, this is your wake-up call. CrapsEdge™ is here to help you regain control and break the mental loop.
     </p>
 
     <div class="section">
       <h2>📘 Premium Guide: A Real Recovery Blueprint</h2>
-      <p>We’ve created a powerful <strong>50-page PDF guide</strong> called <em>"Stop Gambling Help – A Real Recovery Blueprint."</em> It’s packed with real advice, emotional insight, brain hacks, daily habits, and success stories that inspire you to take control.</p>
+      <p>We’ve created a powerful <strong>50-page PDF guide</strong> called <em>"Stop Gambling Help – A Real Recovery Blueprint."</em> It’s packed with brain hacks, daily habits, and success strategies designed for action.</p>
       
       <ul>
-        <li>Understanding Gambling Addiction and Breaking the Mental Loop</li>
+        <li>Breaking the Mental Loop and Dopamine Detox</li>
         <li>Identifying Emotional Triggers & Stress Responses</li>
-        <li>Dopamine Detox & Brain Rewiring Techniques</li>
         <li>The 10-Minute Daily Reset Routine for Urge Management</li>
-        <li>Practical Financial Rebuild Steps and Self-Accountability Tools</li>
-        <li>Inspiring Testimonials from Real People</li>
+        <li>Practical Financial Rebuild Steps & Accountability</li>
         <li>Emergency Reset Page for Crisis Moments</li>
       </ul>
-      <p class="highlight">💡 This guide is not just information — it’s a recovery weapon designed for immediate action.</p>
+      <p class="highlight">💡 This guide is a recovery weapon designed for immediate results.</p>
       
       <a href="https://crapsedge.gumroad.com/l/Stopguide" class="buy-button" target="_blank">💵 Buy Now for $19.99</a>
-      <p style="margin-top: 10px; font-size: 0.9em; color: gray; text-align: center;">Instant download after secure checkout on Gumroad.</p>
+      <p style="margin-top: 10px; font-size: 0.9em; color: gray; text-align: center;">Secure checkout via Gumroad. Instant Digital Delivery.</p>
     </div>
-
-    <hr style="border-color: #222;">
 
     <div class="support">
-      <p><strong>Need More Help?</strong></p>
-      <p>You can request a support conversation via email if you need extra help or personal guidance.</p>
-      <p>Email: <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a></p>
+      <p><strong>Need Personal Guidance?</strong></p>
+      <p>Email the Murray’s Empire support team: <a href="mailto:murraysempirellc@gmail.com">murraysempirellc@gmail.com</a></p>
+      <a class="back-link" href="index.html">← Back to Home</a>
     </div>
-
-    <a class="back-link" href="index.html">← Back to Home</a>
   </div>
+
+  <footer>
+    CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire LLC</strong>.<br>
+    Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+    LEGAL DISCLAIMER: Informational content only. This site does not provide medical or clinical addiction therapy. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+  </footer>
   
   <script>
     function toggleMenu() {
