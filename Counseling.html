@@ -9,16 +9,27 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
-    /* Global Styles consistent with front page */
+    :root {
+      --brand-green: #00cc66; 
+      --brand-accent: #ffcc00; 
+      --brand-blue: #00ccff;
+      --bg: #000;
+      --text: #fff;
+      --card-bg: #111;
+      --border: #333;
+      --muted: #888;
+    }
+
     html, body { height: 100%; margin: 0; }
     body {
       display: flex;
       flex-direction: column;
       font-family: 'Inter', sans-serif;
-      background-color: #000;
-      color: #fff;
-      padding-top: 20px;
+      background-color: var(--bg);
+      color: var(--text);
+      padding-top: 80px;
     }
+
     .main-content {
       max-width: 700px;
       margin: auto;
@@ -26,97 +37,119 @@
       text-align: center;
       flex: 1;
     }
-    /* Poppins for all main titles/headings */
+
     h1, h2, h3 {
         font-family: 'Poppins', sans-serif; 
     }
+
     h1 {
       font-size: 2.5em;
-      color: #00cc66; /* Using the brand green for trust/hope */
+      color: var(--brand-green);
       margin-bottom: 0.5em;
     }
+
     h3 {
       font-size: 1.5em;
-      color: #ffcc00; /* Yellow/Gold for attention */
+      color: var(--brand-accent);
       margin-top: 2em;
       margin-bottom: 0.5em;
     }
+
     p {
-      line-height: 1.7; /* Enhanced line height for better reading */
+      line-height: 1.7; 
       font-size: 1.1em;
       margin-bottom: 1.5em;
       color: #ccc;
     }
+
     hr {
       margin: 30px auto;
       width: 80%;
       border: none;
-      border-top: 1px solid #333;
+      border-top: 1px solid var(--border);
     }
-    /* Call to Action Email Style */
+
     .cta-email {
         font-size: 1.3em;
         font-weight: 600;
         margin: 10px 0 20px;
     }
+
     .cta-email a {
-        color: #00cc66;
+        color: var(--brand-green);
         text-decoration: none;
         transition: color 0.3s ease;
     }
+
     .cta-email a:hover {
         color: #00e676;
         text-decoration: underline;
     }
-    /* Disclaimer style */
-    .disclaimer {
+
+    .disclaimer-box {
       max-width: 600px;
       margin: 50px auto 20px;
       font-size: 0.85em;
-      color: #888;
+      color: var(--muted);
       padding: 15px;
-      border: 1px solid #333;
+      border: 1px solid var(--border);
       border-radius: 5px;
       line-height: 1.5;
     }
 
-    /* Menu styles (copied from front page for consistency) */
+    /* Side Menu Styles */
     .menu-button {
       position: fixed;
-      top: 35px;
+      top: 40px;
       left: 20px;
-      background-color: #00cc66;
+      background-color: var(--brand-green);
       border: none;
-      color: #000;
+      color: black;
       font-size: 22px;
       padding: 8px 12px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
       border-radius: 4px;
     }
+
     .side-menu {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -260px;
+      width: 260px;
       height: 100%;
       background-color: #111;
       overflow-y: auto;
       transition: left 0.3s;
       padding-top: 100px;
-      z-index: 999;
+      z-index: 1000;
+      border-right: 1px solid var(--border);
     }
+
     .side-menu a {
       display: block;
-      color: white;
       padding: 12px 20px;
+      color: white;
+      text-decoration: none;
       border-bottom: 1px solid #333;
     }
+
     .side-menu a:hover {
-      background-color: #00cc66;
+      background-color: var(--brand-green);
       color: #000;
     }
+
     .show-menu { left: 0; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: var(--muted);
+    }
   </style>
 </head>
 
@@ -158,16 +191,22 @@
     <hr>
 
     <h3>📬 How to Request a Private Session</h3>
-    <p>Email us directly to get started:</p>
+    <p>Email the Murray’s Empire support team to get started:</p>
     <p class="cta-email">
-      <strong><a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a></strong>
+      <strong><a href="mailto:murraysempirellc@gmail.com">murraysempirellc@gmail.com</a></strong>
     </p>
 
-    <div class="disclaimer">
-      <strong>Important Disclaimer:</strong> These private sessions are based on personal experience and strategy — they are **not** licensed counseling, therapy, or medical advice. CrapsEdge™ does not provide professional mental health services. If you require medical or psychological assistance, please contact a licensed provider.
+    <div class="disclaimer-box">
+      <strong>Important Disclaimer:</strong> These private sessions are based on personal experience and strategy — they are <strong>not</strong> licensed counseling, therapy, or medical advice. CrapsEdge™ and Murray’s Empire LLC do not provide professional mental health services. If you require medical or psychological assistance, please contact a licensed provider.
     </div>
 
   </div>
+
+  <footer>
+    CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire LLC</strong>.<br>
+    Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+    LEGAL DISCLAIMER: Informational content only. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+  </footer>
 
   <script>
     function toggleMenu() {
