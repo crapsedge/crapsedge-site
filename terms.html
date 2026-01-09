@@ -9,18 +9,16 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
-    /* CSS Variables for consistent coloring */
     :root {
       --brand-green: #00cc66; 
-      --brand-accent: orange; /* Retaining orange for section headings, as it provides good contrast */
-      --brand-blue: #00ccff; /* Link color */
+      --brand-accent: orange; 
+      --brand-blue: #00ccff; 
       --bg: #000;
       --text: #fff;
       --muted: #888;
       --border: #333;
     }
 
-    /* Global Styles consistent with front page */
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -29,10 +27,9 @@
       max-width: 900px;
       margin: auto;
       line-height: 1.7;
-      padding-top: 80px; /* Space for fixed menu button */
+      padding-top: 80px; 
     }
     
-    /* Poppins for all headings */
     h1, h2 {
       font-family: 'Poppins', sans-serif;
     }
@@ -66,7 +63,6 @@
       text-decoration: underline;
     }
 
-    /* Menu Button Styles (Your improved code) */
     .menu-button {
       position: fixed;
       top: 40px;
@@ -82,7 +78,6 @@
       border-radius: 4px;
     }
 
-    /* Side Menu Container Styles (Your improved code) */
     .side-menu {
       position: fixed;
       top: 0;
@@ -100,7 +95,6 @@
       left: 0; 
     }
 
-    /* Styling each menu link */
     .side-menu a {
       display: block;
       padding: 12px 20px;
@@ -109,11 +103,19 @@
       border-bottom: 1px solid #333;
     }
 
-    /* Hover effect */
     .side-menu a:hover {
       background-color: var(--brand-green);
       color: #000;
       transition: background 0.2s;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: var(--muted);
     }
   </style>
 </head>
@@ -139,28 +141,32 @@
   <h1>⚖️ Terms & Legal</h1>
 
   <h2>Disclaimer</h2>
-  <p>CrapsEdge™ provides general information, personal insights, and educational material related to craps and gambling recovery. **We are not licensed financial, legal, or addiction recovery professionals.** You agree to use this content at your own discretion and risk.</p>
+  <p>CrapsEdge™ is a brand owned and operated by <strong>Murray’s Empire LLC</strong>. We provide educational and informational content regarding casino mechanics and dice control concepts. We are not licensed financial, legal, or addiction recovery professionals. You agree to use this content at your own discretion and risk.</p>
 
   <h2>Refund Policy</h2>
-  <p>All purchases on CrapsEdge™, including guides and downloads, are considered **final**. Because digital products are instantly accessible, we do not issue refunds. Please review your order before confirming payment.</p>
+  <p>All purchases made through <strong>Murray’s Empire LLC</strong>, including CrapsEdge™ digital guides and downloads, are considered <strong>final</strong>. Because digital products are instantly accessible upon purchase, we do not issue refunds. Please review your order carefully before confirming payment.</p>
 
-  <h2>Privacy</h2>
-  <p>We do not collect personal data unless you choose to provide it voluntarily (e.g., email, purchase). CrapsEdge™ does not sell or distribute your information to third parties. For full details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
-
-  <h2>Ownership</h2>
-  <p>All written content, products, branding, and visual assets on this website are the exclusive property of CrapsEdge™. Reuse, reproduction, or redistribution without written permission is prohibited.</p>
+  <h2>Ownership & Intellectual Property</h2>
+  <p>All written content, digital products, branding, logos, and visual assets on this website are the exclusive property of <strong>Murray’s Empire LLC</strong>. Reuse, reproduction, or redistribution of any material without express written permission from Murray’s Empire LLC is strictly prohibited.</p>
 
   <h2>Limitation of Liability</h2>
-  <p>By using CrapsEdge™, you agree that the site and its creators are not liable for any decisions, losses, or damages related to your gambling behavior or site usage. Use of the site constitutes acceptance of these terms.</p>
+  <p>By using CrapsEdge™, you agree that <strong>Murray’s Empire LLC</strong> and its members are not liable for any personal decisions, financial losses, or damages related to your gambling behavior or usage of this site. Gambling involves inherent risk; we do not guarantee winnings or specific outcomes. Use of this site constitutes full acceptance of these terms.</p>
 
   <h2>Contact</h2>
-  <p>Have questions? Contact us directly at <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a>.</p>
+  <p>For legal inquiries or support, please contact the parent company at <a href="mailto:murraysempirellc@gmail.com">murraysempirellc@gmail.com</a>.</p>
   
+  <footer>
+    CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire LLC</strong>.<br>
+    Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+    LEGAL DISCLAIMER: Educational and informational content only. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+  </footer>
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById('sideMenu');
       menu.classList.toggle('show-menu');
     }
+    
     let lastScrollTop = 0;
     window.addEventListener("scroll", function(){
       const menuBtn = document.getElementById('menuButton');
