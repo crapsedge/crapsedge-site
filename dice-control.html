@@ -10,14 +10,14 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
-    /* CSS Variables for consistent coloring */
     :root {
-      --brand-green: #00cc66; /* Your CTA green */
-      --brand-red: red;      /* Your Section title red */
+      --brand-green: #00cc66; 
+      --brand-blue: #00ccff;
       --bg: #000;
       --text: #fff;
       --card-bg: #111;
-      --shadow-color: rgba(0, 204, 102, 0.4);
+      --border: #333;
+      --shadow-color: rgba(0, 204, 102, 0.2);
     }
 
     body {
@@ -25,13 +25,16 @@
       color: var(--text);
       font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-      padding-top: 80px; /* Space for fixed menu button */
+      padding: 0;
+      padding-top: 80px; 
     }
     
-    /* Poppins for all headings */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
     h1, h2 {
       font-family: 'Poppins', sans-serif;
     }
@@ -45,71 +48,82 @@
     
     .post {
       background-color: var(--card-bg);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 8px var(--shadow-color); /* Subtle glow */
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px var(--shadow-color);
     }
     
     .post h2 {
       color: var(--brand-green);
       font-size: 1.4em;
       font-weight: 600;
+      margin-top: 0;
       border-bottom: 1px solid #222;
-      padding-bottom: 5px;
+      padding-bottom: 10px;
     }
     
     .post p {
-      line-height: 1.6;
-      font-size: 1em;
+      line-height: 1.7;
+      font-size: 1.05em;
       color: #ccc;
     }
-    
-    a {
-      color: #00ccff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
 
-    /* Menu styles (copied from front page for consistency) */
+    /* Menu Button Styles */
     .menu-button {
       position: fixed;
-      top: 35px;
+      top: 40px;
       left: 20px;
       background-color: var(--brand-green);
       border: none;
-      color: #000;
+      color: black;
       font-size: 22px;
       padding: 8px 12px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
       border-radius: 4px;
     }
+
+    /* Side Menu Styles */
     .side-menu {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -260px;
+      width: 260px;
       height: 100%;
       background-color: #111;
       overflow-y: auto;
       transition: left 0.3s;
       padding-top: 100px;
-      z-index: 999;
+      z-index: 1000;
+      border-right: 1px solid var(--border);
     }
+
     .side-menu a {
       display: block;
-      color: white;
       padding: 12px 20px;
+      color: white;
+      text-decoration: none;
       border-bottom: 1px solid #333;
     }
+
     .side-menu a:hover {
       background-color: var(--brand-green);
       color: #000;
     }
+
     .show-menu { left: 0; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -131,56 +145,30 @@
     <a href="terms.html">⚖️ Terms</a>
   </nav>
 
-  <h1>🎯 Dice Control: Master the Throw</h1>
+  <div class="container">
+    <h1>🎯 Dice Control: Master the Throw</h1>
 
-  <div class="post">
-    <h2>What Is Dice Control and Does It Really Work in Craps?</h2>
-    <p>Dice control is the idea that skilled players can influence how the dice land using proper grip, throw, and landing techniques. While it’s debated, many players swear by it as part of their edge strategy.</p>
-  </div>
+    <div class="post">
+      <h2>Dice Influence vs. Randomness</h2>
+      <p>Dice control is the practice of influencing outcomes through consistent grip, release, and landing mechanics. While debated, reducing randomness by even a small percentage can influence long-term odds when paired with disciplined bankroll management.</p>
+    </div>
 
-  <div class="post">
-    <h2>Best Dice Grips for Controlled Shooting in Craps</h2>
-    <p>Top grips include the **3-finger front grip**, the **stacked grip**, and the **diagonal pinch**. Each one affects spin, arc, and how the dice bounce — choose what works best for your style and hands.</p>
-  </div>
+    <div class="post">
+      <h2>Mastering the Mechanics</h2>
+      <p>Muscle memory is key. Use a consistent stance, grip, and follow-through for every throw. Physics shows that spin and throw consistency can influence how the dice react to the table surface.</p>
+    </div>
 
-  <div class="post">
-    <h2>How to Practice Dice Control at Home (No Table Needed)</h2>
-    <p>Use a taped target on the wall, measure out **8–10 feet**, and throw on carpet or a towel to mimic bounce. Focus on throwing at the same speed and angle every time.</p>
-  </div>
+    <div class="post">
+      <h2>Environmental Challenges</h2>
+      <p>Casinos install obstacles like rubber back-wall pyramids to disrupt dice patterns. Maintaining focus and emotional discipline under casino pressure is a core part of the CrapsEdge™ philosophy.</p>
+    </div>
 
-  <div class="post">
-    <h2>Top 3 Mistakes New Dice Controllers Make</h2>
-    <p>New players often **change grips too often**, **ignore landing zones**, or **rush their throws**. Stick to one technique, record your sessions, and practice discipline.</p>
-  </div>
-
-  <div class="post">
-    <h2>The Science Behind Dice Influence: Fact or Myth?</h2>
-    <p>Physics shows that spin, surface tension, and throw consistency can slightly influence dice outcomes — but casinos add obstacles like **rubber pyramids** to reduce this edge.</p>
-  </div>
-
-  <div class="post">
-    <h2>How to Throw Dice the Same Way Every Time</h2>
-    <p>Develop **muscle memory** by using the same stance, grip, backswing, and follow-through. Record videos to analyze your form and adjust for precision.</p>
-  </div>
-
-  <div class="post">
-    <h2>Casino Tricks to Break Your Dice Control Focus</h2>
-    <p>Casinos use noise, delays, and sudden distractions to throw you off. Stay centered, control your breathing, and block out everything but your throw.</p>
-  </div>
-
-  <div class="post">
-    <h2>Best Landing Zones and Throw Angles for Craps Dice Control</h2>
-    <p>Aim for the area just before the wall, about **6 inches in**, and throw at a **45-degree angle**. Avoid backspin and reduce bounce with a soft, controlled release.</p>
-  </div>
-
-  <div class="post">
-    <h2>Dice Setting vs Dice Control: What’s the Difference?</h2>
-    <p>**Dice setting** is how you position the dice before the throw. **Dice control** includes setting, but also adds grip, throw mechanics, and landing techniques.</p>
-  </div>
-
-  <div class="post">
-    <h2>Why Dice Control Might Give You a Small Edge (But Not a Guarantee)</h2>
-    <p>Even perfect technique doesn’t guarantee wins. But reducing randomness by even **1–2%** can lead to better odds long-term if paired with smart bankroll management.</p>
+    <footer>
+      CrapsEdge™ is a brand owned and operated by <strong>Murray’s Empire LLC</strong>.<br>
+      Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+      Contact: <a href="mailto:murraysempirellc@gmail.com" style="color:var(--brand-blue); text-decoration:none;">murraysempirellc@gmail.com</a><br>
+      LEGAL DISCLAIMER: Educational and informational content regarding casino mechanics. We do not offer financial advice or guarantee winnings. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+    </footer>
   </div>
   
   <script>
