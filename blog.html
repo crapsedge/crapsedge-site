@@ -5,121 +5,151 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>CrapsEdge™ Blog — Articles & Updates</title>
   <meta name="description" content="CrapsEdge™ articles: recovery-first guidance, math-based strategy, and site updates."/>
-  <link rel="canonical" href="/blog.html"/>
-
-  <meta property="og:title" content="CrapsEdge™ Blog — Articles & Updates"/>
-  <meta property="og:description" content="Recovery-first guidance, math-based strategy, and site updates."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://crapsedge.store/blog.html"/>
+  <link rel="canonical" href="https://crapsedge.store/blog.html"/>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="dice-icon.png">
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Blog",
-    "name":"CrapsEdge Blog",
-    "url":"https://crapsedge.store/blog.html",
-    "description":"Recovery-first, math-based articles from CrapsEdge."
-  }
-  </script>
-
   <style>
     :root{
-      --brand:#00cc66; /* Adjusted to match CTA button green */
-      --ink:#e8f2ec; 
-      --muted:#9fb7ad;
-      --bg:#000; /* Adjusted to pure black for site consistency */
-      --paper:#101213; 
-      --border:#1e293b; 
-      --card:#0f1418;
-      --ring:#1f8a4e;
+      --brand-green: #00cc66; 
+      --brand-accent: #ffcc00; 
+      --brand-blue: #00ccff;
+      --bg: #000;
+      --card-bg: #111;
+      --border: #333;
+      --text: #fff;
+      --muted: #888;
     }
+
     *{box-sizing:border-box}
-    /* Apply Inter for standard text, Poppins for titles */
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter', sans-serif;}
-
-    /* Hero */
-    .hero{
-      background: radial-gradient(1200px 300px at 10% -20%, rgba(0,204,102,.18), transparent), /* Use new brand green */
-                  radial-gradient(900px 340px at 90% -30%, rgba(0,204,102,.10), transparent), /* Use new brand green */
-                  #000; /* Use new background color */
-      border-bottom:1px solid var(--border);
-      padding:40px 16px 28px;
+    
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Inter', sans-serif;
+      padding-top: 80px;
     }
-    .wrap{max-width:1100px;margin:auto}
-    .brandline{display:flex;align-items:center;gap:14px}
-    .logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#1b4332)}
-    
-    /* Headings use Poppins */
+
     h1, h2, h3 { font-family: 'Poppins', sans-serif; }
-    h1{margin:0;font-size:34px}
-    .sub{margin:8px 0 0;color:var(--muted)}
 
-    /* Tools */
-    .tools{display:flex;gap:10px;margin-top:16px}
-    .search{flex:1;min-width:240px;padding:12px;border:1px solid var(--border);border-radius:12px;background:#0c0f12;color:var(--ink)}
+    .hero{
+      border-bottom: 1px solid var(--border);
+      padding: 40px 16px;
+      text-align: center;
+      background: radial-gradient(circle at top, rgba(0,204,102,0.1), transparent);
+    }
 
-    /* Grid */
-    main{padding:22px 16px}
-    .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-    .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#0e1a12,#0b0f0c)}
-    .pad{padding:16px}
-    .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
-    .title{margin:6px 0 8px;font-size:20px;line-height:1.25}
-    .title a{color:#f3fff8;text-decoration:none}
-    .title a:hover{color:var(--brand);text-decoration:underline}
-    .excerpt{color:#cfe7db;font-size:15px; line-height: 1.5;} /* Increased line height for Inter */
-    .read{display:inline-block;margin-top:10px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#0c0f12;color:#e8f2ec;text-decoration:none}
-    .read:hover{box-shadow:0 0 0 2px var(--ring) inset}
+    .wrap{max-width:1100px; margin:auto; padding: 0 20px;}
 
-    .load{display:block;width:100%;max-width:420px;margin:22px auto 0;padding:12px;border:1px solid var(--border);background:#0c0f12;color:#e8f2ec;border-radius:12px;cursor:pointer}
+    h1{font-size:34px; color: var(--brand-green); margin:0;}
+    .sub{margin:10px 0 20px; color:var(--muted); font-size: 1.1em;}
 
-    footer{border-top:1px solid var(--border);margin-top:28px;padding:18px 16px;color:#c7ded4; font-size: 0.9em;}
-    footer a { color: var(--brand); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .sr-only{position:absolute;left:-9999px}
+    .tools{margin-top:20px; max-width: 500px; margin-left: auto; margin-right: auto;}
+    .search{
+      width: 100%;
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background: var(--card-bg);
+      color:var(--text);
+      font-size: 16px;
+    }
+
+    main{padding:40px 0}
+    .grid{display:grid; grid-template-columns: 1fr; gap:25px;}
+    @media(min-width:860px){.grid{grid-template-columns: 1fr 1fr}}
+
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform 0.2s ease;
+    }
+    .card:hover { transform: translateY(-5px); border-color: var(--brand-green); }
+
+    .thumb{aspect-ratio:16/9; background:linear-gradient(135deg,#1a1a1a,#000); border-bottom: 1px solid var(--border);}
+    .pad{padding:24px}
+    .meta{font-size:12px; color:var(--brand-green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;}
+    .title{margin:0 0 12px; font-size:22px; line-height:1.3;}
+    .title a{color:var(--text); text-decoration:none;}
+    .excerpt{color:#ccc; font-size:15px; line-height:1.6; margin-bottom: 20px;}
     
-    /* Added Menu Button/Sidebar styles for navigation consistency */
+    .read{
+      display:inline-block;
+      padding:10px 20px;
+      background: var(--brand-green);
+      color:#000;
+      font-weight: 700;
+      text-decoration:none;
+      border-radius:8px;
+      width: fit-content;
+    }
+
+    .load{
+      display:block;
+      width:200px;
+      margin:40px auto;
+      padding:12px;
+      border:1px solid var(--brand-green);
+      background:transparent;
+      color:var(--brand-green);
+      border-radius:12px;
+      cursor:pointer;
+      font-weight: 600;
+    }
+
+    /* Menu Button Styles */
     .menu-button {
       position: fixed;
-      top: 35px;
+      top: 40px;
       left: 20px;
-      background-color: var(--brand);
+      background-color: var(--brand-green);
       border: none;
-      color: #000;
+      color: black;
       font-size: 22px;
       padding: 8px 12px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
       border-radius: 4px;
     }
+
     .side-menu {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -260px;
+      width: 260px;
       height: 100%;
       background-color: #111;
       overflow-y: auto;
       transition: left 0.3s;
       padding-top: 100px;
-      z-index: 999;
+      z-index: 1000;
+      border-right: 1px solid var(--border);
     }
     .side-menu a {
       display: block;
-      color: white;
       padding: 12px 20px;
+      color: white;
+      text-decoration: none;
       border-bottom: 1px solid #333;
     }
-    .side-menu a:hover {
-      background-color: var(--brand);
-      color: #000;
-    }
+    .side-menu a:hover { background-color: var(--brand-green); color: #000; }
     .show-menu { left: 0; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
@@ -142,59 +172,51 @@
 
   <header class="hero">
     <div class="wrap">
-      <div class="brandline">
-        <span class="logo" aria-hidden="true"></span>
-        <div>
-          <h1>CrapsEdge™ Blog</h1>
-          <p class="sub">Light, honest reads: recovery first, math always. No hype.</p>
-        </div>
-      </div>
-
+      <h1>CrapsEdge™ Blog</h1>
+      <p class="sub">Educational reads on math-based strategy and recovery-first guidance.</p>
       <div class="tools">
-        <input id="search" class="search" type="search" placeholder="Search articles…" aria-label="Search"/>
+        <input id="search" class="search" type="search" placeholder="Search articles…" aria-label="Search articles"/>
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <h2 class="sr-only">Articles</h2>
     <section id="grid" class="grid" aria-live="polite"></section>
-    <button id="load" class="load">Load more</button>
+    <button id="load" class="load">Load more articles</button>
   </main>
 
-  <footer class="wrap">
-    <small>&copy; <span id="yr"></span> CrapsEdge™ · Educational content only. If gambling is harming you, get help:
-      <a href="https://www.ncpgambling.org/help-treatment/" rel="nofollow">NCPG</a> ·
-      <a href="https://www.gamblersanonymous.org/ga/" rel="nofollow">GA</a>.
-    </small>
+  <footer>
+    <div class="wrap">
+      <p>CrapsEdge™ is a brand owned and operated by <strong>Murray’s Empire LLC</strong>.</p>
+      <p>Murray’s Empire LLC © 2026. All Rights Reserved.</p>
+      <p>Need support? Contact <a href="mailto:murraysempirellc@gmail.com" style="color:var(--brand-blue); text-decoration:none;">murraysempirellc@gmail.com</a></p>
+      <small style="display:block; margin-top:20px;">
+        LEGAL DISCLAIMER: Educational content only. Must be 21+. If gambling is harming you, call 1-800-GAMBLER.
+      </small>
+    </div>
   </footer>
 
   <script>
-    // ---- Add/maintain your posts here (simple array) ----
     const POSTS = [
       {
-        title:"CrapsEdge Mission & Safety: Why We Teach Recovery First",
+        title:"CrapsEdge Mission: Why We Teach Recovery First",
         href:"/post1.html",
-        date:"2025-09-02",
-        author:"CrapsEdge Editorial",
-        excerpt:"Our commitment to legal, math-based education and real tools that help players regain control.",
-        img:""
+        date:"2026-01-02",
+        author:"Editorial",
+        excerpt:"Our commitment to legal, math-based education and real tools that help players regain control of their bankroll."
       },
       {
-        title:"Math, Not Myths: Understanding House Edge on Common Bets",
+        title:"Math Over Myths: Understanding the House Edge",
         href:"/post2.html",
-        date:"2025-09-05",
-        author:"CrapsEdge Studio",
-        excerpt:"A clear, no-hype walkthrough of house edge, variance, and why disciplined rules beat superstition.",
-        img:""
+        date:"2026-01-05",
+        author:"Editorial",
+        excerpt:"A clear, no-hype walkthrough of probability, variance, and why disciplined betting rules beat superstition."
       }
-      // Add more posts by duplicating this object shape
     ];
 
     const grid = document.getElementById('grid');
     const load = document.getElementById('load');
     const search = document.getElementById('search');
-    const yr = document.getElementById('yr'); yr.textContent = new Date().getFullYear();
 
     let shown = 0, page = 6, q = "";
 
@@ -209,12 +231,12 @@
         const el = document.createElement('article');
         el.className = "card";
         el.innerHTML = `
-          <a class="thumb" href="${p.href}" aria-label="${p.title}"></a>
+          <div class="thumb"></div>
           <div class="pad">
-            <div class="meta"><span>${new Date(p.date).toLocaleDateString()}</span> · <span>${p.author}</span></div>
+            <div class="meta">${new Date(p.date).toLocaleDateString()} · ${p.author}</div>
             <h3 class="title"><a href="${p.href}">${p.title}</a></h3>
             <p class="excerpt">${p.excerpt}</p>
-            <a class="read" href="${p.href}">Read more →</a>
+            <a class="read" href="${p.href}">Read Article →</a>
           </div>`;
         grid.appendChild(el);
       });
@@ -223,22 +245,19 @@
       load.style.display = (shown < filtered.length) ? "block" : "none";
     }
 
-    // Search (debounced)
-    let t;
     search.addEventListener('input', ()=>{
-      clearTimeout(t);
-      t = setTimeout(()=>{ q = search.value.trim().toLowerCase(); shown = 0; render(); }, 120);
+      q = search.value.trim().toLowerCase(); 
+      shown = 0; 
+      render(); 
     });
 
     load.addEventListener('click', ()=>{ page += 6; render(); });
     render();
 
-    // Toggle Menu Functionality
     function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('show-menu');
+      document.getElementById('sideMenu').classList.toggle('show-menu');
     }
-    // Hides the menu button when scrolling down, shows it when scrolling up (for better viewing on mobile)
+
     let lastScrollTop = 0;
     window.addEventListener("scroll", function(){
       const menuBtn = document.getElementById('menuButton');
