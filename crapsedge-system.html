@@ -9,27 +9,33 @@
   <link rel="icon" type="image/png" href="dice-icon.png">
 
   <style>
-    /* CSS Variables for consistent coloring */
     :root {
-      --brand-green: #00cc66; /* Your CTA green */
-      --brand-red: red;      /* Your Section title red */
-      --brand-accent: #ffcc00; /* Yellow/Gold for price */
+      --brand-green: #00cc66; 
+      --brand-red: #ff4444;      
+      --brand-accent: #ffcc00; 
+      --brand-blue: #00ccff;
       --bg: #000;
       --text: #fff;
+      --card-bg: #111;
+      --border: #333;
     }
     
     body {
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      padding: 2em;
+      padding: 0;
+      margin: 0;
+      line-height: 1.7;
+      padding-top: 80px; 
+    }
+
+    .container {
       max-width: 900px;
       margin: auto;
-      line-height: 1.7;
-      padding-top: 80px; /* Add space for the fixed menu button */
+      padding: 30px 20px;
     }
     
-    /* Poppins for all headings */
     h1, h2 {
       font-family: 'Poppins', sans-serif;
       text-align: center;
@@ -43,10 +49,10 @@
     }
     
     h2 {
-      color: var(--brand-red); /* Using the contrast color from the front page */
+      color: var(--brand-red); 
       font-size: 1.6em;
       margin-top: 2em;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid var(--border);
       padding-bottom: 5px;
       font-weight: 600;
       text-align: left;
@@ -59,7 +65,7 @@
     
     ul {
       margin-bottom: 2em;
-      list-style-type: none; /* Remove default dots */
+      list-style-type: none;
       padding-left: 0;
     }
     
@@ -68,89 +74,97 @@
       padding-left: 1.5em;
       position: relative;
     }
-    /* Custom bullet point using brand color */
+
     li::before {
         content: '✅'; 
         position: absolute;
         left: 0;
-        color: var(--brand-green);
-        font-weight: bold;
     }
     
     .sample {
-      background-color: #111;
+      background-color: var(--card-bg);
       border-left: 4px solid var(--brand-green);
       padding: 1.5em;
       font-style: italic;
       margin: 2em 0;
       font-size: 1.1em;
+      border-radius: 0 8px 8px 0;
     }
     
     .buy-button {
       display: inline-block;
       background-color: var(--brand-green);
-      color: var(--bg);
-      font-family: 'Poppins', sans-serif; /* Use Poppins for the button text */
-      font-size: 1.2em; /* Slightly larger for a sales page */
+      color: #000;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2em;
       font-weight: 700;
       padding: 15px 30px;
       text-decoration: none;
-      border-radius: 8px; /* Slightly rounder for impact */
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 204, 102, 0.5); /* Glowing effect */
+      border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 204, 102, 0.4);
       margin: 1em 0;
     }
     
     .buy-button:hover {
-      background-color: #00e676;
-      box-shadow: 0 4px 25px rgba(0, 230, 118, 0.7);
-    }
-    
-    .disclaimer {
-      font-size: 0.9em;
-      color: #888;
-      margin-top: 3em;
-      border-top: 1px solid #222;
-      padding-top: 1.5em;
+      transform: scale(1.05);
+      box-shadow: 0 4px 25px rgba(0, 230, 118, 0.6);
     }
 
-    /* Menu styles (copied from front page for consistency) */
+    /* Menu Button Styles */
     .menu-button {
       position: fixed;
-      top: 35px;
+      top: 40px;
       left: 20px;
       background-color: var(--brand-green);
       border: none;
-      color: #000;
+      color: black;
       font-size: 22px;
       padding: 8px 12px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 1001;
+      box-shadow: 0 0 8px var(--brand-green);
       border-radius: 4px;
     }
+
+    /* Side Menu Styles */
     .side-menu {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -260px;
+      width: 260px;
       height: 100%;
       background-color: #111;
       overflow-y: auto;
       transition: left 0.3s;
       padding-top: 100px;
-      z-index: 999;
+      z-index: 1000;
+      border-right: 1px solid var(--border);
     }
+
     .side-menu a {
       display: block;
-      color: white;
       padding: 12px 20px;
+      color: white;
+      text-decoration: none;
       border-bottom: 1px solid #333;
     }
+
     .side-menu a:hover {
       background-color: var(--brand-green);
       color: #000;
     }
+
     .show-menu { left: 0; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -172,38 +186,43 @@
     <a href="terms.html">⚖️ Terms</a>
   </nav>
 
-  <h1>The CrapsEdge™ System</h1>
+  <div class="container">
+    <h1>The CrapsEdge™ System</h1>
 
-  <p style="text-align: center; color: #ccc;">
-    The ultimate guide to flipping the edge in your favor at the craps table. The CrapsEdge™ System is a complete 30-page digital manual with advanced betting strategy, behavioral edge control, emotional discipline, and true casino survival tactics. Built for players who want to win smarter — not harder.
-  </p>
+    <p style="text-align: center; color: #ccc;">
+      The ultimate guide to flipping the edge in your favor at the craps table. The CrapsEdge™ System is a complete 30-page digital manual with advanced betting strategy, behavioral edge control, emotional discipline, and true casino survival tactics. Built for players who want to win smarter — not harder.
+    </p>
 
-  <h2>What You'll Master</h2>
-  <ul>
-    <li>Why casinos win back your money — even after you win</li>
-    <li>The exact moment most players lose control and how to stop it</li>
-    <li>How to build and stick to a bankroll plan that actually works</li>
-    <li>Ways to control the pace of play, spot trap bets, and walk away ahead</li>
-    <li>The full CrapsEdge™ system for maximizing real-world edge</li>
-  </ul>
+    <h2>What You'll Master</h2>
+    <ul>
+      <li>Why casinos win back your money — even after you win</li>
+      <li>The exact moment most players lose control and how to stop it</li>
+      <li>How to build and stick to a bankroll plan that actually works</li>
+      <li>Ways to control the pace of play, spot trap bets, and walk away ahead</li>
+      <li>The full CrapsEdge™ system for maximizing real-world edge</li>
+    </ul>
 
-  <div class="sample">
-    “Most players don’t lose because of the house edge — they lose because they stay too long. CrapsEdge™ gives you a structure, exit rules, and a mental edge that changes how you play forever.”
-  </div>
+    <div class="sample">
+      “Most players don’t lose because of the house edge — they lose because they stay too long. CrapsEdge™ gives you a structure, exit rules, and a mental edge that changes how you play forever.”
+    </div>
 
-  <h2 style="text-align: center; color: var(--brand-accent); border-bottom: none;">
-    One-Time Price: $9.99
-  </h2>
-  <p style="text-align: center;">This is a one-time purchase for instant digital access.</p>
+    <h2 style="text-align: center; color: var(--brand-accent); border-bottom: none;">
+      One-Time Price: $9.99
+    </h2>
+    <p style="text-align: center;">One-time purchase for instant digital access.</p>
 
-<div style="text-align: center;">
-    <a href="https://crapsedge.gumroad.com/l/xvnyi" class="buy-button" target="_blank">
-        🔓 Get Instant Access – $9.99
-    </a>
-</div>
+    <div style="text-align: center;">
+        <a href="https://crapsedge.gumroad.com/l/xvnyi" class="buy-button" target="_blank">
+            🔓 Get Instant Access – $9.99
+        </a>
+    </div>
 
-  <div class="disclaimer">
-    <p>This guide is not financial, legal, or gambling advice. All content is for educational purposes only and based on personal experience. CrapsEdge™ encourages responsible gambling. No outcome is guaranteed.</p>
+    <footer>
+      CrapsEdge™ is a brand owned and operated by <strong>Murray’s Empire LLC</strong>. <br>
+      Murray’s Empire LLC © 2026. All Rights Reserved.<br><br>
+      Contact: <a href="mailto:murraysempirellc@gmail.com" style="color:var(--brand-blue); text-decoration:none;">murraysempirellc@gmail.com</a><br>
+      LEGAL DISCLAIMER: Educational and informational content only regarding casino mechanics. We do not provide financial advice. Must be 21+. If you have a gambling problem, call 1-800-GAMBLER.
+    </footer>
   </div>
   
   <script>
