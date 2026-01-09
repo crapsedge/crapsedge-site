@@ -1,92 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy – CrapsEdge™</title>
+  <title>Privacy Policy | CrapsEdge™ & Murray’s Empire™</title>
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7741509990569883"
-     crossorigin="anonymous"></script>
-     
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
     body {
-      background-color: black;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      padding: 2em;
-      max-width: 900px;
-      margin: auto;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
       line-height: 1.7;
     }
-    h1 {
-      color: lime;
-      text-align: center;
-      margin-bottom: 0.5em;
+    .main-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2em;
+      padding-top: 80px;
     }
-    h2 {
-      color: cyan;
-      margin-top: 1.5em;
-    }
-    a {
-      color: #00ccff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    p {
-      font-size: 1.05em;
-      /* Added margin-bottom for better paragraph separation */
-      margin-bottom: 1em; 
-    }
+    h1, h2, .menu-label { font-family: 'Poppins', sans-serif; }
+    h1 { color: #00cc66; text-align: center; font-size: 2em; }
+    h2 { color: #00cc66; font-size: 1.3em; margin-top: 1.5em; border-bottom: 1px solid #222; padding-bottom: 10px; }
+    p, li { color: #ccc; font-size: 1em; }
+    .back-link { display: block; text-align: center; margin-top: 40px; color: #00cc66; text-decoration: none; font-weight: bold; }
+    
+    /* --- SHARED MENU STYLE --- */
+    .menu-button { position: fixed; top: 25px; left: 20px; background-color: #00cc66; border: none; color: #000; font-size: 24px; padding: 10px 15px; cursor: pointer; z-index: 1000; border-radius: 4px; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background-color: #111; overflow-y: auto; transition: left 0.3s ease; z-index: 1001; }
+    .side-menu.show-menu { left: 0; }
+    .close-btn { text-align: right; padding: 20px; font-size: 35px; cursor: pointer; color: #00cc66; }
+    .side-menu a { display: block; color: white; padding: 15px 20px; border-bottom: 1px solid #1a1a1a; text-decoration: none; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; z-index: 1000; }
+    .overlay.active { display: block; }
   </style>
-
 </head>
 <body>
-  
-  <header>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-client="ca-pub-7741509990569883"
-         data-ad-slot="1863047244"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  
+
+  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <div class="close-btn" onclick="toggleMenu()">×</div>
+    <a href="index.html">🏠 Home</a>
+    <a href="explore.html">🔍 Systems</a>
+    <a href="tracker.html">📊 Tracker</a>
+    <a href="terms.html">⚖️ Terms of Service</a>
+  </nav>
+
+  <div class="main-container">
     <h1>Privacy Policy</h1>
-    <p style="text-align:center;">Last Updated: July 21, 2025</p>
-  </header>
-  
-  <main>
-    <p>This Privacy Policy describes how CrapsEdge™ collects, uses, and protects your information when you visit <a href="https://crapsedge.store" target="_blank">https://crapsedge.store</a>.</p>
-  
+    <p style="text-align: center; font-size: 0.9em;">Last Updated: January 2026</p>
+
+    <p>CrapsEdge™ is a sub-brand of <strong>Murray’s Empire™</strong> ("we," "us," or "our"). We value your privacy and are committed to protecting your personal data.</p>
+
     <h2>1. Information We Collect</h2>
-    <p>We do not collect personally identifiable information unless you voluntarily submit it (such as by emailing us or purchasing a product).</p>
-    <p>We use tools like Google Analytics to collect anonymous traffic data (e.g., pages visited, time spent, general location).</p>
-  
-    <h2>2. Use of Information</h2>
-    <p>We use any collected data to improve content, analyze site traffic, and offer a better user experience. We never sell your information.</p>
-  
-    <h2>3. Cookies</h2>
-    <p>Cookies may be used to remember preferences and analyze site usage. You can manage or disable cookies in your browser settings.</p>
-  
-    <h2>4. Third-Party Links and Tools</h2>
-    <p>This site may link to or embed services like Google AdSense, Cash App, or affiliate tools. These platforms follow their own privacy rules and policies.</p>
-  
-    <h2>5. Data Security</h2>
-    <p>We take steps to protect your information but cannot guarantee 100% security across all systems or platforms.</p>
-  
-    <h2>6. Changes to This Policy</h2>
-    <p>We may update this policy as needed. The most recent version will always be posted here with the update date shown above.</p>
-  </main>
+    <p>We collect information that you provide directly to us when you purchase a digital guide or download our bankroll tracker, including your email address and name. We also collect automated data via Google Analytics to improve site performance.</p>
 
-  <footer>
-    <h2>7. Contact</h2>
-    <p>For privacy concerns or questions, contact us at <a href="mailto:crapsedge@gmail.com">crapsedge@gmail.com</a>.</p>
-  </footer>
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+      <li>To deliver digital products purchased via Gumroad.</li>
+      <li>To send updates regarding CrapsEdge™ or Murray’s Empire™.</li>
+      <li>To monitor website traffic and user behavior (Google Analytics).</li>
+    </ul>
 
+    <h2>3. Third-Party Services</h2>
+    <p>We use <strong>Gumroad</strong> for payment processing. We do not store your credit card or financial information on our servers. Please refer to Gumroad’s privacy policy for their data handling practices.</p>
+
+    <h2>4. Age Requirements</h2>
+    <p>Our website and services are intended strictly for individuals aged <strong>21 and older</strong>. We do not knowingly collect data from anyone under the age of 21.</p>
+
+    <h2>5. Contact Us</h2>
+    <p>If you have questions about this policy, please contact us at: <strong>murraysempirellc@gmail.com</strong></p>
+
+    <a href="index.html" class="back-link">← Return to CrapsEdge™</a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('show-menu');
+      overlay.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
