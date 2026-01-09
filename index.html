@@ -50,7 +50,6 @@
     body {
       display: flex;
       flex-direction: column;
-      /* Using Inter for primary body text due to superior legibility */
       font-family: 'Inter', sans-serif;
       background-color: #000;
       color: #fff;
@@ -69,33 +68,32 @@
       display: block;
       border-radius: 10px;
     }
-    /* Poppins for all main titles/headings */
     h1, h2, h3, .section-title {
         font-family: 'Poppins', sans-serif; 
     }
     .tagline {
-      font-size: 1.5em; /* Slightly larger for impact */
-      font-weight: 600; /* Semi-bold Poppins */
+      font-size: 1.5em;
+      font-weight: 600;
       margin-bottom: 12px;
-      color: #00cc66; /* Match the CTA button green for consistency */
+      color: #00cc66;
     }
     .keyword-line {
       font-size: 1em;
-      color: #888; /* Darker gray for subtlety */
+      color: #888;
       margin-bottom: 30px;
     }
     .section-title {
       color: red; 
-      font-weight: 700; /* Bold Poppins */
-      font-size: 1.8em; /* Slightly larger and more impactful */
+      font-weight: 700;
+      font-size: 1.8em;
       margin-top: 35px;
     }
     .cta-button, .download-button {
       background-color: #00cc66;
       color: #000;
       font-size: 18px;
-      font-weight: 600; /* Use Poppins semi-bold */
-      padding: 14px 28px; /* Slightly larger padding */
+      font-weight: 600;
+      padding: 14px 28px;
       margin: 24px auto;
       border: none;
       border-radius: 6px;
@@ -103,7 +101,7 @@
       text-decoration: none;
       display: inline-block;
       transition: background-color 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4); /* Subtle shadow for depth */
+      box-shadow: 0 4px 15px rgba(0, 204, 102, 0.4);
     }
     .cta-button:hover, .download-button:hover {
       background-color: #00e676;
@@ -113,11 +111,13 @@
       max-width: 600px;
       margin: 0 auto 20px;
       padding-left: 20px;
-      line-height: 1.7; /* Increased line-height for better readability */
+      line-height: 1.7;
     }
     ul li { margin-bottom: 10px; }
     a { color: #00ccff; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    
+    /* LEFT MENU BUTTON */
     .menu-button {
       position: fixed;
       top: 35px;
@@ -131,6 +131,22 @@
       z-index: 1000;
       border-radius: 4px;
     }
+
+    /* NEW RIGHT MENU BUTTON */
+    .right-menu-button {
+      position: fixed;
+      top: 35px;
+      right: 20px;
+      background-color: #ffcc00;
+      border: none;
+      color: #000;
+      font-size: 22px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 4px;
+    }
+
     .side-menu {
       position: fixed;
       top: 0;
@@ -143,17 +159,34 @@
       padding-top: 100px;
       z-index: 999;
     }
-    .side-menu a {
+
+    /* RIGHT MENU STYLE */
+    .right-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      overflow-y: auto;
+      transition: right 0.3s;
+      padding-top: 100px;
+      z-index: 999;
+      border-left: 1px solid #333;
+    }
+
+    .side-menu a, .right-menu a {
       display: block;
       color: white;
       padding: 12px 20px;
       border-bottom: 1px solid #333;
     }
-    .side-menu a:hover {
-      background-color: #00cc66;
-      color: #000;
-    }
+    .side-menu a:hover { background-color: #00cc66; color: #000; }
+    .right-menu a:hover { background-color: #ffcc00; color: #000; }
+
     .show-menu { left: 0; }
+    .show-right-menu { right: 0; }
+
     .footer {
       text-align: center;
       color: gray;
@@ -169,21 +202,26 @@
       padding-top: 20px;
       border-top: 1px solid #333;
     }
+
+    /* MASTER CONTENT STYLE */
+    .master-content {
+      text-align: left;
+      background: #111;
+      padding: 40px;
+      border-radius: 15px;
+      margin-top: 50px;
+      border: 1px solid #222;
+    }
+    .master-content h2 { color: #ffcc00; }
   </style>
 </head>
 
 <body>
   <button class="menu-button" onclick="toggleMenu()" id="menuButton">☰</button>
-
   <nav id="sideMenu" class="side-menu">
     <a href="crapsedge-system.html">⚡ Strategy System</a>
     <a href="craps-house-edge-guide.html">📈 House Edge Guide</a>
     <a href="stop-gambling-help.html">🧠 Stop Gambling Help</a>
-
-    <!-- Hidden (not deleted) -->
-    <!-- <a href="blog.html">🗞️ Blog</a> -->
-    <!-- <a href="craps-table.html">🎲 Play Craps</a> -->
-
     <a href="explore.html">🔍 Explore Systems</a>
     <a href="high-roller-tips-updated.html">💼 High Roller Tips</a>
     <a href="tracker.html">📊 Bankroll Tracker</a>
@@ -192,6 +230,15 @@
     <a href="privacy-policy.html">🔐 Privacy</a>
     <a href="faq.html">❓ Support</a>
     <a href="terms.html">⚖️ Terms</a>
+  </nav>
+
+  <button class="right-menu-button" onclick="toggleRightMenu()" id="rightMenuButton">🎓</button>
+  <nav id="rightMenu" class="right-menu">
+    <p style="text-align:center; color:#ffcc00; font-weight:bold;">MASTER EDUCATION</p>
+    <a href="#ultimate-guide">🎲 Ultimate Guide</a>
+    <a href="#dice-control">🎯 Dice Mechanics</a>
+    <a href="#betting-systems">💰 Betting Systems</a>
+    <a href="#responsible-play">🛡️ Recovery Tools</a>
   </nav>
 
   <div class="main-container">
@@ -221,31 +268,58 @@
     <p>📊 Download your free bankroll tracker:</p>
     <a href="bankroll-tracker.xlsx" class="download-button" download>📥 Download Tracker</a>
 
+    <div class="master-content" id="ultimate-guide">
+        <h2 class="section-title" style="color:#ffcc00;">🎲 The Ultimate Guide to Craps Mastery</h2>
+        <p>Welcome to <strong>CrapsEdge™</strong>, the premier destination for players who refuse to leave their money to pure "luck." To win at craps, you don't need a miracle; you need a system.</p>
+        
+        <h3>The Core Philosophy: Minimizing the House</h3>
+        <p>The casino wins because most players chase "long shots." At CrapsEdge™, we focus on the <strong>mathematical edge</strong>. By focusing on Low House Edge bets like the Pass Line and 6/8 Place bets, you keep your bankroll alive long enough to hit the hot streaks.</p>
+
+        <h3>Dice Control: Myth or Reality?</h3>
+        <p>We teach the mechanics of <strong>Dice Setting</strong>. While no one can "force" a number every time, consistent grip and release can reduce the frequency of the "7-out." This is the cornerstone of the CrapsEdge™ method.</p>
+        
+        <p style="text-align:center;"><em>[Visual Placeholder: High-End Dice Setting Diagram coming soon]</em></p>
+    </div>
+
     <div class="footer">
-      <p>CrapsEdge™ © 2025. All Rights Reserved.</p>
+      <p>CrapsEdge™ is a wholly owned sub-brand of <strong>Murray’s Empire™</strong>.</p>
+      <p>Murray’s Empire™ © 2026. All Rights Reserved.</p>
       <p><a href="terms.html">Terms</a> | <a href="privacy-policy.html">Privacy</a> | <a href="faq.html">Support</a></p>
     </div>
 
     <div class="disclaimer">
-      CrapsEdge™ provides educational material and personal experience-based insights. Not licensed gambling, therapy, or financial advice. Play responsibly.
+      <strong>LEGAL DISCLAIMER:</strong> CrapsEdge™ and its parent company, Murray’s Empire™, provide educational and experiential content regarding casino mechanics and dice concepts. We do not offer financial advice, and we do not guarantee winnings. Gambling involves significant risk. Must be 21+. If you or someone you know has a gambling problem, call 1-800-GAMBLER.
     </div>
   </div>
   
   <div style="text-align: center; margin-top: 20px; padding: 20px 0;">
     <p style="color: #444; font-size: 0.9em;">- Advertisement -</p>
-    
-    </div>
+  </div>
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById('sideMenu');
       menu.classList.toggle('show-menu');
     }
+    
+    function toggleRightMenu() {
+      const menu = document.getElementById('rightMenu');
+      menu.classList.toggle('show-right-menu');
+    }
+
     let lastScrollTop = 0;
     window.addEventListener("scroll", function(){
       const menuBtn = document.getElementById('menuButton');
+      const rightBtn = document.getElementById('rightMenuButton');
       let currentScroll = window.scrollY || document.documentElement.scrollTop;
-      // This script hides the menu button when scrolling down, shows it when scrolling up.
-      menuBtn.style.display = currentScroll > lastScrollTop ? "none" : "block";
+      
+      if (currentScroll > lastScrollTop) {
+        menuBtn.style.display = "none";
+        rightBtn.style.display = "none";
+      } else {
+        menuBtn.style.display = "block";
+        rightBtn.style.display = "block";
+      }
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
   </script>
